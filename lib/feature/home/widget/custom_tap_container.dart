@@ -1,0 +1,42 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+class CustomTapContainer extends StatelessWidget {
+  CustomTapContainer({super.key,
+    required  this.image,
+    required this.text,
+    required this.onTap,
+
+  });
+  final String image ;
+  final String text ;
+  Function() onTap ;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap:onTap ,
+      child: Container(
+        height: 85.h,
+        width: 85.h,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        child: Align(
+          alignment:Alignment.center ,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(image, width: 40,height: 40,
+              ),
+              Text(text)
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+}
