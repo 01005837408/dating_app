@@ -23,11 +23,10 @@ class CustomImagAndTextBottun extends StatelessWidget {
               width: 32,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           TextButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(
-                    Routs.loginScreen  );
+                Navigator.of(context).pushReplacementNamed(Routs.loginScreen);
               },
               child: const Text(
                 ConstText.skip,

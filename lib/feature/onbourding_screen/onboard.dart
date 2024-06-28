@@ -1,4 +1,3 @@
-import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
@@ -9,8 +8,8 @@ import 'widget/custom_onbourding_ui.dart';
 import 'widget/onboard_model.dart';
 
 class Onboard extends StatefulWidget {
-  const Onboard({super.key,
-
+  const Onboard({
+    super.key,
   });
 
   @override
@@ -19,7 +18,7 @@ class Onboard extends StatefulWidget {
 
 class _OnboardState extends State<Onboard> {
   PageController pageController = PageController();
-  int pageIndex  = 0;
+  int pageIndex = 0;
 
   final List<OnboardModel> onBoardingList = [
     OnboardModel(
@@ -46,28 +45,28 @@ class _OnboardState extends State<Onboard> {
           Container(
             width: double.infinity,
             color: AppColor.kPrimaryColor,
-            child:  Column(children: [
-              CustomImagAndTextBottun(),
-              Expanded(
+            child: Column(children: [
+              const CustomImagAndTextBottun(),
+              Flexible(
                   child: PageView.builder(
-                    itemCount: onBoardingList.length,
-                    controller:pageController ,
-                    scrollDirection: Axis.horizontal,
-                    onPageChanged: (index) {
-                      setState(() {
-                        pageIndex = index ;
-                      });
-                      print(pageIndex);
-                    },
-                    itemBuilder:(context , index) => CustomOnboardingUI(
-                      pageIndex: index,
-                    ) ,
-                  ))
+                itemCount: onBoardingList.length,
+                controller: pageController,
+                scrollDirection: Axis.horizontal,
+                onPageChanged: (index) {
+                  setState(() {
+                    pageIndex = index;
+                  });
+                  print(pageIndex);
+                },
+                itemBuilder: (context, index) => CustomOnboardingUI(
+                  pageIndex: index,
+                ),
+              ))
             ]),
           ),
           Positioned(
-            left: 180,
-              top:420,
+              left: 180,
+              top: 420,
               child: SmoothPageIndicator(
                 controller: pageController,
                 count: 3,
@@ -77,7 +76,3 @@ class _OnboardState extends State<Onboard> {
     );
   }
 }
-
-
-
-

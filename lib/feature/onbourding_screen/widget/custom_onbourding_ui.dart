@@ -11,17 +11,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOnboardingUI extends StatefulWidget {
-  CustomOnboardingUI({super.key,
-    required this.pageIndex ,
+  CustomOnboardingUI({
+    super.key,
+    required this.pageIndex,
   });
-  int pageIndex  ;
+  int pageIndex;
   @override
   State<CustomOnboardingUI> createState() => _CustomOnboardingUIState();
 }
 
 class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
   PageController pageController = PageController();
-  void dispose(){
+  @override
+  void dispose() {
     pageController.dispose();
     super.dispose();
   }
@@ -46,52 +48,56 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 30),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Directionality(
         textDirection: TextDirection.rtl,
-        child: Column(
-
-            children: [
-              verticalSpacing(30.h),
-              Container(
-                width: 300.h,
-                height: 240.w,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Image.asset(onBoardingList[widget.pageIndex].image),
-              ),
-              verticalSpacing(70.h),
-              Text(
-                onBoardingList[widget.pageIndex].title,
-                style: AppStyle.font21bold,
-
-              ),
-              verticalSpacing(12.h),
-              Text(
-                onBoardingList[widget.pageIndex].description,
-                style: AppStyle.font17W400,
-              ),
-              verticalSpacing(40.h),
-              Container(
-                width: 300,
-                height: 50,
-                child:widget.pageIndex == 2 ? ElevatedButton(
+        child: Column(children: [
+          verticalSpacing(30.h),
+          Container(
+            width: 300.h,
+            height: 240.w,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Image.asset(onBoardingList[widget.pageIndex].image),
+          ),
+          verticalSpacing(65.h),
+          Text(
+            onBoardingList[widget.pageIndex].title,
+            style: AppStyle.font21bold,
+          ),
+          verticalSpacing(12.h),
+          Text(
+            onBoardingList[widget.pageIndex].description,
+            style: AppStyle.font17W400,
+          ),
+          verticalSpacing(40.h),
+          SizedBox(
+            width: 300,
+            height: 50,
+            child: widget.pageIndex == 2
+                ? ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30))),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignInScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SignInScreen()));
                     },
-                    child:  Text("لنبدأ", style: AppStyle.font21bold.copyWith(color: AppColor.kPrimaryColor)
-                    ),
-                    ):Text("التالي", style: AppStyle.font21bold.copyWith(color: AppColor.kPrimaryColor),
-              ),
-              ),
-            ]),
+                    child: Text("لنبدأ",
+                        style: AppStyle.font21bold
+                            .copyWith(color: AppColor.kPrimaryColor)),
+                  )
+                : Text(
+                    "التالي",
+                    style: AppStyle.font21bold
+                        .copyWith(color: AppColor.kPrimaryColor),
+                  ),
+          ),
+        ]),
       ),
     );
   }
