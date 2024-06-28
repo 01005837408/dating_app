@@ -1,6 +1,4 @@
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
-import 'package:dating_app/feature/home/screens/home_screen.dart';
-import 'package:dating_app/feature/onbourding_screen/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
