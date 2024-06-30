@@ -1,7 +1,8 @@
 
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/feature/chat/presentation/screens/chat_list_screen/chat_list_screen.dart';
+import 'package:dating_app/feature/chat/screen/chat_list_screen.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
+
 import 'package:flutter/material.dart';
 class ButtonNavigation extends StatefulWidget {
   const ButtonNavigation({super.key});
