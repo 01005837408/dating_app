@@ -72,10 +72,10 @@ class ViewProfile extends StatelessWidget {
                     indicatorWeight: 5,
                     indicatorColor: AppColor.kPrimaryColor,
                     tabs: [
-                      // Tab(
-                      //   text: ConstText.viewMyprofile,
-                      // ),
-                      // Tab(text: ConstText.viewOtherProfile),
+                      Tab(
+                        text: ConstText.viewMyprofile,
+                      ),
+                      Tab(text: ConstText.viewOtherProfile),
                     ],
                   ),
                   Expanded(
