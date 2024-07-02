@@ -12,6 +12,7 @@ void main() async{
   );
   authStateChanges();
   
+  // UserModel userModel = UserModel.fromFirestore(userDoc.data() as Map<String, dynamic>);
 
 }
 

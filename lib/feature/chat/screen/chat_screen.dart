@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
@@ -89,10 +88,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   case ConnectionState.done:
                     final data = snapshot.data?.docs;
                     print("Snapshot data: ${snapshot.data}");
-
                     widget.list =
-                        data?.map((e) => Message.fromJson(e.data())).toList() ??
-                            [];
+                        data?.map((e) => Message.fromJson(e.data())).toList() ??  [];
+                    
                     if (widget.list.isNotEmpty) {
                       return ListView.builder(
                         itemCount: widget.list.length,

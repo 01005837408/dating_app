@@ -1,18 +1,30 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class SectionCustomPost extends StatelessWidget {
-  const SectionCustomPost({
+   SectionCustomPost(
+   // this.documentId,
+    {
     super.key,
     required this.controller,
+   required this.signUpUserModal,
   });
 
   final PageController controller;
+  // final String documentId;
+
+
+ SignUpUserModal signUpUserModal;
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
     return Container(
 
       width: double.infinity,
@@ -54,16 +66,13 @@ class SectionCustomPost extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text("Mohamed"),
+                     Text("${signUpUserModal.fName} ${signUpUserModal.lName}", style: const TextStyle(color: AppColor.kPrimaryColor),),
                     horizontalSpacing(10),
                     Image.asset(Assets.profileImage, width: 40,height: 40,
                     ),
-
-
-
                   ],
+                  //
                 ),
-
               ),
             ),),
           Padding(
