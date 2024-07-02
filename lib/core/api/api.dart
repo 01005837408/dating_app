@@ -2,6 +2,7 @@ import 'dart:io';
 
 
 import 'package:dating_app/core/modal/message_modal.dart';
+import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/modal/user_modal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,6 +13,8 @@ class Api{
   static FirebaseStorage storage  =FirebaseStorage.instance ;
  static User get user => auth.currentUser! ;
  static  ChatUser?  me  ;
+ static SignUpUserModal? me2 ;
+ 
   static Future<bool> userExist()async{
    // ChatUser user ;
     return (await fireStore.collection("users").doc(user.uid).get()).exists ;
@@ -82,8 +85,8 @@ class Api{
         : "${id} _ ${user.uid}";
   }
 
-
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllMessages(ChatUser user) {
+    
     return fireStore.collection("chats/${getConversationId(user.id)}/messages")
         .snapshots();
   }
@@ -102,6 +105,4 @@ class Api{
     print("Message sent successfully");
 
   }
-
-
 }

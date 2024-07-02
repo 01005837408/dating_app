@@ -1,4 +1,6 @@
 
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
+
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
 import 'package:flutter/cupertino.dart';

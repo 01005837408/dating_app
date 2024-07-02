@@ -110,7 +110,7 @@ backgroundColor: Colors.white,
 
               if(list.isNotEmpty){
                 return ListView.builder(
-                  itemCount:isSearch ? listSearch.length : list.length,
+                  itemCount: list.length,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context , index) => ChatUserCard(user:isSearch ? listSearch[index]  : list[index]) ,
                 );

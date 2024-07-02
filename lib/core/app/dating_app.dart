@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: SafeArea(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ButtonNavigation(),
+          home: SplashScreen(),
         ),
       ),
     );

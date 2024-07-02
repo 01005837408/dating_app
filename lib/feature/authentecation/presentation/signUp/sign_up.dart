@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, unused_local_variable
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,145 +18,149 @@ class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
   // TextEditingController fNameController = TextEditingController();
-
+  User user = FirebaseAuth.instance.currentUser!;
+   FirebaseFirestore firestore = FirebaseFirestore.instance;
+   TextEditingController fNameController = TextEditingController();
+  TextEditingController lNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body:Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0 , top: 16),
-            child: Align(
-              alignment: Alignment.topLeft,
+        backgroundColor: AppColor.kPrimaryColor,
+        body: Column(
+          children: [
+            BackIconInSignUp(),
+            verticalSpacing(60.h),
+            Expanded(
               child: Container(
-
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  color:Colors.grey,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: IconButton(
-                    onPressed: (){},
-                    icon:const   Icon(Icons.arrow_back , size: 30,color: Colors.white,),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          verticalSpacing(60.h),
-           Expanded(
-             child: Container(
-               // height: 639,
-                          decoration:const BoxDecoration(
-                color:Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40),
-              )
-                          ),
+                // height: 639,
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    )),
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-
                     child: SingleChildScrollView(
                       child: Column(
-
                         children: [
                           verticalSpacing(80),
-                          Row(
-                            children: [
-                              Text(ConstText.fName , style:AppStyle.font21bold.copyWith(color:Colors.black , fontSize: 16 )) ,
-                              horizontalSpacing(128),
-                              Text(ConstText.lastName, style:AppStyle.font17W400.copyWith(color:Colors.black)),
 
-                            ],
-                          ),
-                          verticalSpacing(10),
-                           RefactorCustomTextFormFieldSignUp(),
+                          RefactorCustomTextFormFieldSignUp(
+                              // userModal: SignUpUserModal.fromJson(),
+                              ),
                           // Divider(
                           //   thickness: 1,
                           //   color: Colors.black,
                           // ),
-  Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Divider(
-        thickness: 1,
-        color: Colors.black,
-      ),
-
-      // Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 16),
-      //   child: Text("أو" , style: TextStyle(
-      //     color: Colors.black,
-      //     fontSize: 20,
-      //   ),),
-      // ),
-      // Divider(
-      //   thickness: 2,
-      // ),
-    ],
-  ),
-
-  verticalSpacing(20),
-                          MaterialButton(
-                            height: 50,
-                            color:AppColor.kPrimaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20))
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Divider(
+                                thickness: 1,
+                                color: Colors.black,
                               ),
 
-                              onPressed: ()async {
-                              final _googleSignIn =GoogleSignIn();
+                        
+                            ],
+                          ),
+
+                          verticalSpacing(20),
+                          MaterialButton(
+                            height: 50,
+                            color: AppColor.kPrimaryColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                            onPressed: () async {
+                              final _googleSignIn = GoogleSignIn();
                               final googleAcoont = await _googleSignIn.signIn();
                               print(googleAcoont!.email);
-                              final googleCredential = await googleAcoont.authentication;
-
-                              final authCredential = GoogleAuthProvider.credential(
+                              final googleCredential =
+                                  await googleAcoont.authentication;
+                              final authCredential =
+                                  GoogleAuthProvider.credential(
                                 accessToken: googleCredential.accessToken,
                                 idToken: googleCredential.idToken,
                               );
-                               final firebaseUser = await FirebaseAuth.instance.signInWithCredential(authCredential);
-                               print(firebaseUser.user!.uid);
-                              print(firebaseUser.user!.displayName);
-                              print(firebaseUser.user!.email);
-                              print(firebaseUser.user!.emailVerified);
-                              print(firebaseUser.user!.isAnonymous);
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ButtonNavigation()));
-                              },
+                              final firebaseUser = await FirebaseAuth.instance
+                                  .signInWithCredential(authCredential);
+
+                              DocumentReference callRef = await firestore.collection("users").doc(user.uid) ;
+                             SignUpUserModal userModal = SignUpUserModal(
+                                email: emailController.text,
+                                fName: fNameController.text,
+                                lName: lNameController.text,
+                                id: user.uid,
+                              );
+                              callRef.set(userModal.toJson());
+
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ButtonNavigation()));
+                            },
                             child: Row(
                               children: [
                                 const CircleAvatar(
                                   radius: 25,
-                                    backgroundImage: AssetImage(Assets.googleImage ),
-                                    
+                                  backgroundImage:
+                                      AssetImage(Assets.googleImage),
                                 ),
-                                SizedBox(width:30),
-                                Text("انشئ حساب عن طريق جوجل",
-                                  style: AppStyle.font17W400.copyWith(),)
+                                SizedBox(width: 30),
+                                Text(
+                                  "انشئ حساب عن طريق جوجل",
+                                  style: AppStyle.font17W400.copyWith(),
+                                )
                               ],
                             ),
-                              )
-
-
+                          )
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
-                        ),
-           ),
-
-        ],
-      )
-    );
+              ),
+            ),
+          ],
+        ));
   }
 }
 
+class BackIconInSignUp extends StatelessWidget {
+  const BackIconInSignUp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0, top: 16),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 30,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
