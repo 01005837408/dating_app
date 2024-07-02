@@ -37,7 +37,7 @@ class HomeTitle extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const ProfileScreen(),
+                builder: (BuildContext context) =>  ProfileScreen(),
               ),
             ),
             child: Container(

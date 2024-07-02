@@ -38,7 +38,12 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
       lName: lNameController.text,
       id: user.uid,
     );
-    await callRef.doc(user.uid).set(userModal.toJson());
+    await callRef.add({
+      "email": userModal.email,
+      "fName": userModal.fName,
+      "lName": userModal.lName,
+      "id": userModal.id
+    });
   }
 
   @override

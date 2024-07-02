@@ -82,7 +82,7 @@ class ProfileBody extends StatelessWidget {
         children: [
           ProfileBodyListView(profileList: profileList),
           const WhitContainerProfile(),
-          const ProfilePictureAndName(),
+           ProfilePictureAndName(),
         ],
       ),
     );
