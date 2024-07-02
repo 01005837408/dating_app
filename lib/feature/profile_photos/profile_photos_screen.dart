@@ -18,7 +18,9 @@ class ProfilePhotosScreen extends StatelessWidget {
           children: [
             CustomAppBar(
               widget: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: const Icon(
                   Icons.arrow_back_ios_new,
                   color: Colors.white,
