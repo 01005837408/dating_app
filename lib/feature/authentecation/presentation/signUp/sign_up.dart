@@ -14,15 +14,42 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'widget/refactor_custom_text_field_sign_up.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   // TextEditingController fNameController = TextEditingController();
   User user = FirebaseAuth.instance.currentUser!;
+
    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
    TextEditingController fNameController = TextEditingController();
+
   TextEditingController lNameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+  //  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
+   Map<String, dynamic>? userData;
+ CollectionReference callRef =  FirebaseFirestore.instance.collection("users") ;
+  addUser() async {
+    SignUpUserModal userModal = SignUpUserModal(
+      email: emailController.text,
+      fName: fNameController.text,
+      lName: lNameController.text,
+      id: user.uid,
+    );
+    await callRef.doc(user.uid).set(userModal.toJson());
+  }
+@override
+  void initState() {
+   
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,16 +115,7 @@ class SignUpScreen extends StatelessWidget {
                               );
                               final firebaseUser = await FirebaseAuth.instance
                                   .signInWithCredential(authCredential);
-
-                              DocumentReference callRef = await firestore.collection("users").doc(user.uid) ;
-                             SignUpUserModal userModal = SignUpUserModal(
-                                email: emailController.text,
-                                fName: fNameController.text,
-                                lName: lNameController.text,
-                                id: user.uid,
-                              );
-                              callRef.set(userModal.toJson());
-
+                                addUser();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(

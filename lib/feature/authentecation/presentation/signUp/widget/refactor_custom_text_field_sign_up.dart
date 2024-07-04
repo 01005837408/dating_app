@@ -30,6 +30,22 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
   User user = FirebaseAuth.instance.currentUser!;
 
   final formKey = GlobalKey<FormState>();
+  CollectionReference callRef =  FirebaseFirestore.instance.collection("users") ;
+  addUser() async {
+    SignUpUserModal userModal = SignUpUserModal(
+      email: emailController.text,
+      fName: fNameController.text,
+      lName: lNameController.text,
+      id: user.uid,
+    );
+    await callRef.add({
+      "email": userModal.email,
+      "fName": userModal.fName,
+      "lName": userModal.lName,
+      "id": userModal.id
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthSignUpCubit>(
@@ -136,14 +152,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                                   .signUpCreateUserAndPassword(
                                       emailAddress: emailController.text,
                                       password: passController.text);
-                              DocumentReference callRef = await firestore.collection("users").doc(user.uid) ;
-                              userModal = SignUpUserModal(
-                                email: emailController.text,
-                                fName: fNameController.text,
-                                lName: lNameController.text,
-                                id: user.uid,
-                              );
-                              callRef.set(userModal.toJson());
+                           addUser();
                             }
                           },
                           text: ConstText.createAcount),
