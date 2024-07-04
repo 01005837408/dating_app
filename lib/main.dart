@@ -11,12 +11,9 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   authStateChanges();
-  
   // UserModel userModel = UserModel.fromFirestore(userDoc.data() as Map<String, dynamic>);
 
 }
-
-
 
 
 

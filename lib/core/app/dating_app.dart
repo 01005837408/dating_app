@@ -1,6 +1,8 @@
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
+import 'package:dating_app/feature/profile_photos/profile_photos_screen.dart';
 import 'package:dating_app/feature/splash_screen/splash_screen.dart';
+import 'package:dating_app/test/image_picker.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       child: SafeArea(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: ProfilePhotosScreen(),
         ),
       ),
     );
