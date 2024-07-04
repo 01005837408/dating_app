@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:dating_app/core/api/api.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -27,7 +28,8 @@ class _ProfilePictureAndNameState extends State<ProfilePictureAndName> {
       Navigator.of(context).pop(); // Close the modal bottom sheet
     } catch (e) {
       print(e);
-      Navigator.of(context).pop(); // Close the modal bottom sheet in case of error
+      Navigator.of(context)
+          .pop(); // Close the modal bottom sheet in case of error
     }
   }
 
@@ -39,15 +41,21 @@ class _ProfilePictureAndNameState extends State<ProfilePictureAndName> {
           child: Wrap(
             children: <Widget>[
               ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text('Photo Library'),
-                onTap: () => _pickImage(ImageSource.gallery),
-              ),
+                  leading: Icon(Icons.photo_library),
+                  title: Text('Photo Library'),
+                  onTap: () {
+                    _pickImage(ImageSource.gallery);
+                    Api.updateProfilePicture(File(_image!.path));
+                    setState(() {});
+                  }),
               ListTile(
-                leading: Icon(Icons.photo_camera),
-                title: Text('Camera'),
-                onTap: () => _pickImage(ImageSource.camera),
-              ),
+                  leading: Icon(Icons.photo_camera),
+                  title: Text('Camera'),
+                  onTap: () {
+                    _pickImage(ImageSource.camera);
+                    Api.updateProfilePicture(File(_image!.path));
+                    setState(() {});
+                  }),
             ],
           ),
         );

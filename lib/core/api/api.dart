@@ -29,11 +29,10 @@ class Api{
       }else{
        await createUser().then((value) => getSetInfo());
       }
-    });
-
+    }); 
   }
   static Future<void> createUser()async{
-    final time = DateTime.now().millisecondsSinceEpoch.toString() ;
+    final time = DateTime.now().millisecondsSinceEpoch.toString();
     ChatUser chatUser = ChatUser(
         image: user.photoURL.toString(),
         name: user.displayName.toString(),
