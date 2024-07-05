@@ -869,6 +869,46 @@ class S {
       args: [],
     );
   }
+
+  /// ` calture`
+  String get calture {
+    return Intl.message(
+      ' calture',
+      name: 'calture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `natunality`
+  String get natunality {
+    return Intl.message(
+      'natunality',
+      name: 'natunality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `language`
+  String get lang {
+    return Intl.message(
+      'language',
+      name: 'lang',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `multyWife`
+  String get multyWife {
+    return Intl.message(
+      'multyWife',
+      name: 'multyWife',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

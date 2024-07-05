@@ -20,6 +20,7 @@ class ProfileBodyListView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: profileList.length,
           itemBuilder: (context, index) {
             return ProfileBodyItem(profileList: profileList, index: index);

@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "areYousMoke": MessageLookupByLibrary.simpleMessage("are Yous Moke"),
         "blockList": MessageLookupByLibrary.simpleMessage("Block List"),
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("Cairo - Egypt"),
+        "calture": MessageLookupByLibrary.simpleMessage(" calture"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
         "connectInt":
             MessageLookupByLibrary.simpleMessage("Connected to the internet"),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invoice": MessageLookupByLibrary.simpleMessage("Invoice"),
         "job": MessageLookupByLibrary.simpleMessage("job"),
         "knowlege": MessageLookupByLibrary.simpleMessage("Knowledge"),
+        "lang": MessageLookupByLibrary.simpleMessage("language"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("Lifestyle"),
         "liveIn": MessageLookupByLibrary.simpleMessage("Lives in"),
@@ -79,8 +81,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "matchFiltter":
             MessageLookupByLibrary.simpleMessage("Compatibility Filter"),
         "matwafik": MessageLookupByLibrary.simpleMessage("Compatible"),
+        "multyWife": MessageLookupByLibrary.simpleMessage("multyWife"),
         "myPhotos": MessageLookupByLibrary.simpleMessage("Personal Photos"),
         "myProfile": MessageLookupByLibrary.simpleMessage("My Profile"),
+        "natunality": MessageLookupByLibrary.simpleMessage("natunality"),
         "noLimitsTalks":
             MessageLookupByLibrary.simpleMessage("Unlimited Communication"),
         "notHaveAcount":

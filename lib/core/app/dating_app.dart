@@ -1,3 +1,4 @@
+import 'package:dating_app/core/helper/cache_helper.dart';
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: SafeArea(
         child: MaterialApp(
-          locale: const Locale('en'),
+          locale: CacheHelper.sharedPreferences?.getString('lang') == 'ar'
+              ? const Locale('ar')
+              : const Locale('en'),
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
