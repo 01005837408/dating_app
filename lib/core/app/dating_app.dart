@@ -1,9 +1,12 @@
+import 'package:dating_app/core/cubit/app_cubit.dart';
 import 'package:dating_app/core/helper/cache_helper.dart';
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
+import 'package:dating_app/feature/onbourding_screen/onboard.dart';
 import 'package:dating_app/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,19 +21,26 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: SafeArea(
-        child: MaterialApp(
-          locale: CacheHelper.sharedPreferences?.getString('lang') == 'ar'
-              ? const Locale('ar')
-              : const Locale('en'),
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          debugShowCheckedModeBanner: false,
-          home: const ButtonNavigation(),
+        child: BlocProvider(
+          create: (context) => AppCubit(),
+          child: BlocBuilder<AppCubit, AppState>(
+            builder: (context, state) {
+              return MaterialApp(
+                locale: CacheHelper.sharedPreferences?.getString('lang') == 'ar'
+                    ? const Locale('ar')
+                    : const Locale('en'),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                debugShowCheckedModeBanner: false,
+                home: const Onboard(),
+              );
+            },
+          ),
         ),
       ),
     );

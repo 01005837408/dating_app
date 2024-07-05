@@ -1,3 +1,4 @@
+import 'package:dating_app/core/cubit/app_cubit.dart';
 import 'package:dating_app/core/model/settings_profile_model.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -7,6 +8,7 @@ import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/feature/settings_profile/widgets/settings_body.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsScreenProfile extends StatefulWidget {

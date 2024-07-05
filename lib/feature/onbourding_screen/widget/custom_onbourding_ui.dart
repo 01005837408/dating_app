@@ -7,6 +7,7 @@ import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
 import 'package:dating_app/feature/authentecation/presentation/signUp/sign_up.dart';
 import 'package:dating_app/feature/onbourding_screen/widget/onboard_model.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,31 +29,30 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
     super.dispose();
   }
 
-  final List<OnboardModel> onBoardingList = [
-    OnboardModel(
-      image: Assets.onbourdingImage1,
-      title: ConstText.onboardTitle1,
-      description: ConstText.onbourdSubTitle1,
-    ),
-    OnboardModel(
-      image: Assets.onbourdingImage2,
-      title: ConstText.onboardTitle2,
-      description: ConstText.onbourdSubTitle2,
-    ),
-    OnboardModel(
-      image: Assets.onbourdingImage3,
-      title: ConstText.onboardTitle3,
-      description: ConstText.onbourdSubTitle3,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<OnboardModel> onBoardingList = [
+      OnboardModel(
+        image: Assets.onbourdingImage1,
+        title: S.of(context).onboardTitle1,
+        description: S.of(context).onbourdSubTitle1,
+      ),
+      OnboardModel(
+        image: Assets.onbourdingImage2,
+        title: S.of(context).onboardTitle2,
+        description: S.of(context).onbourdSubTitle2,
+      ),
+      OnboardModel(
+        image: Assets.onbourdingImage3,
+        title: S.of(context).onboardTitle3,
+        description: S.of(context).onbourdSubTitle3,
+      ),
+    ];
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Column(children: [
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           verticalSpacing(30.h),
           Container(
             width: 300.h,
@@ -73,7 +73,7 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
             onBoardingList[widget.pageIndex].description,
             style: AppStyle.font17W400,
           ),
-          verticalSpacing(40.h),
+          verticalSpacing(10.h),
           SizedBox(
             width: 300,
             height: 50,
