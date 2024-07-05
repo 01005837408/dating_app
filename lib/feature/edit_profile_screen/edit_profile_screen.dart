@@ -30,7 +30,7 @@ class EditProfileScreen extends StatelessWidget {
                     widget: const Icon(
                       Icons.arrow_back_ios_new,
                       color: Colors.white,
-                      size: 30,
+                      size: 31,
                     ),
                   ),
                   SizedBox(
