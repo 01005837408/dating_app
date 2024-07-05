@@ -43,12 +43,7 @@ class CustomAppBar extends StatelessWidget {
             ),
             const Spacer(),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingsScreenProfile()));
-              },
+              onTap: onTap,
               child: Icon(
                 icon?.icon,
                 color: iconColor,

@@ -2,13 +2,14 @@ import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
+import 'package:dating_app/feature/match_filtter/match_filtter_screen.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
 import 'package:dating_app/feature/settings_profile/settings_Screen_profile.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitle extends StatelessWidget {
-   HomeTitle({super.key});
- 
+  const HomeTitle({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,8 +22,7 @@ class HomeTitle extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                        builder: (BuildContext context) =>
-                            const SettingsScreenProfile()));
+                        builder: (BuildContext context) => MatchFiltter()));
               },
               icon: const Icon(
                 Icons.settings_input_composite_rounded,
@@ -37,7 +37,7 @@ class HomeTitle extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  ProfileScreen(),
+                builder: (BuildContext context) => const ProfileScreen(),
               ),
             ),
             child: Container(

@@ -1,4 +1,5 @@
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class QuickViewInMyProfile extends StatelessWidget {
@@ -8,43 +9,51 @@ class QuickViewInMyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'العمل',
-              style: TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+              S.of(context).work,
+              style:
+                  const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
             ),
-            Text('مهندس برمجيات'),
-            SizedBox(
+            Text(
+              S.of(context).engineer,
+            ),
+            const SizedBox(
               height: 8,
             ),
             Text(
-              'الحالة الزوجية',
-              style: TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+              S.of(context).maritalStatus,
+              style:
+                  const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
             ),
-            Text('اعزب'),
+            Text(
+              S.of(context).single,
+            ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'التعليم',
-              style: TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+              S.of(context).education,
+              style:
+                  const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
             ),
-            Text('كلية الذكاء الاصطناعي '),
-            SizedBox(
+            Text(S.of(context).engineerUniversity),
+            const SizedBox(
               height: 8,
             ),
             Text(
-              'الديانه',
-              style: TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+              S.of(context).religion,
+              style:
+                  const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
             ),
-            Text('مسلم'),
+            Text(S.of(context).Muslim),
           ],
         ),
       ],

@@ -1,25 +1,14 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:dating_app/core/function/function.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body.dart';
-import 'package:flutter/foundation.dart';
+import 'package:dating_app/feature/settings_profile/settings_Screen_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
-class ProfileScreen extends StatefulWidget {
-  ProfileScreen({
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({
     super.key,
   });
 // ChatUser user ;
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +19,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Column(
               children: [
-                const CustomAppBar(
+                CustomAppBar(
                   backgroundColor: Colors.white,
                   iconColor: AppColor.kPrimaryColor,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.settings,
                   ),
-                  widget: CircleAvatar(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsScreenProfile())),
+                  widget: const CircleAvatar(
                       radius: 22,
                       backgroundColor: Color(0xFFEDB2C2),
                       child: Icon(
@@ -73,6 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
 //   void bottomModelSheetForEditImage(){
 //      showModalBottomSheet(
 //          context: context ,
@@ -99,7 +93,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 //                    if(image != null){
 //                      setState(() {
 //                        _image = image.path ;
-
 //                      });
 //                      await Api.updateProfilePicture(File(_image!)) ;
 //                      // Navigator.pop(context) ;
@@ -113,7 +106,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 //                    if(image != null){
 //                      setState(() {
 //                        _image = image.path ;
-
 //                      });
 //                      await  Api.updateProfilePicture(File(_image!)) ;
 //                      setState(() {
@@ -126,7 +118,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 //                      child: const Text("Pick Image From Camera")),
 //                ],
 //              )
-
 //            ],
 //          )
 //      );

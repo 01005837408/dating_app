@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SectionCustomPost extends StatefulWidget {
-  SectionCustomPost(
+  const SectionCustomPost(
       // this.documentId,
       {
     super.key,
@@ -26,15 +26,14 @@ class SectionCustomPost extends StatefulWidget {
 
 class _SectionCustomPostState extends State<SectionCustomPost> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
- List  data = [];
+  List data = [];
   getDate() async {
-  QuerySnapshot querySnapshot = await  firestore.collection("users").get();
+    QuerySnapshot querySnapshot = await firestore.collection("users").get();
     data.addAll(querySnapshot.docs);
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
+  @override
   initState() {
     getDate();
     super.initState();
@@ -74,7 +73,8 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "${data[0]['fName']} ${data[0]['lName']}",
+                      "DATA",
+                      // "${data[0]['fName']} ${data[0]['lName']}",
                       style: const TextStyle(color: AppColor.kPrimaryColor),
                     ),
                     horizontalSpacing(10),

@@ -1,4 +1,5 @@
-import 'package:dating_app/feature/splash_screen/splash_screen.dart';
+import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
+import 'package:dating_app/feature/home/screens/home_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: SafeArea(
         child: MaterialApp(
+          locale: const Locale('en'),
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
+          home: const ButtonNavigation(),
         ),
       ),
     );

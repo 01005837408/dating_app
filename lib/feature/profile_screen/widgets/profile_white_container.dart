@@ -1,7 +1,7 @@
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/payment_screen/payment_screen.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class WhitContainerProfile extends StatelessWidget {
@@ -42,11 +42,12 @@ class WhitContainerProfile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: AppColor.kPrimaryColor,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Text(
-                    ConstText.subscribeNow,
-                    style: TextStyle(
+                    S.of(context).subscribeNow,
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.w600),

@@ -17,15 +17,13 @@ class MatchFiltterListItem extends StatelessWidget {
           fontSize: 27,
           color: Colors.white,
         ),
-        textAlign: TextAlign.right,
       ),
       subtitle: Text(
         matchList[index].subtitle ?? '',
         style: const TextStyle(
             fontSize: 29, color: Colors.white, fontWeight: FontWeight.w900),
-        textAlign: TextAlign.right,
       ),
-      leading: IconButton(
+      trailing: IconButton(
           onPressed: () {},
           icon: const Icon(
             Icons.edit,
