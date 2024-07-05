@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "advatges": MessageLookupByLibrary.simpleMessage("الميزات"),
         "age": MessageLookupByLibrary.simpleMessage("العمر"),
         "appName": MessageLookupByLibrary.simpleMessage("توافق"),
+        "areYouHaveKids": MessageLookupByLibrary.simpleMessage("هل لديك اطفال"),
+        "areYousMoke": MessageLookupByLibrary.simpleMessage("هل تدخن"),
         "blockList": MessageLookupByLibrary.simpleMessage("قائمة الحظر"),
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("القاهرة - مصر"),
         "character": MessageLookupByLibrary.simpleMessage("الشخصية"),
@@ -48,18 +50,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "engineerUniversity":
             MessageLookupByLibrary.simpleMessage("كلية الذكاء الاصطناعي "),
         "enterLogin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "eyeColor": MessageLookupByLibrary.simpleMessage("لون العين"),
         "fName": MessageLookupByLibrary.simpleMessage("اﻷسم اﻷول"),
         "findsBestMatchs":
             MessageLookupByLibrary.simpleMessage("احصل علي شركاء افضل"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "سوف نرسل كود علي البريد اﻷلكتروني ﻷستعاده كلمه المرور"),
+        "hairColor": MessageLookupByLibrary.simpleMessage("لون الشعر"),
+        "hight": MessageLookupByLibrary.simpleMessage("الطول "),
         "hitTextforgetPass":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الالكتروني "),
         "hoppies":
             MessageLookupByLibrary.simpleMessage("الهويات &  الإهتمامات"),
         "id": MessageLookupByLibrary.simpleMessage("الرقم الشخصي"),
         "inPlace": MessageLookupByLibrary.simpleMessage("في منطقتي"),
+        "income": MessageLookupByLibrary.simpleMessage("الدخل"),
         "invoice": MessageLookupByLibrary.simpleMessage("الفاتورة"),
+        "job": MessageLookupByLibrary.simpleMessage("الوظيفة"),
         "knowlege": MessageLookupByLibrary.simpleMessage("ثقافته"),
         "lastName": MessageLookupByLibrary.simpleMessage("اﻷسم الثاني"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("اسلوب حياته"),
@@ -92,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passTitleSure":
             MessageLookupByLibrary.simpleMessage("تأكيد الرقم السري"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
+        "place": MessageLookupByLibrary.simpleMessage("  السكن"),
         "qucikview": MessageLookupByLibrary.simpleMessage("نظره سريعة"),
         "religion": MessageLookupByLibrary.simpleMessage("الديانه"),
         "ruleText": MessageLookupByLibrary.simpleMessage(
@@ -113,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("قم بفتح رسالتك"),
         "viewMyprofile":
             MessageLookupByLibrary.simpleMessage("مشاهدة الملف الشخصي"),
+        "wight": MessageLookupByLibrary.simpleMessage("الوزن"),
         "women": MessageLookupByLibrary.simpleMessage("امرأه"),
         "work": MessageLookupByLibrary.simpleMessage("العمل"),
         "yourBasicInfo": MessageLookupByLibrary.simpleMessage("اساسياتك")

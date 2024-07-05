@@ -30,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "advatges": MessageLookupByLibrary.simpleMessage("Advantages"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "appName": MessageLookupByLibrary.simpleMessage("Tawafuq"),
+        "areYouHaveKids":
+            MessageLookupByLibrary.simpleMessage("are You Have Kids"),
+        "areYousMoke": MessageLookupByLibrary.simpleMessage("are Yous Moke"),
         "blockList": MessageLookupByLibrary.simpleMessage("Block List"),
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("Cairo - Egypt"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
@@ -47,19 +50,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailTitle": MessageLookupByLibrary.simpleMessage("Email"),
         "engineer": MessageLookupByLibrary.simpleMessage("software engineer"),
         "engineerUniversity":
-            MessageLookupByLibrary.simpleMessage("engineerUniversity"),
+            MessageLookupByLibrary.simpleMessage("engineer University"),
         "enterLogin": MessageLookupByLibrary.simpleMessage("Log In"),
+        "eyeColor": MessageLookupByLibrary.simpleMessage("eyeColor"),
         "fName": MessageLookupByLibrary.simpleMessage("First Name"),
         "findsBestMatchs":
             MessageLookupByLibrary.simpleMessage("Find better matches"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "We will send a code to your email to recover your password"),
+        "hairColor": MessageLookupByLibrary.simpleMessage("hair Color"),
+        "hight": MessageLookupByLibrary.simpleMessage("hight"),
         "hitTextforgetPass":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
         "hoppies": MessageLookupByLibrary.simpleMessage("Hobbies & Interests"),
         "id": MessageLookupByLibrary.simpleMessage("Personal ID"),
         "inPlace": MessageLookupByLibrary.simpleMessage("In my area"),
+        "income": MessageLookupByLibrary.simpleMessage("income"),
         "invoice": MessageLookupByLibrary.simpleMessage("Invoice"),
+        "job": MessageLookupByLibrary.simpleMessage("job"),
         "knowlege": MessageLookupByLibrary.simpleMessage("Knowledge"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("Lifestyle"),
@@ -95,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passTitleSure":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "place": MessageLookupByLibrary.simpleMessage("place"),
         "qucikview": MessageLookupByLibrary.simpleMessage("Quick View"),
         "religion": MessageLookupByLibrary.simpleMessage("religion"),
         "ruleText": MessageLookupByLibrary.simpleMessage(
@@ -118,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("View My Profile"),
         "viewOtherProfile":
             MessageLookupByLibrary.simpleMessage("View Profile"),
+        "wight": MessageLookupByLibrary.simpleMessage("wight"),
         "women": MessageLookupByLibrary.simpleMessage("Woman"),
         "work": MessageLookupByLibrary.simpleMessage("work"),
         "yourBasicInfo": MessageLookupByLibrary.simpleMessage("Your Basics ")

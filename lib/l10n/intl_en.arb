@@ -67,9 +67,18 @@
   "maritalStatus": "marital status",
   "single": "single",
   "education": "education",
-  "engineerUniversity": "engineerUniversity",
+  "engineerUniversity": "engineer University",
   "religion": "religion",
   "Muslim": "Muslim",
   "EditProfile": "Edit Profile",
-  "yourBasicInfo": "Your Basics "
+  "yourBasicInfo": "Your Basics ",
+  "hairColor": "hair Color",
+  "hight": "hight",
+  "eyeColor": "eyeColor",
+  "wight": "wight",
+  "areYousMoke": "are Yous Moke",
+  "areYouHaveKids": "are You Have Kids",
+  "job": "job",
+  "income": "income",
+  "place": "place"
 }

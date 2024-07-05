@@ -1,6 +1,7 @@
 import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/edit_profile_screen/basics_list_view.dart';
+import 'package:dating_app/feature/edit_profile_screen/look_list_view.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -9,15 +10,27 @@ class EditProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<EditProfileModel> editProfileList = [
-      EditProfileModel(
-        title: ' S.of(context).basicInfo111',
+    List<EditProfileBasciModel> editProfileBasicList = [
+      EditProfileBasciModel(
+        title: S.of(context).fName,
         subtitle: 'hady',
         icon: Icons.person_outline,
       ),
-      EditProfileModel(
-        title: 'S.of(context).aboutMe111',
-        subtitle: 'S.of(context).aboutMeSubtitle',
+      EditProfileBasciModel(
+        title: S.of(context).liveIn,
+        subtitle: S.of(context).cairoEgypt,
+        icon: Icons.info_outline,
+      ),
+    ];
+    List<EditProfileLookModel> editProfileLookList = [
+      EditProfileLookModel(
+        title: S.of(context).hairColor,
+        subtitle: 'black',
+        icon: Icons.person_outline,
+      ),
+      EditProfileLookModel(
+        title: S.of(context).eyeColor,
+        subtitle: '',
         icon: Icons.info_outline,
       ),
     ];
@@ -43,7 +56,7 @@ class EditProfileBody extends StatelessWidget {
                 endIndent: 20,
                 color: AppColor.kPrimaryColor,
                 thickness: 2),
-            BascisListView(editProfileList: editProfileList),
+            BascisListView(editProfileList: editProfileBasicList),
             Text(
               S.of(context).look,
               style: const TextStyle(
@@ -56,6 +69,7 @@ class EditProfileBody extends StatelessWidget {
                 endIndent: 20,
                 color: AppColor.kPrimaryColor,
                 thickness: 2),
+            LookListView(editProfileLookList: editProfileLookList),
           ],
         ),
       ),

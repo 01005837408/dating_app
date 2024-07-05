@@ -70,5 +70,14 @@
   "religion": "الديانه",
   "Muslim": "مسلم",
   "EditProfile": "تعديل الملف الشخصي",
-  "yourBasicInfo": "اساسياتك"
+  "yourBasicInfo": "اساسياتك",
+  "hairColor": "لون الشعر",
+  "hight": "الطول ",
+  "eyeColor": "لون العين",
+  "wight": "الوزن",
+  "areYousMoke": "هل تدخن",
+  "areYouHaveKids": "هل لديك اطفال",
+  "job": "الوظيفة",
+  "income": "الدخل",
+  "place": "  السكن"
 }

@@ -730,10 +730,10 @@ class S {
     );
   }
 
-  /// `engineerUniversity`
+  /// `engineer University`
   String get engineerUniversity {
     return Intl.message(
-      'engineerUniversity',
+      'engineer University',
       name: 'engineerUniversity',
       desc: '',
       args: [],
@@ -775,6 +775,96 @@ class S {
     return Intl.message(
       'Your Basics ',
       name: 'yourBasicInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hair Color`
+  String get hairColor {
+    return Intl.message(
+      'hair Color',
+      name: 'hairColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hight`
+  String get hight {
+    return Intl.message(
+      'hight',
+      name: 'hight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eyeColor`
+  String get eyeColor {
+    return Intl.message(
+      'eyeColor',
+      name: 'eyeColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `wight`
+  String get wight {
+    return Intl.message(
+      'wight',
+      name: 'wight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `are Yous Moke`
+  String get areYousMoke {
+    return Intl.message(
+      'are Yous Moke',
+      name: 'areYousMoke',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `are You Have Kids`
+  String get areYouHaveKids {
+    return Intl.message(
+      'are You Have Kids',
+      name: 'areYouHaveKids',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `job`
+  String get job {
+    return Intl.message(
+      'job',
+      name: 'job',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `income`
+  String get income {
+    return Intl.message(
+      'income',
+      name: 'income',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `place`
+  String get place {
+    return Intl.message(
+      'place',
+      name: 'place',
       desc: '',
       args: [],
     );
