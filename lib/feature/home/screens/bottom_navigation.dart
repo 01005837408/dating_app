@@ -19,16 +19,6 @@ class ButtonNavigation extends StatelessWidget {
   }
 }
 
-class _ButtonNavigationState extends State<ButtonNavigation> {
-  int selectedIndex = 0;
-  List<Widget> screens = [
-    const HomeScreen(),
-    ViewProfile(),
-    const LikesScreen(),
-    ChatListScreen(),
-  ];
-  @override
-  Widget build(BuildContext context) {
 class ButtonNavigationView extends StatelessWidget {
   const ButtonNavigationView({super.key});
 
@@ -36,9 +26,9 @@ class ButtonNavigationView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const HomeScreen(),
-       ViewProfile(),
-      const Screen3(),
-       ChatListScreen(),
+      ViewProfile(),
+      const LikesScreen (),
+      ChatListScreen(),
     ];
 
     return Directionality(
@@ -78,61 +68,6 @@ class ButtonNavigationView extends StatelessWidget {
             return screens[selectedIndex];
           },
         ),
-      ),
-    );
-  }
-}
-class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: Text("Screen 1"),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 2"),
-      ),
-    );
-  }
-}
-
-class Screen3 extends StatelessWidget {
-  const Screen3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 3"),
-      ),
-    );
-  }
-}
-
-class Screen4 extends StatelessWidget {
-  const Screen4({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 4"),
       ),
     );
   }
