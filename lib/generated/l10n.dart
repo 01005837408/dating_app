@@ -909,6 +909,36 @@ class S {
       args: [],
     );
   }
+
+  /// `likes`
+  String get likes {
+    return Intl.message(
+      'likes',
+      name: 'likes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `like Me`
+  String get likeMe {
+    return Intl.message(
+      'like Me',
+      name: 'likeMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `like Others`
+  String get likeOthers {
+    return Intl.message(
+      'like Others',
+      name: 'likeOthers',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

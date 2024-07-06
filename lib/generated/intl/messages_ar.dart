@@ -72,6 +72,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "lang": MessageLookupByLibrary.simpleMessage("  اللغات"),
         "lastName": MessageLookupByLibrary.simpleMessage("اﻷسم الثاني"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("اسلوب حياته"),
+        "likeMe": MessageLookupByLibrary.simpleMessage("اعجبني"),
+        "likeOthers": MessageLookupByLibrary.simpleMessage("اعجبتهم"),
+        "likes": MessageLookupByLibrary.simpleMessage("الاعجابات"),
         "liveIn": MessageLookupByLibrary.simpleMessage("يعيش في"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "look": MessageLookupByLibrary.simpleMessage("مظهره"),
@@ -122,8 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("توافق للزواج الاسلامي"),
         "unlockYourMesasges":
             MessageLookupByLibrary.simpleMessage("قم بفتح رسالتك"),
-        "viewMyprofile":
-            MessageLookupByLibrary.simpleMessage("مشاهدة الملف الشخصي"),
+        "viewMyprofile": MessageLookupByLibrary.simpleMessage("زارو حسابي"),
+        "viewOtherProfile": MessageLookupByLibrary.simpleMessage("زورت حسابهم"),
         "wight": MessageLookupByLibrary.simpleMessage("الوزن"),
         "women": MessageLookupByLibrary.simpleMessage("امرأه"),
         "work": MessageLookupByLibrary.simpleMessage("العمل"),

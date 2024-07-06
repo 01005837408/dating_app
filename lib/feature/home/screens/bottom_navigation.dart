@@ -1,6 +1,7 @@
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/chat/screen/chat_list_screen.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
+import 'package:dating_app/feature/likes_screen/likes_screen.dart';
 import 'package:dating_app/feature/viewProfile/view_profile_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _ButtonNavigationState extends State<ButtonNavigation> {
   List<Widget> screens = [
     const HomeScreen(),
     ViewProfile(),
-    const Screen3(),
+    const LikesScreen(),
     ChatListScreen(),
   ];
   @override

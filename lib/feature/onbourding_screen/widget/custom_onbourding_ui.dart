@@ -1,11 +1,8 @@
-import 'package:dating_app/core/routs/const_route.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
-import 'package:dating_app/feature/authentecation/presentation/signUp/sign_up.dart';
 import 'package:dating_app/feature/onbourding_screen/widget/onboard_model.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';

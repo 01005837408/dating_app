@@ -1,11 +1,9 @@
 import 'package:dating_app/core/cubit/app_cubit.dart';
 import 'package:dating_app/core/routs/const_route.dart';
 import 'package:dating_app/core/utils/assets.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 class CustomImagAndTextBottun extends StatefulWidget {
   const CustomImagAndTextBottun({
@@ -27,7 +25,6 @@ class _CustomImagAndTextBottunState extends State<CustomImagAndTextBottun> {
 
   @override
   Widget build(BuildContext context) {
-    bool onTap = false;
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(

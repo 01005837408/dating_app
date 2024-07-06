@@ -1,25 +1,13 @@
-import 'package:dating_app/core/model/view_my_profile_model.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
+import 'package:dating_app/feature/likes_screen/widgets/my_likes.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-class ViewProfile extends StatelessWidget {
-  ViewProfile({super.key});
-  List<ViewMyProfileModel> viewProfileModel = [
-    ViewMyProfileModel(
-      image: const AssetImage(Assets.profileImage),
-      title: 'Eman',
-      subtitle: 'Hi, how are you',
-    ),
-    ViewMyProfileModel(
-      image: const AssetImage(Assets.profileImage),
-      title: 'Eman',
-      subtitle: 'Hi, how are you',
-    ),
-  ];
+class LikesScreen extends StatelessWidget {
+  const LikesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -52,18 +40,18 @@ class ViewProfile extends StatelessWidget {
                     indicatorColor: AppColor.kPrimaryColor,
                     tabs: [
                       Tab(
-                        text: S.of(context).viewMyprofile,
+                        text: S.of(context).likeMe,
                       ),
-                      Tab(text: S.of(context).viewOtherProfile),
+                      Tab(text: S.of(context).likeOthers),
                     ],
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 45),
+                      padding: EdgeInsets.only(top: 20, bottom: 45),
                       child: TabBarView(
                         children: [
-                          ViewMyProfile(viewMyProfileModel: viewProfileModel),
-                          ViewMyProfile(viewMyProfileModel: viewProfileModel),
+                          GridViewMyLikes(),
+                          GridViewMyLikes(),
                         ],
                       ),
                     ),
@@ -96,32 +84,8 @@ class ViewProfile extends StatelessWidget {
         )
       ],
       title: Text(
-        S.of(context).viewMyprofile,
+        S.of(context).likes,
         style: const TextStyle(color: Colors.white),
-      ),
-    );
-  }
-}
-
-class ViewMyProfile extends StatelessWidget {
-  const ViewMyProfile({super.key, required this.viewMyProfileModel});
-  final List<ViewMyProfileModel> viewMyProfileModel;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(
-        color: AppColor.kPrimaryColor,
-      ),
-      itemCount: viewMyProfileModel.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: CircleAvatar(
-          backgroundImage: viewMyProfileModel[index].image,
-        ),
-        title: Text(
-          viewMyProfileModel[index].title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        subtitle: Text(viewMyProfileModel[index].subtitle),
       ),
     );
   }

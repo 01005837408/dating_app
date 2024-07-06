@@ -60,7 +60,8 @@
   "qucikview": "نظره سريعة",
   "cairoEgypt": "القاهرة - مصر",
   "male": "ذكر",
-  "viewMyprofile": "مشاهدة الملف الشخصي",
+  "viewMyprofile": "زارو حسابي",
+  "viewOtherProfile": "زورت حسابهم",
   "work": "العمل",
   "engineer": "مهندس برمجيات",
   "maritalStatus": "الحالة الزوجية",
@@ -82,5 +83,8 @@
   "calture": " القيم الثقافيه",
   "natunality": "  الجنسيه",
   "lang": "  اللغات",
-  "multyWife": "  تعدد الزوجات"
+  "multyWife": "  تعدد الزوجات",
+  "likes": "الاعجابات",
+  "likeMe": "اعجبني",
+  "likeOthers": "اعجبتهم"
 }
