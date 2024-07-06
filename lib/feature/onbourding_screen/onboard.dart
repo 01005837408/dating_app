@@ -3,6 +3,7 @@ import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import 'widget/custom_image_&_text_bottun.dart';
 import 'widget/custom_onbourding_ui.dart';
 import 'widget/onboard_model.dart';
