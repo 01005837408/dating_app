@@ -27,32 +27,34 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.kPrimaryColor,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 200.h),
-            Center(
-                child: Image.asset(
-              Assets.logo,
-            )),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              ConstText.titleSplash,
-              style: AppStyle.font31bold,
-            ),
-            SizedBox(
-              height: 250.h,
-            ),
-            Text(
-              ConstText.subTitleSplashScreen,
-              style: AppStyle.font21bold,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 200.h),
+              Center(
+                  child: Image.asset(
+                Assets.logo,
+              )),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                ConstText.titleSplash,
+                style: AppStyle.font31bold,
+              ),
+              SizedBox(
+                height: 250.h,
+              ),
+              Text(
+                ConstText.subTitleSplashScreen,
+                style: AppStyle.font21bold,
+              ),
+            ],
+          ),
         ),
       ),
     );

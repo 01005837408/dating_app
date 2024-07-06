@@ -3,14 +3,14 @@ import 'package:dating_app/core/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ButtonNavigation extends StatefulWidget {
-  const ButtonNavigation({super.key});
+class ButtomNavigation extends StatefulWidget {
+  const ButtomNavigation({super.key});
 
   @override
-  State<ButtonNavigation> createState() => _ButtonNavigationState();
+  State<ButtomNavigation> createState() => _ButtomNavigationState();
 }
 
-class _ButtonNavigationState extends State<ButtonNavigation> {
+class _ButtomNavigationState extends State<ButtomNavigation> {
   @override
   Widget build(BuildContext context) {
     AppCubit cubit = BlocProvider.of(context);

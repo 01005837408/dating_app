@@ -16,30 +16,30 @@ class SignInScreen extends StatelessWidget {
         backgroundColor: AppColor.kPrimaryColor,
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 16),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 20.0, top: 16),
+            //   child: Align(
+            //     alignment: Alignment.topLeft,
+            //     child: Container(
+            //       height: 50,
+            //       width: 50,
+            //       decoration: const BoxDecoration(
+            //         color: Colors.grey,
+            //         shape: BoxShape.circle,
+            //       ),
+            //       child: Center(
+            //         child: IconButton(
+            //           onPressed: () {},
+            //           icon: const Icon(
+            //             Icons.arrow_back,
+            //             size: 30,
+            //             color: Colors.white,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             verticalSpacing(60.h),
             Expanded(
               child: Container(
@@ -50,18 +50,15 @@ class SignInScreen extends StatelessWidget {
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
                     )),
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          verticalSpacing(80),
-                          verticalSpacing(10),
-                          RefactorCustomTextFormFieldSignIn(),
-                        ],
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        verticalSpacing(80),
+                        verticalSpacing(10),
+                        RefactorCustomTextFormFieldSignIn(),
+                      ],
                     ),
                   ),
                 ),

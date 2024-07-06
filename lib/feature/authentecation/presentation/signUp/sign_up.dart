@@ -15,7 +15,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'widget/refactor_custom_text_field_sign_up.dart';
 
 class SignUpScreen extends StatefulWidget {
-  SignUpScreen({super.key});
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -25,17 +25,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   // TextEditingController fNameController = TextEditingController();
   User user = FirebaseAuth.instance.currentUser!;
 
-   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-   TextEditingController fNameController = TextEditingController();
+  TextEditingController fNameController = TextEditingController();
 
   TextEditingController lNameController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
   //  FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
-   Map<String, dynamic>? userData;
- CollectionReference callRef =  FirebaseFirestore.instance.collection("users") ;
+  Map<String, dynamic>? userData;
+  CollectionReference callRef = FirebaseFirestore.instance.collection("users");
   addUser() async {
     SignUpUserModal userModal = SignUpUserModal(
       email: emailController.text,
@@ -45,11 +45,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
     await callRef.doc(user.uid).set(userModal.toJson());
   }
-@override
+
+  @override
   void initState() {
-   
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,8 +91,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 thickness: 1,
                                 color: Colors.black,
                               ),
-
-                        
                             ],
                           ),
 
@@ -103,8 +102,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             onPressed: () async {
-                              final _googleSignIn = GoogleSignIn();
-                              final googleAcoont = await _googleSignIn.signIn();
+                              final googleSignIn = GoogleSignIn();
+                              final googleAcoont = await googleSignIn.signIn();
                               print(googleAcoont!.email);
                               final googleCredential =
                                   await googleAcoont.authentication;
@@ -115,12 +114,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               );
                               final firebaseUser = await FirebaseAuth.instance
                                   .signInWithCredential(authCredential);
-                                addUser();
+                              addUser();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          ButtonNavigation()));
+                                          ButtomNavigation()));
                             },
                             child: Row(
                               children: [
