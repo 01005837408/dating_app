@@ -1,95 +1,33 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors
 
-import 'dart:io';
+
 import 'package:dating_app/feature/profile_photos/widgets/grid_view_photos.dart';
 import 'package:dating_app/feature/profile_photos/widgets/profile_photos_header_container.dart';
-import 'package:dating_app/feature/profile_photos/widgets/shimmer_loading_grid.dart';
-import 'package:dating_app/test/test2.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'data/profile_Photos_Cubit.dart';
+import 'data/profile_photos_states.dart';
 
-class ProfilePhotosScreen extends StatefulWidget {
+class ProfilePhotosScreen extends StatelessWidget {
   const ProfilePhotosScreen({super.key});
 
   @override
-  _ProfilePhotosScreenState createState() => _ProfilePhotosScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProfilePhotosCubit()..fetchImages(),
+      child: const ProfilePhotosView(),
+    );
+  }
 }
 
-class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
-  List<String> _imageUrls = [];
-  bool _isLoading = true;
+class ProfilePhotosView extends StatelessWidget {
+  const ProfilePhotosView({super.key});
 
-  @override
-  void initState() {
-    super.initState();
-    _fetchImages();
-  }
-
-  Future<void> _fetchImages() async {
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('images').orderBy('timestamp', descending: true).get();
-    setState(() {
-      _imageUrls = querySnapshot.docs.map((doc) => doc['url'] as String).toList();
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _pickImage(ImageSource source) async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: source);
-    if (pickedFile != null) {
-      File image = File(pickedFile.path);
-      await _uploadImage(image);
-    }
-  }
-
-  Future<void> _uploadImage(File image) async {
-    try {
-      String fileName = 'images/${DateTime.now().millisecondsSinceEpoch}.jpg';
-      UploadTask uploadTask = FirebaseStorage.instance.ref(fileName).putFile(image);
-
-      TaskSnapshot snapshot = await uploadTask;
-      String downloadURL = await snapshot.ref.getDownloadURL();
-
-      await FirebaseFirestore.instance.collection('images').add({
-        'url': downloadURL,
-        'timestamp': FieldValue.serverTimestamp(),
-      });
-
-      setState(() {
-        _imageUrls.add(downloadURL);
-      });
-
-      print('Image uploaded successfully: $downloadURL');
-    } catch (e) {
-      print('Error uploading image: $e');
-    }
-  }
-
-  Future<void> _deleteImage(String imageUrl) async {
-    try {
-      await FirebaseStorage.instance.refFromURL(imageUrl).delete();
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('images')
-          .where('url', isEqualTo: imageUrl)
-          .get();
-      for (var doc in querySnapshot.docs) {
-        await FirebaseFirestore.instance.collection('images').doc(doc.id).delete();
-      }
-      setState(() {
-        _imageUrls.remove(imageUrl);
-      });
-      print('Image deleted successfully: $imageUrl');
-    } catch (e) {
-      print('Error deleting image: $e');
-    }
-  }
-
-  void _showDeleteDialog(String imageUrl) {
+  void _showDeleteDialog(BuildContext context, String imageUrl) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -105,7 +43,7 @@ class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              _deleteImage(imageUrl);
+              context.read<ProfilePhotosCubit>().deleteImage(imageUrl);
             },
             child: Text('Delete'),
           ),
@@ -114,35 +52,40 @@ class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
     );
   }
 
-  void _showBottomSheet() {
+  void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      builder: (context) => Container(
-        color: AppColor.kPrimaryColor,
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Pick Image From Gallery or Camera", style: TextStyle(fontSize: 20, color: Colors.white)),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                _pickImage(ImageSource.gallery);
-              },
-              child: Text("Pick Image From Gallery"),
+      builder: (bottomSheetContext) {
+        return BlocProvider.value(
+          value: context.read<ProfilePhotosCubit>(),
+          child: Container(
+            color: AppColor.kPrimaryColor,
+            padding: EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Pick Image From Gallery or Camera", style: TextStyle(fontSize: 20, color: Colors.white)),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    context.read<ProfilePhotosCubit>().pickImage(ImageSource.gallery);
+                  },
+                  child: Text("Pick Image From Gallery"),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    context.read<ProfilePhotosCubit>().pickImage(ImageSource.camera);
+                  },
+                  child: Text("Pick Image From Camera"),
+                ),
+              ],
             ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                _pickImage(ImageSource.camera);
-              },
-              child: Text("Pick Image From Camera"),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -168,7 +111,9 @@ class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
                 text: 'الصور',
               ),
               verticalSpacing(15),
-              ProfilePhotosHeaderContainer(onCameraTap: _showBottomSheet),
+              ProfilePhotosHeaderContainer(
+                onCameraTap: () => _showBottomSheet(context), parentContext: context,
+              ),
               verticalSpacing(20),
               const Divider(
                 indent: 50,
@@ -176,7 +121,19 @@ class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
                 color: AppColor.kPrimaryColor,
                 thickness: 4,
               ),
-               GridViewPhotos(imageUrls: _imageUrls, onLongPress: _showDeleteDialog),
+              BlocBuilder<ProfilePhotosCubit, ProfilePhotosState>(
+                builder: (context, state) {
+                  if (state is ProfilePhotosLoading) {
+                    return CircularProgressIndicator();
+                  } else if (state is ProfilePhotosLoaded) {
+                    return GridViewPhotos(imageUrls: state.imageUrls, onLongPress: (imageUrl) => _showDeleteDialog(context, imageUrl));
+                  } else if (state is ProfilePhotosError) {
+                    return Text(state.message);
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
             ],
           ),
         ),
@@ -184,4 +141,3 @@ class _ProfilePhotosScreenState extends State<ProfilePhotosScreen> {
     );
   }
 }
-

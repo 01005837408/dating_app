@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors_in_immutables
 
 import 'dart:convert';
 
@@ -16,6 +16,7 @@ class ChatListScreen extends StatefulWidget {
   @override
   State<ChatListScreen> createState() => _HomeScreenState();
 }
+
 
 class _HomeScreenState extends State<ChatListScreen> {
    List<ChatUser> list = [] ;

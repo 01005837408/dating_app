@@ -1,13 +1,19 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
+// profile_photos_header_container.dart
+
+// ignore_for_file: prefer_const_constructors
 
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePhotosHeaderContainer extends StatelessWidget {
   final VoidCallback onCameraTap;
+  final BuildContext parentContext;
 
-  const ProfilePhotosHeaderContainer({super.key, required this.onCameraTap});
+  const ProfilePhotosHeaderContainer({
+    super.key,
+    required this.onCameraTap,
+    required this.parentContext,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,7 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.white),
                 child: IconButton(
-                  onPressed: onCameraTap,
+                  onPressed: () => onCameraTap(),
                   icon: const Icon(
                     Icons.add,
                     color: AppColor.kPrimaryColor,
@@ -53,5 +59,4 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
       ),
     );
   }
-  
 }

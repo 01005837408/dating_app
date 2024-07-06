@@ -1,12 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 
-import 'package:dating_app/core/function/function.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({

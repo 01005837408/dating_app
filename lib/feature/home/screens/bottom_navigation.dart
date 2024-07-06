@@ -1,58 +1,76 @@
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/chat/screen/chat_list_screen.dart';
+import 'package:dating_app/feature/home/data/home_cubit/home_cubit.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
 import 'package:dating_app/feature/viewProfile/view_profile_screen.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ButtonNavigation extends StatefulWidget {
+class ButtonNavigation extends StatelessWidget {
   const ButtonNavigation({super.key});
 
   @override
-  State<ButtonNavigation> createState() => _ButtonNavigationState();
-}
-
-class _ButtonNavigationState extends State<ButtonNavigation> {
-  int selectedIndex = 0;
-  List<Widget> screens = [
-    const HomeScreen(),
-    ViewProfile(),
-    const Screen3(),
-    ChatListScreen(),
-  ];
-  @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        // ignore: prefer_const_literals_to_create_immutables
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (int index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            // ignore: prefer_const_literals_to_create_immutables
-            items: [
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-                backgroundColor: Colors.red,
-              ),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.remove_red_eye_outlined), label: 'Home'),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), label: 'Home'),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.comment), label: 'Home'),
-            ]),
-        body: screens[selectedIndex],
-      ),
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: const ButtonNavigationView(),
     );
   }
 }
 
+class ButtonNavigationView extends StatelessWidget {
+  const ButtonNavigationView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      const HomeScreen(),
+       ViewProfile(),
+      const Screen3(),
+       ChatListScreen(),
+    ];
+
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        bottomNavigationBar: BlocBuilder<HomeCubit, int>(
+          builder: (context, selectedIndex) {
+            return BottomNavigationBar(
+              currentIndex: selectedIndex,
+              onTap: (int index) {
+                context.read<HomeCubit>().updateIndex(index);
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                  backgroundColor: Colors.red,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.remove_red_eye_outlined),
+                  label: 'Profile',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite),
+                  label: 'Favorites',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.comment),
+                  label: 'Chat',
+                ),
+              ],
+            );
+          },
+        ),
+        body: BlocBuilder<HomeCubit, int>(
+          builder: (context, selectedIndex) {
+            return screens[selectedIndex];
+          },
+        ),
+      ),
+    );
+  }
+}
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
 

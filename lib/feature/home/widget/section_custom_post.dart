@@ -23,15 +23,7 @@ class SectionCustomPost extends StatefulWidget {
 }
 
 class _SectionCustomPostState extends State<SectionCustomPost> {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
- List  data = [];
-  getDate() async {
-  QuerySnapshot querySnapshot = await  firestore.collection("users").get();
-    data.addAll(querySnapshot.docs);
-    setState(() {
-      
-    });
-  }
+
 
   initState() {
   //  getDate();
@@ -105,7 +97,7 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                       Assets.loveImageComment,
                       width: 30,
                       height: 30,
-                    )),
+                    )), 
                 // Text("Text"),
                 Spacer(),
                 Column(

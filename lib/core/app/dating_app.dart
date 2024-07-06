@@ -1,6 +1,6 @@
+import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:dating_app/feature/splash_screen/splash_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +9,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+  // git fetch origin
+  // git merge origin/main
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -31,3 +33,17 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//   FirebaseFirestore firestore = FirebaseFirestore.instance;
+//  List  data = [];
+//   getDate() async {
+//   QuerySnapshot querySnapshot = await  firestore.collection("users").get();
+//     data.addAll(querySnapshot.docs);
+//     setState(() {
+      
+//     });
+//   }
+
+// Hi Hassan                                                                                                                                                      
+//  Thank you for reaching out and considering me for the Flutter 
+//  developer position. I appreciate the opportunity and am interested 
+//  in learning more about the role.
