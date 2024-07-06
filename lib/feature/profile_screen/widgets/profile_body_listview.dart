@@ -12,20 +12,15 @@ class ProfileBodyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      right: 0,
-      bottom: 0,
-      top: MediaQuery.of(context).size.height / 4,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: profileList.length,
-          itemBuilder: (context, index) {
-            return ProfileBodyItem(profileList: profileList, index: index);
-          },
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: profileList.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return ProfileBodyItem(profileList: profileList, index: index);
+        },
       ),
     );
   }

@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:dating_app/core/api/api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePictureAndName extends StatefulWidget {
@@ -65,39 +67,41 @@ class _ProfilePictureAndNameState extends State<ProfilePictureAndName> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Positioned(
-          left: 140,
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () => _showImageSourceActionSheet(context),
-                child: CircleAvatar(
-                  backgroundImage: _image != null
-                      ? FileImage(File(_image!.path))
-                      : NetworkImage(
-                          "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-                        ) as ImageProvider,
-                  radius: 60,
-                ),
-              ),
-              Text(
-                'Hadi Saed',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 26),
-              ),
-              Text(
-                'ID : 215020',
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 22),
-              ),
-            ],
+        // GestureDetector(
+        //   onTap: () => _showImageSourceActionSheet(context),
+        //   child: CircleAvatar(
+        //     backgroundImage: _image != null
+        //         ? FileImage(File(_image!.path))
+        //         : NetworkImage(
+        //             "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+        //           ) as ImageProvider,
+        //     radius: 60,
+        //   ),
+        // ),
+        SizedBox(height: 75.h,),
+        Center(
+          child: Text(
+            'Hadi Saed',
+            style: GoogleFonts.italiana(
+              fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 26
+            )
+            // TextStyle(
+            //     fontWeight: FontWeight.bold,
+            //     color: Colors.white,
+            //     fontSize: 26),
           ),
+        ),
+        Text(
+          'ID : 215020',
+          style: GoogleFonts.adamina(
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+              fontSize: 18  ),
         ),
       ],
     );

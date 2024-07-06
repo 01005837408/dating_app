@@ -78,11 +78,13 @@ class ProfileBody extends StatelessWidget {
           topRight: Radius.circular(25),
         ),
       ),
-      child: Stack(
+      child: Column(
         children: [
+          const ProfilePictureAndName(),
           ProfileBodyListView(profileList: profileList),
           const WhitContainerProfile(),
-          const ProfilePictureAndName(),
+
+
         ],
       ),
     );

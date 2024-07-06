@@ -13,4 +13,5 @@ class Assets {
   static const String inPlace = 'assets/images/inPlace.png';
   static const String postImage = 'assets/images/Home Screen-image.jpg';
   static const String googleImage = 'assets/images/google_image.png';
+  static const String heartImage = 'assets/images/heart.png';
 }

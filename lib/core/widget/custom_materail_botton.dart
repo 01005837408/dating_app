@@ -3,6 +3,7 @@
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class CustomMaterialBottons extends StatelessWidget {
@@ -23,8 +24,8 @@ class CustomMaterialBottons extends StatelessWidget {
       padding: const EdgeInsets.only(left: 18.0),
       child: MaterialButton(
         //constraints: BoxConstraints(maxWidth: 330 , maxHeight: double.infinity ),
-        height: 50,
-        minWidth: 330,
+        height: 60,
+        minWidth: 330.w,
 
         // padding: EdgeInsets.only(left: 10),
 

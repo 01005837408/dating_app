@@ -28,11 +28,13 @@ class PaymentScreen extends StatelessWidget {
                   backgroundColor: AppColor.kPrimaryColor,
                   text: S.of(context).subscribeNow,
                 ),
-                PaymentHeaderListView(),
                 verticalSpacing(10),
+
+                PaymentHeaderListView(),
+                verticalSpacing(20),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
                   child: Text(
                     S.of(context).advatges,
                     style: const TextStyle(
@@ -41,8 +43,8 @@ class PaymentScreen extends StatelessWidget {
                   ),
                 ),
                 const Divider(
-                  endIndent: 60,
-                  indent: 60,
+                  endIndent: 30,
+                  indent: 30,
                   thickness: 1.5,
                   color: AppColor.kPrimaryColor,
                 ),
@@ -56,12 +58,11 @@ class PaymentScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpacing(10),
-                Center(
-                  child: CustomMaterialBottons(
-                      backgroundBottonsColors: AppColor.lightRed,
-                      onPressed: () {},
-                      text: 'احصل علي 3 اشهر بمبلغ 999ج'),
-                ),
+                CustomMaterialBottons(
+
+                    backgroundBottonsColors: AppColor.lightRed,
+                    onPressed: () {},
+                    text: 'احصل علي 3 اشهر بمبلغ 999ج'),
               ],
             ),
           ),

@@ -27,10 +27,11 @@ class PaymentBodyListView extends StatelessWidget {
       ),
     ];
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 3,
+      // height: MediaQuery.of(context).size.height / 3,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: paymentListView.length,
+        shrinkWrap: true,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: ListTile(

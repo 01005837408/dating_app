@@ -45,6 +45,7 @@ dependencies:
   get: ^4.6.6
   google_sign_in: ^6.2.1
   shimmer: ^3.0.0
+  google_fonts:
   equatable: ^2.0.5
   shared_preferences: ^2.1.0
   image_picker: ^0.8.7+5

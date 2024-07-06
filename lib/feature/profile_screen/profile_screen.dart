@@ -1,14 +1,76 @@
+
+import 'dart:io';
+
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
+import 'package:dating_app/feature/profile_screen/widgets/Profile_appBar.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body.dart';
 import 'package:dating_app/feature/settings_profile/settings_Screen_profile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileScreen extends StatelessWidget {
+import '../../core/api/api.dart';
+
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({
     super.key,
   });
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
 // ChatUser user ;
+   ImagePicker _picker = ImagePicker();
+
+  XFile? _image;
+   Future<void> _pickImage(ImageSource source) async {
+     try {
+       final pickedImage = await _picker.pickImage(source: source);
+       setState(() {
+         _image = pickedImage;
+       });
+       Navigator.of(context).pop(); // Close the modal bottom sheet
+     } catch (e) {
+       print(e);
+       Navigator.of(context)
+           .pop(); // Close the modal bottom sheet in case of error
+     }
+   }
+   void _showImageSourceActionSheet(BuildContext context) {
+     showModalBottomSheet(
+       context: context,
+       builder: (BuildContext context) {
+         return SafeArea(
+           child: Wrap(
+             children: <Widget>[
+               ListTile(
+                   leading: Icon(Icons.photo_library),
+                   title: Text('Photo Library'),
+                   onTap: () {
+                     _pickImage(ImageSource.gallery);
+                     Api.updateProfilePicture(File(_image!.path));
+                     setState(() {});
+                   }),
+               ListTile(
+                   leading: Icon(Icons.photo_camera),
+                   title: Text('Camera'),
+                   onTap: () {
+                     _pickImage(ImageSource.camera);
+                     Api.updateProfilePicture(File(_image!.path));
+                     setState(() {});
+                   }),
+             ],
+           ),
+         );
+       },
+     );
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,33 +79,42 @@ class ProfileScreen extends StatelessWidget {
           child: SingleChildScrollView(
         child: Stack(
           children: [
-            Column(
-              children: [
-                CustomAppBar(
-                  backgroundColor: Colors.white,
-                  iconColor: AppColor.kPrimaryColor,
-                  icon: const Icon(
-                    Icons.settings,
+       const Column(children: [
+         ProfileAppBar(height: 130,),
+
+         ProfileBody(),
+       ],),
+            Positioned(
+              top: 80.h,
+              left: MediaQuery.of(context).size.width/3.3,
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: _image != null
+                        ? FileImage(File(_image!.path))
+                        : NetworkImage(
+                      "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+                    ) as ImageProvider,
+                    radius: 80,
+
                   ),
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingsScreenProfile())),
-                  widget: const CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Color(0xFFEDB2C2),
-                      child: Icon(
-                        Icons.arrow_back_ios_new,
-                        color: AppColor.kPrimaryColor,
-                        size: 30,
-                      )),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 14,
-                ),
-                const ProfileBody(),
-              ],
+                  Positioned(
+                    right: 5,
+                    top: 115,
+                    child: InkWell(
+                      onTap: () => _showImageSourceActionSheet(context),
+
+                      child: const CircleAvatar(
+
+                        radius: 18,
+                          backgroundColor: Color(0xFFEDB2C2),
+                          child: Icon(Icons.edit_calendar,color: Color(0xFFFE3B72),size: 18,)),
+                    ),
+                  )
+                ],
+              ),
             ),
+
             // Positioned(
             //   left: 233,
             //   top: 200,
