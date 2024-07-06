@@ -29,7 +29,7 @@ class PaymentScreen extends StatelessWidget {
                   text: S.of(context).subscribeNow,
                 ),
                 verticalSpacing(10),
-
+                //
                 PaymentHeaderListView(),
                 verticalSpacing(20),
                 Padding(
