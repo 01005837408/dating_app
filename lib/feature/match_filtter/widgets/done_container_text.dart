@@ -1,5 +1,6 @@
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class DoneContainerText extends StatelessWidget {
@@ -14,17 +15,19 @@ class DoneContainerText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: Container(
-          width: 35,
+          width: 65,
           height: 35,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.grey.shade200,
           ),
-          child: const Center(
-              child: Text(
-            ConstText.done,
-            style: TextStyle(fontSize: 25, color: AppColor.kPrimaryColor),
-          )),
+          child: Center(
+            child: Text(
+              S.of(context).done,
+              style:
+                  const TextStyle(fontSize: 25, color: AppColor.kPrimaryColor),
+            ),
+          ),
         ),
       ),
     );

@@ -21,20 +21,20 @@ class ProfileBodyItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColor.lightPink.withOpacity(0.5),
-        // color: lightPink.withOpacity(0.5),
       ),
       child: ListTile(
         onTap: profileList[index].onTap,
-        title: Text(
-          profileList[index].text,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
-          textAlign: TextAlign.right,
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            profileList[index].text,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
+            textAlign: TextAlign.right,
+          ),
         ),
-        trailing: profileList[index].iconButton,
-
-        // onTap: profileList[index].onTap,
-        leading: profileList[index].icon,
+        leading: profileList[index].iconButton,
+        trailing: profileList[index].icon,
       ),
     );
   }

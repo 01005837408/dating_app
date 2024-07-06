@@ -1,5 +1,5 @@
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class MyProfileDetailsHeader extends StatelessWidget {
@@ -16,33 +16,7 @@ class MyProfileDetailsHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  const Text(
-                    ConstText.online,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(width: 10),
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(20)),
-                  )
-                ],
-              ),
-              const Text(
-                ConstText.id,
-                style: TextStyle(fontSize: 19),
-              )
-            ],
-          ),
-          const Spacer(),
-          const Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
+              const Row(
                 children: [
                   Icon(Icons.person, color: AppColor.kPrimaryColor),
                   Text(
@@ -54,23 +28,51 @@ class MyProfileDetailsHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    ConstText.cairoEgypt,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 19),
+                    S.of(context).cairoEgypt,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 19),
                   ),
-                  Icon(Icons.location_on, color: AppColor.kPrimaryColor),
+                  const Icon(Icons.location_on, color: AppColor.kPrimaryColor),
                 ],
               ),
               Row(
                 children: [
                   Text(
-                    ConstText.male,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 19),
+                    S.of(context).male,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 19),
                   ),
-                  Icon(Icons.male, color: AppColor.kPrimaryColor),
+                  const Icon(Icons.male, color: AppColor.kPrimaryColor),
                 ],
               )
             ],
-          )
+          ),
+          const Spacer(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    S.of(context).online,
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(width: 10),
+                  Container(
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(20)),
+                  )
+                ],
+              ),
+              Text(
+                S.of(context).id,
+                style: const TextStyle(fontSize: 19),
+              )
+            ],
+          ),
         ],
       ),
     );

@@ -26,15 +26,12 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 60),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.camera_alt,
-                color: Colors.white,
-              ),
-              iconSize: 180,
+            child: Icon(
+              Icons.camera_alt,
+              color: Colors.white,
+              size: 180,
             ),
           ),
           Align(

@@ -19,13 +19,13 @@ class AdvancedFiltterListItem extends StatelessWidget {
           fontSize: 30,
           color: Colors.white,
         ),
-        textAlign: TextAlign.right,
       ),
-      leading: IconButton(
+      trailing: IconButton(
           onPressed: () {},
           icon: const Icon(
-            Icons.arrow_back_ios_new,
+            Icons.arrow_forward_ios_rounded,
             color: Colors.white,
+            size: 30,
           )),
     );
   }

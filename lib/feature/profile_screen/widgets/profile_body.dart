@@ -1,11 +1,11 @@
 import 'package:dating_app/core/model/profile_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/my_profile_details/my_profile_details_screen.dart';
 import 'package:dating_app/feature/profile_photos/profile_photos_screen.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body_listview.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_pic_and_name.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_white_container.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -18,7 +18,7 @@ class ProfileBody extends StatelessWidget {
         icon: IconButton(
           onPressed: () {},
           icon: const Icon(
-            Icons.arrow_back_ios_new,
+            Icons.arrow_forward_ios_outlined,
             color: Colors.white,
           ),
         ),
@@ -30,7 +30,7 @@ class ProfileBody extends StatelessWidget {
             size: 37,
           ),
         ),
-        text: ConstText.myProfile,
+        text: S.of(context).myProfile,
         onTap: () {
           Navigator.push(
             context,
@@ -44,7 +44,7 @@ class ProfileBody extends StatelessWidget {
         icon: IconButton(
           onPressed: () {},
           icon: const Icon(
-            Icons.arrow_back_ios_new,
+            Icons.arrow_forward_ios_outlined,
             color: Colors.white,
           ),
         ),
@@ -56,7 +56,7 @@ class ProfileBody extends StatelessWidget {
             size: 37,
           ),
         ),
-        text: ConstText.myPhotos,
+        text: S.of(context).myPhotos,
         onTap: () {
           Navigator.push(
             context,
@@ -82,7 +82,7 @@ class ProfileBody extends StatelessWidget {
         children: [
           ProfileBodyListView(profileList: profileList),
           const WhitContainerProfile(),
-           ProfilePictureAndName(),
+          const ProfilePictureAndName(),
         ],
       ),
     );

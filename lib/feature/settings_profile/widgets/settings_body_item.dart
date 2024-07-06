@@ -17,18 +17,17 @@ class SettingsBodyItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         onTap: () {},
-        leading: const Icon(
-          Icons.arrow_back_ios_new,
+        trailing: const Icon(
+          Icons.arrow_forward_ios_outlined,
           color: AppColor.kPrimaryColor,
           size: 35,
         ),
         title: Text(
           settingsmodel[index].title,
-          textAlign: TextAlign.right,
           style: const TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
         ),
-        trailing: Icon(
+        leading: Icon(
           settingsmodel[index].leading.icon,
           color: AppColor.kPrimaryColor,
           size: 30,

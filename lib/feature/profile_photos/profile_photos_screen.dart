@@ -13,6 +13,7 @@ import 'data/profile_Photos_Cubit.dart';
 import 'data/profile_photos_states.dart';
 
 class ProfilePhotosScreen extends StatelessWidget {
+class ProfilePhotosScreen extends StatelessWidget {
   const ProfilePhotosScreen({super.key});
 
   @override
@@ -138,6 +139,6 @@ class ProfilePhotosView extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

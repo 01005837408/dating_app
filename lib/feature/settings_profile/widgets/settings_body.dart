@@ -12,6 +12,7 @@ class SettingsBody extends StatelessWidget {
         SizedBox(
             height: MediaQuery.of(context).size.height / 2,
             child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: settingsmodel.length,
                 itemBuilder: (context, index) {
                   return SettingsBodyItem(

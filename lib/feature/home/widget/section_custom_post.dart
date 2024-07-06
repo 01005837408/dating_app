@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dating_app/core/api/api_user.dart';
+import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SectionCustomPost extends StatefulWidget {
-  SectionCustomPost(
+  const SectionCustomPost(
       // this.documentId,
       {
     super.key,
@@ -25,14 +27,15 @@ class SectionCustomPost extends StatefulWidget {
 class _SectionCustomPostState extends State<SectionCustomPost> {
 
 
+  @override
   initState() {
-  //  getDate();
+   // getDate();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-   // CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
     return Container(
       width: double.infinity,
       color: Colors.white,
@@ -64,7 +67,8 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "Mohamed",
+                      "DATA",
+                      // "${data[0]['fName']} ${data[0]['lName']}",
                       style: const TextStyle(color: AppColor.kPrimaryColor),
                     ),
                     horizontalSpacing(10),

@@ -1,9 +1,9 @@
 import 'package:dating_app/core/spacing/spacing.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/feature/payment_screen/widgets/payment_header_listview.dart';
 import 'package:dating_app/feature/payment_screen/widgets/payment_listview_body.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/utils/colors.dart';
@@ -15,57 +15,58 @@ class PaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const CustomAppBar(
-                widget: Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.white,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomAppBar(
+                  widget: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: Colors.white,
+                  ),
+                  backgroundColor: AppColor.kPrimaryColor,
+                  text: S.of(context).subscribeNow,
                 ),
-                backgroundColor: AppColor.kPrimaryColor,
-                text: ConstText.subscribeNow,
-              ),
-              PaymentHeaderListView(),
-              verticalSpacing(30),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  ConstText.advatges,
-                  style: TextStyle(
-                    fontSize: 25,
+                PaymentHeaderListView(),
+                verticalSpacing(10),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  child: Text(
+                    S.of(context).advatges,
+                    style: const TextStyle(
+                      fontSize: 25,
+                    ),
                   ),
                 ),
-              ),
-              const Divider(
-                endIndent: 60,
-                indent: 60,
-                thickness: 1.5,
-                color: AppColor.kPrimaryColor,
-              ),
-              PaymentBodyListView(),
-              verticalSpacing(5),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  ConstText.ruleText,
-                  textAlign: TextAlign.end,
-                  style: TextStyle(fontSize: 18),
+                const Divider(
+                  endIndent: 60,
+                  indent: 60,
+                  thickness: 1.5,
+                  color: AppColor.kPrimaryColor,
                 ),
-              ),
-              verticalSpacing(10),
-              Center(
-                child: CustomMaterialBottons(
-                    backgroundBottonsColors: AppColor.lightRed,
-                    onPressed: () {},
-                    text: 'احصل علي 3 اشهر بمبلغ 999ج'),
-              ),
-            ],
+                const PaymentBodyListView(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    S.of(context).ruleText,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ),
+                verticalSpacing(10),
+                Center(
+                  child: CustomMaterialBottons(
+                      backgroundBottonsColors: AppColor.lightRed,
+                      onPressed: () {},
+                      text: 'احصل علي 3 اشهر بمبلغ 999ج'),
+                ),
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

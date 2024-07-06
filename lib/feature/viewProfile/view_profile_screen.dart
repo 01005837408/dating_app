@@ -3,6 +3,7 @@ import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ViewProfile extends StatelessWidget {
@@ -26,30 +27,7 @@ class ViewProfile extends StatelessWidget {
       initialIndex: 0,
       // ignore: prefer_const_constructors
       child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: AppColor.kPrimaryColor,
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                child: GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) =>  ProfileScreen(),
-                    ),
-                  ),
-                  child: const CircleAvatar(
-                    backgroundImage: AssetImage(Assets.profileImage),
-                  ),
-                ),
-              )
-            ],
-            title: const Text(
-              "View Profile",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+          appBar: appBar(context),
           body: SafeArea(
               child: SingleChildScrollView(
             child: Container(
@@ -60,22 +38,23 @@ class ViewProfile extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  const TabBar(
+                  TabBar(
                     automaticIndicatorColorAdjustment: true,
-                    indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
+                    indicatorPadding:
+                        const EdgeInsets.symmetric(horizontal: 10),
                     unselectedLabelColor: Colors.blue,
                     indicatorSize: TabBarIndicatorSize.tab,
                     labelColor: AppColor.kPrimaryColor,
-                    labelStyle: TextStyle(fontSize: 20),
+                    labelStyle: const TextStyle(fontSize: 20),
                     dividerColor: AppColor.kPrimaryColor,
                     dividerHeight: 0,
                     indicatorWeight: 5,
                     indicatorColor: AppColor.kPrimaryColor,
                     tabs: [
                       Tab(
-                        text: ConstText.viewMyprofile,
+                        text: S.of(context).viewMyprofile,
                       ),
-                      Tab(text: ConstText.viewOtherProfile),
+                      Tab(text: S.of(context).viewOtherProfile),
                     ],
                   ),
                   Expanded(
@@ -84,7 +63,7 @@ class ViewProfile extends StatelessWidget {
                       child: TabBarView(
                         children: [
                           ViewMyProfile(viewMyProfileModel: viewProfileModel),
-                          const Text("Photos"),
+                          ViewMyProfile(viewMyProfileModel: viewProfileModel),
                         ],
                       ),
                     ),
@@ -93,6 +72,33 @@ class ViewProfile extends StatelessWidget {
               ),
             ),
           ))),
+    );
+  }
+
+  AppBar appBar(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      backgroundColor: AppColor.kPrimaryColor,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
+          child: GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const ProfileScreen(),
+              ),
+            ),
+            child: const CircleAvatar(
+              backgroundImage: AssetImage(Assets.profileImage),
+            ),
+          ),
+        )
+      ],
+      title: const Text(
+        "View Profile",
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }
