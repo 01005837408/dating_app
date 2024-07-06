@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 debugShowCheckedModeBanner: false,
-                home: const Onboard(),
+                home: const ButtonNavigation(),
               );
             },
           ),
