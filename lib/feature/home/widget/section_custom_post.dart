@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/core/api/api_user.dart';
-import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -25,11 +23,17 @@ class SectionCustomPost extends StatefulWidget {
 }
 
 class _SectionCustomPostState extends State<SectionCustomPost> {
-
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  List data = [];
+  getDate() async {
+    QuerySnapshot querySnapshot = await firestore.collection("users").get();
+    data.addAll(querySnapshot.docs);
+    setState(() {});
+  }
 
   @override
   initState() {
-   // getDate();
+    getDate();
     super.initState();
   }
 
@@ -40,8 +44,6 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
       width: double.infinity,
       color: Colors.white,
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(Assets.homeImageBody,
               width: double.infinity, height: 300, fit: BoxFit.cover),
@@ -101,7 +103,7 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                       Assets.loveImageComment,
                       width: 30,
                       height: 30,
-                    )), 
+                    )),
                 // Text("Text"),
                 Spacer(),
                 Column(

@@ -1,10 +1,8 @@
-
 import 'package:dating_app/core/utils/assets.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/match_filtter/match_filtter_screen.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
-import 'package:dating_app/feature/settings_profile/settings_Screen_profile.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitle extends StatelessWidget {
@@ -23,7 +21,7 @@ class HomeTitle extends StatelessWidget {
                     context,
                     MaterialPageRoute<void>(
                         builder: (BuildContext context) =>
-                             MatchFiltter()));
+                            const MatchFiltter()));
               },
               icon: const Icon(
                 Icons.settings_input_composite_rounded,
@@ -31,7 +29,7 @@ class HomeTitle extends StatelessWidget {
                 size: 30,
               )),
           Text(
-            ConstText.appName,
+            S.of(context).appName,
             style: AppStyle.font21bold,
           ),
           GestureDetector(

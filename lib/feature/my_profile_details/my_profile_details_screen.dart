@@ -1,5 +1,4 @@
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/edit_profile_screen/edit_profile_screen.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_image_and_header.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_quick_view.dart';

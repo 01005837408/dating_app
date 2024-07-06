@@ -1,5 +1,3 @@
-
-import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/home/widget/custom_tap_container.dart';
@@ -13,28 +11,26 @@ class SectionCustomTapContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10 , right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Align(
         alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomTapContainer(
-              onTap: (){},
+              onTap: () {},
               image: Assets.loveImageTitle,
               text: ConstText.matwafik,
             ),
             CustomTapContainer(
-                onTap: (){},
+                onTap: () {},
                 image: Assets.commentImage,
-                text: ConstText.connectInt
-            ),
+                text: ConstText.connectInt),
             CustomTapContainer(
-                onTap: (){},
+                onTap: () {},
                 image: Assets.commentImage,
-                text: ConstText.inPlace
-            ),
-          //  horizontalSpacing(18)
+                text: ConstText.inPlace),
+            //  horizontalSpacing(18)
           ],
         ),
       ),

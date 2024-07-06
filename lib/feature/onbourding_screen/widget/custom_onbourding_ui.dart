@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOnboardingUI extends StatefulWidget {
-  CustomOnboardingUI({
+  const CustomOnboardingUI({
     super.key,
     required this.pageIndex,
   });
-  int pageIndex;
+  final int pageIndex;
   @override
   State<CustomOnboardingUI> createState() => _CustomOnboardingUIState();
 }

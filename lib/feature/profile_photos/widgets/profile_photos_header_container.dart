@@ -1,18 +1,9 @@
-// profile_photos_header_container.dart
-
-// ignore_for_file: prefer_const_constructors
-
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePhotosHeaderContainer extends StatelessWidget {
-  final VoidCallback onCameraTap;
-  final BuildContext parentContext;
-
   const ProfilePhotosHeaderContainer({
     super.key,
-    required this.onCameraTap,
-    required this.parentContext,
   });
 
   @override
@@ -41,13 +32,10 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.white),
-                child: IconButton(
-                  onPressed: () => onCameraTap(),
-                  icon: const Icon(
-                    Icons.add,
-                    color: AppColor.kPrimaryColor,
-                    size: 60,
-                  ),
+                child: const Icon(
+                  Icons.add,
+                  color: AppColor.kPrimaryColor,
+                  size: 60,
                 ),
               ),
             ),

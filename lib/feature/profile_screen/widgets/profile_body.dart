@@ -61,7 +61,7 @@ class ProfileBody extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  ProfilePhotosScreen(),
+              builder: (context) => const ProfilePhotosScreen(),
             ),
           );
         },
