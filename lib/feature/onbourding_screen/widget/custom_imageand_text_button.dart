@@ -1,21 +1,21 @@
 import 'package:dating_app/core/cubit/app_cubit.dart';
-import 'package:dating_app/core/routs/const_route.dart';
 import 'package:dating_app/core/utils/assets.dart';
+import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomImagAndTextBottun extends StatefulWidget {
-  const CustomImagAndTextBottun({
+class CustomImagAndTextButton extends StatefulWidget {
+  const CustomImagAndTextButton({
     super.key,
   });
 
   @override
-  State<CustomImagAndTextBottun> createState() =>
-      _CustomImagAndTextBottunState();
+  State<CustomImagAndTextButton> createState() =>
+      _CustomImagAndTextButtonState();
 }
 
-class _CustomImagAndTextBottunState extends State<CustomImagAndTextBottun> {
+class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
   bool isToggled = false;
   void _toggle() {
     setState(() {
@@ -51,7 +51,10 @@ class _CustomImagAndTextBottunState extends State<CustomImagAndTextBottun> {
           const Spacer(),
           TextButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(Routs.loginScreen);
+                // print('object');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const SignInScreen()));
+                // Navigator.of(context).pushReplacementNamed(Routs.loginScreen);
               },
               child: Text(
                 S.of(context).skip,

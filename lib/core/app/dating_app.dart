@@ -3,6 +3,7 @@ import 'package:dating_app/core/helper/cache_helper.dart';
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
 import 'package:dating_app/feature/home/screens/home_screen.dart';
 import 'package:dating_app/feature/onbourding_screen/onboard.dart';
+import 'package:dating_app/feature/splash_screen/splash_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 debugShowCheckedModeBanner: false,
-                home: const ButtonNavigation(),
+                home: const SplashScreen(),
               );
             },
           ),

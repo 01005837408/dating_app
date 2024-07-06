@@ -8,3 +8,5 @@ final class AppInitial extends AppState {}
 final class AppLocaleState extends AppState {}
 
 final class AppLocaleChangeState extends AppState {}
+
+final class ButtonChangeState extends AppState {}

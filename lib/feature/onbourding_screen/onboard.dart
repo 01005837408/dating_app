@@ -3,7 +3,7 @@ import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'widget/custom_image_&_text_bottun.dart';
+import 'widget/custom_imageand_text_button.dart';
 import 'widget/custom_onbourding_ui.dart';
 import 'widget/onboard_model.dart';
 
@@ -46,7 +46,7 @@ class _OnboardState extends State<Onboard> {
             width: double.infinity,
             color: AppColor.kPrimaryColor,
             child: Column(children: [
-              const CustomImagAndTextBottun(),
+              const CustomImagAndTextButton(),
               Flexible(
                   child: PageView.builder(
                 itemCount: onBoardingList.length,

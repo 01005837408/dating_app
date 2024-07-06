@@ -1,10 +1,7 @@
-import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/feature/chat/screen/chat_list_screen.dart';
-import 'package:dating_app/feature/home/screens/home_screen.dart';
-import 'package:dating_app/feature/likes_screen/likes_screen.dart';
-import 'package:dating_app/feature/viewProfile/view_profile_screen.dart';
+import 'package:dating_app/core/cubit/app_cubit.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ButtonNavigation extends StatefulWidget {
   const ButtonNavigation({super.key});
@@ -14,98 +11,41 @@ class ButtonNavigation extends StatefulWidget {
 }
 
 class _ButtonNavigationState extends State<ButtonNavigation> {
-  int selectedIndex = 0;
-  List<Widget> screens = [
-    const HomeScreen(),
-    ViewProfile(),
-    const LikesScreen(),
-    ChatListScreen(),
-  ];
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        // ignore: prefer_const_literals_to_create_immutables
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (int index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            // ignore: prefer_const_literals_to_create_immutables
-            items: [
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-                backgroundColor: Colors.red,
-              ),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.remove_red_eye_outlined), label: 'Home'),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), label: 'Home'),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.comment), label: 'Home'),
-            ]),
-        body: screens[selectedIndex],
-      ),
-    );
-  }
-}
-
-class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: Text("Screen 1"),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 2"),
-      ),
-    );
-  }
-}
-
-class Screen3 extends StatelessWidget {
-  const Screen3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 3"),
-      ),
-    );
-  }
-}
-
-class Screen4 extends StatelessWidget {
-  const Screen4({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.kPrimaryColor,
-      body: Center(
-        child: Text("Screen 4"),
-      ),
+    AppCubit cubit = BlocProvider.of(context);
+    return BlocConsumer<AppCubit, AppState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            bottomNavigationBar: BottomNavigationBar(
+                currentIndex: BlocProvider.of<AppCubit>(context).selectedIndex,
+                onTap: (int index) {
+                  AppCubit.get(context).changeButton(index);
+                  // setState(() {
+                  //   selectedIndex = index;
+                  // });
+                },
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                    backgroundColor: Colors.red,
+                  ),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.remove_red_eye_outlined),
+                      label: 'views'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.favorite), label: 'likes'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.comment), label: 'chats'),
+                ]),
+            body: cubit.screens[cubit.selectedIndex],
+          ),
+        );
+      },
     );
   }
 }

@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: Column(
                   children: [
-                     HomeTitle(),
+                    const HomeTitle(),
                     verticalSpacing(20),
                     const SectionCustomTapContainer(),
                     verticalSpacing(20),

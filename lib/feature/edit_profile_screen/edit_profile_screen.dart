@@ -1,7 +1,6 @@
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/feature/edit_profile_screen/widgets/edit_profile_body.dart';
-import 'package:dating_app/feature/profile_screen/widgets/profile_pic_and_name.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

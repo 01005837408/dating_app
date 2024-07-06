@@ -11,25 +11,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SpatailRouter {
   static Route<dynamic> generateRouts(RouteSettings settings) {
     switch (settings.name) {
-      case Routs.splashScreen :
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+      case Routs.splashScreen:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
 
-      case Routs.onboard :
-        return MaterialPageRoute(builder: (_) => Onboard());
-      case Routs.loginScreen :
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider<AppLoginCubit>(
-              create: (context) => AppLoginCubit(),
-              child: SignInScreen(),
-            ));
-      case Routs.registerScreen :
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider<AuthSignUpCubit>(
-              create: (context) => AuthSignUpCubit(),
-              child: SignUpScreen(),
-            ));
+      case Routs.onboard:
+        return MaterialPageRoute(builder: (_) => const Onboard());
+      case Routs.loginScreen:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider<AppLoginCubit>(
+                  create: (context) => AppLoginCubit(),
+                  child: const SignInScreen(),
+                ));
+      case Routs.registerScreen:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider<AuthSignUpCubit>(
+                  create: (context) => AuthSignUpCubit(),
+                  child: SignUpScreen(),
+                ));
       default:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
     }
   }
 }

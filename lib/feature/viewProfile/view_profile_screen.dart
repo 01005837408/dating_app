@@ -1,14 +1,14 @@
 import 'package:dating_app/core/model/view_my_profile_model.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
+import 'package:dating_app/feature/viewProfile/widgets/view_profile_widgets.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ViewProfile extends StatelessWidget {
   ViewProfile({super.key});
-  List<ViewMyProfileModel> viewProfileModel = [
+  final List<ViewMyProfileModel> viewProfileModel = [
     ViewMyProfileModel(
       image: const AssetImage(Assets.profileImage),
       title: 'Eman',
@@ -98,30 +98,6 @@ class ViewProfile extends StatelessWidget {
       title: Text(
         S.of(context).viewMyprofile,
         style: const TextStyle(color: Colors.white),
-      ),
-    );
-  }
-}
-
-class ViewMyProfile extends StatelessWidget {
-  const ViewMyProfile({super.key, required this.viewMyProfileModel});
-  final List<ViewMyProfileModel> viewMyProfileModel;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(
-        color: AppColor.kPrimaryColor,
-      ),
-      itemCount: viewMyProfileModel.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: CircleAvatar(
-          backgroundImage: viewMyProfileModel[index].image,
-        ),
-        title: Text(
-          viewMyProfileModel[index].title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        subtitle: Text(viewMyProfileModel[index].subtitle),
       ),
     );
   }

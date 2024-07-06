@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
@@ -32,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back)),
+                icon: const Icon(Icons.arrow_back)),
             const SizedBox(
               width: 10,
             ),
@@ -61,12 +57,12 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 Text(
                   widget.user.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.w500),
                 ),
-                Text("last seen 3.44 Pm"),
+                const Text("last seen 3.44 Pm"),
               ],
             ),
           ],
@@ -89,8 +85,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     final data = snapshot.data?.docs;
                     print("Snapshot data: ${snapshot.data}");
                     widget.list =
-                        data?.map((e) => Message.fromJson(e.data())).toList() ??  [];
-                    
+                        data?.map((e) => Message.fromJson(e.data())).toList() ??
+                            [];
+
                     if (widget.list.isNotEmpty) {
                       return ListView.builder(
                         itemCount: widget.list.length,
@@ -117,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
           //////////////// chat Input ///////////////////////////////////////////////
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -128,7 +125,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.emoji_emotions,
                             color: Colors.blueAccent,
                           )),
@@ -158,7 +155,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           onPressed: () {
                             // Navigator.pop(context) ;
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.camera_alt_outlined,
                             color: Colors.blueAccent,
                           )),
@@ -168,7 +165,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               MaterialButton(
                   minWidth: 0,
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                   color: Colors.green,
                   onPressed: () {
                     if (textController.text.isNotEmpty) {
@@ -176,7 +173,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       textController.text = "";
                     }
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.send,
                     color: Colors.white,
                     size: 28,

@@ -1,5 +1,4 @@
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
