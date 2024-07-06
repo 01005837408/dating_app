@@ -12,9 +12,9 @@ import 'package:image_picker/image_picker.dart';
 import 'data/profile_Photos_Cubit.dart';
 import 'data/profile_photos_states.dart';
 
+
 class ProfilePhotosScreen extends StatelessWidget {
-class ProfilePhotosScreen extends StatelessWidget {
-  const ProfilePhotosScreen({super.key});
+   ProfilePhotosScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +139,6 @@ class ProfilePhotosView extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }
