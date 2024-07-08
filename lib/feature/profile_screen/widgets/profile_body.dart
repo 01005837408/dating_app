@@ -80,7 +80,7 @@ class ProfileBody extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const ProfilePictureAndName(),
+           ProfilePictureAndName(),
           ProfileBodyListView(profileList: profileList),
           const WhitContainerProfile(),
 

@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(UserInitial());
 
-  Future<void> signUp(String fName, String lName, String email, String password,) async {
+  Future<void> signUp(String fName, String lName, String email, String password) async {
     try {
       emit(UserLoading());
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -20,7 +20,6 @@ class UserCubit extends Cubit<UserState> {
         fname: fName,
         lname: lName,
         email: email,
-      
       );
 
       await FirebaseFirestore.instance
@@ -37,8 +36,7 @@ class UserCubit extends Cubit<UserState> {
   Future<void> fetchUser(String uid) async {
     try {
       emit(UserLoading());
-      DocumentSnapshot userDoc =
-          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
       UserModel userModel = UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
       emit(UserLoaded(userModel));
     } catch (e) {
@@ -46,7 +44,7 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-Future<void> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     try {
       emit(UserLoading());
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
