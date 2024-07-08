@@ -1,12 +1,11 @@
-import 'package:dating_app/core/function/show_taost.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_text_field.dart';
-import 'package:dating_app/feature/authentecation/data/cubit_login/auth_login_cubit.dart';
-import 'package:dating_app/feature/authentecation/data/cubit_login/auth_login_state.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_cubit.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_state.dart';
 import 'package:dating_app/feature/authentecation/presentation/forget_pass/forget_passowrd.dart';
@@ -148,14 +147,3 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
     );
   }
 }
-  // listener: (context, state) {
-  //         if (state is AppLoginSuccessState) {
-  //           showToast(message: "تم بجيل الدخول بنجاح");
-  //           Navigator.of(context).pushReplacement(MaterialPageRoute(
-  //               builder: (context) => const ButtomNavigation()));
-  //         } else if (state is AppLoginErrorState) {
-  //           showToast(message: state.error);
-  //         } else {
-  //           showToast(message: "حدث خطأ اثناء تسجيل الدخول");
-  //         }
-  //       },
