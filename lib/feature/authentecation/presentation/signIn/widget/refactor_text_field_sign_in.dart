@@ -7,6 +7,8 @@ import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_text_field.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_login/auth_login_cubit.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_login/auth_login_state.dart';
+import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_cubit.dart';
+import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_state.dart';
 import 'package:dating_app/feature/authentecation/presentation/forget_pass/forget_passowrd.dart';
 import 'package:dating_app/feature/authentecation/presentation/signUp/sign_up.dart';
 import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
@@ -22,20 +24,20 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AppLoginCubit>(
-      create: (context) => AppLoginCubit(),
-      child: BlocConsumer<AppLoginCubit, AppLoginState>(
-        listener: (context, state) {
-          if (state is AppLoginSuccessState) {
-            showToast(message: "تم بجيل الدخول بنجاح");
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const ButtomNavigation()));
-          } else if (state is AppLoginErrorState) {
-            showToast(message: state.error);
-          } else {
-            showToast(message: "حدث خطأ اثناء تسجيل الدخول");
-          }
-        },
+    return BlocProvider<UserCubit>(
+      create: (context) => UserCubit(),
+      child: BlocConsumer<UserCubit, UserState>(
+      listener: (context, state) {
+            if (state is UserLoaded) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => ButtomNavigation(user: state.user,),
+              ));
+            } else if (state is UserError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message)),
+              );
+            }
+          },
         builder: (context, state) {
           return Form(
             key: formKey,
@@ -102,14 +104,15 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                   ),
                 ),
                 verticalSpacing(30),
-                state is AppLoginLoadingState
-                    ? const CircularProgressIndicator()
-                    : CustomMaterialBottons(
+                // state is UserState
+                //     ? const CircularProgressIndicator()
+                     CustomMaterialBottons(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            BlocProvider.of<AppLoginCubit>(context).userLogin(
-                                email: emailController.text,
-                                password: passController.text);
+                            context.read<UserCubit>().login(
+                            emailController.text,
+                            passController.text,
+                          );
                           }
                         },
                         text: ConstText.createAcount,
@@ -145,3 +148,14 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
     );
   }
 }
+  // listener: (context, state) {
+  //         if (state is AppLoginSuccessState) {
+  //           showToast(message: "تم بجيل الدخول بنجاح");
+  //           Navigator.of(context).pushReplacement(MaterialPageRoute(
+  //               builder: (context) => const ButtomNavigation()));
+  //         } else if (state is AppLoginErrorState) {
+  //           showToast(message: state.error);
+  //         } else {
+  //           showToast(message: "حدث خطأ اثناء تسجيل الدخول");
+  //         }
+  //       },

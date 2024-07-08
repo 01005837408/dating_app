@@ -4,42 +4,38 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SectionCustomPost extends StatefulWidget {
-  const SectionCustomPost(
+   SectionCustomPost(
       // this.documentId,
       {
     super.key,
     required this.controller,
-    //  required this.signUpUserModal,
+   required this.userModel ,
   });
 
   final PageController controller;
+  UserModel userModel ;
 
   @override
   State<SectionCustomPost> createState() => _SectionCustomPostState();
 }
 
 class _SectionCustomPostState extends State<SectionCustomPost> {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List data = [];
-  getDate() async {
-    QuerySnapshot querySnapshot = await firestore.collection("users").get();
-    data.addAll(querySnapshot.docs);
-    setState(() {});
-  }
 
+ 
   @override
   initState() {
-    getDate();
+    // getDate();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    
     return Container(
       width: double.infinity,
       color: Colors.white,
@@ -69,7 +65,7 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "DATA",
+                      " ${widget.userModel.lname} ${widget.userModel.fname}",
                       // "${data[0]['fName']} ${data[0]['lName']}",
                       style: const TextStyle(color: AppColor.kPrimaryColor),
                     ),

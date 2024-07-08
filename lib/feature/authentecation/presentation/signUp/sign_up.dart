@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, unused_local_variable
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -22,29 +20,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // TextEditingController fNameController = TextEditingController();
-  User user = FirebaseAuth.instance.currentUser!;
 
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  TextEditingController fNameController = TextEditingController();
-
-  TextEditingController lNameController = TextEditingController();
-
-  TextEditingController emailController = TextEditingController();
-  //  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  FirebaseAuth auth = FirebaseAuth.instance;
-  Map<String, dynamic>? userData;
-  CollectionReference callRef = FirebaseFirestore.instance.collection("users");
-  addUser() async {
-    SignUpUserModal userModal = SignUpUserModal(
-      email: emailController.text,
-      fName: fNameController.text,
-      lName: lNameController.text,
-      id: user.uid,
-    );
-    await callRef.doc(user.uid).set(userModal.toJson());
-  }
 
   @override
   void initState() {
@@ -114,12 +90,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               );
                               final firebaseUser = await FirebaseAuth.instance
                                   .signInWithCredential(authCredential);
-                              addUser();
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ButtomNavigation()));
+                            //  addUser();
+                              // Navigator.pushReplacement(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //             ButtomNavigation(
+                              //               user: state.us,
+                              //             )));
                             },
                             child: Row(
                               children: [

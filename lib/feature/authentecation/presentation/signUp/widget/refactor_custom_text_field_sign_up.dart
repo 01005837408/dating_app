@@ -1,8 +1,6 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/core/function/show_taost.dart';
-import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
@@ -30,28 +28,24 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
   User user = FirebaseAuth.instance.currentUser!;
 
   final formKey = GlobalKey<FormState>();
-  CollectionReference callRef =  FirebaseFirestore.instance.collection("users") ;
-  addUser() async {
-    SignUpUserModal userModal = SignUpUserModal(
-      email: emailController.text,
-      fName: fNameController.text,
-      lName: lNameController.text,
-      id: user.uid,
-    );
-    await callRef.add({
-      "email": userModal.email,
-      "fName": userModal.fName,
-      "lName": userModal.lName,
-      "id": userModal.id
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthSignUpCubit>(
-      create: (context) => AuthSignUpCubit(),
-      child: BlocConsumer<AuthSignUpCubit, AuthSignUpState>(
-        listener: listnerOfStateAuth,
+    return BlocProvider<UserCubit>(
+      create: (context) => UserCubit(),
+      child: BlocConsumer<UserCubit, UserState>(
+      listener: (context, state) {
+            if (state is UserLoaded) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => SignInScreen(),
+              ));
+            } else if (state is UserError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message)),
+              );
+            }
+          },
         builder: (context, state) {
           return Form(
             key: formKey,
@@ -142,17 +136,18 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                       prefixIcon: const Icon(Icons.visibility_off)),
                   verticalSpacing(10),
                   verticalSpacing(30),
-                  state is AuthSignUpLoading
+                  state is UserLoading
                       ? const CircularProgressIndicator()
                       : CustomMaterialBottons(
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              SignUpUserModal userModal;
-                              BlocProvider.of<AuthSignUpCubit>(context)
-                                  .signUpCreateUserAndPassword(
-                                      emailAddress: emailController.text,
-                                      password: passController.text);
-                           addUser();
+                              context.read<UserCubit>().signUp(
+                                fNameController.text,
+                                lNameController.text,
+                                emailController.text,
+                                passController.text,
+
+                              );
                             }
                           },
                           text: ConstText.createAcount),
@@ -167,17 +162,5 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
     );
   }
 
-  void listnerOfStateAuth(context, state) {
-    if (state is AuthSignUpSuccess) {
-      showToast(
-        message: "Created Successfully",
-      );
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => SignInScreen()));
-    } else if (state is AuthSignUpIFailure) {
-      showToast(
-        message: state.error,
-      );
-    }
-  }
+  
 }

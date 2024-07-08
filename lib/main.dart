@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 void main() async {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper().init();
+  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   authStateChanges();
-
+CacheHelper().init();
   // UserModel userModel = UserModel.fromFirestore(userDoc.data() as Map<String, dynamic>);
 }

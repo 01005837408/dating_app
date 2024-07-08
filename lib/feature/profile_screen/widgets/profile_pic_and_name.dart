@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:dating_app/core/api/api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePictureAndName extends StatefulWidget {
@@ -85,7 +84,7 @@ class _ProfilePictureAndNameState extends State<ProfilePictureAndName> {
         Center(
           child: Text(
             'Hadi Saed',
-            style: GoogleFonts.italiana(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
                   color: Colors.white,
                   fontSize: 26
@@ -98,7 +97,7 @@ class _ProfilePictureAndNameState extends State<ProfilePictureAndName> {
         ),
         Text(
           'ID : 215020',
-          style: GoogleFonts.adamina(
+          style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.white,
               fontSize: 18  ),

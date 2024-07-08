@@ -1,10 +1,13 @@
 import 'package:dating_app/core/cubit/app_cubit.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ButtomNavigation extends StatefulWidget {
-  const ButtomNavigation({super.key});
+  
+ final UserModel user;
+ ButtomNavigation({super.key, required this.user});
 
   @override
   State<ButtomNavigation> createState() => _ButtomNavigationState();

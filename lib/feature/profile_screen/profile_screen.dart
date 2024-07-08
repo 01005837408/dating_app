@@ -1,14 +1,10 @@
 
-import 'dart:io';
+// ignore_for_file: prefer_final_fields, use_build_context_synchronously
 
-import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/widget/custom_appbar.dart';
+import 'dart:io';
 import 'package:dating_app/feature/profile_screen/widgets/Profile_appBar.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body.dart';
-import 'package:dating_app/feature/settings_profile/settings_Screen_profile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -49,16 +45,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
            child: Wrap(
              children: <Widget>[
                ListTile(
-                   leading: Icon(Icons.photo_library),
-                   title: Text('Photo Library'),
+                   leading: const Icon(Icons.photo_library),
+                   title: const Text('Photo Library'),
                    onTap: () {
                      _pickImage(ImageSource.gallery);
                      Api.updateProfilePicture(File(_image!.path));
                      setState(() {});
                    }),
                ListTile(
-                   leading: Icon(Icons.photo_camera),
-                   title: Text('Camera'),
+                   leading: const Icon(Icons.photo_camera),
+                   title: const Text('Camera'),
                    onTap: () {
                      _pickImage(ImageSource.camera);
                      Api.updateProfilePicture(File(_image!.path));
@@ -92,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CircleAvatar(
                     backgroundImage: _image != null
                         ? FileImage(File(_image!.path))
-                        : NetworkImage(
+                        : const NetworkImage(
                       "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
                     ) as ImageProvider,
                     radius: 80,

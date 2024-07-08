@@ -24,8 +24,8 @@ class SpatailRouter {
                 ));
       case Routs.registerScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider<AuthSignUpCubit>(
-                  create: (context) => AuthSignUpCubit(),
+            builder: (_) => BlocProvider<UserCubit>(
+                  create: (context) => UserCubit(),
                   child: SignUpScreen(),
                 ));
       default:
