@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
-
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -7,44 +5,29 @@ import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SectionCustomPost extends StatefulWidget {
-   SectionCustomPost(
-      // this.documentId,
-      {
-    super.key,
-    required this.controller,
-   required this.userModel ,
-  });
-
+class SectionCustomPost extends StatelessWidget {
   final PageController controller;
-  UserModel userModel ;
+  final UserModel userModel;
+  final String imageUrl;
 
-  @override
-  State<SectionCustomPost> createState() => _SectionCustomPostState();
-}
-
-class _SectionCustomPostState extends State<SectionCustomPost> {
-
- 
-  @override
-  initState() {
-    // getDate();
-    super.initState();
-  }
+  SectionCustomPost({
+    Key? key,
+    required this.controller,
+    required this.userModel,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       width: double.infinity,
       color: Colors.white,
       child: Column(
         children: [
-          Image.asset(Assets.homeImageBody,
-              width: double.infinity, height: 300, fit: BoxFit.cover),
+          Image.network(imageUrl, width: double.infinity, height: 300, fit: BoxFit.fill),
           verticalSpacing(6),
           SmoothPageIndicator(
-              controller: widget.controller, // PageController
+              controller: controller, // PageController
               count: 3,
               effect: const WormEffect(
                 dotColor: Colors.grey,
@@ -64,8 +47,7 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      " ${widget.userModel.lname} ${widget.userModel.fname}",
-                      // "${data[0]['fName']} ${data[0]['lName']}",
+                      " ${userModel.lname} ${userModel.fname}",
                       style: const TextStyle(color: AppColor.kPrimaryColor),
                     ),
                     horizontalSpacing(10),
@@ -75,7 +57,6 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                       height: 40,
                     ),
                   ],
-                  //
                 ),
               ),
             ),
@@ -88,8 +69,7 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
               children: [
                 InkWell(
                   onTap: () {},
-                  child:
-                      Image.asset(Assets.commentImage, width: 30, height: 30),
+                  child: Image.asset(Assets.commentImage, width: 30, height: 30),
                 ),
                 horizontalSpacing(20),
                 InkWell(
@@ -99,9 +79,8 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
                       width: 30,
                       height: 30,
                     )),
-                // Text("Text"),
-                Spacer(),
-                Column(
+                const Spacer(),
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text("23. Egypt"),
@@ -111,7 +90,6 @@ class _SectionCustomPostState extends State<SectionCustomPost> {
               ],
             ),
           ),
-          // Text("Text"),
           verticalSpacing(30),
         ],
       ),

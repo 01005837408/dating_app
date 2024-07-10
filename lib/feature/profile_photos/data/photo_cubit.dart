@@ -34,12 +34,17 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
       }
 
       // Upload to Firebase Storage
-      final storageRef = FirebaseStorage.instance.ref().child('profile_photos/${currentUser.uid}/${DateTime.now().millisecondsSinceEpoch}.jpg');
+      final storageRef = FirebaseStorage.instance.ref().child(
+          'profile_photos/${currentUser.uid}/${DateTime.now().millisecondsSinceEpoch}.jpg');
       await storageRef.putFile(File(image.path));
       final imageUrl = await storageRef.getDownloadURL();
 
       // Save URL to Firestore
-      await _firestore.collection('users').doc(currentUser.uid).collection('profile_photos').add({
+      await _firestore
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('profile_photos')
+          .add({
         'url': imageUrl,
         'timestamp': FieldValue.serverTimestamp(),
       });
@@ -62,9 +67,15 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
         return;
       }
 
-      final querySnapshot = await _firestore.collection('users').doc(currentUser.uid).collection('profile_photos').orderBy('timestamp', descending: true).get();
-      final images = querySnapshot.docs.map((doc) => doc['url'] as String).toList();
-
+      final querySnapshot = await _firestore
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('profile_photos')
+          .orderBy('timestamp', descending: true)
+          .get();
+      final images =
+          querySnapshot.docs.map((doc) => doc['url'] as String).toList();
+      print(images.length);
       emit(ProfilePhotosLoaded(images));
     } catch (e) {
       emit(ProfilePhotosError(e.toString()));
@@ -87,9 +98,19 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
       await imageRef.delete();
 
       // Delete from Firestore
-      final querySnapshot = await _firestore.collection('users').doc(currentUser.uid).collection('profile_photos').where('url', isEqualTo: imageUrl).get();
+      final querySnapshot = await _firestore
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('profile_photos')
+          .where('url', isEqualTo: imageUrl)
+          .get();
       final docId = querySnapshot.docs.first.id;
-      await _firestore.collection('users').doc(currentUser.uid).collection('profile_photos').doc(docId).delete();
+      await _firestore
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('profile_photos')
+          .doc(docId)
+          .delete();
 
       // Fetch images again to update the state
       fetchImages();

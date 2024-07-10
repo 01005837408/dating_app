@@ -40,7 +40,7 @@ class GridViewPhotos extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(25),
-                    child: Image.network(state.images[index], fit: BoxFit.cover),
+                    child: Image.network(state.images[index], fit: BoxFit.contain),
                   ),
                 ),
               ),
