@@ -9,7 +9,7 @@ class HomeCubit extends Cubit<HomeState> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<void> fetchImages() async {
+  Future<void> fetchUserImages() async {
     try {
       emit(HomeLoading());
 
@@ -28,11 +28,11 @@ class HomeCubit extends Cubit<HomeState> {
           .get();
       final images =
           querySnapshot.docs.map((doc) => doc['url'] as String).toList();
-      print(images.length);
+
+      print('Fetched images: $images');
       emit(HomeLoaded(images));
     } catch (e) {
       emit(HomeError(e.toString()));
     }
   }
 }
-

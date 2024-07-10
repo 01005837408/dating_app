@@ -3,6 +3,7 @@ import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_u
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_cubit.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,7 @@ class _CustomPostState extends State<CustomPost> {
   PageController controller = PageController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List<UserModel> users = [];
+  UserModel? currentUser;
 
   @override
   void initState() {
@@ -28,6 +30,14 @@ class _CustomPostState extends State<CustomPost> {
 
   Future<void> fetchUsers() async {
     try {
+      // Get current user
+      final currentUserId = FirebaseAuth.instance.currentUser?.uid;
+      if (currentUserId == null) {
+        print('User not authenticated');
+        return;
+      }
+
+      // Fetch all users
       QuerySnapshot querySnapshot = await _firestore.collection('users').get();
       users = querySnapshot.docs.map((doc) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
@@ -41,6 +51,17 @@ class _CustomPostState extends State<CustomPost> {
         }
         return UserModel.fromMap(data);
       }).toList();
+
+      // Find the current user
+      currentUser = users.firstWhere((user) => user.uid == currentUserId, orElse: () => UserModel(
+        uid: '',
+        fname: 'Unknown',
+        lname: 'User',
+        email: '',
+      ));
+
+      print('Current user: ${currentUser?.fname} ${currentUser?.lname}');
+
       setState(() {});
     } catch (e) {
       print('Error fetching users: $e');
@@ -50,7 +71,7 @@ class _CustomPostState extends State<CustomPost> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..fetchImages(),
+      create: (context) => HomeCubit()..fetchUserImages(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeLoading) {
@@ -61,13 +82,19 @@ class _CustomPostState extends State<CustomPost> {
               itemCount: users.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
+                final user = users[index];
+                final isCurrentUser = user.uid == currentUser?.uid;
+                final images = isCurrentUser ? state.images : [/* Default images for other users */];
+
+                print('Displaying images for user: ${user.fname} ${user.lname}, isCurrentUser: $isCurrentUser, images: $images');
+
                 return Directionality(
                   textDirection: TextDirection.rtl,
                   child: Column(
-                    children: state.images.map((imageUrl) {
+                    children: images.map((imageUrl) {
                       return SectionCustomPost(
                         controller: controller,
-                        userModel: users[index],
+                        userModel: user,
                         imageUrl: imageUrl,
                       );
                     }).toList(),
