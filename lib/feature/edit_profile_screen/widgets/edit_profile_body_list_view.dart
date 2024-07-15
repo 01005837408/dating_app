@@ -11,18 +11,18 @@ import 'look_list_view.dart';
 class EditProfileBodyListView extends StatelessWidget {
   const EditProfileBodyListView({super.key});
 
-  void _showEditDialog(BuildContext context, int index, String listType) {
+  void _showEditDialog(BuildContext context, int index, String listType, String title, String initialValue) {
     final cubit = context.read<EditProfileCubit>();
-    TextEditingController controller = TextEditingController();
+    TextEditingController controller = TextEditingController(text: initialValue);
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Edit Subtitle'),
+          title: Text('Edit $title'),
           content: TextField(
             controller: controller,
-            decoration: const InputDecoration(hintText: "Enter new subtitle"),
+            decoration: InputDecoration(hintText: "Enter new $title"),
           ),
           actions: [
             TextButton(
@@ -47,13 +47,12 @@ class EditProfileBodyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-     create:(context) => EditProfileCubit(FirebaseAuth.instance.currentUser),
+      create: (context) => EditProfileCubit(FirebaseAuth.instance.currentUser),
       child: BlocBuilder<EditProfileCubit, EditProfileState>(
         builder: (context, state) {
           return SingleChildScrollView(
             child: Padding(
-              padding:
-                  const EdgeInsets.only(right: 15, left: 15, top: 60, bottom: 20),
+              padding: const EdgeInsets.only(right: 15, left: 15, top: 60, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -65,13 +64,20 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                      indent: 20,
-                      endIndent: 20,
-                      color: Colors.blue,
-                      thickness: 2),
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.blue,
+                    thickness: 2,
+                  ),
                   BascisListView(
                     editProfileList: state.editProfileBasicList,
-                    onEdit: (index) => _showEditDialog(context, index, 'Basic'),
+                    onEdit: (index) => _showEditDialog(
+                      context,
+                      index,
+                      'Basic',
+                      state.editProfileBasicList[index].title,
+                      state.editProfileBasicList[index].subtitle,
+                    ),
                   ),
                   const Text(
                     'Look',
@@ -81,13 +87,20 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                      indent: 20,
-                      endIndent: 20,
-                      color: Colors.blue,
-                      thickness: 2),
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.blue,
+                    thickness: 2,
+                  ),
                   LookListView(
                     editProfileLookList: state.editProfileLookList,
-                    onEdit: (index) => _showEditDialog(context, index, 'Look'),
+                    onEdit: (index) => _showEditDialog(
+                      context,
+                      index,
+                      'Look',
+                      state.editProfileLookList[index].title,
+                      state.editProfileLookList[index].subtitle,
+                    ),
                   ),
                   const Text(
                     'Life Style',
@@ -97,14 +110,20 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                      indent: 20,
-                      endIndent: 20,
-                      color: Colors.blue,
-                      thickness: 2),
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.blue,
+                    thickness: 2,
+                  ),
                   LifeStyleListView(
-                    editProfileLifeStyleList: state!.editProfileLifeStyleList,
-                    onEdit: (index) =>
-                        _showEditDialog(context, index, 'LifeStyle'),
+                    editProfileLifeStyleList: state.editProfileLifeStyleList,
+                    onEdit: (index) => _showEditDialog(
+                      context,
+                      index,
+                      'LifeStyle',
+                      state.editProfileLifeStyleList[index].title,
+                      state.editProfileLifeStyleList[index].subtitle,
+                    ),
                   ),
                   const Text(
                     'Culture',
@@ -114,13 +133,20 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                      indent: 20,
-                      endIndent: 20,
-                      color: Colors.blue,
-                      thickness: 2),
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.blue,
+                    thickness: 2,
+                  ),
                   CaltureListView(
-                    editProfileCalutreList: state!.editProfileCalutreList,
-                    onEdit: (index) => _showEditDialog(context, index, 'Culture'),
+                    editProfileCalutreList: state.editProfileCalutreList,
+                    onEdit: (index) => _showEditDialog(
+                      context,
+                      index,
+                      'Culture',
+                      state.editProfileCalutreList[index].title,
+                      state.editProfileCalutreList[index].subtitle,
+                    ),
                   ),
                 ],
               ),
