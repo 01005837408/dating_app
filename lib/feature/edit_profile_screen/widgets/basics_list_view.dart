@@ -2,8 +2,14 @@ import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class BascisListView extends StatelessWidget {
-  const BascisListView({super.key, required this.editProfileList});
+  const BascisListView({
+    super.key,
+    required this.editProfileList,
+    required this.onEdit,
+  });
+
   final List<EditProfileBasciModel> editProfileList;
+  final Function(int) onEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,10 @@ class BascisListView extends StatelessWidget {
             editProfileList[index].subtitle,
             style: const TextStyle(color: Colors.grey),
           ),
-          trailing: const Icon(Icons.edit),
+          trailing: IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => onEdit(index),
+          ),
         ),
       ),
     );

@@ -2,9 +2,9 @@ import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class CaltureListView extends StatelessWidget {
-  const CaltureListView({super.key, required this.editProfileCalutreList});
+  const CaltureListView({super.key, required this.editProfileCalutreList , required this.onEdit});
   final List<EditProfileCaltureeModel> editProfileCalutreList;
-
+final Function(int) onEdit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +21,10 @@ class CaltureListView extends StatelessWidget {
             editProfileCalutreList[index].subtitle,
             style: const TextStyle(color: Colors.grey),
           ),
-          trailing: const Icon(Icons.edit),
+          trailing: IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => onEdit(index),
+          ),
         ),
       ),
     );

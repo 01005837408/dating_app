@@ -2,8 +2,9 @@ import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class LookListView extends StatelessWidget {
-  const LookListView({super.key, required this.editProfileLookList});
+   LookListView({super.key, required this.editProfileLookList,required this.onEdit,});
   final List<EditProfileLookModel> editProfileLookList;
+  Function(int) onEdit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +21,10 @@ class LookListView extends StatelessWidget {
             editProfileLookList[index].subtitle,
             style: const TextStyle(color: Colors.grey),
           ),
-          trailing: const Icon(Icons.edit),
+          trailing:  IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => onEdit(index),
+          ),
         ),
       ),
     );

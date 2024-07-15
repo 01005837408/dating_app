@@ -2,9 +2,9 @@ import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class LifeStyleListView extends StatelessWidget {
-  const LifeStyleListView({super.key, required this.editProfileLifeStyleList});
+   LifeStyleListView({super.key, required this.editProfileLifeStyleList , required this.onEdit});
   final List<EditProfileLifeStyleModel> editProfileLifeStyleList;
-
+Function(int) onEdit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +21,10 @@ class LifeStyleListView extends StatelessWidget {
             editProfileLifeStyleList[index].subtitle,
             style: const TextStyle(color: Colors.grey),
           ),
-          trailing: const Icon(Icons.edit),
+          trailing:  IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => onEdit(index),
+          ),
         ),
       ),
     );
