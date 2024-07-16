@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_cubit.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_cubit.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_state.dart';
@@ -53,12 +52,13 @@ class _CustomPostState extends State<CustomPost> {
       }).toList();
 
       // Find the current user
-      currentUser = users.firstWhere((user) => user.uid == currentUserId, orElse: () => UserModel(
-        uid: '',
-        fname: 'Unknown',
-        lname: 'User',
-        email: '',
-      ));
+      currentUser = users.firstWhere((user) => user.uid == currentUserId,
+          orElse: () => UserModel(
+                uid: '',
+                fname: 'Unknown',
+                lname: 'User',
+                email: '',
+              ));
 
       print('Current user: ${currentUser?.fname} ${currentUser?.lname}');
 
@@ -71,7 +71,7 @@ class _CustomPostState extends State<CustomPost> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..fetchUserImages(),
+      create: (context) => HomeCubit()..fetchAllUserImages(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeLoading) {
@@ -83,10 +83,10 @@ class _CustomPostState extends State<CustomPost> {
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 final user = users[index];
-                final isCurrentUser = user.uid == currentUser?.uid;
-                final images = isCurrentUser ? state.images : [/* Default images for other users */];
+                final images = state.userImages[user.uid] ?? [];
 
-                print('Displaying images for user: ${user.fname} ${user.lname}, isCurrentUser: $isCurrentUser, images: $images');
+                print(
+                    'Displaying images for user: ${user.fname} ${user.lname}, images: $images');
 
                 return Directionality(
                   textDirection: TextDirection.rtl,

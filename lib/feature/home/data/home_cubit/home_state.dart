@@ -5,9 +5,9 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
-  final List<String> images;
+  final Map<String, List<String>> userImages;
 
-  HomeLoaded(this.images);
+  HomeLoaded(this.userImages);
 }
 
 class HomeError extends HomeState {

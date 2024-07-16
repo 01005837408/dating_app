@@ -162,7 +162,7 @@ class EditProfileBodyListView extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () => _handleUpdateUserName(context),
-                    child: Text('Update UserName'),
+                    child:const Text('Update UserName'),
                   ),
                 ],
               ),

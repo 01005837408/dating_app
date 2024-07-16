@@ -9,28 +9,27 @@ class HomeCubit extends Cubit<HomeState> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<void> fetchUserImages() async {
+  Future<void> fetchAllUserImages() async {
     try {
       emit(HomeLoading());
 
-      // Get current user
-      final currentUser = _auth.currentUser;
-      if (currentUser == null) {
-        emit(HomeError("User not authenticated"));
-        return;
+      final querySnapshot = await _firestore.collection('users').get();
+      final userImages = <String, List<String>>{};
+
+      for (var userDoc in querySnapshot.docs) {
+        final userId = userDoc.id;
+        final imagesQuerySnapshot = await _firestore
+            .collection('users')
+            .doc(userId)
+            .collection('profile_photos')
+            .orderBy('timestamp', descending: true)
+            .get();
+
+        final images = imagesQuerySnapshot.docs.map((doc) => doc['url'] as String).toList();
+        userImages[userId] = images;
       }
 
-      final querySnapshot = await _firestore
-          .collection('users')
-          .doc(currentUser.uid)
-          .collection('profile_photos')
-          .orderBy('timestamp', descending: true)
-          .get();
-      final images =
-          querySnapshot.docs.map((doc) => doc['url'] as String).toList();
-
-      print('Fetched images: $images');
-      emit(HomeLoaded(images));
+      emit(HomeLoaded(userImages));
     } catch (e) {
       emit(HomeError(e.toString()));
     }
