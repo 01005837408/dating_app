@@ -17,12 +17,12 @@ class MyProfileDetailsHeader extends StatelessWidget {
       child: BlocBuilder<EditProfileCubit, EditProfileState>(
         builder: (context, state) {
           final basicInfoList = state.editProfileBasicList;
-      
+
           // Extracting name, age, and location from the state
           String name = '';
           String age = '';
           String location = '';
-      
+
           for (var basicInfo in basicInfoList) {
             if (basicInfo.title == 'First Name') {
               name = basicInfo.subtitle;
@@ -30,7 +30,9 @@ class MyProfileDetailsHeader extends StatelessWidget {
               location = basicInfo.subtitle;
             }
           }
-      
+          final userName = state.editProfileBasicList
+              .firstWhere((element) => element.title == 'First Name')
+              .subtitle;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
             child: Row(
@@ -42,8 +44,9 @@ class MyProfileDetailsHeader extends StatelessWidget {
                       children: [
                         Icon(Icons.person, color: AppColor.kPrimaryColor),
                         Text(
-                          '$name . $age',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                          '$userName . $age',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],
                     ),
@@ -54,7 +57,8 @@ class MyProfileDetailsHeader extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 19),
                         ),
-                        const Icon(Icons.location_on, color: AppColor.kPrimaryColor),
+                        const Icon(Icons.location_on,
+                            color: AppColor.kPrimaryColor),
                       ],
                     ),
                     // Additional rows for other basic info if needed
@@ -62,31 +66,31 @@ class MyProfileDetailsHeader extends StatelessWidget {
                 ),
                 const Spacer(),
                 // Additional details column if needed
-                  Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      S.of(context).online,
-                      style: const TextStyle(fontSize: 20),
+                    Row(
+                      children: [
+                        Text(
+                          S.of(context).online,
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 10,
+                          height: 10,
+                          decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(20)),
+                        )
+                      ],
                     ),
-                    const SizedBox(width: 10),
-                    Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(20)),
+                    Text(
+                      S.of(context).id,
+                      style: const TextStyle(fontSize: 19),
                     )
                   ],
-                ),
-                Text(
-                  S.of(context).id,
-                  style: const TextStyle(fontSize: 19),
                 )
-              ],
-              )
               ],
             ),
           );

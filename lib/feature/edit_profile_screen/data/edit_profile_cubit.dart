@@ -172,70 +172,74 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     }
   }
 
- void editSubtitle(int index, String newSubtitle, String listType) {
-  final currentState = state;
+  void editSubtitle(int index, String newSubtitle, String listType) {
+    final currentState = state;
 
-  switch (listType) {
-    case 'Basic':
-      final newBasicList = List<EditProfileBasciModel>.from(currentState.editProfileBasicList);
-      newBasicList[index] = EditProfileBasciModel(
-        title: newBasicList[index].title,
-        subtitle: newSubtitle,
-        icon: newBasicList[index].icon,
-      );
-      emit(EditProfileState(
-        editProfileBasicList: newBasicList,
-        editProfileLookList: currentState.editProfileLookList,
-        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-        editProfileCalutreList: currentState.editProfileCalutreList,
-      ));
-      break;
-    case 'Look':
-      final newLookList = List<EditProfileLookModel>.from(currentState.editProfileLookList);
-      newLookList[index] = EditProfileLookModel(
-        title: newLookList[index].title,
-        subtitle: newSubtitle,
-        icon: newLookList[index].icon,
-      );
-      emit(EditProfileState(
-        editProfileBasicList: currentState.editProfileBasicList,
-        editProfileLookList: newLookList,
-        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-        editProfileCalutreList: currentState.editProfileCalutreList,
-      ));
-      break;
-    case 'LifeStyle':
-      final newLifeStyleList = List<EditProfileLifeStyleModel>.from(currentState.editProfileLifeStyleList);
-      newLifeStyleList[index] = EditProfileLifeStyleModel(
-        title: newLifeStyleList[index].title,
-        subtitle: newSubtitle,
-        icon: newLifeStyleList[index].icon,
-      );
-      emit(EditProfileState(
-        editProfileBasicList: currentState.editProfileBasicList,
-        editProfileLookList: currentState.editProfileLookList,
-        editProfileLifeStyleList: newLifeStyleList,
-        editProfileCalutreList: currentState.editProfileCalutreList,
-      ));
-      break;
-    case 'Culture':
-      final newCultureList = List<EditProfileCaltureeModel>.from(currentState.editProfileCalutreList);
-      newCultureList[index] = EditProfileCaltureeModel(
-        title: newCultureList[index].title,
-        subtitle: newSubtitle,
-        icon: newCultureList[index].icon,
-      );
-      emit(EditProfileState(
-        editProfileBasicList: currentState.editProfileBasicList,
-        editProfileLookList: currentState.editProfileLookList,
-        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-        editProfileCalutreList: newCultureList,
-      ));
-      break;
+    switch (listType) {
+      case 'Basic':
+        final newBasicList =
+            List<EditProfileBasciModel>.from(currentState.editProfileBasicList);
+        newBasicList[index] = EditProfileBasciModel(
+          title: newBasicList[index].title,
+          subtitle: newSubtitle,
+          icon: newBasicList[index].icon,
+        );
+        emit(EditProfileState(
+          editProfileBasicList: newBasicList,
+          editProfileLookList: currentState.editProfileLookList,
+          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+          editProfileCalutreList: currentState.editProfileCalutreList,
+        ));
+        break;
+      case 'Look':
+        final newLookList =
+            List<EditProfileLookModel>.from(currentState.editProfileLookList);
+        newLookList[index] = EditProfileLookModel(
+          title: newLookList[index].title,
+          subtitle: newSubtitle,
+          icon: newLookList[index].icon,
+        );
+        emit(EditProfileState(
+          editProfileBasicList: currentState.editProfileBasicList,
+          editProfileLookList: newLookList,
+          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+          editProfileCalutreList: currentState.editProfileCalutreList,
+        ));
+        break;
+      case 'LifeStyle':
+        final newLifeStyleList = List<EditProfileLifeStyleModel>.from(
+            currentState.editProfileLifeStyleList);
+        newLifeStyleList[index] = EditProfileLifeStyleModel(
+          title: newLifeStyleList[index].title,
+          subtitle: newSubtitle,
+          icon: newLifeStyleList[index].icon,
+        );
+        emit(EditProfileState(
+          editProfileBasicList: currentState.editProfileBasicList,
+          editProfileLookList: currentState.editProfileLookList,
+          editProfileLifeStyleList: newLifeStyleList,
+          editProfileCalutreList: currentState.editProfileCalutreList,
+        ));
+        break;
+      case 'Culture':
+        final newCultureList = List<EditProfileCaltureeModel>.from(
+            currentState.editProfileCalutreList);
+        newCultureList[index] = EditProfileCaltureeModel(
+          title: newCultureList[index].title,
+          subtitle: newSubtitle,
+          icon: newCultureList[index].icon,
+        );
+        emit(EditProfileState(
+          editProfileBasicList: currentState.editProfileBasicList,
+          editProfileLookList: currentState.editProfileLookList,
+          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+          editProfileCalutreList: newCultureList,
+        ));
+        break;
+    }
+
+    saveUserData();
   }
-
-  saveUserData();
-}
 
   Future<void> saveUserData() async {
     if (user != null) {
@@ -256,4 +260,33 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       });
     }
   }
+ 
+
+  Future<void> updateUserName(String newUserName) async {
+    if (user != null) {
+      // Update in the main user collection
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user!.uid)
+          .update({
+            'fname': newUserName.split(' ')[0],
+            'lname': newUserName.split(' ')[1],
+          });
+
+      // Update in the edit_profile subcollection
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user!.uid)
+          .collection('edit_profile')
+          .doc('data')
+          .update({'userName': newUserName});
+
+      // Reload user data after update
+      _loadUserData();
+    }
+  }
+
+  // Existing methods and state management code
 }
+
+

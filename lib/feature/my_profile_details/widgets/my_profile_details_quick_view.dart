@@ -13,28 +13,30 @@ class QuickViewInMyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-       create: (context) => EditProfileCubit(FirebaseAuth.instance.currentUser),
+      create: (context) => EditProfileCubit(FirebaseAuth.instance.currentUser),
       child: BlocBuilder<EditProfileCubit, EditProfileState>(
         builder: (context, state) {
           final lifeStyleList = state.editProfileLifeStyleList;
           final cultureList = state.editProfileCalutreList;
-      
+
           // Extracting work and education from the state
           String work = '';
           String education = '';
-      
+
           for (var lifeStyle in lifeStyleList) {
             if (lifeStyle.title == 'Job') {
               work = lifeStyle.subtitle;
             }
           }
-      
+
           for (var culture in cultureList) {
             if (culture.title == 'Education') {
               education = culture.subtitle;
             }
           }
-      
+
+         
+
           return Row(
             children: [
               Column(
@@ -42,8 +44,8 @@ class QuickViewInMyProfile extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).work,
-                    style:
-                        const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+                    style: const TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20),
                   ),
                   Text(
                     work,
@@ -53,8 +55,8 @@ class QuickViewInMyProfile extends StatelessWidget {
                   ),
                   Text(
                     S.of(context).maritalStatus,
-                    style:
-                        const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+                    style: const TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20),
                   ),
                   Text(
                     S.of(context).single,
@@ -67,8 +69,8 @@ class QuickViewInMyProfile extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).education,
-                    style:
-                        const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+                    style: const TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20),
                   ),
                   Text(education),
                   const SizedBox(
@@ -76,8 +78,8 @@ class QuickViewInMyProfile extends StatelessWidget {
                   ),
                   Text(
                     S.of(context).religion,
-                    style:
-                        const TextStyle(color: AppColor.kPrimaryColor, fontSize: 20),
+                    style: const TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20),
                   ),
                   Text(S.of(context).Muslim),
                 ],

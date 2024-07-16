@@ -11,60 +11,74 @@ import 'look_list_view.dart';
 class EditProfileBodyListView extends StatelessWidget {
   const EditProfileBodyListView({super.key});
 
-  void _showEditDialog(BuildContext context, int index, String listType) {
-    final cubit = context.read<EditProfileCubit>();
-    TextEditingController controller = TextEditingController();
-    final state = cubit.state;
+ void _showEditDialog(BuildContext context, int index, String listType) {
+  final cubit = context.read<EditProfileCubit>();
+  TextEditingController controller = TextEditingController();
+  final state = cubit.state;
 
-    // Get the corresponding model based on listType and index
-    dynamic model;
-    switch (listType) {
-      case 'Basic':
-        model = state.editProfileBasicList[index];
-        break;
-      case 'Look':
-        model = state.editProfileLookList[index];
-        break;
-      case 'LifeStyle':
-        model = state.editProfileLifeStyleList[index];
-        break;
-      case 'Culture':
-        model = state.editProfileCalutreList[index];
-        break;
-    }
+  // Get the corresponding model based on listType and index
+  dynamic model;
+  switch (listType) {
+    case 'Basic':
+      model = state.editProfileBasicList[index];
+      break;
+    case 'Look':
+      model = state.editProfileLookList[index];
+      break;
+    case 'LifeStyle':
+      model = state.editProfileLifeStyleList[index];
+      break;
+    case 'Culture':
+      model = state.editProfileCalutreList[index];
+      break;
+  }
 
-    // Set initial value for the text field
-    controller.text = model.subtitle;
+  // Set initial value for the text field
+  controller.text = model.subtitle;
 
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Edit ${model.title}'),
-          content: TextField(
-            controller: controller,
-            decoration: InputDecoration(hintText: "Enter new ${model.title}"),
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Edit ${model.title}'),
+        content: TextField(
+          controller: controller,
+          decoration: InputDecoration(hintText: "Enter new ${model.title}"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Cancel'),
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
+          if (model.title == 'First Name')
+            ElevatedButton(
               onPressed: () {
                 cubit.editSubtitle(index, controller.text, listType);
-                cubit.saveUserData();
-                //cubit.editSubtitle(index, controller.text, listType); // Update subtitle in cubit state
+                cubit.updateUserName(controller.text); // Update username
+                Navigator.of(context).pop();
+              },
+              child: const Text('Update UserName'),
+            ),
+          if (model.title != 'First Name')
+            ElevatedButton(
+              onPressed: () {
+                cubit.editSubtitle(index, controller.text, listType);
+                cubit.saveUserData(); // Save other fields
                 Navigator.of(context).pop();
               },
               child: const Text('Save'),
             ),
-          ],
-        );
-      },
-    );
+        ],
+      );
+    },
+  );
+}
+
+  void _handleUpdateUserName(BuildContext context) {
+    final cubit = context.read<EditProfileCubit>();
+    cubit.updateUserName('New User Name'); // Replace with actual user input
   }
 
   @override
@@ -145,6 +159,10 @@ class EditProfileBodyListView extends StatelessWidget {
                     editProfileCalutreList: state!.editProfileCalutreList,
                     onEdit: (index) =>
                         _showEditDialog(context, index, 'Culture'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _handleUpdateUserName(context),
+                    child: Text('Update UserName'),
                   ),
                 ],
               ),
