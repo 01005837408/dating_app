@@ -31,6 +31,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
               subtitle: '',
               icon: Icons.person_outline,
             ),
+            
             EditProfileBasciModel(
               title: 'Live In',
               subtitle: 'Cairo, Egypt',
@@ -58,6 +59,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
               subtitle: '70',
               icon: Icons.info_outline,
             ),
+           
+            
           ],
           editProfileLifeStyleList: [
             EditProfileLifeStyleModel(

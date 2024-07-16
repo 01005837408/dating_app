@@ -10,10 +10,8 @@ import 'look_list_view.dart';
 
 class EditProfileBodyListView extends StatelessWidget {
   const EditProfileBodyListView({super.key});
-
- void _showEditDialog(BuildContext context, int index, String listType) {
+void _showEditDialog(BuildContext context, int index, String listType) {
   final cubit = context.read<EditProfileCubit>();
-  TextEditingController controller = TextEditingController();
   final state = cubit.state;
 
   // Get the corresponding model based on listType and index
@@ -33,48 +31,114 @@ class EditProfileBodyListView extends StatelessWidget {
       break;
   }
 
-  // Set initial value for the text field
+  // Set initial value for the text field or dropdown
+  TextEditingController controller = TextEditingController();
   controller.text = model.subtitle;
+
+  String dropdownValue = model.subtitle;
+  bool isDropdown = false;
+  List<String> dropdownOptions = [];
+  bool isAge = false;
+  int ageValue = 0;
+
+  if (model.title == 'Marital Status') {
+    isDropdown = true;
+    dropdownOptions = ['Single', 'Married', 'Divorced', 'Widowed'];
+    // Ensure the initial value is within the options
+    if (!dropdownOptions.contains(dropdownValue)) {
+      dropdownValue = dropdownOptions[0]; // default to the first option
+    }
+  } else if (model.title == 'Religion') {
+    isDropdown = true;
+    dropdownOptions = ['Muslim', 'Not Muslim'];
+    // Ensure the initial value is within the options
+    if (!dropdownOptions.contains(dropdownValue)) {
+      dropdownValue = dropdownOptions[0]; // default to the first option
+    }
+  } else if (model.title == 'Age') {
+    isAge = true;
+    ageValue = int.tryParse(model.subtitle) ?? 0;
+  }
 
   showDialog(
     context: context,
     builder: (context) {
-      return AlertDialog(
-        title: Text('Edit ${model.title}'),
-        content: TextField(
-          controller: controller,
-          decoration: InputDecoration(hintText: "Enter new ${model.title}"),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Cancel'),
-          ),
-          if (model.title == 'First Name')
-            ElevatedButton(
-              onPressed: () {
-                cubit.editSubtitle(index, controller.text, listType);
-                cubit.updateUserName(controller.text); // Update username
-                Navigator.of(context).pop();
-              },
-              child: const Text('Update UserName'),
-            ),
-          if (model.title != 'First Name')
-            ElevatedButton(
-              onPressed: () {
-                cubit.editSubtitle(index, controller.text, listType);
-                cubit.saveUserData(); // Save other fields
-                Navigator.of(context).pop();
-              },
-              child: const Text('Save'),
-            ),
-        ],
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return AlertDialog(
+            title: Text('Edit ${model.title}'),
+            content: isDropdown
+                ? DropdownButton<String>(
+                    value: dropdownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                    items: dropdownOptions.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )
+                : isAge
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.remove),
+                            onPressed: () {
+                              setState(() {
+                                ageValue = (ageValue > 0) ? ageValue - 1 : 0;
+                              });
+                            },
+                          ),
+                          Text(ageValue.toString()),
+                          IconButton(
+                            icon: Icon(Icons.add),
+                            onPressed: () {
+                              setState(() {
+                                ageValue++;
+                              });
+                            },
+                          ),
+                        ],
+                      )
+                    : TextField(
+                        controller: controller,
+                        decoration: InputDecoration(hintText: "Enter new ${model.title}"),
+                      ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (isDropdown) {
+                    cubit.editSubtitle(index, dropdownValue, listType);
+                  } else if (isAge) {
+                    cubit.editSubtitle(index, ageValue.toString(), listType);
+                  } else {
+                    cubit.editSubtitle(index, controller.text, listType);
+                  }
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          );
+        },
       );
     },
   );
 }
+
+
+
 
   void _handleUpdateUserName(BuildContext context) {
     final cubit = context.read<EditProfileCubit>();
