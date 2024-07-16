@@ -11,18 +11,39 @@ import 'look_list_view.dart';
 class EditProfileBodyListView extends StatelessWidget {
   const EditProfileBodyListView({super.key});
 
-  void _showEditDialog(BuildContext context, int index, String listType, String title, String initialValue) {
+  void _showEditDialog(BuildContext context, int index, String listType) {
     final cubit = context.read<EditProfileCubit>();
-    TextEditingController controller = TextEditingController(text: initialValue);
+    TextEditingController controller = TextEditingController();
+    final state = cubit.state;
+
+    // Get the corresponding model based on listType and index
+    dynamic model;
+    switch (listType) {
+      case 'Basic':
+        model = state.editProfileBasicList[index];
+        break;
+      case 'Look':
+        model = state.editProfileLookList[index];
+        break;
+      case 'LifeStyle':
+        model = state.editProfileLifeStyleList[index];
+        break;
+      case 'Culture':
+        model = state.editProfileCalutreList[index];
+        break;
+    }
+
+    // Set initial value for the text field
+    controller.text = model.subtitle;
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Edit $title'),
+          title: Text('Edit ${model.title}'),
           content: TextField(
             controller: controller,
-            decoration: InputDecoration(hintText: "Enter new $title"),
+            decoration: InputDecoration(hintText: "Enter new ${model.title}"),
           ),
           actions: [
             TextButton(
@@ -34,6 +55,8 @@ class EditProfileBodyListView extends StatelessWidget {
             TextButton(
               onPressed: () {
                 cubit.editSubtitle(index, controller.text, listType);
+                cubit.saveUserData();
+                //cubit.editSubtitle(index, controller.text, listType); // Update subtitle in cubit state
                 Navigator.of(context).pop();
               },
               child: const Text('Save'),
@@ -52,7 +75,8 @@ class EditProfileBodyListView extends StatelessWidget {
         builder: (context, state) {
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(right: 15, left: 15, top: 60, bottom: 20),
+              padding: const EdgeInsets.only(
+                  right: 15, left: 15, top: 60, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -64,20 +88,13 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                    indent: 20,
-                    endIndent: 20,
-                    color: Colors.blue,
-                    thickness: 2,
-                  ),
+                      indent: 20,
+                      endIndent: 20,
+                      color: Colors.blue,
+                      thickness: 2),
                   BascisListView(
                     editProfileList: state.editProfileBasicList,
-                    onEdit: (index) => _showEditDialog(
-                      context,
-                      index,
-                      'Basic',
-                      state.editProfileBasicList[index].title,
-                      state.editProfileBasicList[index].subtitle,
-                    ),
+                    onEdit: (index) => _showEditDialog(context, index, 'Basic'),
                   ),
                   const Text(
                     'Look',
@@ -87,20 +104,13 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                    indent: 20,
-                    endIndent: 20,
-                    color: Colors.blue,
-                    thickness: 2,
-                  ),
+                      indent: 20,
+                      endIndent: 20,
+                      color: Colors.blue,
+                      thickness: 2),
                   LookListView(
                     editProfileLookList: state.editProfileLookList,
-                    onEdit: (index) => _showEditDialog(
-                      context,
-                      index,
-                      'Look',
-                      state.editProfileLookList[index].title,
-                      state.editProfileLookList[index].subtitle,
-                    ),
+                    onEdit: (index) => _showEditDialog(context, index, 'Look'),
                   ),
                   const Text(
                     'Life Style',
@@ -110,20 +120,14 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                    indent: 20,
-                    endIndent: 20,
-                    color: Colors.blue,
-                    thickness: 2,
-                  ),
+                      indent: 20,
+                      endIndent: 20,
+                      color: Colors.blue,
+                      thickness: 2),
                   LifeStyleListView(
-                    editProfileLifeStyleList: state.editProfileLifeStyleList,
-                    onEdit: (index) => _showEditDialog(
-                      context,
-                      index,
-                      'LifeStyle',
-                      state.editProfileLifeStyleList[index].title,
-                      state.editProfileLifeStyleList[index].subtitle,
-                    ),
+                    editProfileLifeStyleList: state!.editProfileLifeStyleList,
+                    onEdit: (index) =>
+                        _showEditDialog(context, index, 'LifeStyle'),
                   ),
                   const Text(
                     'Culture',
@@ -133,20 +137,14 @@ class EditProfileBodyListView extends StatelessWidget {
                     ),
                   ),
                   const Divider(
-                    indent: 20,
-                    endIndent: 20,
-                    color: Colors.blue,
-                    thickness: 2,
-                  ),
+                      indent: 20,
+                      endIndent: 20,
+                      color: Colors.blue,
+                      thickness: 2),
                   CaltureListView(
-                    editProfileCalutreList: state.editProfileCalutreList,
-                    onEdit: (index) => _showEditDialog(
-                      context,
-                      index,
-                      'Culture',
-                      state.editProfileCalutreList[index].title,
-                      state.editProfileCalutreList[index].subtitle,
-                    ),
+                    editProfileCalutreList: state!.editProfileCalutreList,
+                    onEdit: (index) =>
+                        _showEditDialog(context, index, 'Culture'),
                   ),
                 ],
               ),

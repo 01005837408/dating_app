@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 // State
 class EditProfileState {
   final List<EditProfileBasciModel> editProfileBasicList;
@@ -29,7 +28,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           editProfileBasicList: [
             EditProfileBasciModel(
               title: 'First Name',
-              subtitle: 'hady',
+              subtitle: '',
               icon: Icons.person_outline,
             ),
             EditProfileBasciModel(
@@ -128,92 +127,117 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       final userDoc = await FirebaseFirestore.instance
           .collection('users')
           .doc(user!.uid)
-          .collection('edit_profile')
-          .doc('data')
           .get();
       if (userDoc.exists) {
-        emit(EditProfileState(
-          editProfileBasicList: (userDoc.data()?['editProfileBasicList'] as List)
-              .map((data) => EditProfileBasciModel.fromFirestore(data))
-              .toList(),
-          editProfileLookList: (userDoc.data()?['editProfileLookList'] as List)
-              .map((data) => EditProfileLookModel.fromFirestore(data))
-              .toList(),
-          editProfileLifeStyleList: (userDoc.data()?['editProfileLifeStyleList'] as List)
-              .map((data) => EditProfileLifeStyleModel.fromFirestore(data))
-              .toList(),
-          editProfileCalutreList: (userDoc.data()?['editProfileCalutreList'] as List)
-              .map((data) => EditProfileCaltureeModel.fromFirestore(data))
-              .toList(),
-        ));
+        final userName =
+            '${userDoc.data()?['fname'] ?? ''} ${userDoc.data()?['lname'] ?? ''}'
+                .trim();
+
+        //  final userName = userDoc.data()?['fname' + 'lname'] ?? 'Unknown';
+        final profileDataDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user!.uid)
+            .collection('edit_profile')
+            .doc('data')
+            .get();
+        if (profileDataDoc.exists) {
+          emit(EditProfileState(
+            editProfileBasicList: [
+              EditProfileBasciModel(
+                title: 'First Name',
+                subtitle: userName,
+                icon: Icons.person_outline,
+              ),
+              EditProfileBasciModel(
+                title: 'Live In',
+                subtitle: 'Cairo, Egypt',
+                icon: Icons.info_outline,
+              ),
+            ],
+            editProfileLookList:
+                (profileDataDoc.data()?['editProfileLookList'] as List)
+                    .map((data) => EditProfileLookModel.fromFirestore(data))
+                    .toList(),
+            editProfileLifeStyleList: (profileDataDoc
+                    .data()?['editProfileLifeStyleList'] as List)
+                .map((data) => EditProfileLifeStyleModel.fromFirestore(data))
+                .toList(),
+            editProfileCalutreList:
+                (profileDataDoc.data()?['editProfileCalutreList'] as List)
+                    .map((data) => EditProfileCaltureeModel.fromFirestore(data))
+                    .toList(),
+          ));
+        }
       }
     }
   }
 
-  void editSubtitle(int index, String newSubtitle, String listType) {
-    final currentState = state;
-    switch (listType) {
-      case 'Basic':
-        final newBasicList = List<EditProfileBasciModel>.from(currentState.editProfileBasicList);
-        newBasicList[index] = EditProfileBasciModel(
-          title: newBasicList[index].title,
-          subtitle: newSubtitle,
-          icon: newBasicList[index].icon,
-        );
-        emit(EditProfileState(
-          editProfileBasicList: newBasicList,
-          editProfileLookList: currentState.editProfileLookList,
-          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
-        ));
-        break;
-      case 'Look':
-        final newLookList = List<EditProfileLookModel>.from(currentState.editProfileLookList);
-        newLookList[index] = EditProfileLookModel(
-          title: newLookList[index].title,
-          subtitle: newSubtitle,
-          icon: newLookList[index].icon,
-        );
-        emit(EditProfileState(
-          editProfileBasicList: currentState.editProfileBasicList,
-          editProfileLookList: newLookList,
-          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
-        ));
-        break;
-      case 'LifeStyle':
-        final newLifeStyleList = List<EditProfileLifeStyleModel>.from(currentState.editProfileLifeStyleList);
-        newLifeStyleList[index] = EditProfileLifeStyleModel(
-          title: newLifeStyleList[index].title,
-          subtitle: newSubtitle,
-          icon: newLifeStyleList[index].icon,
-        );
-        emit(EditProfileState(
-          editProfileBasicList: currentState.editProfileBasicList,
-          editProfileLookList: currentState.editProfileLookList,
-          editProfileLifeStyleList: newLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
-        ));
-        break;
-      case 'Culture':
-        final newCultureList = List<EditProfileCaltureeModel>.from(currentState.editProfileCalutreList);
-        newCultureList[index] = EditProfileCaltureeModel(
-          title: newCultureList[index].title,
-          subtitle: newSubtitle,
-          icon: newCultureList[index].icon,
-        );
-        emit(EditProfileState(
-          editProfileBasicList: currentState.editProfileBasicList,
-          editProfileLookList: currentState.editProfileLookList,
-          editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: newCultureList,
-        ));
-        break;
-    }
-    _saveUserData();
+ void editSubtitle(int index, String newSubtitle, String listType) {
+  final currentState = state;
+
+  switch (listType) {
+    case 'Basic':
+      final newBasicList = List<EditProfileBasciModel>.from(currentState.editProfileBasicList);
+      newBasicList[index] = EditProfileBasciModel(
+        title: newBasicList[index].title,
+        subtitle: newSubtitle,
+        icon: newBasicList[index].icon,
+      );
+      emit(EditProfileState(
+        editProfileBasicList: newBasicList,
+        editProfileLookList: currentState.editProfileLookList,
+        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+        editProfileCalutreList: currentState.editProfileCalutreList,
+      ));
+      break;
+    case 'Look':
+      final newLookList = List<EditProfileLookModel>.from(currentState.editProfileLookList);
+      newLookList[index] = EditProfileLookModel(
+        title: newLookList[index].title,
+        subtitle: newSubtitle,
+        icon: newLookList[index].icon,
+      );
+      emit(EditProfileState(
+        editProfileBasicList: currentState.editProfileBasicList,
+        editProfileLookList: newLookList,
+        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+        editProfileCalutreList: currentState.editProfileCalutreList,
+      ));
+      break;
+    case 'LifeStyle':
+      final newLifeStyleList = List<EditProfileLifeStyleModel>.from(currentState.editProfileLifeStyleList);
+      newLifeStyleList[index] = EditProfileLifeStyleModel(
+        title: newLifeStyleList[index].title,
+        subtitle: newSubtitle,
+        icon: newLifeStyleList[index].icon,
+      );
+      emit(EditProfileState(
+        editProfileBasicList: currentState.editProfileBasicList,
+        editProfileLookList: currentState.editProfileLookList,
+        editProfileLifeStyleList: newLifeStyleList,
+        editProfileCalutreList: currentState.editProfileCalutreList,
+      ));
+      break;
+    case 'Culture':
+      final newCultureList = List<EditProfileCaltureeModel>.from(currentState.editProfileCalutreList);
+      newCultureList[index] = EditProfileCaltureeModel(
+        title: newCultureList[index].title,
+        subtitle: newSubtitle,
+        icon: newCultureList[index].icon,
+      );
+      emit(EditProfileState(
+        editProfileBasicList: currentState.editProfileBasicList,
+        editProfileLookList: currentState.editProfileLookList,
+        editProfileLifeStyleList: currentState.editProfileLifeStyleList,
+        editProfileCalutreList: newCultureList,
+      ));
+      break;
   }
 
-  Future<void> _saveUserData() async {
+  saveUserData();
+}
+
+  Future<void> saveUserData() async {
     if (user != null) {
       await FirebaseFirestore.instance
           .collection('users')
@@ -221,10 +245,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           .collection('edit_profile')
           .doc('data')
           .set({
-        'editProfileBasicList': state.editProfileBasicList.map((e) => e.toMap()).toList(),
-        'editProfileLookList': state.editProfileLookList.map((e) => e.toMap()).toList(),
-        'editProfileLifeStyleList': state.editProfileLifeStyleList.map((e) => e.toMap()).toList(),
-        'editProfileCalutreList': state.editProfileCalutreList.map((e) => e.toMap()).toList(),
+        'editProfileBasicList':
+            state.editProfileBasicList.map((e) => e.toMap()).toList(),
+        'editProfileLookList':
+            state.editProfileLookList.map((e) => e.toMap()).toList(),
+        'editProfileLifeStyleList':
+            state.editProfileLifeStyleList.map((e) => e.toMap()).toList(),
+        'editProfileCalutreList':
+            state.editProfileCalutreList.map((e) => e.toMap()).toList(),
       });
     }
   }
