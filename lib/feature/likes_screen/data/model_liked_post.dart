@@ -21,7 +21,8 @@ class LikedPost {
 }
 
 class LikedPostsCubit extends Cubit<List<LikedPost>> {
-  LikedPostsCubit() : super([]);
+  final String currentUserName;
+  LikedPostsCubit({required this.currentUserName}) : super([]);
 
   Future<void> loadLikedPosts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -51,5 +52,9 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
       updatedPosts.add(LikedPost(imageUrl: imageUrl, userName: userName));
     }
     saveLikedPosts(updatedPosts);
+  }
+
+  List<LikedPost> get likedByOtherUsers {
+    return state.where((post) => post.userName != currentUserName).toList();
   }
 }

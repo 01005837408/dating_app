@@ -5,6 +5,7 @@ import 'package:dating_app/feature/likes_screen/widgets/%20liked_me.dart';
 import 'package:dating_app/feature/likes_screen/widgets/my_likes.dart';
 import 'package:dating_app/feature/profile_screen/profile_screen.dart';
 import 'package:dating_app/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class LikesScreen extends StatelessWidget {
       initialIndex: 0,
       // ignore: prefer_const_constructors
       child: BlocProvider(
-        create: (context) => LikedPostsCubit()..loadLikedPosts(),
+        create: (context) => LikedPostsCubit(currentUserName:  FirebaseAuth.instance.currentUser!.uid)..loadLikedPosts(),
         child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
           
           builder: (context, state) => 
@@ -53,13 +54,15 @@ class LikesScreen extends StatelessWidget {
                           Tab(text: S.of(context).likeOthers),
                         ],
                       ),
-                        Expanded(
+                         Expanded(
                         child: Padding(
                           padding: EdgeInsets.only(top: 20, bottom: 45),
-                          child: TabBarView(
+                          child:  TabBarView(
                             children: [
                               GridViewMyLikes(),
-                              GridViewLikesByAnotherUser(),
+                              GridViewLikesByAnotherUser(
+                                currentUserName: FirebaseAuth.instance.currentUser!.uid,
+                              ),
                             ],
                           ),
                         ),

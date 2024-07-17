@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,6 +7,7 @@ import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import '../../likes_screen/data/model_liked_post.dart';
+
 
 class SectionCustomPost extends StatelessWidget {
   final PageController controller;
@@ -22,7 +24,7 @@ class SectionCustomPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(),
+      create: (context) => LikedPostsCubit(currentUserName: FirebaseAuth.instance.currentUser!.uid)..loadLikedPosts(),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = context.read<LikedPostsCubit>().isPostLiked(imageUrl, '${userModel.fname} ${userModel.lname}');

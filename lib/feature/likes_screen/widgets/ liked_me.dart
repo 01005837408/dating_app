@@ -8,13 +8,14 @@ import 'package:dating_app/generated/l10n.dart';
 
 
 class GridViewLikesByAnotherUser extends StatelessWidget {
-  const GridViewLikesByAnotherUser({super.key});
+  final String currentUserName;
+
+  const GridViewLikesByAnotherUser({super.key, required this.currentUserName});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LikedPostsCubit, List<LikedPost>>(
       builder: (context, likedPosts) {
-        final currentUserName = 'Current User'; // Replace with actual current user's name
         final otherUsersLikedPosts = likedPosts.where((post) => post.userName != currentUserName).toList();
 
         return GridView.builder(
