@@ -1,60 +1,74 @@
-import 'dart:convert';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'dart:convert';
+// import 'package:bloc/bloc.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:meta/meta.dart';
 
-class LikedPost {
-  final String imageUrl;
-  final String userName;
+// class LikedPost {
+//   final String imageUrl;
+//   final String userName;
 
-  LikedPost({required this.imageUrl, required this.userName});
+//   LikedPost({required this.imageUrl, required this.userName});
 
-  Map<String, dynamic> toJson() => {
-        'imageUrl': imageUrl,
-        'userName': userName,
-      };
+//   Map<String, dynamic> toJson() => {
+//     'imageUrl': imageUrl,
+//     'userName': userName,
+//   };
 
-  factory LikedPost.fromJson(Map<String, dynamic> json) => LikedPost(
-        imageUrl: json['imageUrl'],
-        userName: json['userName'],
-      );
-}
+//   factory LikedPost.fromJson(Map<String, dynamic> json) => LikedPost(
+//     imageUrl: json['imageUrl'],
+//     userName: json['userName'],
+//   );
+// }
 
-class LikedPostsCubit extends Cubit<List<LikedPost>> {
-  final String currentUserName;
-  LikedPostsCubit({required this.currentUserName}) : super([]);
+// class LikedPostsCubit extends Cubit<List<LikedPost>> {
+//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> loadLikedPosts() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? likedPostsString = prefs.getString('likedPosts');
-    if (likedPostsString != null) {
-      List<dynamic> likedPostsJson = json.decode(likedPostsString);
-      emit(likedPostsJson.map((json) => LikedPost.fromJson(json)).toList());
-    }
-  }
+//   LikedPostsCubit() : super([]);
 
-  Future<void> saveLikedPosts(List<LikedPost> likedPosts) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String likedPostsString = json.encode(likedPosts.map((post) => post.toJson()).toList());
-    prefs.setString('likedPosts', likedPostsString);
-    emit(likedPosts);
-  }
+//   Future<void> loadLikedPosts() async {
+//     final user = _auth.currentUser;
+//     if (user != null) {
+//       final snapshot = await _firestore.collection('users').doc(user.uid).collection('likedPosts').get();
+//       final likedPosts = snapshot.docs.map((doc) => LikedPost.fromJson(doc.data())).toList();
+//       emit(likedPosts);
+//     }
+//   }
 
-  bool isPostLiked(String imageUrl, String userName) {
-    return state.any((post) => post.imageUrl == imageUrl && post.userName == userName);
-  }
+//   Future<void> saveLikedPosts(List<LikedPost> likedPosts) async {
+//     final user = _auth.currentUser;
+//     if (user != null) {
+//       final batch = _firestore.batch();
+//       final userLikedPostsCollection = _firestore.collection('users').doc(user.uid).collection('likedPosts');
 
-  void togglePostLike(String imageUrl, String userName) {
-    List<LikedPost> updatedPosts = List.from(state);
-    if (isPostLiked(imageUrl, userName)) {
-      updatedPosts.removeWhere((post) => post.imageUrl == imageUrl && post.userName == userName);
-    } else {
-      updatedPosts.add(LikedPost(imageUrl: imageUrl, userName: userName));
-    }
-    saveLikedPosts(updatedPosts);
-  }
+//       // Clear existing liked posts
+//       final existingPosts = await userLikedPostsCollection.get();
+//       for (var doc in existingPosts.docs) {
+//         batch.delete(doc.reference);
+//       }
 
-  List<LikedPost> get likedByOtherUsers {
-    return state.where((post) => post.userName != currentUserName).toList();
-  }
-}
+//       // Add new liked posts
+//       for (var post in likedPosts) {
+//         batch.set(userLikedPostsCollection.doc(), post.toJson());
+//       }
+
+//       await batch.commit();
+//       emit(likedPosts);
+//     }
+//   }
+
+//   bool isPostLiked(String imageUrl, String userName) {
+//     return state.any((post) => post.imageUrl == imageUrl && post.userName == userName);
+//   }
+
+//   Future<void> togglePostLike(String imageUrl, String userName) async {
+//     List<LikedPost> updatedPosts = List.from(state);
+//     if (isPostLiked(imageUrl, userName)) {
+//       updatedPosts.removeWhere((post) => post.imageUrl == imageUrl && post.userName == userName);
+//     } else {
+//       updatedPosts.add(LikedPost(imageUrl: imageUrl, userName: userName));
+//     }
+//     await saveLikedPosts(updatedPosts);
+//   }
+// }

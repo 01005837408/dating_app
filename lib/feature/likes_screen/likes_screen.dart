@@ -1,5 +1,6 @@
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
 import 'package:dating_app/feature/likes_screen/widgets/%20liked_me.dart';
 import 'package:dating_app/feature/likes_screen/widgets/my_likes.dart';
@@ -19,7 +20,7 @@ class LikesScreen extends StatelessWidget {
       initialIndex: 0,
       // ignore: prefer_const_constructors
       child: BlocProvider(
-        create: (context) => LikedPostsCubit(currentUserName:  FirebaseAuth.instance.currentUser!.uid)..loadLikedPosts(),
+        create: (context) => LikedPostsCubit()..loadLikedPosts(),
         child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
           
           builder: (context, state) => 
@@ -61,7 +62,7 @@ class LikesScreen extends StatelessWidget {
                             children: [
                               GridViewMyLikes(),
                               GridViewLikesByAnotherUser(
-                                currentUserName: FirebaseAuth.instance.currentUser!.uid,
+                                userId:  FirebaseAuth.instance.currentUser!.uid,
                               ),
                             ],
                           ),

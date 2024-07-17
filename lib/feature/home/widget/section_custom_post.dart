@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,8 +6,8 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
-import '../../likes_screen/data/model_liked_post.dart';
-
+import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
+ // Update with your correct import path
 
 class SectionCustomPost extends StatelessWidget {
   final PageController controller;
@@ -24,10 +24,10 @@ class SectionCustomPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LikedPostsCubit(currentUserName: FirebaseAuth.instance.currentUser!.uid)..loadLikedPosts(),
+      create: (context) => LikedPostsCubit()..loadLikedPosts(),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
-          bool isFavorite = context.read<LikedPostsCubit>().isPostLiked(imageUrl, '${userModel.fname} ${userModel.lname}');
+          bool isFavorite = likedPosts.any((post) => post.imageUrl == imageUrl && post.userName == '${userModel.fname} ${userModel.lname}');
 
           return Container(
             width: double.infinity,

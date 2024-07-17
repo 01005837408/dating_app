@@ -1,25 +1,23 @@
-import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
+import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
 import 'package:dating_app/generated/l10n.dart';
 
 
 class GridViewLikesByAnotherUser extends StatelessWidget {
-  final String currentUserName;
-
-  const GridViewLikesByAnotherUser({super.key, required this.currentUserName});
+  final String userId; // User ID of the other user
+  const GridViewLikesByAnotherUser({Key? key, required this.userId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LikedPostsCubit, List<LikedPost>>(
       builder: (context, likedPosts) {
-        final otherUsersLikedPosts = likedPosts.where((post) => post.userName != currentUserName).toList();
-
         return GridView.builder(
-          itemCount: otherUsersLikedPosts.length,
+          itemCount: likedPosts.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 8,
@@ -27,7 +25,7 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
             childAspectRatio: 1 / 1.2,
           ),
           itemBuilder: (context, index) {
-            final post = otherUsersLikedPosts[index];
+            final post = likedPosts[index];
             return Container(
               decoration: BoxDecoration(
                 border: Border.all(color: AppColor.kPrimaryColor),
@@ -60,8 +58,7 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
                           children: [
                             Text(
                               post.userName,
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w500),
+                              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                             ),
                             Row(
                               children: [
