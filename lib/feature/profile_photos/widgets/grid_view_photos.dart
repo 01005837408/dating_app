@@ -11,17 +11,23 @@ class GridViewPhotos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfilePhotosCubit, ProfilePhotosState>(
-      builder: (context, state) {
-        if (state is ProfilePhotosLoading || state is ProfilePhotosDeleting) {
+    final profilePhotosCubit = context.read<ProfilePhotosCubit>();
+
+    return StreamBuilder<List<String>>(
+      stream: profilePhotosCubit.getImagesStream(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is ProfilePhotosLoaded) {
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (snapshot.hasData) {
+          final images = snapshot.data ?? [];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: state.images.length,
+              itemCount: images.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
@@ -29,7 +35,7 @@ class GridViewPhotos extends StatelessWidget {
                 childAspectRatio: 2 / 2,
               ),
               itemBuilder: (context, index) => GestureDetector(
-                onLongPress: () => _showDeleteDialog(context, state.images[index], ProfilePhotosCubit()),
+                onLongPress: () => _showDeleteDialog(context, images[index], profilePhotosCubit),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(27),
@@ -40,14 +46,12 @@ class GridViewPhotos extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(25),
-                    child: Image.network(state.images[index], fit: BoxFit.contain),
+                    child: Image.network(images[index], fit: BoxFit.contain),
                   ),
                 ),
               ),
             ),
           );
-        } else if (state is ProfilePhotosError) {
-          return Center(child: Text('Error: ${state.error}'));
         } else {
           return const SizedBox.shrink();
         }

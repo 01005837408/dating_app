@@ -26,20 +26,17 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
     try {
       emit(ProfilePhotosUploading());
 
-      // Get current user
       final currentUser = _auth.currentUser;
       if (currentUser == null) {
         emit(ProfilePhotosError("User not authenticated"));
         return;
       }
 
-      // Upload to Firebase Storage
       final storageRef = FirebaseStorage.instance.ref().child(
           'profile_photos/${currentUser.uid}/${DateTime.now().millisecondsSinceEpoch}.jpg');
       await storageRef.putFile(File(image.path));
       final imageUrl = await storageRef.getDownloadURL();
 
-      // Save URL to Firestore
       await _firestore
           .collection('users')
           .doc(currentUser.uid)
@@ -48,56 +45,40 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
         'url': imageUrl,
         'timestamp': FieldValue.serverTimestamp(),
       });
-
-      // Fetch images again to update the state
-      fetchImages();
     } catch (e) {
       emit(ProfilePhotosError(e.toString()));
     }
   }
 
-  Future<void> fetchImages() async {
-    try {
-      emit(ProfilePhotosLoading());
-
-      // Get current user
-      final currentUser = _auth.currentUser;
-      if (currentUser == null) {
-        emit(ProfilePhotosError("User not authenticated"));
-        return;
-      }
-
-      final querySnapshot = await _firestore
-          .collection('users')
-          .doc(currentUser.uid)
-          .collection('profile_photos')
-          .orderBy('timestamp', descending: true)
-          .get();
-      final images =
-          querySnapshot.docs.map((doc) => doc['url'] as String).toList();
-      print(images.length);
-      emit(ProfilePhotosLoaded(images));
-    } catch (e) {
-      emit(ProfilePhotosError(e.toString()));
+  Stream<List<String>> getImagesStream() {
+    final currentUser = _auth.currentUser;
+    if (currentUser == null) {
+      return Stream.error("User not authenticated");
     }
+
+    return _firestore
+        .collection('users')
+        .doc(currentUser.uid)
+        .collection('profile_photos')
+        .orderBy('timestamp', descending: true)
+        .snapshots()
+        .map((querySnapshot) =>
+            querySnapshot.docs.map((doc) => doc['url'] as String).toList());
   }
 
   Future<void> deleteImage(String imageUrl) async {
     try {
       emit(ProfilePhotosDeleting());
 
-      // Get current user
       final currentUser = _auth.currentUser;
       if (currentUser == null) {
         emit(ProfilePhotosError("User not authenticated"));
         return;
       }
 
-      // Delete from Firebase Storage
       final imageRef = FirebaseStorage.instance.refFromURL(imageUrl);
       await imageRef.delete();
 
-      // Delete from Firestore
       final querySnapshot = await _firestore
           .collection('users')
           .doc(currentUser.uid)
@@ -111,11 +92,9 @@ class ProfilePhotosCubit extends Cubit<ProfilePhotosState> {
           .collection('profile_photos')
           .doc(docId)
           .delete();
-
-      // Fetch images again to update the state
-      fetchImages();
     } catch (e) {
       emit(ProfilePhotosError(e.toString()));
     }
   }
 }
+

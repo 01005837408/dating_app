@@ -15,7 +15,7 @@ class ProfilePhotosScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: BlocProvider<ProfilePhotosCubit>(
-          create: (context) => ProfilePhotosCubit()..fetchImages(),
+          create: (context) => ProfilePhotosCubit(),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

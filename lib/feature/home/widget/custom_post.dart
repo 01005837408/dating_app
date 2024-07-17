@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'section_custom_post.dart';
 
+
 class CustomPost extends StatefulWidget {
   const CustomPost({super.key});
 
@@ -71,42 +72,49 @@ class _CustomPostState extends State<CustomPost> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..fetchAllUserImages(),
+      create: (context) => HomeCubit(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          if (state is HomeLoading) {
-            return Center(child: CircularProgressIndicator());
-          } else if (state is HomeLoaded) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: users.length,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                final user = users[index];
-                final images = state.userImages[user.uid] ?? [];
+          final homeCubit = context.read<HomeCubit>();
+          return StreamBuilder<Map<String, List<String>>>(
+            stream: homeCubit.getAllUserImagesStream(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return Center(child: Text('No images found.'));
+              } else {
+                final userImages = snapshot.data!;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: users.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final user = users[index];
+                    final images = userImages[user.uid] ?? [];
 
-                print(
-                    'Displaying images for user: ${user.fname} ${user.lname}, images: $images');
+                    print(
+                        'Displaying images for user: ${user.fname} ${user.lname}, images: $images');
 
-                return Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: Column(
-                    children: images.map((imageUrl) {
-                      return SectionCustomPost(
-                        controller: controller,
-                        userModel: user,
-                        imageUrl: imageUrl,
-                      );
-                    }).toList(),
-                  ),
+                    return Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Column(
+                        children: images.map((imageUrl) {
+                          return SectionCustomPost(
+                            controller: controller,
+                            userModel: user,
+                            imageUrl: imageUrl,
+                          );
+                        }).toList(),
+                      ),
+                    );
+                  },
                 );
-              },
-            );
-          } else if (state is HomeError) {
-            return Center(child: Text('Error: ${state.error}'));
-          } else {
-            return Center(child: Text('No images found.'));
-          }
+              }
+            },
+          );
         },
       ),
     );
