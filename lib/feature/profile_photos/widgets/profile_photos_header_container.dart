@@ -11,50 +11,48 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProfilePhotosCubit>(
-      create: (context) => ProfilePhotosCubit()..fetchImages(),
-      child: Container(
-        width: MediaQuery.of(context).size.width / 1.2,
-        height: MediaQuery.of(context).size.height / 2.2,
-        decoration: BoxDecoration(
-          color: AppColor.kPrimaryColor,
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 60),
-              child: Icon(
-                Icons.camera_alt,
-                color: Colors.white,
-                size: 180,
-              ),
+    return Container(
+      width: MediaQuery.of(context).size.width / 1.2,
+      height: MediaQuery.of(context).size.height / 2.2,
+      decoration: BoxDecoration(
+        color: AppColor.kPrimaryColor,
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 60),
+            child: Icon(
+              Icons.camera_alt,
+              color: Colors.white,
+              size: 180,
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30, bottom: 20),
-                child: GestureDetector(
-                  onTap: () => _showBottomSheet(context, ProfilePhotosCubit()),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.white),
-                    child: const Icon(
-                      Icons.add,
-                      color: AppColor.kPrimaryColor,
-                      size: 60,
-                    ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 30, bottom: 20),
+              child: GestureDetector(
+                onTap: () => _showBottomSheet(context),
+                child: Container(
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.white),
+                  child: const Icon(
+                    Icons.add,
+                    color: AppColor.kPrimaryColor,
+                    size: 60,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  void _showBottomSheet(BuildContext context , ProfilePhotosCubit profilePhotosCubit) {
+  void _showBottomSheet(BuildContext context) {
+    final profilePhotosCubit = context.read<ProfilePhotosCubit>();
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -64,7 +62,7 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
               leading: const Icon(Icons.photo_library),
               title: const Text('Gallery'),
               onTap: () {
-                profilePhotosCubit.selectImage(context , ImageSource.gallery);
+                profilePhotosCubit.selectImage(context, ImageSource.gallery);
                 Navigator.of(context).pop();
               },
             ),
@@ -82,4 +80,3 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
     );
   }
 }
-
