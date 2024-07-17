@@ -27,7 +27,7 @@ class LikesScreen extends StatelessWidget {
               child: Column(
                 children: [
                   TabBar(
-                    automaticIndicatorColorAdjustment: true,
+                    // automaticIndicatorColorAdjustment: true,
                     indicatorPadding:
                         const EdgeInsets.symmetric(horizontal: 10),
                     unselectedLabelColor: Colors.blue,

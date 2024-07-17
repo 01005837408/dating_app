@@ -1,6 +1,7 @@
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/home/widget/section_custom_post.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class GridViewMyLikes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: 4,
+      itemCount: likedPosts.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 8,
@@ -18,13 +19,13 @@ class GridViewMyLikes extends StatelessWidget {
         childAspectRatio: 1 / 1.2,
       ),
       itemBuilder: (context, index) {
+        final post = likedPosts[index];
         return Container(
           decoration: BoxDecoration(
             border: Border.all(color: AppColor.kPrimaryColor),
             borderRadius: BorderRadius.circular(26),
           ),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -36,8 +37,8 @@ class GridViewMyLikes extends StatelessWidget {
                   child: SizedBox(
                     height: 121,
                     width: double.infinity,
-                    child: Image.asset(
-                      Assets.homeImageBody,
+                    child: Image.network(
+                      post.imageUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -46,27 +47,21 @@ class GridViewMyLikes extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Icon(
-                      Icons.chat_bubble_outline_outlined,
-                      color: AppColor.kPrimaryColor,
-                    ),
-                    const Icon(
-                      Icons.favorite,
-                      color: AppColor.kPrimaryColor,
-                    ),
-                    const Spacer(),
+                    // const Icon(
+                    //   Icons.chat_bubble_outline_outlined,
+                    //   color: AppColor.kPrimaryColor,
+                    // ),
+                   
+                   // const Spacer(),
                     Column(
-                      // crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          S.of(context).fName,
+                          post.userName,
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         Row(
-                          // mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(S.of(context).online),
                             horizontalSpacing(5),
@@ -78,16 +73,22 @@ class GridViewMyLikes extends StatelessWidget {
                                 color: Colors.green,
                               ),
                             ),
+                            SizedBox(width: 20,),
+                             const Icon(
+                      Icons.favorite,
+                      color: AppColor.kPrimaryColor,
+                    ),
                           ],
                         )
                       ],
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         );
+        
       },
     );
   }
