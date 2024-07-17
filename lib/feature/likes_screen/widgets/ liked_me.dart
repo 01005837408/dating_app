@@ -1,14 +1,14 @@
+import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
 import 'package:dating_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class GridViewMyLikes extends StatelessWidget {
-  const GridViewMyLikes({super.key});
+class GridViewLikesByAnotherUser extends StatelessWidget {
+  const GridViewLikesByAnotherUser({super.key});
 
   @override
   Widget build(BuildContext context) {
