@@ -14,8 +14,11 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LikedPostsCubit, List<LikedPost>>(
       builder: (context, likedPosts) {
+        final currentUserName = 'Current User'; // Replace with actual current user's name
+        final otherUsersLikedPosts = likedPosts.where((post) => post.userName != currentUserName).toList();
+
         return GridView.builder(
-          itemCount: likedPosts.length,
+          itemCount: otherUsersLikedPosts.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 8,
@@ -23,7 +26,7 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
             childAspectRatio: 1 / 1.2,
           ),
           itemBuilder: (context, index) {
-            final post = likedPosts[index];
+            final post = otherUsersLikedPosts[index];
             return Container(
               decoration: BoxDecoration(
                 border: Border.all(color: AppColor.kPrimaryColor),

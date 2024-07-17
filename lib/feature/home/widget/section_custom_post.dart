@@ -7,7 +7,6 @@ import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import '../../likes_screen/data/model_liked_post.dart';
 
-
 class SectionCustomPost extends StatelessWidget {
   final PageController controller;
   final UserModel userModel;
@@ -23,11 +22,11 @@ class SectionCustomPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>LikedPostsCubit() ,
+      create: (context) => LikedPostsCubit()..loadLikedPosts(),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = context.read<LikedPostsCubit>().isPostLiked(imageUrl, '${userModel.fname} ${userModel.lname}');
-      
+
           return Container(
             width: double.infinity,
             color: Colors.white,

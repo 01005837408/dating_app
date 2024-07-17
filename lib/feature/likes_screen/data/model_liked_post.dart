@@ -10,14 +10,14 @@ class LikedPost {
   LikedPost({required this.imageUrl, required this.userName});
 
   Map<String, dynamic> toJson() => {
-    'imageUrl': imageUrl,
-    'userName': userName,
-  };
+        'imageUrl': imageUrl,
+        'userName': userName,
+      };
 
   factory LikedPost.fromJson(Map<String, dynamic> json) => LikedPost(
-    imageUrl: json['imageUrl'],
-    userName: json['userName'],
-  );
+        imageUrl: json['imageUrl'],
+        userName: json['userName'],
+      );
 }
 
 class LikedPostsCubit extends Cubit<List<LikedPost>> {
