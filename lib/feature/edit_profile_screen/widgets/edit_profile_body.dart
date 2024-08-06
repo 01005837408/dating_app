@@ -15,7 +15,7 @@ class EditProfileBody extends StatelessWidget {
           topRight: Radius.circular(45),
         ),
       ),
-      child:  Column(
+      child: const Column(
         children: [
           CircleAvatar(
             radius: 35,

@@ -10,7 +10,7 @@ import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_u
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_state.dart';
 import 'package:dating_app/feature/authentecation/presentation/forget_pass/forget_passowrd.dart';
 import 'package:dating_app/feature/authentecation/presentation/signUp/sign_up.dart';
-import 'package:dating_app/feature/home/screens/bottom_navigation.dart';
+import 'package:dating_app/feature/home/presentation/screens/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,17 +26,19 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
     return BlocProvider<UserCubit>(
       create: (context) => UserCubit(),
       child: BlocConsumer<UserCubit, UserState>(
-      listener: (context, state) {
-            if (state is UserLoaded) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => ButtomNavigation(user: state.user,),
-              ));
-            } else if (state is UserError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
-            }
-          },
+        listener: (context, state) {
+          if (state is UserLoaded) {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => ButtomNavigation(
+                user: state.user,
+              ),
+            ));
+          } else if (state is UserError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
         builder: (context, state) {
           return Form(
             key: formKey,
@@ -105,17 +107,17 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                 verticalSpacing(30),
                 // state is UserState
                 //     ? const CircularProgressIndicator()
-                     CustomMaterialBottons(
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            context.read<UserCubit>().login(
+                CustomMaterialBottons(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<UserCubit>().login(
                             emailController.text,
                             passController.text,
                           );
-                          }
-                        },
-                        text: ConstText.createAcount,
-                      ),
+                    }
+                  },
+                  text: ConstText.createAcount,
+                ),
                 verticalSpacing(10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

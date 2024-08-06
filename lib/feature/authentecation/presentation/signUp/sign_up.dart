@@ -30,9 +30,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColor.kPrimaryColor,
-        body: Column(
+        body:
+         Column(
           children: [
-            BackIconInSignUp(),
+            //BackIconInSignUp(),
+            
             verticalSpacing(60.h),
             Expanded(
               child: Container(
@@ -50,6 +52,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+                          verticalSpacing(10),
+            Text("انشاء حساب  " , style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),),
                           verticalSpacing(80),
 
                           RefactorCustomTextFormFieldSignUp(

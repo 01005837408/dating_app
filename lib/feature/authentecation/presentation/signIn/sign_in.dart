@@ -55,8 +55,14 @@ class SignInScreen extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                         verticalSpacing(10),
+                        const  Text("تسجيل الدخول " , style: TextStyle(
+                          fontSize: 24,
+                           fontWeight: FontWeight.w600,
+                           color: Colors.black
+                         ),),
                         verticalSpacing(80),
-                        verticalSpacing(10),
+                       
                         RefactorCustomTextFormFieldSignIn(),
                       ],
                     ),

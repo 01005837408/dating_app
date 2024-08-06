@@ -1,4 +1,4 @@
-import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
+import 'package:dating_app/feature/home/presentation/screens/comment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,19 +6,22 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
+import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
- // Update with your correct import path
+// Import the new comments screen
 
 class SectionCustomPost extends StatelessWidget {
   final PageController controller;
   final UserModel userModel;
   final String imageUrl;
+  final String postId; // Add postId to identify the post
 
   SectionCustomPost({
     Key? key,
     required this.controller,
     required this.userModel,
     required this.imageUrl,
+    required this.postId, // Add postId to the constructor
   }) : super(key: key);
 
   @override
@@ -78,12 +81,20 @@ class SectionCustomPost extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      InkWell(
-                        onTap: () {},
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.comment),
-                        ),
+                      IconButton(
+                        onPressed: () {
+                          // Navigator.push(
+                          //   context,
+ // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => CommentsScreen(postId: postId),
+                          //   ),
+                          // );                          //     builder: (context) => CommentsScreen(postId: postId),
+                          //   ),
+                          // );
+                        },
+                        icon: const Icon(Icons.comment),
                       ),
                       horizontalSpacing(20),
                       InkWell(

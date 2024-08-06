@@ -1,11 +1,7 @@
 import 'package:dating_app/core/cubit/app_cubit.dart';
 import 'package:dating_app/core/helper/cache_helper.dart';
-
 import 'package:dating_app/feature/splash_screen/splash_screen.dart';
-
 import 'package:dating_app/generated/l10n.dart';
-import 'package:dating_app/test/signup.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -38,7 +34,7 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 debugShowCheckedModeBanner: false,
-                home:SplashScreen(),
+                home: const SplashScreen(),
               );
             },
           ),

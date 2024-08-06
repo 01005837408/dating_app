@@ -1,10 +1,11 @@
 import 'package:dating_app/core/spacing/spacing.dart';
 
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/feature/home/widget/custom_post.dart';
+import 'package:dating_app/feature/home/presentation/widget/custom_post.dart';
+import 'package:dating_app/feature/home/presentation/widget/home_title.dart';
+import 'package:dating_app/feature/home/presentation/widget/section_custom_tap_container.dart';
 
-import 'package:dating_app/feature/home/widget/home_title.dart';
-import 'package:dating_app/feature/home/widget/section_custom_tap_container.dart';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

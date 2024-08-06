@@ -105,7 +105,7 @@ class _CustomPostState extends State<CustomPost> {
                           return SectionCustomPost(
                             controller: controller,
                             userModel: user,
-                            imageUrl: imageUrl,
+                            imageUrl: imageUrl, postId: FirebaseAuth.instance.currentUser!.uid,
                           );
                         }).toList(),
                       ),

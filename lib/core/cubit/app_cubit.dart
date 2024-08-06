@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dating_app/core/helper/cache_helper.dart';
 import 'package:dating_app/feature/chat/screen/chat_list_screen.dart';
-import 'package:dating_app/feature/home/screens/home_screen.dart';
+import 'package:dating_app/feature/home/presentation/screens/home_screen.dart';
 import 'package:dating_app/feature/likes_screen/likes_screen.dart';
 import 'package:dating_app/feature/viewProfile/view_profile_screen.dart';
 import 'package:flutter/material.dart';

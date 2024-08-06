@@ -1,6 +1,6 @@
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/const_text.dart';
-import 'package:dating_app/feature/home/widget/custom_tap_container.dart';
+import 'package:dating_app/feature/home/presentation/widget/custom_tap_container.dart';
 import 'package:flutter/material.dart';
 
 class SectionCustomTapContainer extends StatelessWidget {
