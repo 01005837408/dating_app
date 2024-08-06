@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'profile_state.dart';
-import 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
@@ -18,6 +17,19 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> initialize() async {
     try {
       String userId = _auth.currentUser!.uid;
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      if (userDoc.exists) {
+        String profilePicture = userDoc['profilePicture'] ?? '';
+        emit(ProfileLoaded(profilePicture));
+      } else {
+        emit(ProfileInitial());
+      }
+    } catch (e) {
+      emit(ProfileError(e.toString()));
+    }
+  }
+  Future<void> initialize2(String userId) async {
+    try {
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
       if (userDoc.exists) {
         String profilePicture = userDoc['profilePicture'] ?? '';
