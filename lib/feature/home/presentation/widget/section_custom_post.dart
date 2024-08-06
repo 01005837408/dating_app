@@ -1,5 +1,7 @@
-import 'package:dating_app/feature/home/presentation/screens/comment_page.dart';import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
+import 'package:dating_app/feature/home/presentation/screens/comment_page.dart';
+import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
 import 'package:dating_app/feature/profile_screen/date/profile_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -7,8 +9,6 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
-
-// Import the new comments screen
 
 class SectionCustomPost extends StatelessWidget {
   final PageController controller;
@@ -23,12 +23,16 @@ class SectionCustomPost extends StatelessWidget {
     required this.imageUrl,
     required this.postId, // Add postId to the constructor
   }) : super(key: key);
+
   String imageUrl2 =
       "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
+
   @override
   Widget build(BuildContext context) {
+    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(),
+      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: currentUserId),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = likedPosts.any((post) =>
@@ -66,8 +70,7 @@ class SectionCustomPost extends StatelessWidget {
                         children: [
                           Text(
                             " ${userModel.lname} ${userModel.fname}",
-                            style:
-                                const TextStyle(color: AppColor.kPrimaryColor),
+                            style: const TextStyle(color: AppColor.kPrimaryColor),
                           ),
                           horizontalSpacing(10),
                           BlocProvider(
@@ -96,36 +99,34 @@ class SectionCustomPost extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => CommentsScreen(postId: postId),
-                          //   ),
-                          // );                          //     builder: (context) => CommentsScreen(postId: postId),
-                          //   ),
-                          // );
-                        },
-                        icon: const Icon(Icons.comment),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => CommentsScreen(postId: postId),
+                      //       ),
+                      //     );
+                      //   },
+                      //   icon: const Icon(Icons.comment),
+                      // ),
                       horizontalSpacing(20),
                       InkWell(
                         onTap: () {
                           context.read<LikedPostsCubit>().togglePostLike(
+                              currentUserId,
                               imageUrl,
                               '${userModel.fname} ${userModel.lname}');
                         },
                         child: IconButton(
                           onPressed: () {
                             context.read<LikedPostsCubit>().togglePostLike(
+                                currentUserId,
                                 imageUrl,
                                 '${userModel.fname} ${userModel.lname}');
                           },

@@ -15,63 +15,51 @@ class LikesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
-      // ignore: prefer_const_constructors
-      child: BlocProvider(
-        create: (context) => LikedPostsCubit()..loadLikedPosts(),
-        child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
-          
-          builder: (context, state) => 
-           Scaffold(
-              appBar: appBar(context),
-              body: SafeArea(
-                  child: SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  height: MediaQuery.of(context).size.height,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        // automaticIndicatorColorAdjustment: true,
-                        indicatorPadding:
-                            const EdgeInsets.symmetric(horizontal: 10),
-                        unselectedLabelColor: Colors.blue,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        labelColor: AppColor.kPrimaryColor,
-                        labelStyle: const TextStyle(fontSize: 20),
-                        dividerColor: AppColor.kPrimaryColor,
-                        dividerHeight: 0,
-                        indicatorWeight: 5,
-                        indicatorColor: AppColor.kPrimaryColor,
-                        tabs: [
-                          Tab(
-                            text: S.of(context).likeMe,
-                          ),
-                          Tab(text: S.of(context).likeOthers),
-                        ],
-                      ),
-                         Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 20, bottom: 45),
-                          child:  TabBarView(
-                            children: [
-                              GridViewMyLikes(),
-                              GridViewLikesByAnotherUser(
-                                userId:  FirebaseAuth.instance.currentUser!.uid,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+      child: Scaffold(
+        appBar: appBar(context),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  TabBar(
+                    indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    unselectedLabelColor: Colors.blue,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    labelColor: AppColor.kPrimaryColor,
+                    labelStyle: const TextStyle(fontSize: 20),
+                    dividerColor: AppColor.kPrimaryColor,
+                    dividerHeight: 0,
+                    indicatorWeight: 5,
+                    indicatorColor: AppColor.kPrimaryColor,
+                    tabs: [
+                      Tab(text: S.of(context).likeMe),
+                      Tab(text: S.of(context).likeOthers),
                     ],
                   ),
-                ),
-              ))),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 45),
+                      child: TabBarView(
+                        children: [
+                          GridViewMyLikes(),
+                          GridViewLikesByAnotherUser(userId: currentUserId),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
