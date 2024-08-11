@@ -52,11 +52,13 @@ class Api {
         .set(chatUser.toJson());
   }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUser() {
-    return fireStore
-        .collection("users")
-        .snapshots(); //.where("id" , isEqualTo: user.uid)
-  }
+static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUser() {
+  return fireStore
+      .collection("users")
+      .where("uid", isNotEqualTo: user.uid) // Exclude the current user
+      .snapshots();
+}
+
 
   static Future<void> updateUserInfo() async {
     // ChatUser user ;

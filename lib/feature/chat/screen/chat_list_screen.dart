@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/chat/widget/chat_user_card.dart';
@@ -21,7 +19,6 @@ class _HomeScreenState extends State<ChatListScreen> {
 
   @override
   void initState() {
-   // Api.getAllUser();
     Api.getSetInfo();
     super.initState();
   }
@@ -70,14 +67,6 @@ class _HomeScreenState extends State<ChatListScreen> {
             },
             icon: Icon(isSearch ? Icons.clear : Icons.search),
           ),
-          // IconButton(
-          //   onPressed: (){
-          //     Navigator.of(context).pushReplacement(
-          //       MaterialPageRoute(builder: (context) => ProfileScreen(user: Api.me!))
-          //     );
-          //   },
-          //   icon: const Icon(Icons.more_vert),
-          // ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -119,21 +108,21 @@ class _HomeScreenState extends State<ChatListScreen> {
                     itemCount: list.length,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) => ChatUserCard(
-                        user:  list[index]),
+                      user: list[index],
+                    ),
                   );
                 } else {
                   return const Center(
-                      child: Text(
-                    "No Connection Found",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                    child: Text(
+                      "No Connection Found",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ));
+                  );
                 }
-
-              // TODO: Handle this case.
             }
           }),
     );

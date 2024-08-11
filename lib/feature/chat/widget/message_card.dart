@@ -1,104 +1,74 @@
-
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
-
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageCard extends StatefulWidget {
-   MessageCard({super.key , required this.message});
-   final MessageModel message ;
+  MessageCard({super.key, required this.message});
+  final MessageModel message;
+
   @override
   State<MessageCard> createState() => _MessageCardState();
 }
+
 class _MessageCardState extends State<MessageCard> {
   @override
   Widget build(BuildContext context) {
-    return Api.user.uid == widget.message.senderId ? greenCard ():blueCard() ;
-  }
-  Widget blueCard(){
-    return Row(
-      mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          child: Container(
-            padding:const EdgeInsets.all(12),
-            margin: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue),
-              borderRadius:const BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-              shape: BoxShape.rectangle,
-              color: Colors.blueAccent,
-          
-            ),
-            child: Text(widget.message.content , style:const TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),),
-          ),
-        ),
-      //  const Row(
-      //     children: [
-      //       Text("widget.message.sent", style:const TextStyle(
-      //         color: Colors.black,
-      //         fontSize: 14,
-      //       ),),
-      //       SizedBox(width: 10,),
-      //       Icon(Icons.done_all_outlined , color: Colors.blue,),
-      //     ],
-      //   ),
-      ],
-    ) ;
+    // Determine if the current user is the sender or receiver
+    return Api.user.uid == widget.message.senderId ? greenCard() : blueCard();
   }
 
-    Widget greenCard()
-  {
-    return Row(
-      mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-      children: [
-
-
-        // Row(
-        //   children: [
-        //     Padding(
-        //       padding: const EdgeInsets.only(left: 20),
-        //       child: Icon(Icons.done_all_outlined , color: Colors.blue,),
-        //     ),
-        //     SizedBox(width: 10,),
-        //     Text("widget.message.sent", style:const TextStyle(
-        //       color: Colors.black,
-        //       fontSize: 14,
-        //     ),),
-        //   ],
-        // ),
-        Flexible(
-          child: Container(
-            padding:const EdgeInsets.all(12),
-            margin: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-              shape: BoxShape.rectangle,
-              color: Colors.green,
-
-            ),
-            child: Text(widget.message.content , style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-
-            ),),
+  // Widget for messages sent by the current user (appears on the right)
+  Widget greenCard() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.green),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+            bottomLeft: Radius.circular(20),
+          ),
+          color: Colors.greenAccent,
+        ),
+        child: Text(
+          widget.message.content,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 16,
           ),
         ),
-      ],
-    ) ;
+      ),
+    );
+  }
+
+  // Widget for messages received from others (appears on the left)
+  Widget blueCard() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blue),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+          color: Colors.blueAccent,
+        ),
+        child: Text(
+          widget.message.content,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
   }
 }
