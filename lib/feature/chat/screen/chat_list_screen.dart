@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dating_app/core/api/api.dart';
-import 'package:dating_app/core/modal/user_modal.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/chat/widget/chat_user_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +15,13 @@ class ChatListScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<ChatListScreen> {
-  List<ChatUser> list = [];
-  List<ChatUser> listSearch = [];
+  List<UserModel> list = [];
+  List<UserModel> listSearch = [];
   bool isSearch = false;
 
   @override
   void initState() {
+   // Api.getAllUser();
     Api.getSetInfo();
     super.initState();
   }
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<ChatListScreen> {
                 onChanged: (val) {
                   listSearch.clear();
                   for (var i in list) {
-                    if (i.name.toLowerCase().contains(val.toLowerCase()) ||
+                    if (i.fname.toLowerCase().contains(val.toLowerCase()) ||
                         i.email.toLowerCase().contains(val.toLowerCase())) {
                       listSearch.add(i);
                       setState(() {
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<ChatListScreen> {
               case ConnectionState.done:
                 final data = snapshot.data?.docs;
 
-                list = data?.map((e) => ChatUser.fromJson(e.data())).toList() ??
+                list = data?.map((e) => UserModel.fromMap(e.data())).toList() ??
                     [];
 
                 if (list.isNotEmpty) {
@@ -118,7 +119,7 @@ class _HomeScreenState extends State<ChatListScreen> {
                     itemCount: list.length,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) => ChatUserCard(
-                        user: isSearch ? listSearch[index] : list[index]),
+                        user:  list[index]),
                   );
                 } else {
                   return const Center(

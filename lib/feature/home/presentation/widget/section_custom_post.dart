@@ -29,10 +29,8 @@ class SectionCustomPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
-
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: currentUserId),
+      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = likedPosts.any((post) =>
@@ -70,7 +68,8 @@ class SectionCustomPost extends StatelessWidget {
                         children: [
                           Text(
                             " ${userModel.lname} ${userModel.fname}",
-                            style: const TextStyle(color: AppColor.kPrimaryColor),
+                            style:
+                                const TextStyle(color: AppColor.kPrimaryColor),
                           ),
                           horizontalSpacing(10),
                           BlocProvider(
@@ -99,34 +98,40 @@ class SectionCustomPost extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      // IconButton(
-                      //   onPressed: () {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (context) => CommentsScreen(postId: postId),
-                      //       ),
-                      //     );
-                      //   },
-                      //   icon: const Icon(Icons.comment),
-                      // ),
+                      IconButton(
+                        onPressed: () {
+                          // Navigator.push(
+                          //   context,
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => CommentsScreen(postId: postId),
+                          //   ),
+                          // );                          //     builder: (context) => CommentsScreen(postId: postId),
+                          //   ),
+                          // );
+                        },
+                        icon: const Icon(Icons.comment),
+                      ),
                       horizontalSpacing(20),
                       InkWell(
                         onTap: () {
                           context.read<LikedPostsCubit>().togglePostLike(
-                              currentUserId,
+                              userModel.uid,
+                              postId,
                               imageUrl,
                               '${userModel.fname} ${userModel.lname}');
                         },
                         child: IconButton(
                           onPressed: () {
                             context.read<LikedPostsCubit>().togglePostLike(
-                                currentUserId,
+                                userModel.uid,
+                                postId,
                                 imageUrl,
                                 '${userModel.fname} ${userModel.lname}');
                           },
