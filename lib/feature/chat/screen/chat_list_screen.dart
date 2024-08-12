@@ -8,13 +8,13 @@ class ChatListScreen extends StatefulWidget {
   const ChatListScreen({super.key});
 
   @override
-  State<ChatListScreen> createState() => _HomeScreenState();
+  State<ChatListScreen> createState() => _ChatListScreenState();
 }
 
-class _HomeScreenState extends State<ChatListScreen> {
+class _ChatListScreenState extends State<ChatListScreen> {
   List<UserModel> list = [];
   List<UserModel> listSearch = [];
-  bool isSearch = false; // Ensure this variable is defined
+  bool isSearch = false;
 
   @override
   void initState() {
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<ChatListScreen> {
           IconButton(
             onPressed: () {
               setState(() {
-                isSearch = !isSearch; // Toggle search state
+                isSearch = !isSearch;
               });
             },
             icon: Icon(isSearch ? Icons.clear : Icons.search),
@@ -86,9 +86,7 @@ class _HomeScreenState extends State<ChatListScreen> {
                   itemCount: list.length,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => ChatUserCard(
-                    userId: list[index].uid,
-                    userName: list[index].fname,
-                   
+                    user: list[index],
                   ),
                 );
               } else {
