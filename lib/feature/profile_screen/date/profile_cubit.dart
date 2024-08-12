@@ -14,20 +14,31 @@ class ProfileCubit extends Cubit<ProfileState> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  Future<void> initialize() async {
-    try {
-      String userId = _auth.currentUser!.uid;
-      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
-      if (userDoc.exists) {
-        String profilePicture = userDoc['profilePicture'] ?? '';
-        emit(ProfileLoaded(profilePicture));
-      } else {
-        emit(ProfileInitial());
+Future<void> initialize() async {
+                    String imageUrl =
+                      "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
+
+  try {
+    String userId = _auth.currentUser!.uid;
+    DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+
+    if (userDoc.exists) {
+      String profilePicture;
+      try {
+        profilePicture = userDoc.get('profilePicture');
+      } catch (e) {
+        // Handle the case where the profilePicture field doesn't exist
+        profilePicture = imageUrl; // Or an empty string, or a default image URL
       }
-    } catch (e) {
-      emit(ProfileError(e.toString()));
+      emit(ProfileLoaded(profilePicture));
+    } else {
+      emit(ProfileInitial());
     }
+  } catch (e) {
+    emit(ProfileError(e.toString()));
   }
+}
+
   Future<void> initialize2(String userId) async {
     try {
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
