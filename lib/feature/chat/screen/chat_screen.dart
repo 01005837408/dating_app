@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
-import 'package:dating_app/core/modal/user_modal.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/chat/widget/message_card.dart';
 import 'package:flutter/material.dart';

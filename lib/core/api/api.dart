@@ -1,13 +1,10 @@
 import 'dart:io';
-
 import 'package:dating_app/core/modal/message_modal.dart';
-import 'package:dating_app/core/modal/sign_up_user_modal.dart';
 import 'package:dating_app/core/modal/user_modal.dart';
-import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
+
 
 class Api {
   static FirebaseAuth auth = FirebaseAuth.instance;
