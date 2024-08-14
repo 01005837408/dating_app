@@ -18,7 +18,9 @@ class ChatUserCard extends StatelessWidget {
         builder: (context, state) {
           if (state is ChatLoading) {
             return const ListTile(
-              title: Text('Loading...'),
+              title:Align(
+                alignment: Alignment.centerRight,
+                child: CircularProgressIndicator()),
             );
           } else if (state is UserProfileAndLastMessageLoaded) {
             return InkWell(

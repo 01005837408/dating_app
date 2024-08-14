@@ -31,10 +31,12 @@ dependencies:
   cached_network_image: ^3.3.1
   chat_bubbles: ^1.5.0
   cloud_firestore: ^4.15.8
+  connectivity_plus: ^6.0.3
   cupertino_icons: ^1.0.2
   dio: ^5.5.0+1
   firebase_auth: ^4.17.8
   firebase_core: ^2.27.0
+  firebase_messaging: ^14.7.19
   firebase_storage: ^11.6.9
   flutter:
     sdk: flutter
@@ -46,6 +48,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: 6.1.0
   google_sign_in: ^6.2.1
+  googleapis_auth: ^1.6.0
   image_picker: ^1.0.8
   shared_preferences: ^2.2.3
   smooth_page_indicator: ^1.1.0
