@@ -19,16 +19,28 @@ class ChatScreen extends StatelessWidget {
       child: Builder(
         builder: (newContext) => Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            elevation: 3,
+            //actions: [],
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back),
+            ),
             title: Row(
               children: [
-                Text(user.fname),
-                const SizedBox(width: 20),
                 CircleAvatar(
                   radius: 20,
                   backgroundImage: user.profilePicture.isNotEmpty
                       ? NetworkImage(user.profilePicture)
                       : const AssetImage('assets/images/Home Screen-image.jpg') as ImageProvider,
                 ),
+                const SizedBox(width: 20),
+                Text(user.fname),
+                
+                
               ],
             ),
           ),
@@ -57,27 +69,43 @@ class ChatScreen extends StatelessWidget {
                   },
                 ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: textController,
-                      decoration: const InputDecoration(
-                        hintText: 'Type a message...',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Card(
+                  color: Colors.white,
+                  elevation: 3,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                        height: 50,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0.0),
+                            child: TextField(
+                              controller: textController,
+                              
+                              decoration: const InputDecoration(
+                                hintText: 'Type a message',
+                                border: InputBorder.none,
+                              )
+                              
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        icon: const Icon(Icons.send , color: Colors.blue,),
+                        onPressed: () {
+                          final message = textController.text.trim();
+                          if (message.isNotEmpty) {
+                            newContext.read<ChatCubit>().sendMessage(message, user.uid);
+                            textController.clear();
+                          }
+                        },
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: () {
-                      final message = textController.text.trim();
-                      if (message.isNotEmpty) {
-                        newContext.read<ChatCubit>().sendMessage(message, user.uid);
-                        textController.clear();
-                      }
-                    },
-                  ),
-                ],
+                ),
               ),
             ],
           ),

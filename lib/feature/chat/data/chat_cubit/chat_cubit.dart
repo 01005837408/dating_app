@@ -58,7 +58,7 @@ class ChatCubit extends Cubit<ChatState> {
 
           emit(UserProfileAndLastMessageLoaded(profilePicture, lastMessage, lastMessageTime));
         } else {
-          emit(UserProfileAndLastMessageLoaded(profilePicture, 'No messages yet', ''));
+          emit(UserProfileAndLastMessageLoaded(profilePicture, '', ''));
         }
       }
     } catch (e) {

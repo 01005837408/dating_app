@@ -37,7 +37,10 @@ class ChatListScreen extends StatelessWidget {
 
               return ListView.builder(
                 itemCount: users.length,
-                itemBuilder: (context, index) => ChatUserCard(user: users[index], lastMessageTime: '',),
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(left: 20, bottom: 10,top: 10),
+                  child: Card(child: ChatUserCard(user: users[index], lastMessageTime: '',)),
+                ),
               );
             } else if (state is ChatError) {
               return const Center(
