@@ -22,7 +22,7 @@ class UserCubit extends Cubit<UserState> {
         fname: fName,
         lname: lName,
         email: email,
-        imageUrl: '',
+        profilePicture: '',
       );
 
       await FirebaseFirestore.instance

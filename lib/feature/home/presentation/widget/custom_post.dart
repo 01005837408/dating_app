@@ -47,7 +47,7 @@ class _CustomPostState extends State<CustomPost> {
             fname: 'Unknown',
             lname: 'User',
             email: '',
-            imageUrl: '',
+            profilePicture: '',
           );
         }
         return UserModel.fromMap(data);
@@ -60,7 +60,7 @@ class _CustomPostState extends State<CustomPost> {
                 fname: 'Unknown',
                 lname: 'User',
                 email: '',
-                imageUrl: '',
+                profilePicture: '',
               ));
 
       print('Current user: ${currentUser?.fname} ${currentUser?.lname}');

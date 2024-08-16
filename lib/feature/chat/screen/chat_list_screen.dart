@@ -40,12 +40,12 @@ class ChatListScreen extends StatelessWidget {
                 itemBuilder: (context, index) => ChatUserCard(user: users[index], lastMessageTime: '',),
               );
             } else if (state is ChatError) {
-              return Center(
+              return const Center(
                 child: Text(
-                  'Error: ${state.error}',
-                  style: const TextStyle(
+                  'Error: {state.error}',
+                  style:  TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

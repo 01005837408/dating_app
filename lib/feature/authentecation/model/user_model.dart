@@ -3,14 +3,14 @@ class UserModel {
   final String fname;
   final String lname;
   final String email;
-  final String imageUrl; // Add this field for the image URL
+  final String profilePicture;  // Add this field for the image URL
 
   UserModel({
     required this.uid,
     required this.fname,
     required this.lname,
     required this.email,
-    required this.imageUrl, // Initialize it
+    required this.profilePicture, // Initialize it
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -19,7 +19,7 @@ class UserModel {
       fname: map['fname'] ?? '',
       lname: map['lname'] ?? '',
       email: map['email'] ?? '',
-      imageUrl: map['imageUrl'] ?? '', // Map this field
+      profilePicture: map['profilePicture'] ?? '', // Map this field
     );
   }
 
@@ -29,7 +29,7 @@ class UserModel {
       'fname': fname,
       'lname': lname,
       'email': email,
-      'imageUrl': imageUrl, // Add this field to the map
+      'profilePicture': profilePicture, // Add this field to the map
     };
   }
 }

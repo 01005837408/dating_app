@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:dating_app/feature/chat/widget/message_card.dart';
-import 'package:dating_app/core/modal/message_modal.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -20,7 +19,18 @@ class ChatScreen extends StatelessWidget {
       child: Builder(
         builder: (newContext) => Scaffold(
           appBar: AppBar(
-            title: Text(user.fname),
+            title: Row(
+              children: [
+                Text(user.fname),
+                const SizedBox(width: 20),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: user.profilePicture.isNotEmpty
+                      ? NetworkImage(user.profilePicture)
+                      : const AssetImage('assets/images/Home Screen-image.jpg') as ImageProvider,
+                ),
+              ],
+            ),
           ),
           body: Column(
             children: [
@@ -76,4 +86,5 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
+
 
