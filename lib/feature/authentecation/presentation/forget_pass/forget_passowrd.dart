@@ -81,3 +81,12 @@ class ForgetPassword extends StatelessWidget {
     );
   }
 }
+//  Future<void> resetPasswordWithLink() async {
+//     try {
+//       emit(ResetPasswordLoadingState());
+//       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+//       emit(ResetPasswordSuccessState());
+//     } catch (e) {
+//       emit(ResetPasswordFailureState(errMessage: e.toString()));
+//     }
+//   }

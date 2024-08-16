@@ -10,7 +10,7 @@ Widget CustomTextFormField({
   String? Function(String?)? validator,
   String? Function(String?)? onChange,
   String? Function()? suffixPressed,
-  bool passwordVisible = false,
+  bool obscureText = false,
   //Function()? suffixPressed,
 }) {
   return Center(
@@ -18,7 +18,7 @@ Widget CustomTextFormField({
       //  onTap: suffixPressed,
 
       onChanged: onChange,
-      obscureText: passwordVisible,
+      obscureText: obscureText,
       keyboardType: inputType,
       controller: controller,
       validator: validator,

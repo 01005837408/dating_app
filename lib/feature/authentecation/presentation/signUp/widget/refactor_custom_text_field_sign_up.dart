@@ -36,7 +36,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
       create: (context) => UserCubit(),
       child: BlocConsumer<UserCubit, UserState>(
       listener: (context, state) {
-            if (state is UserLoaded) {
+            if (state is UserSuccessState) {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => SignInScreen(),
               ));
@@ -128,12 +128,23 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                         }
                       },
                       controller: passController,
-                      suffixIcon: const Icon(
-                        Icons.lock,
-                        color: AppColor.kPrimaryColor,
-                        size: 30,
-                      ),
-                      prefixIcon: const Icon(Icons.visibility_off)),
+                      prefixIcon:const Icon(Icons.lock , color:Colors.black),
+                      suffixIcon: IconButton(
+                  icon: Icon(
+                    color:Colors.black,
+                    BlocProvider.of<UserCubit>(context).obscurePasswordTextValue == true
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  ),
+                  onPressed: () {
+                    BlocProvider.of<UserCubit>(context).obscurePasswordText();
+                  },
+                ),
+                obscureText: BlocProvider.of<UserCubit>(context).obscurePasswordTextValue,
+                onChange: (password) {
+                  BlocProvider.of<UserCubit>(context).password = password;
+                },
+              ),
                   verticalSpacing(10),
                   verticalSpacing(30),
                   state is UserLoading

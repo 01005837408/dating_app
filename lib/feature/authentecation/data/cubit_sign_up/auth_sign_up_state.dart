@@ -6,10 +6,13 @@ abstract class UserState {}
 class UserInitial extends UserState {}
 
 class UserLoading extends UserState {}
-class UserLoaded extends UserState {
+
+
+class ObscurePasswordTextUpdateState extends UserState {}
+class UserSuccessState extends UserState {
   final UserModel user;
 
-  UserLoaded(this.user);
+  UserSuccessState(this.user);
 }
 
 class UserError extends UserState {

@@ -6,11 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(UserInitial());
-
-  Future<void> signUp(String fName, String lName, String email, String password) async {
+  String? password;
+  Future<void> signUp(
+      String fName, String lName, String email, String password) async {
     try {
       emit(UserLoading());
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -28,7 +30,7 @@ class UserCubit extends Cubit<UserState> {
           .doc(userModel.uid)
           .set(userModel.toMap());
 
-      emit(UserLoaded(userModel));
+      emit(UserSuccessState(userModel));
     } catch (e) {
       emit(UserError(e.toString()));
     }
@@ -37,9 +39,11 @@ class UserCubit extends Cubit<UserState> {
   Future<void> fetchUser(String uid) async {
     try {
       emit(UserLoading());
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
-      UserModel userModel = UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
-      emit(UserLoaded(userModel));
+      DocumentSnapshot userDoc =
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+      UserModel userModel =
+          UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
+      emit(UserSuccessState(userModel));
     } catch (e) {
       emit(UserError(e.toString()));
     }
@@ -48,7 +52,8 @@ class UserCubit extends Cubit<UserState> {
   Future<void> login(String email, String password) async {
     try {
       emit(UserLoading());
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -58,10 +63,21 @@ class UserCubit extends Cubit<UserState> {
           .doc(userCredential.user!.uid)
           .get();
 
-      UserModel userModel = UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
-      emit(UserLoaded(userModel));
+      UserModel userModel =
+          UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
+      emit(UserSuccessState(userModel));
     } catch (e) {
       emit(UserError(e.toString()));
     }
+  }
+
+  bool obscurePasswordTextValue = true;
+  void obscurePasswordText() {
+    if (obscurePasswordTextValue == true) {
+      obscurePasswordTextValue = false;
+    } else {
+      obscurePasswordTextValue = true;
+    }
+    emit(ObscurePasswordTextUpdateState());
   }
 }

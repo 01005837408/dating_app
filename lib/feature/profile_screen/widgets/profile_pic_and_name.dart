@@ -16,7 +16,7 @@ final myUid = FirebaseAuth.instance.currentUser!.uid;
       create: (context) => UserCubit()..fetchUser(myUid),
       child: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
-          if (state is UserLoaded) {
+          if (state is UserSuccessState) {
             UserModel user = state.user;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
