@@ -30,7 +30,8 @@ class SectionCustomPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
+      create: (context) =>
+          LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = likedPosts.any((post) =>
@@ -72,26 +73,17 @@ class SectionCustomPost extends StatelessWidget {
                                 const TextStyle(color: AppColor.kPrimaryColor),
                           ),
                           horizontalSpacing(10),
-                          BlocProvider(
-                            create: (context) => ProfileCubit()..initialize(),
-                            child: BlocBuilder<ProfileCubit, ProfileState>(
-                              builder: (context, state) {
-                                if (state is ProfileLoaded) {
-                                  imageUrl2 = state.imageUrl;
-                                }
-                                return Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle),
-                                  child: CircleAvatar(
-                                    backgroundImage: NetworkImage(imageUrl2),
-                                    radius: 25,
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
+                          
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundImage: userModel
+                                      .profilePicture.isNotEmpty
+                                  ? NetworkImage(userModel.profilePicture)
+                                  : const AssetImage(
+                                          'assets/images/Home Screen-image.jpg')
+                                      as ImageProvider,
+                            )
+                         
                         ],
                       ),
                     ),
