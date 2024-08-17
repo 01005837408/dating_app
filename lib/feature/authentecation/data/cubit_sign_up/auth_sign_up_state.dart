@@ -1,5 +1,5 @@
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
-import 'package:dating_app/test/userModel.dart';
+
 
 abstract class UserState {}
 

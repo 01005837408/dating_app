@@ -10,7 +10,7 @@ import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 
 class SectionCustomPost extends StatelessWidget {
-  final PageController controller;
+  final PageController controller ;
   final UserModel userModel;
   final String imageUrl;
   final String postId; // Add postId to identify the post
@@ -22,7 +22,7 @@ class SectionCustomPost extends StatelessWidget {
     required this.imageUrl,
     required this.postId, // Add postId to the constructor
   }) : super(key: key);
-
+  // PageController controller = PageController();
   String imageUrl2 =
       "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
 
@@ -39,11 +39,19 @@ class SectionCustomPost extends StatelessWidget {
 
           return Container(
             width: double.infinity,
-            color: Colors.white,
+            // color: Colors.white,
             child: Column(
               children: [
-                Image.network(imageUrl,
-                    width: double.infinity, height: 300, fit: BoxFit.fill),
+                SizedBox(
+                  height: 300,
+                  child: PageView.builder(
+                    controller: controller,
+                    itemCount: 3,
+                    itemBuilder: (context, index) =>  Image.network(imageUrl,
+                      width: double.infinity, height: 300, fit: BoxFit.fill),
+                  ),
+                ),
+               
                 verticalSpacing(6),
                 SmoothPageIndicator(
                   controller: controller,
