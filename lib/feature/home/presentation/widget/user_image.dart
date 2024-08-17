@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserImage extends StatelessWidget {
-   UserImage({
+  UserImage({
     this.height,
     this.width,
+    this.container,
     super.key,
   });
-   double? height;
+  double? height;
   double? width;
+  Widget? container;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,14 +27,14 @@ class UserImage extends StatelessWidget {
         builder: (context, state) {
           String imageUrl =
               "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
-    
+
           if (state is ProfileLoaded) {
             imageUrl = state.imageUrl;
           }
-    
-          return Container(
-            height: height ??40,
-            width:width?? 40,
+
+          return  Container(
+            height: height ?? 40,
+            width: width ?? 40,
             decoration: const BoxDecoration(shape: BoxShape.circle),
             child: CircleAvatar(
               backgroundImage: NetworkImage(imageUrl),

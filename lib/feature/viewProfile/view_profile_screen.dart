@@ -40,7 +40,7 @@ class ViewProfile extends StatelessWidget {
                     iconButton: IconButton(
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context); 
                       },
                     ),
                     

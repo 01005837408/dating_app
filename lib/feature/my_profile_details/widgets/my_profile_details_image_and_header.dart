@@ -2,7 +2,9 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_header.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_image.dart';
+import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyProfileImageAndHeader extends StatelessWidget {
   const MyProfileImageAndHeader({
@@ -16,7 +18,10 @@ class MyProfileImageAndHeader extends StatelessWidget {
           border: Border.all(color: AppColor.kPrimaryColor, width: 1.2)),
       child: Column(
         children: [
-          const MyProfileDetailsImage(),
+          BlocProvider(
+            create: (context) => ProfileCubit()..initialize(),
+            child:  MyProfileDetailsImage(),
+          ),
           verticalSpacing(10),
           const MyProfileDetailsHeader(),
         ],
