@@ -6,7 +6,7 @@ import 'package:dating_app/feature/likes_screen/likes_screen.dart';
 import 'package:dating_app/feature/viewProfile/view_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+
 
 part 'app_state.dart';
 

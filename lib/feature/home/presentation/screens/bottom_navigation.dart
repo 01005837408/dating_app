@@ -24,6 +24,7 @@ class _ButtomNavigationState extends State<ButtomNavigation> {
           textDirection: TextDirection.rtl,
           child: Scaffold(
             bottomNavigationBar: BottomNavigationBar(
+             backgroundColor: Colors.red,
                 currentIndex: BlocProvider.of<AppCubit>(context).selectedIndex,
                 onTap: (int index) {
                   AppCubit.get(context).changeButton(index);
@@ -36,14 +37,16 @@ class _ButtomNavigationState extends State<ButtomNavigation> {
                     icon: Icon(Icons.home),
                     label: 'Home',
                     backgroundColor: Colors.red,
+                    
                   ),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.remove_red_eye_outlined),
+                       backgroundColor: Colors.red,
                       label: 'views'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.favorite), label: 'likes'),
+                      icon: Icon(Icons.favorite), label: 'likes',  backgroundColor: Colors.red,),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.comment), label: 'chats'),
+                      icon: Icon(Icons.comment), label: 'chats',  backgroundColor: Colors.red,),
                 ]),
             body: cubit.screens[cubit.selectedIndex],
           ),

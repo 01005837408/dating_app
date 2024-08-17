@@ -1,7 +1,6 @@
-import 'package:dating_app/feature/home/presentation/screens/comment_page.dart';
-import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
-import 'package:dating_app/feature/profile_screen/date/profile_state.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -90,7 +89,7 @@ class SectionCustomPost extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding:const EdgeInsets.all(10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
