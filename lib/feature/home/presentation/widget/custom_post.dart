@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_cubit.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_state.dart';
+import 'package:dating_app/feature/profile_photos/data/photo_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'section_custom_post.dart';
-
 
 class CustomPost extends StatefulWidget {
   const CustomPost({super.key});
@@ -96,7 +96,7 @@ class _CustomPostState extends State<CustomPost> {
                   itemBuilder: (context, index) {
                     final user = users[index];
                     final images = userImages[user.uid] ?? [];
-
+         
                     print(
                         'Displaying images for user: ${user.fname} ${user.lname}, images: $images');
 
@@ -104,10 +104,13 @@ class _CustomPostState extends State<CustomPost> {
                       textDirection: TextDirection.rtl,
                       child: Column(
                         children: images.map((imageUrl) {
-                          return SectionCustomPost(
-                            controller: controller,
-                            userModel: user,
-                            imageUrl: imageUrl, postId: FirebaseAuth.instance.currentUser!.uid,
+                          return BlocProvider(
+                            create: (context) => ProfilePhotosCubit(),
+                            child: SectionCustomPost(
+                              //controller: controller,
+                              userModel: user,
+                               imageUrl: imageUrl, postId: FirebaseAuth.instance.currentUser!.uid,
+                            ),
                           );
                         }).toList(),
                       ),

@@ -10,14 +10,14 @@ import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/likes_screen/data/like_post_cubit.dart';
 
 class SectionCustomPost extends StatelessWidget {
-  final PageController controller ;
+  final PageController controller = PageController();
   final UserModel userModel;
   final String imageUrl;
   final String postId; // Add postId to identify the post
 
   SectionCustomPost({
     Key? key,
-    required this.controller,
+    //required this.controller,
     required this.userModel,
     required this.imageUrl,
     required this.postId, // Add postId to the constructor
@@ -39,14 +39,14 @@ class SectionCustomPost extends StatelessWidget {
 
           return Container(
             width: double.infinity,
-            // color: Colors.white,
+             color: Colors.white,
             child: Column(
               children: [
                 SizedBox(
                   height: 300,
                   child: PageView.builder(
                     controller: controller,
-                    itemCount: 3,
+                    itemCount: imageUrl.length,
                     itemBuilder: (context, index) =>  Image.network(imageUrl,
                       width: double.infinity, height: 300, fit: BoxFit.fill),
                   ),
@@ -55,7 +55,7 @@ class SectionCustomPost extends StatelessWidget {
                 verticalSpacing(6),
                 SmoothPageIndicator(
                   controller: controller,
-                  count: 3,
+                  count: imageUrl.length,
                   effect: const WormEffect(
                     dotColor: Colors.grey,
                     activeDotColor: AppColor.kPrimaryColor,
@@ -63,7 +63,9 @@ class SectionCustomPost extends StatelessWidget {
                   onDotClicked: (index) {},
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                   // print("Length: " + imageUrl.length.toString());
+                  },
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,

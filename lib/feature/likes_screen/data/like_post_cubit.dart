@@ -33,84 +33,131 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
 
   LikedPostsCubit() : super([]);
 
+  // Load liked posts for a user
   Future<void> loadLikedPosts({required String userId}) async {
-    final snapshot = await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('likedPosts')
-        .get();
-    final likedPosts =
-        snapshot.docs.map((doc) => LikedPost.fromJson(doc.data())).toList();
-    emit(likedPosts);
-  }
-
-  Future<void> loadLikesByOthers({required String userId}) async {
-    final snapshot = await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('likedByOthers')
-        .get();
-    final likedByOthers =
-        snapshot.docs.map((doc) => LikedPost.fromJson(doc.data())).toList();
-    emit(likedByOthers);
-  }
-
-  Future<void> saveLikedPosts(List<LikedPost> likedPosts) async {
-    final user = _auth.currentUser;
-    if (user != null) {
-      final batch = _firestore.batch();
-      final userLikedPostsCollection =
-          _firestore.collection('users').doc(user.uid).collection('likedPosts');
-
-      // Clear existing liked posts
-      final existingPosts = await userLikedPostsCollection.get();
-      for (var doc in existingPosts.docs) {
-        batch.delete(doc.reference);
-      }
-
-      // Add new liked posts
-      for (var post in likedPosts) {
-        batch.set(userLikedPostsCollection.doc(post.postId), post.toJson());
-      }
-
-      await batch.commit();
+    try {
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('likedPosts')
+          .get();
+      final likedPosts = snapshot.docs
+          .map((doc) => LikedPost.fromJson(doc.data()))
+          .toList();
       emit(likedPosts);
+    } catch (e) {
+      print('Error loading liked posts: $e');
+      emit([]); // Emit an empty list in case of an error
     }
   }
 
+  // Load posts liked by other users
+  Future<void> loadLikesByOthers({required String userId}) async {
+    try {
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('likedByOthers')
+          .get();
+      final likedByOthers = snapshot.docs
+          .map((doc) => LikedPost.fromJson(doc.data()))
+          .toList();
+      emit(likedByOthers);
+    } catch (e) {
+      print('Error loading likes by others: $e');
+      emit([]); // Emit an empty list in case of an error
+    }
+  }
+
+  // Save liked posts for the current user
+  Future<void> saveLikedPosts(List<LikedPost> likedPosts) async {
+    final user = _auth.currentUser;
+    if (user != null) {
+      try {
+        final batch = _firestore.batch();
+        final userLikedPostsCollection = _firestore
+            .collection('users')
+            .doc(user.uid)
+            .collection('likedPosts');
+
+        // Clear existing liked posts
+        final existingPosts = await userLikedPostsCollection.get();
+        for (var doc in existingPosts.docs) {
+          batch.delete(doc.reference);
+        }
+
+        // Add new liked posts
+        for (var post in likedPosts) {
+          batch.set(userLikedPostsCollection.doc(post.postId), post.toJson());
+        }
+
+        await batch.commit();
+        emit(likedPosts);
+      } catch (e) {
+        print('Error saving liked posts: $e');
+      }
+    }
+  }
+
+  // Toggle post like/unlike
   Future<void> togglePostLike(
     String userId,
     String postId,
     String imageUrl,
     String userName,
   ) async {
-    List<LikedPost> updatedPosts = List.from(state);
-    if (isPostLiked(postId)) {
-      updatedPosts.removeWhere((post) => post.postId == postId);
+    try {
+      List<LikedPost> updatedPosts = List.from(state);
+      if (isPostLiked(postId)) {
+        // If already liked, remove from the liked posts
+        updatedPosts.removeWhere((post) => post.postId == postId);
+        await _removePostFromLikedByOthers(userId, postId);
+      } else {
+        // If not liked, add to the liked posts
+        final newPost = LikedPost(
+          postId: postId,
+          imageUrl: imageUrl,
+          userName: userName,
+        );
+        updatedPosts.add(newPost);
+        await _addPostToLikedByOthers(userId, newPost);
+      }
+      await saveLikedPosts(updatedPosts);
+    } catch (e) {
+      print('Error toggling post like: $e');
+    }
+  }
+
+  // Check if a post is already liked
+  bool isPostLiked(String postId) {
+    return state.any((post) => post.postId == postId);
+  }
+
+  // Helper method to add a post to 'likedByOthers' collection
+  Future<void> _addPostToLikedByOthers(String userId, LikedPost post) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('likedByOthers')
+          .doc(post.postId)
+          .set(post.toJson());
+    } catch (e) {
+      print('Error adding post to likedByOthers: $e');
+    }
+  }
+
+  // Helper method to remove a post from 'likedByOthers' collection
+  Future<void> _removePostFromLikedByOthers(String userId, String postId) async {
+    try {
       await _firestore
           .collection('users')
           .doc(userId)
           .collection('likedByOthers')
           .doc(postId)
           .delete();
-    } else {
-      final newPost = LikedPost(
-        postId: postId,
-        imageUrl: imageUrl,
-        userName: userName,
-      );
-      updatedPosts.add(newPost);
-      await _firestore
-          .collection('users')
-          .doc(userId)
-          .collection('likedByOthers')
-          .doc(postId)
-          .set(newPost.toJson());
+    } catch (e) {
+      print('Error removing post from likedByOthers: $e');
     }
-    await saveLikedPosts(updatedPosts);
-  }
-
-  bool isPostLiked(String postId) {
-    return state.any((post) => post.postId == postId);
   }
 }
