@@ -21,12 +21,16 @@ class SectionCustomPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (imageUrls.isEmpty) {
+      return const SizedBox.shrink(); // Return an empty widget if no images
+    }
+
     return BlocProvider(
       create: (context) => LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = likedPosts.any((post) =>
-              post.imageUrl == imageUrls.first &&
+              post.imageUrl == imageUrls[0] &&
               post.userName == '${userModel.fname} ${userModel.lname}');
 
           return Container(
@@ -34,37 +38,31 @@ class SectionCustomPost extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                // Ensure that the PageView is only built when there are images to display
-                if (imageUrls.isNotEmpty)
-                  SizedBox(
-                    height: 300,
-                    child: PageView.builder(
-                      controller: controller,
-                      itemCount: imageUrls.length,
-                      itemBuilder: (context, index) => Image.network(
-                        imageUrls[index],
-                        width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                if (imageUrls.length > 1) ...[
-                  verticalSpacing(6),
-                  SmoothPageIndicator(
+                SizedBox(
+                  height: 300,
+                  child: PageView.builder(
                     controller: controller,
-                    count: imageUrls.length,
-                    effect: const WormEffect(
-                      dotColor: Colors.grey,
-                      activeDotColor: AppColor.kPrimaryColor,
+                    itemCount: imageUrls.length,
+                    itemBuilder: (context, index) => Image.network(
+                      imageUrls[index],
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.fill,
                     ),
-                    onDotClicked: (index) {},
                   ),
-                ],
+                ),
+                verticalSpacing(6),
+                SmoothPageIndicator(
+                  controller: controller,
+                  count: imageUrls.length,
+                  effect: const WormEffect(
+                    dotColor: Colors.grey,
+                    activeDotColor: AppColor.kPrimaryColor,
+                  ),
+                  onDotClicked: (index) {},
+                ),
                 InkWell(
-                  onTap: () {
-                    // Navigate to the user's profile or another action
-                  },
+                  onTap: () {},
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -76,7 +74,7 @@ class SectionCustomPost extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            "${userModel.lname} ${userModel.fname}",
+                            " ${userModel.lname} ${userModel.fname}",
                             style: const TextStyle(color: AppColor.kPrimaryColor),
                           ),
                           horizontalSpacing(10),
@@ -84,9 +82,7 @@ class SectionCustomPost extends StatelessWidget {
                             radius: 20,
                             backgroundImage: userModel.profilePicture.isNotEmpty
                                 ? NetworkImage(userModel.profilePicture)
-                                : const AssetImage(
-                                        'assets/images/Home Screen-image.jpg')
-                                    as ImageProvider,
+                                : const AssetImage('assets/images/Home Screen-image.jpg') as ImageProvider,
                           ),
                         ],
                       ),
@@ -100,23 +96,32 @@ class SectionCustomPost extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {
-                          // Navigate to comments
-                        },
+                        onPressed: () {},
                         icon: const Icon(Icons.comment),
                       ),
                       horizontalSpacing(20),
-                      IconButton(
-                        onPressed: () {
+                      InkWell(
+                        onTap: () {
                           context.read<LikedPostsCubit>().togglePostLike(
-                              userModel.uid,
-                              postId,
-                              imageUrls.first,
-                              '${userModel.fname} ${userModel.lname}');
+                                userModel.uid,
+                                postId,
+                                imageUrls[0],
+                                '${userModel.fname} ${userModel.lname}',
+                              );
                         },
-                        icon: Icon(
-                          Icons.favorite,
-                          color: isFavorite ? Colors.red : Colors.grey,
+                        child: IconButton(
+                          onPressed: () {
+                            context.read<LikedPostsCubit>().togglePostLike(
+                                  userModel.uid,
+                                  postId,
+                                  imageUrls[0],
+                                  '${userModel.fname} ${userModel.lname}',
+                                );
+                          },
+                          icon: Icon(
+                            Icons.favorite,
+                            color: isFavorite ? Colors.red : Colors.grey,
+                          ),
                         ),
                       ),
                       const Spacer(),

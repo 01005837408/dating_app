@@ -16,9 +16,9 @@ class CustomPost extends StatefulWidget {
 }
 
 class _CustomPostState extends State<CustomPost> {
+  PageController controller = PageController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List<UserModel> users = [];
-  UserModel? currentUser;
 
   @override
   void initState() {
@@ -37,26 +37,8 @@ class _CustomPostState extends State<CustomPost> {
       QuerySnapshot querySnapshot = await _firestore.collection('users').get();
       users = querySnapshot.docs.map((doc) {
         Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-        if (data == null) {
-          return UserModel(
-            uid: '',
-            fname: 'Unknown',
-            lname: 'User',
-            email: '',
-            profilePicture: '',
-          );
-        }
-        return UserModel.fromMap(data);
+        return UserModel.fromMap(data!);
       }).toList();
-
-      currentUser = users.firstWhere((user) => user.uid == currentUserId,
-          orElse: () => UserModel(
-                uid: '',
-                fname: 'Unknown',
-                lname: 'User',
-                email: '',
-                profilePicture: '',
-              ));
 
       setState(() {});
     } catch (e) {
@@ -82,12 +64,16 @@ class _CustomPostState extends State<CustomPost> {
                 return const Center(child: Text('No images found.'));
               } else {
                 final userImages = snapshot.data!;
+                final usersWithImages = users.where((user) {
+                  return userImages[user.uid]?.isNotEmpty ?? false;
+                }).toList();
+
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: users.length,
+                  itemCount: usersWithImages.length,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    final user = users[index];
+                    final user = usersWithImages[index];
                     final images = userImages[user.uid] ?? [];
 
                     return Directionality(
