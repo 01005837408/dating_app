@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,7 +48,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
           .toList();
       emit(likedPosts);
     } catch (e) {
-      print('Error loading liked posts: $e');
       emit([]); // Emit an empty list in case of an error
     }
   }
@@ -64,7 +65,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
           .toList();
       emit(likedByOthers);
     } catch (e) {
-      print('Error loading likes by others: $e');
       emit([]); // Emit an empty list in case of an error
     }
   }
@@ -94,7 +94,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
         await batch.commit();
         emit(likedPosts);
       } catch (e) {
-        print('Error saving liked posts: $e');
       }
     }
   }
@@ -124,7 +123,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
       }
       await saveLikedPosts(updatedPosts);
     } catch (e) {
-      print('Error toggling post like: $e');
     }
   }
 
@@ -143,7 +141,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
           .doc(post.postId)
           .set(post.toJson());
     } catch (e) {
-      print('Error adding post to likedByOthers: $e');
     }
   }
 
@@ -157,7 +154,6 @@ class LikedPostsCubit extends Cubit<List<LikedPost>> {
           .doc(postId)
           .delete();
     } catch (e) {
-      print('Error removing post from likedByOthers: $e');
     }
   }
 }
