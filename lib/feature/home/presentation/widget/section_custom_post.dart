@@ -1,3 +1,4 @@
+import 'package:dating_app/feature/my_profile_details/my_profile_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -26,7 +27,8 @@ class SectionCustomPost extends StatelessWidget {
     }
 
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
+      create: (context) =>
+          LikedPostsCubit()..loadLikedPosts(userId: userModel.uid),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           bool isFavorite = likedPosts.any((post) =>
@@ -62,7 +64,12 @@ class SectionCustomPost extends StatelessWidget {
                   onDotClicked: (index) {},
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => MyProfileDetailsScreen()));
+                  },
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -75,14 +82,17 @@ class SectionCustomPost extends StatelessWidget {
                         children: [
                           Text(
                             " ${userModel.lname} ${userModel.fname}",
-                            style: const TextStyle(color: AppColor.kPrimaryColor),
+                            style:
+                                const TextStyle(color: AppColor.kPrimaryColor),
                           ),
                           horizontalSpacing(10),
                           CircleAvatar(
                             radius: 20,
                             backgroundImage: userModel.profilePicture.isNotEmpty
                                 ? NetworkImage(userModel.profilePicture)
-                                : const AssetImage('assets/images/Home Screen-image.jpg') as ImageProvider,
+                                : const AssetImage(
+                                        'assets/images/Home Screen-image.jpg')
+                                    as ImageProvider,
                           ),
                         ],
                       ),

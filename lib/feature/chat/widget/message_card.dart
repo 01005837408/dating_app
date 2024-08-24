@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageCard extends StatefulWidget {
@@ -24,10 +25,10 @@ class _MessageCardState extends State<MessageCard> {
       alignment: Alignment.centerRight,
       child: Container(
         padding: const EdgeInsets.all(12),
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.green),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
             bottomLeft: Radius.circular(20),
@@ -51,10 +52,10 @@ class _MessageCardState extends State<MessageCard> {
       alignment: Alignment.centerLeft,
       child: Container(
         padding: const EdgeInsets.all(12),
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.blue),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
             bottomRight: Radius.circular(20),

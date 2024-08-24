@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_cubit.dart';
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_state.dart';
 import 'package:flutter/material.dart';

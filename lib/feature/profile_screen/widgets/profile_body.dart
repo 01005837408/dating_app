@@ -35,7 +35,7 @@ class ProfileBody extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const MyProfileDetailsScreen(),
+              builder: (context) =>  MyProfileDetailsScreen(),
             ),
           );
         },

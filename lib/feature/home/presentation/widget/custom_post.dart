@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/home/data/home_cubit/home_cubit.dart';

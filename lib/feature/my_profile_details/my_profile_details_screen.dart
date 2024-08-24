@@ -1,4 +1,5 @@
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/edit_profile_screen/edit_profile_screen.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_image_and_header.dart';
 import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details_quick_view.dart';
@@ -7,8 +8,8 @@ import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class MyProfileDetailsScreen extends StatelessWidget {
-  const MyProfileDetailsScreen({super.key});
-
+   MyProfileDetailsScreen( {super.key});
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,6 +38,15 @@ class MyProfileDetailsScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: QuickViewInMyProfile(),
+                ),
+                Center(
+                  child: ElevatedButton(onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(AppColor.kPrimaryColor),
+                  ),
+                   child:const Text("Block", style: TextStyle(
+                    color: Colors.white,
+                   ),)),
                 )
               ],
             ),

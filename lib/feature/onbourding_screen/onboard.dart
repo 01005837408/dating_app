@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
