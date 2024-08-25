@@ -1,5 +1,6 @@
 import 'package:dating_app/core/model/profile_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/my_profile_details/my_profile_details_screen.dart';
 import 'package:dating_app/feature/profile_photos/profile_photos_screen.dart';
 import 'package:dating_app/feature/profile_screen/widgets/profile_body_listview.dart';
@@ -9,8 +10,8 @@ import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatelessWidget {
-  const ProfileBody({super.key});
-
+   ProfileBody({super.key});
+  UserModel? userModel ;
   @override
   Widget build(BuildContext context) {
     final List<ProfileModel> profileList = [
@@ -35,7 +36,9 @@ class ProfileBody extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  MyProfileDetailsScreen(),
+              builder: (context) =>  MyProfileDetailsScreen(
+                userModel: userModel!,
+              ),
             ),
           );
         },

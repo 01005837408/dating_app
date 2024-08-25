@@ -68,7 +68,9 @@ class SectionCustomPost extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => MyProfileDetailsScreen()));
+                            builder: (_) => MyProfileDetailsScreen(
+                              userModel: userModel,
+                            )));
                   },
                   child: Container(
                     decoration: const BoxDecoration(

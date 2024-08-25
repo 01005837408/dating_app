@@ -120,8 +120,8 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                   ),
                 ),
                 verticalSpacing(30),
-                state is AppLoginLoadingState
-                    ? const CircularProgressIndicator()
+                state is UserLoading
+                      ? const CircularProgressIndicator()
                 :CustomMaterialBottons(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {

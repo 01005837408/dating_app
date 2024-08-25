@@ -1,4 +1,5 @@
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +8,10 @@ import 'package:dating_app/feature/edit_profile_screen/data/edit_profile_cubit.d
 
 class QuickViewInMyProfile extends StatelessWidget {
   const QuickViewInMyProfile({
+    required this.userModel,
     Key? key,
   }) : super(key: key);
-
+  final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -34,8 +36,6 @@ class QuickViewInMyProfile extends StatelessWidget {
               education = culture.subtitle;
             }
           }
-
-         
 
           return Row(
             children: [
