@@ -3,6 +3,7 @@ import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/onbourding_screen/onboard.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColor.kPrimaryColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding:  EdgeInsets.all(20.0.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,14 +44,16 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 10.h,
               ),
               Text(
-                ConstText.titleSplash,
+                S.of(context).titleSplash,
+               // ConstText.titleSplash,
                 style: AppStyle.font31bold,
               ),
               SizedBox(
                 height: 250.h,
               ),
               Text(
-                ConstText.subTitleSplashScreen,
+                S.of(context).subTitleSplashScreen,
+              //  ConstText.subTitleSplashScreen,
                 style: AppStyle.font21bold,
               ),
             ],

@@ -4,6 +4,7 @@ import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.da
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomImagAndTextButton extends StatefulWidget {
   const CustomImagAndTextButton({
@@ -26,7 +27,7 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding:  EdgeInsets.all(20.r),
       child: Row(
         children: [
           GestureDetector(
@@ -39,12 +40,12 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
               }
             },
             child: CircleAvatar(
-              radius: 25,
+              radius: 25.r,
               backgroundColor: Colors.white,
               child: Image.asset(
                 Assets.onbourdingImage,
-                height: 32,
-                width: 32,
+                height: 32.h,
+                width: 32.w,
               ),
             ),
           ),
@@ -58,9 +59,9 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
               },
               child: Text(
                 S.of(context).skip,
-                style: const TextStyle(
+                style:  TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w600),
               ))
         ],

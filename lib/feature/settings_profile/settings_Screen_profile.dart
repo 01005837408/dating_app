@@ -3,6 +3,7 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
+import 'package:dating_app/feature/settings_profile/change_password.dart';
 import 'package:dating_app/feature/settings_profile/widgets/settings_body.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,10 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
   Widget build(BuildContext context) {
     final List<SettingsProfileModel> settings = [
       SettingsProfileModel(
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => ChangePassword()));
+          },
           title: S.of(context).password,
           leading: const Icon(
             Icons.lock,
@@ -32,6 +37,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
+          onPressed: () {},
           title: S.of(context).invoice,
           leading: const Icon(
             Icons.inventory_outlined,
@@ -42,6 +48,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
+          onPressed: () {},
           title: S.of(context).blockList,
           leading: const Icon(
             Icons.block_flipped,
@@ -52,6 +59,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
+          onPressed: () {},
           title: S.of(context).about,
           leading: const Icon(
             Icons.info,
@@ -62,6 +70,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
+          onPressed: () {},
           title: S.of(context).share,
           leading: const Icon(
             Icons.ios_share,

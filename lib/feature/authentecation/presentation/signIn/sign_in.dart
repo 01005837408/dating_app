@@ -2,6 +2,7 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 
 import 'package:dating_app/feature/authentecation/presentation/signIn/widget/refactor_text_field_sign_in.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,24 +45,24 @@ class SignInScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 // height: 639,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                      topLeft: Radius.circular(40.r),
+                      topRight: Radius.circular(40.r),
                     )),
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding:  EdgeInsets.all(20.0.r),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                          verticalSpacing(10),
-                        const  Text("تسجيل الدخول " , style: TextStyle(
-                          fontSize: 24,
+                          Text(S.of(context).loginTitle , style: TextStyle(
+                          fontSize: 24.sp,
                            fontWeight: FontWeight.w600,
-                           color: Colors.black
+                           color:const Color.fromARGB(255, 46, 40, 40)
                          ),),
-                        verticalSpacing(80),
+                        verticalSpacing(80.h),
                        
                         RefactorCustomTextFormFieldSignIn(),
                       ],

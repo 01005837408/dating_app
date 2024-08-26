@@ -39,11 +39,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Expanded(
               child: Container(
                 // height: 639,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                      topLeft: Radius.circular(40.r),
+                      topRight: Radius.circular(40.r),
                     )),
                 child: Directionality(
                   textDirection: TextDirection.rtl,

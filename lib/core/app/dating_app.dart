@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,5 +42,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool isArabic() {
+    return Intl.getCurrentLocale() == "ar";
   }
 }

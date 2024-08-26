@@ -11,6 +11,7 @@ Widget CustomTextFormField({
   String? Function(String?)? onChange,
   String? Function()? suffixPressed,
   bool obscureText = false,
+  TextDirection? textDirection,
   //Function()? suffixPressed,
 }) {
   return Center(
@@ -22,6 +23,8 @@ Widget CustomTextFormField({
       keyboardType: inputType,
       controller: controller,
       validator: validator,
+      textDirection:textDirection ,
+      
       style:const TextStyle(
         color: Colors.black,
       ),

@@ -47,7 +47,7 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding:  EdgeInsets.symmetric(horizontal: 30.r),
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           verticalSpacing(30.h),
@@ -56,7 +56,7 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
             height: 240.w,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(30.r),
             ),
             child: Image.asset(onBoardingList[widget.pageIndex].image),
           ),
@@ -72,8 +72,8 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
           ),
           verticalSpacing(10.h),
           SizedBox(
-            width: 300,
-            height: 50,
+            width: 300.w,
+            height: 50.h,
             child: widget.pageIndex == 2
                 ? ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -81,10 +81,10 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30))),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignInScreen()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) =>const SignInScreen()));
                     },
-                    child: Text("لنبدأ",
+                    child: Text(S.of(context).start,
                         style: AppStyle.font21bold
                             .copyWith(color: AppColor.kPrimaryColor)),
                   )

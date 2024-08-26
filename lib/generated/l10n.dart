@@ -80,6 +80,53 @@ class S {
     );
   }
 
+  /// start
+  String get start {
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// Login Title
+  String get loginTitle {
+    return Intl.message(
+      'Login Page',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// start
+  String get emailValid {
+    return Intl.message(
+      'Please enter your email',
+      name: 'emailValid',
+      desc: '',
+      args: [],
+    );
+  }
+   /// start
+  String get passValid {
+    return Intl.message(
+      'Please enter your Password',
+      name: 'passValid',
+      desc: '',
+      args: [],
+    );
+  }
+    String get forgetPassword {
+    return Intl.message(
+      'Forget Password ?',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Welcome to our dating app`
   String get onboardTitle1 {
     return Intl.message(
@@ -223,7 +270,7 @@ class S {
   /// `I don't have an account`
   String get notHaveAcount {
     return Intl.message(
-      'I don\'t have an account',
+      'I don\'t have an account ?',
       name: 'notHaveAcount',
       desc: '',
       args: [],
