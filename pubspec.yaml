@@ -51,6 +51,7 @@ dependencies:
   googleapis_auth: ^1.6.0
   image_picker: ^1.0.8
   intl: ^0.18.1
+  intl_utils: ^2.8.7
   shared_preferences: ^2.2.3
   smooth_page_indicator: ^1.1.0
  

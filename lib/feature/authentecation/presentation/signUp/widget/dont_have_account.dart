@@ -2,7 +2,9 @@ import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DontHaveAnAccount extends StatelessWidget {
   const DontHaveAnAccount({
@@ -16,9 +18,13 @@ class DontHaveAnAccount extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          ConstText.doHaveAcount,
-          style:
-              AppStyle.font17W400.copyWith(color: Colors.black),
+          S.of(context).doHaveAcount,
+          style:TextStyle(
+            fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+          )
+          
+              //AppStyle.font17W400.copyWith(color: Colors.black),
         ),
         TextButton(
             onPressed: () {
@@ -28,8 +34,14 @@ class DontHaveAnAccount extends StatelessWidget {
               ));
             },
             child: Text(
-              ConstText.enterLogin,
-              style: AppStyle.font17W400
+              S.of(context).enterLogin,
+              style: 
+              TextStyle(
+                fontSize: 17.sp,
+           fontWeight: FontWeight.w400,
+
+              )
+              // Text.font17W400
                   .copyWith(color: AppColor.kPrimaryColor),
             ))
       ],

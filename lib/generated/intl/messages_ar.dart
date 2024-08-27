@@ -37,8 +37,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("القاهرة - مصر"),
         "calture": MessageLookupByLibrary.simpleMessage(" القيم الثقافيه"),
         "character": MessageLookupByLibrary.simpleMessage("الشخصية"),
+        "chatTitle": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "connectInt": MessageLookupByLibrary.simpleMessage("متصل باﻷنترنت"),
-        "createAcount": MessageLookupByLibrary.simpleMessage("انضم الينا"),
+        "createAcountByGoogle":
+            MessageLookupByLibrary.simpleMessage("انشئ حساب عن طريق جوجل"),
         "createNewAcount": MessageLookupByLibrary.simpleMessage("انشئ حساب"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف حسابي الشخصي"),
         "doHaveAcount":
@@ -47,20 +49,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "education": MessageLookupByLibrary.simpleMessage("التعليم"),
         "egypt": MessageLookupByLibrary.simpleMessage("مصر"),
         "emailTitle": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "emailValid":
+            MessageLookupByLibrary.simpleMessage("برجاء ادخل الرقم السري"),
         "engineer": MessageLookupByLibrary.simpleMessage("مهندس برمجيات"),
         "engineerUniversity":
             MessageLookupByLibrary.simpleMessage("كلية الذكاء الاصطناعي "),
         "enterLogin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "eyeColor": MessageLookupByLibrary.simpleMessage("لون العين"),
         "fName": MessageLookupByLibrary.simpleMessage("اﻷسم اﻷول"),
+        "fieldIsEmpty": MessageLookupByLibrary.simpleMessage("الحقل فارغ"),
         "findsBestMatchs":
             MessageLookupByLibrary.simpleMessage("احصل علي شركاء افضل"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "سوف نرسل كود علي البريد اﻷلكتروني ﻷستعاده كلمه المرور"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("نسيت الرقم السري"),
         "hairColor": MessageLookupByLibrary.simpleMessage("لون الشعر"),
         "hight": MessageLookupByLibrary.simpleMessage("الطول "),
         "hitTextforgetPass":
-            MessageLookupByLibrary.simpleMessage("أدخل البريد الالكتروني "),
+            MessageLookupByLibrary.simpleMessage("ادخل الرقم السري"),
+        "hitTextforgetemail":
+            MessageLookupByLibrary.simpleMessage("أدخل البريد الالكتروني"),
         "hoppies":
             MessageLookupByLibrary.simpleMessage("الهويات &  الإهتمامات"),
         "id": MessageLookupByLibrary.simpleMessage("الرقم الشخصي"),
@@ -70,12 +79,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "job": MessageLookupByLibrary.simpleMessage("الوظيفة"),
         "knowlege": MessageLookupByLibrary.simpleMessage("ثقافته"),
         "lang": MessageLookupByLibrary.simpleMessage("  اللغات"),
+        "last3Name": MessageLookupByLibrary.simpleMessage("اﻷسم الثالثي"),
         "lastName": MessageLookupByLibrary.simpleMessage("اﻷسم الثاني"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("اسلوب حياته"),
         "likeMe": MessageLookupByLibrary.simpleMessage("اعجبني"),
         "likeOthers": MessageLookupByLibrary.simpleMessage("اعجبتهم"),
         "likes": MessageLookupByLibrary.simpleMessage("الاعجابات"),
         "liveIn": MessageLookupByLibrary.simpleMessage("يعيش في"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "look": MessageLookupByLibrary.simpleMessage("مظهره"),
         "male": MessageLookupByLibrary.simpleMessage("ذكر"),
@@ -87,7 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myProfile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "natunality": MessageLookupByLibrary.simpleMessage("  الجنسيه"),
         "noLimitsTalks": MessageLookupByLibrary.simpleMessage("تواصل بلا حدود"),
-        "notHaveAcount": MessageLookupByLibrary.simpleMessage("لا امتلك حساب"),
+        "notHaveAcount":
+            MessageLookupByLibrary.simpleMessage("  لا امتلك حساب ؟"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "onboardTitle1": MessageLookupByLibrary.simpleMessage(
             "اهلا وسهلا في تطبيق الزواج الأسلامي "),
@@ -105,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passTitle": MessageLookupByLibrary.simpleMessage("الرقم السري"),
         "passTitleSure":
             MessageLookupByLibrary.simpleMessage("تأكيد الرقم السري"),
+        "passValid":
+            MessageLookupByLibrary.simpleMessage("برجاء ادخل الرقم السري"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
         "qucikview": MessageLookupByLibrary.simpleMessage("نظره سريعة"),
         "religion": MessageLookupByLibrary.simpleMessage("الديانه"),
@@ -116,9 +130,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "share": MessageLookupByLibrary.simpleMessage("مشاركة التطبيق"),
         "single": MessageLookupByLibrary.simpleMessage("اعزب"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+        "start": MessageLookupByLibrary.simpleMessage("لنبدأ"),
         "subTitleSplashScreen":
             MessageLookupByLibrary.simpleMessage("وخَلَقْنَاكُمْ أَزْوَاجًا "),
         "subscribeNow": MessageLookupByLibrary.simpleMessage("ترقية  الحساب"),
+        "text": MessageLookupByLibrary.simpleMessage("اي حاجه"),
         "textButtonForgetPass":
             MessageLookupByLibrary.simpleMessage("ارسال الكود "),
         "titleSplash":

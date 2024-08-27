@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar",
   "titleSplash": "توافق للزواج الاسلامي",
   "subTitleSplashScreen": "وخَلَقْنَاكُمْ أَزْوَاجًا ",
   "skip": "تخطي",
@@ -12,6 +13,7 @@
   "loginTitle" : "تسجيل الدخول",
   "fName": "اﻷسم اﻷول",
   "lastName": "اﻷسم الثاني",
+  "last3Name": "اﻷسم الثالثي",
   "text": "اي حاجه",
   "emailTitle": "البريد الالكتروني",
   "passValid": "برجاء ادخل الرقم السري",
@@ -19,11 +21,12 @@
   "passTitle": "الرقم السري",
   "passTitleSure": "تأكيد الرقم السري",
   "forgetPassword" :"نسيت الرقم السري",
-  "createAcount": "انضم الينا",
+  "fieldIsEmpty" : "الحقل فارغ" ,
   "doHaveAcount": "هل تمتلك حساب بالفعل ؟",
   "enterLogin": "تسجيل الدخول",
   "notHaveAcount": "  لا امتلك حساب ؟",
   "createNewAcount": "انشئ حساب",
+  "createAcountByGoogle":"انشئ حساب عن طريق جوجل",
   "appName": "توافق",
   "matwafik": "متوافقون",
   "connectInt": "متصل باﻷنترنت",
@@ -93,5 +96,7 @@
   "multyWife": "  تعدد الزوجات",
   "likes": "الاعجابات",
   "likeMe": "اعجبني",
-  "likeOthers": "اعجبتهم"
+  "likeOthers": "اعجبتهم",
+  "chatTitle" : "المحادثات"
+
 }

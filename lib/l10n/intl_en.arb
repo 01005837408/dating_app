@@ -1,8 +1,9 @@
 {
+  "@@locale": "en",
   "titleSplash": "توافق للزواج الاسلامي",
   "subTitleSplashScreen": "وخَلَقْنَاكُمْ أَزْوَاجًا ",
   "skip": "skip",
-  "start" : "ٍٍStart" ,
+  "start" : "Start" ,
   "onboardTitle1": "Welcome to our dating app",
   "onbourdSubTitle1": "Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Let's start your journey with us in simple and easy steps.",
   "onboardTitle2": "Security and privacy in Islamic marriage",
@@ -12,18 +13,21 @@
   "fName": "First Name",
   "loginTitle" : "Login Page",
   "lastName": "Last Name",
+  "last3Name" :"thired name" ,
   "text": "Last Name",
   "emailTitle": "Email",
   "emailValid": "Please enter your email",
   "passTitle": "Password",
   "passValid": "Please enter your Password",
   "passTitleSure": "Confirm Password",
-  "forgetPassword" :"Forget Password",
-  "createAcount": "Join Us",
+  "forgetPassword" :"Forget Password ",
+  
   "doHaveAcount": "Do you already have an account ?",
   "enterLogin": "Log In",
   "notHaveAcount": "I don't have an account ?",
   "createNewAcount": "Create Account",
+  "createAcountByGoogle":"Creat Account By Google",
+  "fieldIsEmpty" : "The field is empty" ,
   "appName": "Tawafuq",
   "matwafik": "Compatible",
   "connectInt": "Connected to the internet",
@@ -94,5 +98,6 @@
   "multyWife": "multyWife",
   "likes": "likes",
   "likeMe": "like Me",
-  "likeOthers": "like Others"
+  "likeOthers": "like Others",
+  "chatTitle" : "Chat App"
 }

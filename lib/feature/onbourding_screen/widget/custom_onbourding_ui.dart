@@ -9,17 +9,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOnboardingUI extends StatefulWidget {
-  const CustomOnboardingUI({
+   CustomOnboardingUI({
     super.key,
     required this.pageIndex,
   });
-  final int pageIndex;
+  int pageIndex;
   @override
   State<CustomOnboardingUI> createState() => _CustomOnboardingUIState();
 }
 
 class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
   PageController pageController = PageController();
+  void initState() {
+    super.initState();
+    pageController.addListener(() {
+      if (pageController.page!.round() != widget.pageIndex) {
+        setState(() {
+          widget.pageIndex = pageController.page!.round();
+        });
+      }
+    });
+  }
+
   @override
   void dispose() {
     pageController.dispose();
@@ -47,7 +58,7 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
     ];
 
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 30.r),
+      padding: EdgeInsets.symmetric(horizontal: 30.r),
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           verticalSpacing(30.h),
@@ -72,28 +83,36 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
           ),
           verticalSpacing(10.h),
           SizedBox(
-            width: 300.w,
-            height: 50.h,
-            child: widget.pageIndex == 2
-                ? ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30))),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) =>const SignInScreen()));
-                    },
-                    child: Text(S.of(context).start,
-                        style: AppStyle.font21bold
-                            .copyWith(color: AppColor.kPrimaryColor)),
-                  )
-                : Text(
-                    "التالي",
-                    style: AppStyle.font21bold
-                        .copyWith(color: AppColor.kPrimaryColor),
-                  ),
-          ),
+              width: 300.w,
+              height: 50.h,
+              child: widget.pageIndex == 2
+                  ? ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30))),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const SignInScreen()));
+                      },
+                      child: Text(S.of(context).start,
+                          style: AppStyle.font21bold
+                              .copyWith(color: AppColor.kPrimaryColor)),
+                    )
+                  : ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30))),
+                      onPressed: () {
+                        pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOutCubic);
+                      },
+                      child: Text("The next",
+                          style: AppStyle.font21bold
+                              .copyWith(color: AppColor.kPrimaryColor)),
+                    )),
         ]),
       ),
     );

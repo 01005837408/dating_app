@@ -80,48 +80,11 @@ class S {
     );
   }
 
-  /// start
+  /// `Start`
   String get start {
     return Intl.message(
       'Start',
       name: 'start',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// Login Title
-  String get loginTitle {
-    return Intl.message(
-      'Login Page',
-      name: 'loginTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// start
-  String get emailValid {
-    return Intl.message(
-      'Please enter your email',
-      name: 'emailValid',
-      desc: '',
-      args: [],
-    );
-  }
-   /// start
-  String get passValid {
-    return Intl.message(
-      'Please enter your Password',
-      name: 'passValid',
-      desc: '',
-      args: [],
-    );
-  }
-    String get forgetPassword {
-    return Intl.message(
-      'Forget Password ?',
-      name: 'forgetPassword',
       desc: '',
       args: [],
     );
@@ -197,11 +160,41 @@ class S {
     );
   }
 
+  /// `Login Page`
+  String get loginTitle {
+    return Intl.message(
+      'Login Page',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Name`
   String get lastName {
     return Intl.message(
       'Last Name',
       name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `thired name`
+  String get last3Name {
+    return Intl.message(
+      'thired name',
+      name: 'last3Name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get text {
+    return Intl.message(
+      'Last Name',
+      name: 'text',
       desc: '',
       args: [],
     );
@@ -217,11 +210,31 @@ class S {
     );
   }
 
+  /// `Please enter your email`
+  String get emailValid {
+    return Intl.message(
+      'Please enter your email',
+      name: 'emailValid',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get passTitle {
     return Intl.message(
       'Password',
       name: 'passTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your Password`
+  String get passValid {
+    return Intl.message(
+      'Please enter your Password',
+      name: 'passValid',
       desc: '',
       args: [],
     );
@@ -237,20 +250,20 @@ class S {
     );
   }
 
-  /// `Join Us`
-  String get createAcount {
+  /// `Forget Password `
+  String get forgetPassword {
     return Intl.message(
-      'Join Us',
-      name: 'createAcount',
+      'Forget Password ',
+      name: 'forgetPassword',
       desc: '',
       args: [],
     );
   }
 
-  /// `Do you already have an account?`
+  /// `Do you already have an account ?`
   String get doHaveAcount {
     return Intl.message(
-      'Do you already have an account?',
+      'Do you already have an account ?',
       name: 'doHaveAcount',
       desc: '',
       args: [],
@@ -267,7 +280,7 @@ class S {
     );
   }
 
-  /// `I don't have an account`
+  /// `I don't have an account ?`
   String get notHaveAcount {
     return Intl.message(
       'I don\'t have an account ?',
@@ -282,6 +295,26 @@ class S {
     return Intl.message(
       'Create Account',
       name: 'createNewAcount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creat Account By Google`
+  String get createAcountByGoogle {
+    return Intl.message(
+      'Creat Account By Google',
+      name: 'createAcountByGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The field is empty`
+  String get fieldIsEmpty {
+    return Intl.message(
+      'The field is empty',
+      name: 'fieldIsEmpty',
       desc: '',
       args: [],
     );
@@ -337,11 +370,21 @@ class S {
     );
   }
 
-  /// `Enter your email`
+  /// `Enter your password`
   String get hitTextforgetPass {
     return Intl.message(
-      'Enter your email',
+      'Enter your password',
       name: 'hitTextforgetPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get hitTextforgetemail {
+    return Intl.message(
+      'Enter your email',
+      name: 'hitTextforgetemail',
       desc: '',
       args: [],
     );
@@ -982,6 +1025,16 @@ class S {
     return Intl.message(
       'like Others',
       name: 'likeOthers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat App`
+  String get chatTitle {
+    return Intl.message(
+      'Chat App',
+      name: 'chatTitle',
       desc: '',
       args: [],
     );

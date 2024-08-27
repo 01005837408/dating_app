@@ -20,24 +20,21 @@ class CustomMaterialBottons extends StatelessWidget {
   double? bourderRedias;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 18.0),
-      child: MaterialButton(
-        //constraints: BoxConstraints(maxWidth: 330 , maxHeight: double.infinity ),
-        height: 60,
-        minWidth: 330.w,
-
-        // padding: EdgeInsets.only(left: 10),
-
-        shape: RoundedRectangleBorder(  borderRadius:  BorderRadius.circular(bourderRedias ?? 50)),
-        color: backgroundBottonsColors ?? AppColor.kPrimaryColor,
-        onPressed: onPressed,
-        child: Text(text, style:const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
-        )),
-      ),
+    return MaterialButton(
+      //constraints: BoxConstraints(maxWidth: 330 , maxHeight: double.infinity ),
+      height: 60,
+      minWidth: 330.w,
+    
+      // padding: EdgeInsets.only(left: 10),
+    
+      shape: RoundedRectangleBorder(  borderRadius:  BorderRadius.circular(bourderRedias ?? 50)),
+      color: backgroundBottonsColors ?? AppColor.kPrimaryColor,
+      onPressed: onPressed,
+      child: Text(text, style:const TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+      )),
     );
   }
 }

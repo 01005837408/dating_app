@@ -1,5 +1,5 @@
 // ignore_for_file: unused_local_variable
-
+import 'dart:ui' as ui;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -11,9 +11,12 @@ import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_u
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_state.dart';
 import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
 import 'package:dating_app/feature/authentecation/presentation/signUp/widget/dont_have_account.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
   RefactorCustomTextFormFieldSignUp({super.key});
@@ -25,65 +28,65 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
   TextEditingController passControllerSure = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  User user = FirebaseAuth.instance.currentUser!;
+  //User user = FirebaseAuth.instance.currentUser!;
 
   final formKey = GlobalKey<FormState>();
- 
+  bool isArabic() {
+    return Intl.getCurrentLocale() == "ar";
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<UserCubit>(
       create: (context) => UserCubit(),
       child: BlocConsumer<UserCubit, UserState>(
-      listener: (context, state) {
-            if (state is UserSuccessState) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => SignInScreen(),
-              ));
-            } else if (state is UserError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
-            }
-          },
+        listener: (context, state) {
+          if (state is UserSuccessState) {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => SignInScreen(),
+            ));
+          } else if (state is UserError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
         builder: (context, state) {
           return Form(
             key: formKey,
             child: Directionality(
-              textDirection: TextDirection.ltr,
+              textDirection:
+                  isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
               child: Column(
                 children: [
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Row(
-                      children: [
-                        Text(ConstText.fName,
-                            style: AppStyle.font21bold
-                                .copyWith(color: Colors.black, fontSize: 16)),
-                        horizontalSpacing(128),
-                        Text(ConstText.lastName,
-                            style: AppStyle.font17W400
-                                .copyWith(color: Colors.black)),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text(S.of(context).fName,
+                          style: AppStyle.font21bold
+                              .copyWith(color: Colors.black, fontSize: 16.sp)),
+                      horizontalSpacing(128.w),
+                      Text(S.of(context).lastName,
+                          style: AppStyle.font17W400
+                              .copyWith(color: Colors.black)),
+                    ],
                   ),
-                  verticalSpacing(10),
+                  verticalSpacing(10.h),
                   Row(
                     children: [
                       Container(
-                        width: 140,
+                        width: 135.w,
                         child: CustomTextFormField(
                             controller: fNameController,
                             inputType: TextInputType.name,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "الحقل فارغ";
+                                return S.of(context).last3Name;
                               }
                             }),
                       ),
                       horizontalSpacing(50),
                       Container(
-                        width: 140,
+                        width: 135.w,
                         child: CustomTextFormField(
                             controller: lNameController,
                             inputType: TextInputType.name,
@@ -95,10 +98,10 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                       ),
                     ],
                   ),
-                  verticalSpacing(30),
+                  verticalSpacing(30.h),
                   Align(
-                      alignment: Alignment.topRight,
-                      child: Text(ConstText.emailTitle,
+                      alignment:  isArabic() ? Alignment.topRight : Alignment.topLeft,
+                      child: Text(S.of(context).emailTitle,
                           style: AppStyle.font21bold
                               .copyWith(color: Colors.black, fontSize: 16))),
                   verticalSpacing(10),
@@ -109,61 +112,64 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                         }
                       },
                       controller: emailController,
-                      prefixIcon: const Icon(
+                      prefixIcon:  Icon(
                         Icons.email_outlined,
-                        color: AppColor.kPrimaryColor,
-                        size: 30,
+                        color: ui.Color.fromRGBO(254, 60, 114, 1),
+                        size: 30.r,
                       )),
-                  verticalSpacing(10),
+                  verticalSpacing(10.h),
                   Align(
-                      alignment: Alignment.topRight,
-                      child: Text(ConstText.passTitle,
+                      alignment:  isArabic() ? Alignment.topRight : Alignment.topLeft,
+                      child: Text(S.of(context).passTitle,
                           style: AppStyle.font21bold
-                              .copyWith(color: Colors.black, fontSize: 16))),
-                  verticalSpacing(10),
+                              .copyWith(color: Colors.black, fontSize: 16.sp))),
+                  verticalSpacing(10.h),
                   CustomTextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "برجاء ادخال الرقم السري";
-                        }
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "برجاء ادخال الرقم السري";
+                      }
+                    },
+                    controller: passController,
+                    prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        color: Colors.black,
+                        BlocProvider.of<UserCubit>(context)
+                                    .obscurePasswordTextValue ==
+                                true
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        BlocProvider.of<UserCubit>(context)
+                            .obscurePasswordText();
                       },
-                      controller: passController,
-                      prefixIcon:const Icon(Icons.lock , color:Colors.black),
-                      suffixIcon: IconButton(
-                  icon: Icon(
-                    color:Colors.black,
-                    BlocProvider.of<UserCubit>(context).obscurePasswordTextValue == true
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
+                    ),
+                    obscureText: BlocProvider.of<UserCubit>(context)
+                        .obscurePasswordTextValue,
+                    onChange: (password) {
+                      BlocProvider.of<UserCubit>(context).password = password;
+                    },
                   ),
-                  onPressed: () {
-                    BlocProvider.of<UserCubit>(context).obscurePasswordText();
-                  },
-                ),
-                obscureText: BlocProvider.of<UserCubit>(context).obscurePasswordTextValue,
-                onChange: (password) {
-                  BlocProvider.of<UserCubit>(context).password = password;
-                },
-              ),
-                  verticalSpacing(10),
-                  verticalSpacing(30),
+                  verticalSpacing(40.h),
+                 // verticalSpacing(30),
                   state is UserLoading
                       ? const CircularProgressIndicator()
                       : CustomMaterialBottons(
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
                               context.read<UserCubit>().signUp(
-                                fNameController.text,
-                                lNameController.text,
-                                emailController.text,
-                                passController.text,
-
-                              );
+                                    fNameController.text,
+                                    lNameController.text,
+                                    emailController.text,
+                                    passController.text,
+                                  );
                             }
                           },
-                          text: ConstText.createAcount),
+                          text: S.of(context).createNewAcount),
                   verticalSpacing(10),
-                  DontHaveAnAccount(),
+                  const DontHaveAnAccount(),
                 ],
               ),
             ),
@@ -172,6 +178,4 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
       ),
     );
   }
-
-  
 }

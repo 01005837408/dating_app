@@ -37,31 +37,41 @@ class MessageLookup extends MessageLookupByLibrary {
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("Cairo - Egypt"),
         "calture": MessageLookupByLibrary.simpleMessage(" calture"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
+        "chatTitle": MessageLookupByLibrary.simpleMessage("Chat App"),
         "connectInt":
             MessageLookupByLibrary.simpleMessage("Connected to the internet"),
-        "createAcount": MessageLookupByLibrary.simpleMessage("Join Us"),
+        "createAcountByGoogle":
+            MessageLookupByLibrary.simpleMessage("Creat Account By Google"),
         "createNewAcount":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete my account"),
         "doHaveAcount": MessageLookupByLibrary.simpleMessage(
-            "Do you already have an account?"),
+            "Do you already have an account ?"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "education": MessageLookupByLibrary.simpleMessage("education"),
         "egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
         "emailTitle": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailValid":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
         "engineer": MessageLookupByLibrary.simpleMessage("software engineer"),
         "engineerUniversity":
             MessageLookupByLibrary.simpleMessage("engineer University"),
         "enterLogin": MessageLookupByLibrary.simpleMessage("Log In"),
         "eyeColor": MessageLookupByLibrary.simpleMessage("eyeColor"),
         "fName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "fieldIsEmpty":
+            MessageLookupByLibrary.simpleMessage("The field is empty"),
         "findsBestMatchs":
             MessageLookupByLibrary.simpleMessage("Find better matches"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "We will send a code to your email to recover your password"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("Forget Password "),
         "hairColor": MessageLookupByLibrary.simpleMessage("hair Color"),
         "hight": MessageLookupByLibrary.simpleMessage("hight"),
         "hitTextforgetPass":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "hitTextforgetemail":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
         "hoppies": MessageLookupByLibrary.simpleMessage("Hobbies & Interests"),
         "id": MessageLookupByLibrary.simpleMessage("Personal ID"),
@@ -71,12 +81,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "job": MessageLookupByLibrary.simpleMessage("job"),
         "knowlege": MessageLookupByLibrary.simpleMessage("Knowledge"),
         "lang": MessageLookupByLibrary.simpleMessage("language"),
+        "last3Name": MessageLookupByLibrary.simpleMessage("thired name"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("Lifestyle"),
         "likeMe": MessageLookupByLibrary.simpleMessage("like Me"),
         "likeOthers": MessageLookupByLibrary.simpleMessage("like Others"),
         "likes": MessageLookupByLibrary.simpleMessage("likes"),
         "liveIn": MessageLookupByLibrary.simpleMessage("Lives in"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("Login Page"),
         "logout": MessageLookupByLibrary.simpleMessage("Log Out"),
         "look": MessageLookupByLibrary.simpleMessage("Appearance"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
@@ -91,7 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLimitsTalks":
             MessageLookupByLibrary.simpleMessage("Unlimited Communication"),
         "notHaveAcount":
-            MessageLookupByLibrary.simpleMessage("I don\'t have an account"),
+            MessageLookupByLibrary.simpleMessage("I don\'t have an account ?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "onboardTitle1":
             MessageLookupByLibrary.simpleMessage("Welcome to our dating app"),
@@ -109,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passTitle": MessageLookupByLibrary.simpleMessage("Password"),
         "passTitleSure":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "passValid":
+            MessageLookupByLibrary.simpleMessage("Please enter your Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "place": MessageLookupByLibrary.simpleMessage("place"),
         "qucikview": MessageLookupByLibrary.simpleMessage("Quick View"),
@@ -121,9 +135,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "share": MessageLookupByLibrary.simpleMessage("Share the App"),
         "single": MessageLookupByLibrary.simpleMessage("single"),
         "skip": MessageLookupByLibrary.simpleMessage("skip"),
+        "start": MessageLookupByLibrary.simpleMessage("Start"),
         "subTitleSplashScreen":
             MessageLookupByLibrary.simpleMessage("وخَلَقْنَاكُمْ أَزْوَاجًا "),
         "subscribeNow": MessageLookupByLibrary.simpleMessage("Upgrade account"),
+        "text": MessageLookupByLibrary.simpleMessage("Last Name"),
         "textButtonForgetPass":
             MessageLookupByLibrary.simpleMessage("Send code"),
         "titleSplash":

@@ -19,8 +19,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-
-
 class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
   RefactorCustomTextFormFieldSignIn({super.key});
   TextEditingController emailController = TextEditingController();
@@ -58,9 +56,10 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
           return Form(
             key: formKey,
             child: Directionality(
-              textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+              textDirection:
+                  isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
 
-            //  textDirection: ui.TextDirection.ltr,
+              //  textDirection: ui.TextDirection.ltr,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -77,12 +76,12 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                       return null;
                     },
                     controller: emailController,
-                    suffixIcon: Icon(
+                    suffixIcon: const Icon(
                       Icons.email_outlined,
                       color: AppColor.kPrimaryColor,
                       size: 30,
                     ),
-                  // textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+                    // textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
                   ),
                   verticalSpacing(10),
                   Text(S.of(context).passTitle,
@@ -97,7 +96,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                       return null;
                     },
                     controller: passController,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.lock,
                       color: Colors.black,
                     ),
@@ -111,12 +110,13 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                             : Icons.visibility_off_outlined,
                       ),
                       onPressed: () {
-                        BlocProvider.of<UserCubit>(context).obscurePasswordText();
+                        BlocProvider.of<UserCubit>(context)
+                            .obscurePasswordText();
                       },
                     ),
                     obscureText: BlocProvider.of<UserCubit>(context)
                         .obscurePasswordTextValue,
-                  //  textDirection: isArabic() ? TextDirection.rtl : TextDirection.ltr,
+                    //  textDirection: isArabic() ? TextDirection.rtl : TextDirection.ltr,
                   ),
                   TextButton(
                     onPressed: () {
@@ -125,23 +125,19 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => ForgetPassword()));
                     },
-                    child: Align(
-                      alignment:
-                          isArabic() ? Alignment.topLeft : Alignment.topRight,
-                      child: Text(
-                        S.of(context).forgetPassword,
-                        textAlign: TextAlign.end,
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          color: AppColor.kPrimaryColor,
-                          fontWeight: FontWeight.w400,
-                        ),
+                    child: Text(
+                      S.of(context).forgetPassword,
+                      //textAlign: TextAlign.end,
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        color: const ui.Color.fromARGB(255, 240, 95, 136),
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                   verticalSpacing(30),
                   state is UserLoading
-                      ? const CircularProgressIndicator()
+                      ?const Center(child:  CircularProgressIndicator())
                       : CustomMaterialBottons(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
@@ -151,7 +147,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                                   );
                             }
                           },
-                          text: S.of(context).createAcount,
+                          text: S.of(context).enterLogin,
                         ),
                   verticalSpacing(10),
                   Row(
@@ -160,17 +156,24 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                     children: [
                       Text(
                         S.of(context).notHaveAcount,
-                        style: AppStyle.font17W400.copyWith(color: Colors.black),
+                        style:TextStyle(
+                            fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          ).copyWith(color: Colors.black),
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
                             builder: (context) => const SignUpScreen(),
                           ));
                         },
                         child: Text(
                           S.of(context).createNewAcount,
-                          style: AppStyle.font17W400
+                          style:TextStyle(
+                            fontSize: 17.sp,
+                          fontWeight: FontWeight.w400,
+                          )
                               .copyWith(color: AppColor.kPrimaryColor),
                         ),
                       )

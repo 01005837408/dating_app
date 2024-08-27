@@ -4,6 +4,7 @@ import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/utils/styles.dart';
+import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,17 +49,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding:  EdgeInsets.all(20.0.r),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          verticalSpacing(10),
-            Text("انشاء حساب  " , style: TextStyle(
+                          verticalSpacing(10.h),
+            Text(S.of(context).createNewAcount, style: TextStyle(
               color: Colors.black,
-              fontSize: 24,
+              fontSize: 24.sp,
               fontWeight: FontWeight.w600,
             ),),
-                          verticalSpacing(80),
+                          verticalSpacing(80.h),
 
                           RefactorCustomTextFormFieldSignUp(
                               // userModal: SignUpUserModal.fromJson(),
@@ -77,13 +78,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ],
                           ),
 
-                          verticalSpacing(20),
+                          verticalSpacing(20.h),
                           MaterialButton(
                             height: 50,
                             color: AppColor.kPrimaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
+                                    BorderRadius.all(Radius.circular(20.r))),
                             onPressed: () async {
                               final googleSignIn = GoogleSignIn();
                               final googleAcoont = await googleSignIn.signIn();
@@ -113,9 +114,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   backgroundImage:
                                       AssetImage(Assets.googleImage),
                                 ),
-                                SizedBox(width: 30),
+                                SizedBox(width: 30.w),
                                 Text(
-                                  "انشئ حساب عن طريق جوجل",
+                                  S.of(context).createAcountByGoogle,
                                   style: AppStyle.font17W400.copyWith(),
                                 )
                               ],
