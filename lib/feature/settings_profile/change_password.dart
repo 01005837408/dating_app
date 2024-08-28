@@ -6,7 +6,12 @@ class ChangePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text("\$Change")),
+      body: Column(
+        children: [
+        //  IconButton(onPressed: onPressed, icon: icon)
+          Center(child: Text("\$Change")),
+        ],
+      ),
     );
   }
 }

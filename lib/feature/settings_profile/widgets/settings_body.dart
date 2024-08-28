@@ -15,9 +15,12 @@ class SettingsBody extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: settingsmodel.length,
                 itemBuilder: (context, index) {
+                  final item = settingsmodel[index];
                   return SettingsBodyItem(
                     settingsmodel: settingsmodel,
                     index: index,
+                    onTap: settingsmodel[index].onPressed,
+                    
                   );
                 }))
       ],

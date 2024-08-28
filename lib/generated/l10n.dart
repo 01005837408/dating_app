@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Forgot Password`
+  /// `Forgot Password ?`
   String get forgetPassword {
     return Intl.message(
-      'Forgot Password',
+      'Forgot Password ?',
       name: 'forgetPassword',
       desc: '',
       args: [],
@@ -365,6 +365,16 @@ class S {
     return Intl.message(
       'We will send a code to your email to recover your password',
       name: 'forgetPassText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get restPass {
+    return Intl.message(
+      'Reset Password',
+      name: 'restPass',
       desc: '',
       args: [],
     );

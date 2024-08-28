@@ -4,7 +4,7 @@ class SettingsProfileModel {
   final String title;
   final Icon leading;
   final Icon trailing;
-   Function onPressed;
+   void Function() onPressed;
   SettingsProfileModel(
       {required this.title, required this.leading, required this.trailing, required this.onPressed});
 }

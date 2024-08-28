@@ -64,7 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "سنرسل كودًا إلى بريدك الإلكتروني لاستعادة كلمة المرور"),
         "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
+            MessageLookupByLibrary.simpleMessage("؟نسيت كلمة المرور"),
         "hairColor": MessageLookupByLibrary.simpleMessage("لون الشعر"),
         "hight": MessageLookupByLibrary.simpleMessage("الطول"),
         "hitTextforgetPass":
@@ -123,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "place": MessageLookupByLibrary.simpleMessage("المكان"),
         "qucikview": MessageLookupByLibrary.simpleMessage("نظرة سريعة"),
         "religion": MessageLookupByLibrary.simpleMessage("الدين"),
+        "restPass": MessageLookupByLibrary.simpleMessage("استعادة كلمة المرور"),
         "ruleText": MessageLookupByLibrary.simpleMessage(
             "سيتم تجديد هذه العضوية تلقائيًا عند انتهائها. يمكنك إيقاف هذا التجديد التلقائي في أي وقت."),
         "search": MessageLookupByLibrary.simpleMessage("ابحث عن"),

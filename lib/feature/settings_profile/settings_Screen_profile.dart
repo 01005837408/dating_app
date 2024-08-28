@@ -37,7 +37,10 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => ChangePassword()));
+          },
           title: S.of(context).invoice,
           leading: const Icon(
             Icons.inventory_outlined,

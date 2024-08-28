@@ -7,8 +7,10 @@ class SettingsBodyItem extends StatelessWidget {
     super.key,
     required this.settingsmodel,
     required this.index,
+     required this.onTap,
   });
   final int index;
+  final void Function() onTap;
   final List<SettingsProfileModel> settingsmodel;
 
   @override
@@ -16,7 +18,7 @@ class SettingsBodyItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        onTap: () {},
+        onTap: onTap,
         trailing: const Icon(
           Icons.arrow_forward_ios_outlined,
           color: AppColor.kPrimaryColor,

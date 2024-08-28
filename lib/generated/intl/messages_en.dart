@@ -65,7 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "We will send a code to your email to recover your password"),
         "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+            MessageLookupByLibrary.simpleMessage("Forgot Password ?"),
         "hairColor": MessageLookupByLibrary.simpleMessage("Hair Color"),
         "hight": MessageLookupByLibrary.simpleMessage("Height"),
         "hitTextforgetPass":
@@ -126,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "place": MessageLookupByLibrary.simpleMessage("Place"),
         "qucikview": MessageLookupByLibrary.simpleMessage("Quick View"),
         "religion": MessageLookupByLibrary.simpleMessage("Religion"),
+        "restPass": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "ruleText": MessageLookupByLibrary.simpleMessage(
             "This membership will be automatically renewed when it expires. You can stop this automatic renewal at any time."),
         "search": MessageLookupByLibrary.simpleMessage("Search for"),

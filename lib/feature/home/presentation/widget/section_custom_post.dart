@@ -137,11 +137,11 @@ class SectionCustomPost extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const Column(
+                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text("23. Egypt"),
-                          Text("online"),
+                          Text(DateTime.now().toString()),
+                        const  Text("online"),
                         ],
                       ),
                     ],
