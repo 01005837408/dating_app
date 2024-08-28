@@ -78,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invoice": MessageLookupByLibrary.simpleMessage("الفاتورة"),
         "job": MessageLookupByLibrary.simpleMessage("المهنة"),
         "knowlege": MessageLookupByLibrary.simpleMessage("الثقافة"),
+        "labledoldPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
         "last3Name": MessageLookupByLibrary.simpleMessage("الاسم الثالث"),
         "lastName": MessageLookupByLibrary.simpleMessage("الاسم الثاني"),

@@ -1,11 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:dating_app/core/model/settings_profile_model.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_appbar.dart';
+import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
 import 'package:dating_app/feature/settings_profile/change_password.dart';
 import 'package:dating_app/feature/settings_profile/widgets/settings_body.dart';
 import 'package:dating_app/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreenProfile extends StatefulWidget {
@@ -19,13 +23,15 @@ class SettingsScreenProfile extends StatefulWidget {
 
 class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
   bool value = false;
+  var user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     final List<SettingsProfileModel> settings = [
       SettingsProfileModel(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => ChangePassword()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => ChangePasswordScreen()));
           },
           title: S.of(context).password,
           leading: const Icon(
@@ -37,10 +43,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
             color: AppColor.kPrimaryColor,
           )),
       SettingsProfileModel(
-          onPressed: () {
-             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => ChangePassword()));
-          },
+          onPressed: () {},
           title: S.of(context).invoice,
           leading: const Icon(
             Icons.inventory_outlined,
@@ -100,11 +103,32 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
                 backgroundBottonsColors: AppColor.lightRed,
                 bourderRedias: 50,
                 text: S.of(context).logout,
-                onPressed: () {},
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => const SignInScreen()),
+                      (route) => false);
+                },
               ),
               verticalSpacing(10),
               TextButton(
-                  onPressed: () {},
+                  onPressed: ()async {
+//                     try {
+//   await user!.delete();
+//   Navigator.of(context).pushAndRemoveUntil(
+//                       MaterialPageRoute(builder: (_) => const SignInScreen()),
+//                       (route) => false);
+//   // Handle successful deletion, e.g., navigate to a login screen
+// } on FirebaseAuthException catch (e) {
+//   // Handle errors, such as re-authentication required
+//   if (e.code == 'requires-recent-login') {
+//     // Prompt the user to re-authenticate
+//     print('The user must re-authenticate before this operation.');
+//   } else {
+//     print(e.message);
+//   }
+// }
+                  },
                   child: Text(
                     S.of(context).delete,
                     style: const TextStyle(

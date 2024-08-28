@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CaltureListView extends StatelessWidget {
   const CaltureListView({super.key, required this.editProfileCalutreList , required this.onEdit});
-  final List<EditProfileCaltureeModel> editProfileCalutreList;
+  final List<EditProfileCultureModel> editProfileCalutreList;
 final Function(int) onEdit;
   @override
   Widget build(BuildContext context) {

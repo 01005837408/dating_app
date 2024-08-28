@@ -260,6 +260,66 @@ class S {
     );
   }
 
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your current password `
+  String get currentPassword {
+    return Intl.message(
+      'Enter your current password ',
+      name: 'currentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password `
+  String get newPassword {
+    return Intl.message(
+      'Enter your new password ',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm your new password `
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm your new password ',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password`
+  String get labledoldPassword {
+    return Intl.message(
+      'Old Password',
+      name: 'labledoldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get labledNewPassword {
+    return Intl.message(
+      'New Password',
+      name: 'labledNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Already have an account?`
   String get doHaveAcount {
     return Intl.message(

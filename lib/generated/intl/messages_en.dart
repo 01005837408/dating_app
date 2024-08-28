@@ -36,14 +36,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "blockList": MessageLookupByLibrary.simpleMessage("Block List"),
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("Cairo - Egypt"),
         "calture": MessageLookupByLibrary.simpleMessage("Culture"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
         "chatTitle": MessageLookupByLibrary.simpleMessage("Chat"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm your new password "),
         "connectInt":
             MessageLookupByLibrary.simpleMessage("Connected to the internet"),
         "createAcountByGoogle":
             MessageLookupByLibrary.simpleMessage("Create Account with Google"),
         "createNewAcount":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "currentPassword": MessageLookupByLibrary.simpleMessage(
+            "Enter your current password "),
         "delete": MessageLookupByLibrary.simpleMessage("Delete My Account"),
         "doHaveAcount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
@@ -79,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "invoice": MessageLookupByLibrary.simpleMessage("Invoice"),
         "job": MessageLookupByLibrary.simpleMessage("Job"),
         "knowlege": MessageLookupByLibrary.simpleMessage("Knowledge"),
+        "labledNewPassword":
+            MessageLookupByLibrary.simpleMessage("New Password"),
+        "labledoldPassword":
+            MessageLookupByLibrary.simpleMessage("Old Password"),
         "lang": MessageLookupByLibrary.simpleMessage("Language"),
         "last3Name": MessageLookupByLibrary.simpleMessage("Third Name"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
@@ -99,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myPhotos": MessageLookupByLibrary.simpleMessage("Personal Photos"),
         "myProfile": MessageLookupByLibrary.simpleMessage("My Profile"),
         "natunality": MessageLookupByLibrary.simpleMessage("Nationality"),
+        "newPassword":
+            MessageLookupByLibrary.simpleMessage("Enter your new password "),
         "noLimitsTalks":
             MessageLookupByLibrary.simpleMessage("Unlimited Communication"),
         "notHaveAcount":

@@ -31,7 +31,7 @@ class MyProfileDetailsHeader extends StatelessWidget {
             }
           }
           final userName = state.editProfileBasicList
-              .firstWhere((element) => element.title == 'First Name')
+              .firstWhere((element) => element!.title == 'First Name')
               .subtitle;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),

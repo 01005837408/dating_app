@@ -8,7 +8,7 @@ class BascisListView extends StatelessWidget {
     required this.onEdit,
   });
 
-  final List<EditProfileBasciModel> editProfileList;
+  final List<EditProfileBasicModel> editProfileList;
   final Function(int) onEdit;
 
   @override

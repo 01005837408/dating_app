@@ -19,7 +19,7 @@ class QuickViewInMyProfile extends StatelessWidget {
       child: BlocBuilder<EditProfileCubit, EditProfileState>(
         builder: (context, state) {
           final lifeStyleList = state.editProfileLifeStyleList;
-          final cultureList = state.editProfileCalutreList;
+          final cultureList = state.editProfileCultureList;
 
           // Extracting work and education from the state
           String work = '';

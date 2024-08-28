@@ -27,7 +27,7 @@ void _showEditDialog(BuildContext context, int index, String listType) {
       model = state.editProfileLifeStyleList[index];
       break;
     case 'Culture':
-      model = state.editProfileCalutreList[index];
+      model = state.editProfileCultureList[index];
       break;
   }
 
@@ -220,7 +220,7 @@ void _showEditDialog(BuildContext context, int index, String listType) {
                       color: Colors.blue,
                       thickness: 2),
                   CaltureListView(
-                    editProfileCalutreList: state!.editProfileCalutreList,
+                    editProfileCalutreList: state!.editProfileCultureList,
                     onEdit: (index) =>
                         _showEditDialog(context, index, 'Culture'),
                   ),

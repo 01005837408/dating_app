@@ -6,16 +6,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 // State
 class EditProfileState {
-  final List<EditProfileBasciModel> editProfileBasicList;
+ final List<EditProfileBasicModel> editProfileBasicList;
   final List<EditProfileLookModel> editProfileLookList;
   final List<EditProfileLifeStyleModel> editProfileLifeStyleList;
-  final List<EditProfileCaltureeModel> editProfileCalutreList;
+  final List<EditProfileCultureModel> editProfileCultureList;
 
   EditProfileState({
     required this.editProfileBasicList,
     required this.editProfileLookList,
     required this.editProfileLifeStyleList,
-    required this.editProfileCalutreList,
+    required this.editProfileCultureList, 
+    //required List<EditProfileCultureModel> editProfileCalutreList,
   });
 }
 
@@ -26,38 +27,39 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit(this.user)
       : super(EditProfileState(
           editProfileBasicList: [
-            EditProfileBasciModel(
+            EditProfileBasicModel(
               title: 'First Name',
               subtitle: '',
-              icon: Icons.person_outline,
+             // iconCode: int.parse('0xE910', radix: 16),
+              //icon: Icons.person_outline,
             ),
             
-            EditProfileBasciModel(
+            EditProfileBasicModel(
               title: 'Live In',
               subtitle: 'Cairo, Egypt',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
           ],
           editProfileLookList: [
             EditProfileLookModel(
               title: 'Hair Color',
               subtitle: 'black',
-              icon: Icons.person_outline,
+            //  icon: Icons.person_outline,
             ),
             EditProfileLookModel(
               title: 'Eye Color',
               subtitle: 'black',
-              icon: Icons.info_outline,
+              // icon: Icons.info_outline,
             ),
             EditProfileLookModel(
               title: 'Height',
               subtitle: '175',
-              icon: Icons.info_outline,
+            //  icon: Icons.info_outline,
             ),
             EditProfileLookModel(
               title: 'Weight',
               subtitle: '70',
-              icon: Icons.info_outline,
+           //   icon: Icons.info_outline,
             ),
            
             
@@ -66,61 +68,61 @@ class EditProfileCubit extends Cubit<EditProfileState> {
             EditProfileLifeStyleModel(
               title: 'Are You a Smoker?',
               subtitle: 'no',
-              icon: Icons.person_outline,
+            //  icon: Icons.person_outline,
             ),
             EditProfileLifeStyleModel(
               title: 'Marital Status',
               subtitle: 'single',
-              icon: Icons.info_outline,
+            //  icon: Icons.info_outline,
             ),
             EditProfileLifeStyleModel(
               title: 'Do You Have Kids?',
               subtitle: 'no',
-              icon: Icons.info_outline,
+            //  icon: Icons.info_outline,
             ),
             EditProfileLifeStyleModel(
               title: 'Job',
               subtitle: 'engineer',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
             EditProfileLifeStyleModel(
               title: 'Income',
               subtitle: 'no',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
             EditProfileLifeStyleModel(
               title: 'Live In',
               subtitle: 'house',
-              icon: Icons.info_outline,
+            //  icon: Icons.info_outline,
             ),
           ],
-          editProfileCalutreList: [
-            EditProfileCaltureeModel(
+          editProfileCultureList: [
+            EditProfileCultureModel(
               title: 'Nationality',
               subtitle: 's',
-              icon: Icons.info_outline,
+              //icon: Icons.info_outline,
             ),
-            EditProfileCaltureeModel(
+            EditProfileCultureModel(
               title: 'Education',
               subtitle: 's',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
-            EditProfileCaltureeModel(
+            EditProfileCultureModel(
               title: 'Languages',
               subtitle: 's',
-              icon: Icons.info_outline,
+            //  icon: Icons.info_outline,
             ),
-            EditProfileCaltureeModel(
+            EditProfileCultureModel(
               title: 'Religion',
               subtitle: 's',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
-            EditProfileCaltureeModel(
+            EditProfileCultureModel(
               title: 'Multiple Wives',
               subtitle: 'ssss',
-              icon: Icons.info_outline,
+             // icon: Icons.info_outline,
             ),
-          ],
+          ], //editProfileCalutreList: [],   // editProfileCultureList: [],
         )) {
     _loadUserData();
   }
@@ -146,15 +148,15 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         if (profileDataDoc.exists) {
           emit(EditProfileState(
             editProfileBasicList: [
-              EditProfileBasciModel(
+              EditProfileBasicModel(
                 title: 'First Name',
                 subtitle: userName,
-                icon: Icons.person_outline,
+              //  icon: Icons.person_outline,
               ),
-              EditProfileBasciModel(
+              EditProfileBasicModel(
                 title: 'Live In',
                 subtitle: 'Cairo, Egypt',
-                icon: Icons.info_outline,
+               // icon: Icons.info_outline,
               ),
             ],
             editProfileLookList:
@@ -165,10 +167,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
                     .data()?['editProfileLifeStyleList'] as List)
                 .map((data) => EditProfileLifeStyleModel.fromFirestore(data))
                 .toList(),
-            editProfileCalutreList:
+            editProfileCultureList:
                 (profileDataDoc.data()?['editProfileCalutreList'] as List)
-                    .map((data) => EditProfileCaltureeModel.fromFirestore(data))
-                    .toList(),
+                    .map((data) => EditProfileCultureModel.fromFirestore(data))
+                    .toList(),// editProfileCultureList: [],
           ));
         }
       }
@@ -181,17 +183,18 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     switch (listType) {
       case 'Basic':
         final newBasicList =
-            List<EditProfileBasciModel>.from(currentState.editProfileBasicList);
-        newBasicList[index] = EditProfileBasciModel(
+            List<EditProfileBasicModel>.from(currentState.editProfileBasicList);
+        newBasicList[index] = EditProfileBasicModel(
           title: newBasicList[index].title,
           subtitle: newSubtitle,
-          icon: newBasicList[index].icon,
+       //   icon: newBasicList[index].icon,
         );
         emit(EditProfileState(
           editProfileBasicList: newBasicList,
           editProfileLookList: currentState.editProfileLookList,
           editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
+          editProfileCultureList: currentState.editProfileCultureList, 
+         // editProfileCultureList: currentState.editProfileCultureList,
         ));
         break;
       case 'Look':
@@ -200,13 +203,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         newLookList[index] = EditProfileLookModel(
           title: newLookList[index].title,
           subtitle: newSubtitle,
-          icon: newLookList[index].icon,
+         // icon: newLookList[index].icon,
         );
         emit(EditProfileState(
           editProfileBasicList: currentState.editProfileBasicList,
           editProfileLookList: newLookList,
           editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
+        // editProfileCalutreList: currentState.editProfileCultureList, 
+          editProfileCultureList: currentState.editProfileCultureList,
         ));
         break;
       case 'LifeStyle':
@@ -215,28 +219,30 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         newLifeStyleList[index] = EditProfileLifeStyleModel(
           title: newLifeStyleList[index].title,
           subtitle: newSubtitle,
-          icon: newLifeStyleList[index].icon,
+        //  icon: newLifeStyleList[index].icon,
         );
         emit(EditProfileState(
           editProfileBasicList: currentState.editProfileBasicList,
           editProfileLookList: currentState.editProfileLookList,
           editProfileLifeStyleList: newLifeStyleList,
-          editProfileCalutreList: currentState.editProfileCalutreList,
+          editProfileCultureList: currentState.editProfileCultureList,
+         // editProfileCalutreList: currentState.editProfileCalutreList,
         ));
         break;
       case 'Culture':
-        final newCultureList = List<EditProfileCaltureeModel>.from(
-            currentState.editProfileCalutreList);
-        newCultureList[index] = EditProfileCaltureeModel(
+        final newCultureList = List<EditProfileCultureModel>.from(
+            currentState.editProfileCultureList);
+        newCultureList[index] = EditProfileCultureModel(
           title: newCultureList[index].title,
           subtitle: newSubtitle,
-          icon: newCultureList[index].icon,
+          //icon: newCultureList[index].icon,
         );
         emit(EditProfileState(
           editProfileBasicList: currentState.editProfileBasicList,
           editProfileLookList: currentState.editProfileLookList,
           editProfileLifeStyleList: currentState.editProfileLifeStyleList,
-          editProfileCalutreList: newCultureList,
+          editProfileCultureList: newCultureList,
+       //   editProfileCalutreList: newCultureList,
         ));
         break;
     }
@@ -259,7 +265,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         'editProfileLifeStyleList':
             state.editProfileLifeStyleList.map((e) => e.toMap()).toList(),
         'editProfileCalutreList':
-            state.editProfileCalutreList.map((e) => e.toMap()).toList(),
+            state.editProfileCultureList.map((e) => e.toMap()).toList(),
       });
     }
   }

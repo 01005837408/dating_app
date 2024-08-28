@@ -72,9 +72,12 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
             child: Image.asset(onBoardingList[widget.pageIndex].image),
           ),
           verticalSpacing(65.h),
-          Text(
-            onBoardingList[widget.pageIndex].title,
-            style: AppStyle.font21bold,
+          Center(
+            child: Text(
+              onBoardingList[widget.pageIndex].title,
+              textAlign: TextAlign.center,
+              style: AppStyle.font21bold,
+            ),
           ),
           verticalSpacing(12.h),
           Text(
