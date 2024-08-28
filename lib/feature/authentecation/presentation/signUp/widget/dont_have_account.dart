@@ -17,31 +17,27 @@ class DontHaveAnAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          S.of(context).doHaveAcount,
-          style:TextStyle(
-            fontSize: 14.sp,
-    fontWeight: FontWeight.w400,
-          )
-          
-              //AppStyle.font17W400.copyWith(color: Colors.black),
-        ),
+        Text(S.of(context).doHaveAcount,
+            style: TextStyle(
+              fontSize: 14.sp.sp,
+              fontWeight: FontWeight.w400,
+            )
+
+            //AppStyle.font17W400.copyWith(color: Colors.black),
+            ),
         TextButton(
             onPressed: () {
-              Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => SignInScreen(),
               ));
             },
             child: Text(
               S.of(context).enterLogin,
-              style: 
-              TextStyle(
-                fontSize: 17.sp,
-           fontWeight: FontWeight.w400,
-
+              style: TextStyle(
+                fontSize: 17.sp.sp,
+                fontWeight: FontWeight.w400,
               )
-              // Text.font17W400
+                  // Text.font17W400
                   .copyWith(color: AppColor.kPrimaryColor),
             ))
       ],

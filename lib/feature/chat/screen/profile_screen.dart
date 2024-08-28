@@ -57,7 +57,7 @@
 //                 mainAxisAlignment: MainAxisAlignment.center,
 //                 crossAxisAlignment: CrossAxisAlignment.center,
 //                 children: [
-//                   const SizedBox(height: 40),
+//                   const SizedBox(height:40.h),
 //                   Stack(
 //                     children: [
 //                       _image != null ?
@@ -66,8 +66,8 @@
 //                         borderRadius:BorderRadius.circular(100),
 //                         child: Image.file(
 //                           File(_image!) ,
-//                           width: 100,
-//                           height: 100,
+//                           width:100.h,
+//                           height:100.h,
 //                           fit: BoxFit.fill,
 
 //                         ),
@@ -75,8 +75,8 @@
 
 //                         borderRadius:BorderRadius.circular(100),
 //                         child: CachedNetworkImage(
-//                           width: 100,
-//                           height: 100,
+//                           width:100.h,
+//                           height:100.h,
 //                           fit: BoxFit.fill,
 //                           imageUrl:widget.user.image,
 //                           placeholder: (context, url) => CircularProgressIndicator(),
@@ -97,9 +97,9 @@
 //                       ),
 //                     ],
 //                   ),
-//                   SizedBox(height: 20),
+//                   SizedBox(height:20.h),
 //                   Text(widget.user.email),
-//                   SizedBox(height: 20),
+//                   SizedBox(height:20.h),
 //                   TextFormField(
 //                    initialValue: widget.user.name,
 //                     onSaved: (val) => Api.me!.name = val ??"" ,
@@ -113,7 +113,7 @@
 
 //                     ),
 //                   ),
-//                   SizedBox(height: 20),
+//                   SizedBox(height:20.h),
 //                   TextFormField(
 //                     initialValue: widget.user.about,
 //                     onSaved: (val) => Api.me!.about = val ??"" ,
@@ -127,7 +127,7 @@
 
 //                     ),
 //                   ),
-//                   SizedBox(height: 20),
+//                   SizedBox(height:20.h),
 //                   ElevatedButton(
 //                       onPressed: (){
 //                         if(formKey.currentState!.validate()){
@@ -143,7 +143,7 @@
 //                         mainAxisAlignment: MainAxisAlignment.center,
 //                         children: [
 //                           Icon(Icons.edit),
-//                           SizedBox(width: 20,),
+//                           SizedBox(width:20.h,),
 //                           Text("Update"),
 //                         ],
 //                       )
@@ -168,10 +168,10 @@
 //         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
 //         children: [
 //           Text("Pick you Image" , style: TextStyle(
-//             fontSize: 20,
+//             fontSize:20.sp,
 //             fontWeight: FontWeight.bold
 //           ),),
-//           SizedBox(height: 20,),
+//           SizedBox(height:20.h,),
 //           Column(
 //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //             children: [

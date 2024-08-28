@@ -1,6 +1,7 @@
 import 'package:dating_app/feature/my_profile_details/my_profile_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -41,14 +42,14 @@ class SectionCustomPost extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 300,
+                  height: 300.h,
                   child: PageView.builder(
                     controller: controller,
                     itemCount: imageUrls.length,
                     itemBuilder: (context, index) => Image.network(
                       imageUrls[index],
                       width: double.infinity,
-                      height: 300,
+                      height: 300.h,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -68,9 +69,7 @@ class SectionCustomPost extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => MyProfileDetailsScreen(
-                              
-                            )));
+                            builder: (_) => MyProfileDetailsScreen()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
@@ -137,11 +136,11 @@ class SectionCustomPost extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                       Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(DateTime.now().toString()),
-                        const  Text("online"),
+                          const Text("online"),
                         ],
                       ),
                     ],

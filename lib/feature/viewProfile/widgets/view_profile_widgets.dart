@@ -1,6 +1,7 @@
 import 'package:dating_app/core/model/view_my_profile_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ViewMyProfile extends StatelessWidget {
   const ViewMyProfile({super.key, required this.viewMyProfileModel});
@@ -18,7 +19,7 @@ class ViewMyProfile extends StatelessWidget {
         ),
         title: Text(
           viewMyProfileModel[index].title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
         ),
         subtitle: Text(viewMyProfileModel[index].subtitle),
       ),

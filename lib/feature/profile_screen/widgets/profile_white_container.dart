@@ -13,8 +13,8 @@ class WhitContainerProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 50,
-      width: 300.w,
+      // height:50.h,
+      width: 300.h.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), color: Colors.white),
       child: Column(
@@ -44,16 +44,15 @@ class WhitContainerProfile extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
                   S.of(context).subscribeNow,
-                  style: const TextStyle(
+                  style:  TextStyle(
                       color: Colors.white,
-                      fontSize: 25,
+                      fontSize: 25.sp,
                       fontWeight: FontWeight.w600),
                 ),
               ),
             ),
           ),
           verticalSpacing(20),
-
         ],
       ),
     );

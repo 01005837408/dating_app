@@ -11,6 +11,7 @@ import 'package:dating_app/feature/settings_profile/widgets/settings_body.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsScreenProfile extends StatefulWidget {
   const SettingsScreenProfile({
@@ -112,7 +113,7 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
               ),
               verticalSpacing(10),
               TextButton(
-                  onPressed: ()async {
+                  onPressed: () async {
 //                     try {
 //   await user!.delete();
 //   Navigator.of(context).pushAndRemoveUntil(
@@ -131,8 +132,8 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
                   },
                   child: Text(
                     S.of(context).delete,
-                    style: const TextStyle(
-                        color: AppColor.kPrimaryColor, fontSize: 20),
+                    style:  TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20.sp),
                   )),
             ],
           ),
@@ -154,8 +155,10 @@ class _SettingsScreenProfileState extends State<SettingsScreenProfile> {
           horizontalSpacing(15),
           Text(
             S.of(context).notifications,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+            style:  TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 25.sp),
           ),
           const Spacer(),
           Switch(

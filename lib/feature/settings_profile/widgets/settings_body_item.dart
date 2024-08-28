@@ -1,13 +1,14 @@
 import 'package:dating_app/core/model/settings_profile_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsBodyItem extends StatelessWidget {
   const SettingsBodyItem({
     super.key,
     required this.settingsmodel,
     required this.index,
-     required this.onTap,
+    required this.onTap,
   });
   final int index;
   final void Function() onTap;
@@ -26,8 +27,10 @@ class SettingsBodyItem extends StatelessWidget {
         ),
         title: Text(
           settingsmodel[index].title,
-          style: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+          style:  TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 25.sp),
         ),
         leading: Icon(
           settingsmodel[index].leading.icon,

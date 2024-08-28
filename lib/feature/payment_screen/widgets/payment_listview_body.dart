@@ -2,6 +2,7 @@ import 'package:dating_app/core/model/payment_body_model.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentBodyListView extends StatelessWidget {
   const PaymentBodyListView({super.key});
@@ -38,8 +39,8 @@ class PaymentBodyListView extends StatelessWidget {
               fit: BoxFit.scaleDown,
               child: Text(
                 paymentListView[index].title,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                style:  TextStyle(
+                    fontSize: 25.sp, fontWeight: FontWeight.w500),
                 // textAlign: TextAlign.right,
               ),
             ),

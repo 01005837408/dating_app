@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
+
 class ChangePasswordScreen extends StatefulWidget {
   @override
   _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
@@ -15,9 +16,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final TextEditingController _oldPasswordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
- bool isArabic() {
+  bool isArabic() {
     return Intl.getCurrentLocale() == "ar";
   }
+
   Future<void> _changePassword() async {
     try {
       User? user = _auth.currentUser;
@@ -40,7 +42,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
       // Optionally, navigate back to the settings screen
       Navigator.pop(context);
-
     } catch (e) {
       // Show error message
       ScaffoldMessenger.of(context).showSnackBar(
@@ -55,43 +56,45 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
-          title:  Text(S.of(context).changePassword),
+          title: Text(S.of(context).changePassword),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-               SizedBox(height: 20.h),
-               Text(S.of(context).currentPassword),
-               SizedBox(height: 20.h),
+              SizedBox(height: 20.h.h),
+              Text(S.of(context).currentPassword),
+              SizedBox(height: 20.h.h),
               TextField(
                 controller: _oldPasswordController,
                 obscureText: true,
-                decoration:  InputDecoration(
+                decoration: InputDecoration(
                   labelText: S.of(context).labledoldPassword,
                   border: const OutlineInputBorder(),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
               ),
-              const SizedBox(height: 20),
-               Text(S.of(context).newPassword),
-              const SizedBox(height: 20),
-      
+               SizedBox(height: 20.h),
+              Text(S.of(context).newPassword),
+               SizedBox(height: 20.h),
               TextField(
                 controller: _newPasswordController,
                 obscureText: true,
-                decoration:  InputDecoration(
+                decoration: InputDecoration(
                   labelText: S.of(context).labledNewPassword,
                   border: const OutlineInputBorder(),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
               ),
-              const SizedBox(height: 20),
+               SizedBox(height: 20.h),
               ElevatedButton(
                 onPressed: _changePassword,
-                child:  Text(S.of(context).changePassword),
+                child: Text(S.of(context).changePassword),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 ),
               ),
             ],

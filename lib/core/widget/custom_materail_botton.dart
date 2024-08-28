@@ -5,7 +5,6 @@ import 'package:dating_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class CustomMaterialBottons extends StatelessWidget {
   CustomMaterialBottons({
     this.backgroundBottonsColors,
@@ -21,20 +20,23 @@ class CustomMaterialBottons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      //constraints: BoxConstraints(maxWidth: 330 , maxHeight: double.infinity ),
-      height: 60,
-      minWidth: 330.w,
-    
+      //constraints: BoxConstraints(maxwidth:330.h , maxHeight: double.infinity ),
+      height: 60.h,
+     minWidth: 330.w,
+
+
       // padding: EdgeInsets.only(left: 10),
-    
-      shape: RoundedRectangleBorder(  borderRadius:  BorderRadius.circular(bourderRedias ?? 50)),
+
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(bourderRedias ?? 50)),
       color: backgroundBottonsColors ?? AppColor.kPrimaryColor,
       onPressed: onPressed,
-      child: Text(text, style:const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.w600,
-        fontSize: 20,
-      )),
+      child: Text(text,
+          style:  TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize:20.sp,
+          )),
     );
   }
 }

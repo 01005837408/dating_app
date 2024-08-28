@@ -28,8 +28,10 @@ class ProfileBodyItem extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             profileList[index].text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
+            style:  TextStyle(
+                color: Colors.white,
+                fontSize: 25.sp,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.right,
           ),
         ),

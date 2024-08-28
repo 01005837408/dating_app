@@ -10,7 +10,7 @@ import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.da
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ForgetPassword extends StatelessWidget {
   ForgetPassword({super.key});
   TextEditingController emailControler = TextEditingController();
@@ -18,6 +18,7 @@ class ForgetPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //height:$1.h height:\s*(\d+)  // width:\s*(\d+) //width:$1.w  //
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: BlocProvider<AppForgetPasswordCubit>(
@@ -26,7 +27,7 @@ class ForgetPassword extends StatelessWidget {
             listener: (context, state) {
               if (state is AppSuccessForgetPasswordState) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                 const SnackBar(
+                  const SnackBar(
                     content: Text("Check Your Email"),
                   ),
                 );
@@ -36,9 +37,9 @@ class ForgetPassword extends StatelessWidget {
                       builder: (context) => const SignInScreen(),
                     ),
                     (route) => false);
-              }else if(state is AppErrorForgetPasswordState){
+              } else if (state is AppErrorForgetPasswordState) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                 const SnackBar(
+                  const SnackBar(
                     content: Text("please enter valid email"),
                   ),
                 );
@@ -64,7 +65,7 @@ class ForgetPassword extends StatelessWidget {
                         Text(S.of(context).restPass,
                             style: AppStyle.font21bold.copyWith(
                                 color: AppColor.kPrimaryColor,
-                                fontSize: 24,
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.w900)),
                       ],
                     ),

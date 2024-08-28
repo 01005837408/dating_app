@@ -20,8 +20,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
-
   @override
   void initState() {
     super.initState();
@@ -31,16 +29,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColor.kPrimaryColor,
-        body:
-         Column(
+        body: Column(
           children: [
             //BackIconInSignUp(),
-            
+
             verticalSpacing(60.h),
             Expanded(
               child: Container(
-                // height: 639,
-                decoration:  BoxDecoration(
+                // height:639.h,
+                decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40.r),
@@ -49,16 +46,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: Padding(
-                    padding:  EdgeInsets.all(20.0.r),
+                    padding: EdgeInsets.all(20.0.r),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
                           verticalSpacing(10.h),
-            Text(S.of(context).createNewAcount, style: TextStyle(
-              color: Colors.black,
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w600,
-            ),),
+                          Text(
+                            S.of(context).createNewAcount,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 24.sp.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           verticalSpacing(80.h),
 
                           RefactorCustomTextFormFieldSignUp(
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                           verticalSpacing(20.h),
                           MaterialButton(
-                            height: 50,
+                            height: 50.h,
                             color: AppColor.kPrimaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               );
                               final firebaseUser = await FirebaseAuth.instance
                                   .signInWithCredential(authCredential);
-                            //  addUser();
+                              //  addUser();
                               // Navigator.pushReplacement(
                               //     context,
                               //     MaterialPageRoute(
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   backgroundImage:
                                       AssetImage(Assets.googleImage),
                                 ),
-                                SizedBox(width: 30.w),
+                                SizedBox(width: 30.h.w),
                                 Text(
                                   S.of(context).createAcountByGoogle,
                                   style: AppStyle.font17W400.copyWith(),
@@ -146,8 +146,8 @@ class BackIconInSignUp extends StatelessWidget {
       child: Align(
         alignment: Alignment.topLeft,
         child: Container(
-          height: 50,
-          width: 50,
+          height: 50.h,
+          width: 50.h,
           decoration: BoxDecoration(
             color: Colors.grey,
             shape: BoxShape.circle,

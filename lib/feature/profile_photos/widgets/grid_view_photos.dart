@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dating_app/feature/profile_photos/data/photo_cubit.dart';
 import 'package:dating_app/core/utils/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridViewPhotos extends StatelessWidget {
   const GridViewPhotos({
@@ -34,13 +35,14 @@ class GridViewPhotos extends StatelessWidget {
                 childAspectRatio: 2 / 2,
               ),
               itemBuilder: (context, index) => GestureDetector(
-                onLongPress: () => _showDeleteDialog(context, images[index], profilePhotosCubit),
+                onLongPress: () => _showDeleteDialog(
+                    context, images[index], profilePhotosCubit),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(27),
                     border: Border.all(
                       color: AppColor.kPrimaryColor,
-                      width: 2,
+                      width: 2.h,
                     ),
                   ),
                   child: ClipRRect(
@@ -58,7 +60,8 @@ class GridViewPhotos extends StatelessWidget {
     );
   }
 
-  void _showDeleteDialog(BuildContext context, String imageUrl , ProfilePhotosCubit profilePhotosCubit) {
+  void _showDeleteDialog(BuildContext context, String imageUrl,
+      ProfilePhotosCubit profilePhotosCubit) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

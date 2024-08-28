@@ -5,6 +5,7 @@ import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridViewMyLikes extends StatelessWidget {
   const GridViewMyLikes({Key? key}) : super(key: key);
@@ -14,7 +15,8 @@ class GridViewMyLikes extends StatelessWidget {
     final currentUserId = FirebaseAuth.instance.currentUser!.uid;
 
     return BlocProvider(
-      create: (context) => LikedPostsCubit()..loadLikedPosts(userId: currentUserId),
+      create: (context) =>
+          LikedPostsCubit()..loadLikedPosts(userId: currentUserId),
       child: BlocBuilder<LikedPostsCubit, List<LikedPost>>(
         builder: (context, likedPosts) {
           return GridView.builder(
@@ -46,12 +48,12 @@ class GridViewMyLikes extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(width: 1.5, color: AppColor.kPrimaryColor),
+              border: Border.all(width:15.h, color: AppColor.kPrimaryColor),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: SizedBox(
-                height: 121,
+                height: 121.h,
                 width: double.infinity,
                 child: Image.network(
                   post.imageUrl,
@@ -68,21 +70,24 @@ class GridViewMyLikes extends StatelessWidget {
                   children: [
                     Text(
                       post.userName,
-                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                      style:  TextStyle(
+                          fontSize:15.sp, fontWeight: FontWeight.w500),
                     ),
                     Row(
                       children: [
                         Text(S.of(context).online),
                         horizontalSpacing(5),
                         Container(
-                          width: 10,
-                          height: 10,
+                          width:10.h,
+                          height: 10.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.green,
                           ),
                         ),
-                        const SizedBox(width: 20,),
+                         SizedBox(
+                          width:20.h,
+                        ),
                         const Icon(
                           Icons.favorite,
                           color: AppColor.kPrimaryColor,

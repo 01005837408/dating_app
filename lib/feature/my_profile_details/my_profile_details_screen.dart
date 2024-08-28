@@ -6,10 +6,13 @@ import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details
 import 'package:dating_app/core/widget/custom_appbar.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyProfileDetailsScreen extends StatelessWidget {
-   MyProfileDetailsScreen( {super.key, });
- // final UserModel userModel ;
+  MyProfileDetailsScreen({
+    super.key,
+  });
+  // final UserModel userModel ;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,37 +23,42 @@ class MyProfileDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 profileAppBar(context),
-                const MyProfileImageAndHeader(
-                 // userModel: userModel,
-                ),
+                 const MyProfileImageAndHeader(
+                    // userModel: userModel,
+                    ),
                 Padding(
-                  padding: const EdgeInsets.only(
+                  padding:  const EdgeInsets.only(
                       right: 20, top: 15, bottom: 15, left: 20),
                   child: Text(
                     S.of(context).qucikview,
-                    style: const TextStyle(fontSize: 22),
+                    style:  TextStyle(fontSize: 22.sp),
                   ),
                 ),
-                const Divider(
+                 const Divider(
                   endIndent: 50,
                   indent: 50,
                   thickness: 2,
                   color: AppColor.kPrimaryColor,
                 ),
-                  const Padding(
+                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: QuickViewInMyProfile(
-                   // userModel:userModel ,
-                  ),
+                      // userModel:userModel ,
+                      ),
                 ),
                 Center(
-                  child: ElevatedButton(onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(AppColor.kPrimaryColor),
-                  ),
-                   child:const Text("Block", style: TextStyle(
-                    color: Colors.white,
-                   ),)),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            AppColor.kPrimaryColor),
+                      ),
+                      child:  const Text(
+                        "Block",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
                 )
               ],
             ),

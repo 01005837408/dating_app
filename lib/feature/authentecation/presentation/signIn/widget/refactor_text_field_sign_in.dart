@@ -64,7 +64,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                 children: [
                   Text(S.of(context).emailTitle,
                       style: AppStyle.font21bold
-                          .copyWith(color: Colors.black, fontSize: 16.sp)),
+                          .copyWith(color: Colors.black, fontSize: 16.sp.sp)),
                   verticalSpacing(10.h),
                   CustomTextFormField(
                     validator: (value) {
@@ -84,7 +84,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                   verticalSpacing(10),
                   Text(S.of(context).passTitle,
                       style: AppStyle.font21bold
-                          .copyWith(color: Colors.black, fontSize: 16.sp)),
+                          .copyWith(color: Colors.black, fontSize: 16.sp.sp)),
                   verticalSpacing(10),
                   CustomTextFormField(
                     validator: (value) {
@@ -127,7 +127,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                       S.of(context).forgetPassword,
                       //textAlign: TextAlign.end,
                       style: TextStyle(
-                        fontSize: 20.sp,
+                        fontSize: 20.sp.sp,
                         color: const ui.Color.fromARGB(255, 240, 95, 136),
                         fontWeight: FontWeight.w400,
                       ),
@@ -135,7 +135,7 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                   ),
                   verticalSpacing(30),
                   state is UserLoading
-                      ?const Center(child:  CircularProgressIndicator())
+                      ? const Center(child: CircularProgressIndicator())
                       : CustomMaterialBottons(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
@@ -154,10 +154,10 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                     children: [
                       Text(
                         S.of(context).notHaveAcount,
-                        style:TextStyle(
-                            fontSize: 14.sp,
+                        style: TextStyle(
+                          fontSize: 14.sp.sp,
                           fontWeight: FontWeight.w400,
-                          ).copyWith(color: Colors.black),
+                        ).copyWith(color: Colors.black),
                       ),
                       TextButton(
                         onPressed: () {
@@ -168,11 +168,10 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                         },
                         child: Text(
                           S.of(context).createNewAcount,
-                          style:TextStyle(
-                            fontSize: 17.sp,
-                          fontWeight: FontWeight.w400,
-                          )
-                              .copyWith(color: AppColor.kPrimaryColor),
+                          style: TextStyle(
+                            fontSize: 17.sp.sp,
+                            fontWeight: FontWeight.w400,
+                          ).copyWith(color: AppColor.kPrimaryColor),
                         ),
                       )
                     ],

@@ -4,6 +4,7 @@ import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyProfileDetailsHeader extends StatelessWidget {
   const MyProfileDetailsHeader({
@@ -42,11 +43,11 @@ class MyProfileDetailsHeader extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                       const Icon(Icons.person, color: AppColor.kPrimaryColor),
+                        const Icon(Icons.person, color: AppColor.kPrimaryColor),
                         Text(
                           '$userName ',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                          style:  TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15.sp),
                         ),
                       ],
                     ),
@@ -54,8 +55,8 @@ class MyProfileDetailsHeader extends StatelessWidget {
                       children: [
                         Text(
                           location,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 19),
+                          style:  TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 19.sp),
                         ),
                         const Icon(Icons.location_on,
                             color: AppColor.kPrimaryColor),
@@ -73,12 +74,12 @@ class MyProfileDetailsHeader extends StatelessWidget {
                       children: [
                         Text(
                           S.of(context).online,
-                          style: const TextStyle(fontSize: 20),
+                          style:  TextStyle(fontSize: 20.sp),
                         ),
-                        const SizedBox(width: 10),
+                         SizedBox(width: 10.h),
                         Container(
-                          width: 10,
-                          height: 10,
+                          width: 10.h,
+                          height: 10.h,
                           decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(20)),
@@ -87,7 +88,7 @@ class MyProfileDetailsHeader extends StatelessWidget {
                     ),
                     Text(
                       S.of(context).id,
-                      style: const TextStyle(fontSize: 19),
+                      style:  TextStyle(fontSize: 19.sp),
                     )
                   ],
                 )

@@ -7,11 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
-  void _showImageSourceActionSheet(BuildContext context, ProfileCubit profileCubit) {
+  void _showImageSourceActionSheet(
+      BuildContext context, ProfileCubit profileCubit) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -51,9 +51,9 @@ class ProfileScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Stack(
               children: [
-                 Column(
+                Column(
                   children: [
-                   const ProfileAppBar(height: 130),
+                     ProfileAppBar(height: 130.h),
                     ProfileBody(),
                   ],
                 ),
@@ -78,12 +78,13 @@ class ProfileScreen extends StatelessWidget {
                             right: 5,
                             top: 115,
                             child: InkWell(
-                              onTap: () => _showImageSourceActionSheet(
-                                  context, BlocProvider.of<ProfileCubit>(context)),
+                              onTap: () => _showImageSourceActionSheet(context,
+                                  BlocProvider.of<ProfileCubit>(context)),
                               child: const CircleAvatar(
                                 radius: 18,
                                 backgroundColor: Color(0xFFEDB2C2),
-                                child: Icon(Icons.edit, color: Colors.white, size: 18),
+                                child: Icon(Icons.edit,
+                                    color: Colors.white, size: 18),
                               ),
                             ),
                           )

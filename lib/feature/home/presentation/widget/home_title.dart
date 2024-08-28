@@ -1,12 +1,11 @@
-
 import 'package:dating_app/feature/home/presentation/widget/user_image.dart';
 import 'package:dating_app/feature/match_filtter/match_filtter_screen.dart';
 import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
 
-
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTitle extends StatelessWidget {
   HomeTitle({this.onPressed, this.iconButton, this.text, super.key});
@@ -23,28 +22,30 @@ class HomeTitle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            iconButton ?? 
-            IconButton(
-              onPressed: onPressed ??
-                  () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const MatchFiltter(),
-                      ),
-                    );
-                  },
-              icon: const Icon(
-                Icons.settings_input_composite_rounded,
-                color: Colors.black,
-                size: 30,
-              ),
-            ),
-            Text(  //S.of(context).appName
+            iconButton ??
+                IconButton(
+                  onPressed: onPressed ??
+                      () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                const MatchFiltter(),
+                          ),
+                        );
+                      },
+                  icon: const Icon(
+                    Icons.settings_input_composite_rounded,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+            Text(
+              //S.of(context).appName
               text ?? S.of(context).appName,
-              style: const TextStyle(
+              style:  TextStyle(
                 color: Colors.black,
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

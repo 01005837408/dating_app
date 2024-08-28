@@ -5,6 +5,7 @@ import 'package:dating_app/feature/payment_screen/widgets/payment_header_listvie
 import 'package:dating_app/feature/payment_screen/widgets/payment_listview_body.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/colors.dart';
 
@@ -37,8 +38,8 @@ class PaymentScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
                   child: Text(
                     S.of(context).advatges,
-                    style: const TextStyle(
-                      fontSize: 25,
+                    style:  TextStyle(
+                      fontSize: 25.sp,
                     ),
                   ),
                 ),
@@ -54,12 +55,11 @@ class PaymentScreen extends StatelessWidget {
                   child: Text(
                     S.of(context).ruleText,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 18),
+                    style:  TextStyle(fontSize: 18.sp),
                   ),
                 ),
                 verticalSpacing(10),
                 CustomMaterialBottons(
-
                     backgroundBottonsColors: AppColor.lightRed,
                     onPressed: () {},
                     text: 'احصل علي 3 اشهر بمبلغ 999ج'),

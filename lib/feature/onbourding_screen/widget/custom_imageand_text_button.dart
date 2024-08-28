@@ -27,7 +27,7 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(20.r),
+      padding: EdgeInsets.all(20.r),
       child: Row(
         children: [
           GestureDetector(
@@ -44,8 +44,8 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
               backgroundColor: Colors.white,
               child: Image.asset(
                 Assets.onbourdingImage,
-                height: 32.h,
-                width: 32.w,
+                height: 32.h.h,
+                width: 32.h.w,
               ),
             ),
           ),
@@ -59,9 +59,9 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
               },
               child: Text(
                 S.of(context).skip,
-                style:  TextStyle(
+                style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18.sp,
+                    fontSize: 18.sp.sp,
                     fontWeight: FontWeight.w600),
               ))
         ],

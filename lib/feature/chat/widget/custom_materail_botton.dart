@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomMaterialBottons extends StatelessWidget {
   CustomMaterialBottons({
@@ -20,20 +20,22 @@ class CustomMaterialBottons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 18.0),
       child: MaterialButton(
-        //constraints: BoxConstraints(maxWidth: 330 , maxHeight: double.infinity ),
-        height: 50,
-        minWidth: 330,
+        //constraints: BoxConstraints(maxwidth:330.h , maxHeight: double.infinity ),
+        height: 50.h,
+        minWidth: 330.h,
 
         // padding: EdgeInsets.only(left: 10),
 
-        shape: RoundedRectangleBorder(  borderRadius:  BorderRadius.circular(bourderRedias ?? 50)),
-        color: backgroundBottonsColors ,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(bourderRedias ?? 50)),
+        color: backgroundBottonsColors,
         onPressed: onPressed,
-        child: Text(text, style:const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
-        )),
+        child: Text(text,
+            style:  TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 20.sp,
+            )),
       ),
     );
   }

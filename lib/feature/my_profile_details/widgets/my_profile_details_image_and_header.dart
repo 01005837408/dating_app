@@ -6,6 +6,7 @@ import 'package:dating_app/feature/my_profile_details/widgets/my_profile_details
 import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyProfileImageAndHeader extends StatelessWidget {
   const MyProfileImageAndHeader({
@@ -18,7 +19,7 @@ class MyProfileImageAndHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: AppColor.kPrimaryColor, width: 1.2)),
+          border: Border.all(color: AppColor.kPrimaryColor, width:12.h)),
       child: Column(
         children: [
           BlocProvider(

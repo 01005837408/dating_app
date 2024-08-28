@@ -5,13 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dating_app/feature/edit_profile_screen/data/edit_profile_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuickViewInMyProfile extends StatelessWidget {
   const QuickViewInMyProfile({
-   // required this.userModel,
+    // required this.userModel,
     Key? key,
   }) : super(key: key);
- // final UserModel userModel;
+  // final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -44,19 +45,19 @@ class QuickViewInMyProfile extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).work,
-                    style: const TextStyle(
-                        color: AppColor.kPrimaryColor, fontSize: 20),
+                    style:  TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20.sp),
                   ),
                   Text(
                     work,
                   ),
-                  const SizedBox(
-                    height: 8,
+                   SizedBox(
+                    height: 8.h,
                   ),
                   Text(
                     S.of(context).maritalStatus,
-                    style: const TextStyle(
-                        color: AppColor.kPrimaryColor, fontSize: 20),
+                    style:  TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20.sp),
                   ),
                   Text(
                     S.of(context).single,
@@ -69,17 +70,17 @@ class QuickViewInMyProfile extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).education,
-                    style: const TextStyle(
-                        color: AppColor.kPrimaryColor, fontSize: 20),
+                    style:  TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20.sp),
                   ),
                   Text(education),
-                  const SizedBox(
-                    height: 8,
+                   SizedBox(
+                    height: 8.h,
                   ),
                   Text(
                     S.of(context).religion,
-                    style: const TextStyle(
-                        color: AppColor.kPrimaryColor, fontSize: 20),
+                    style:  TextStyle(
+                        color: AppColor.kPrimaryColor, fontSize: 20.sp),
                   ),
                   Text(S.of(context).Muslim),
                 ],

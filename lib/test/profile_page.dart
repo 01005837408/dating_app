@@ -68,19 +68,19 @@
 //                   decoration: InputDecoration(labelText: 'Email'),
 //                   keyboardType: TextInputType.emailAddress,
 //                 ),
-//                 SizedBox(height: 20.0),
+//                 SizedBox(height:20.h.0),
 //                 if (_imageFile != null) ...[
-//                   Image.file(_imageFile!, height: 100, width: 100),
-//                   SizedBox(height: 10),
+//                   Image.file(_imageFile!, height:100.h, width:100.h),
+//                   SizedBox(height:10.h),
 //                 ] else if (widget.user.imageUrl != null) ...[
-//                   Image.network(widget.user.imageUrl!, height: 100, width: 100),
-//                   SizedBox(height: 10),
+//                   Image.network(widget.user.imageUrl!, height:100.h, width:100.h),
+//                   SizedBox(height:10.h),
 //                 ],
 //                 ElevatedButton(
 //                   onPressed: _pickImage,
 //                   child: Text('Pick Image'),
 //                 ),
-//                 SizedBox(height: 20.0),
+//                 SizedBox(height:20.h.0),
 //                 BlocBuilder<EditProfileCubit, EditProfileState>(
 //                   builder: (context, state) {
 //                     return state!.loading

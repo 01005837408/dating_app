@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
+
 Widget CustomTextFormField({
   String? hintText,
   String? lableText,
@@ -25,8 +26,8 @@ Widget CustomTextFormField({
       controller: controller,
       validator: validator,
       textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
-      
-      style:const TextStyle(
+
+      style: const TextStyle(
         color: Colors.black,
       ),
       onTapOutside: (event) {
@@ -37,8 +38,8 @@ Widget CustomTextFormField({
         filled: true,
         fillColor: const Color(0xffFFFFFF),
         enabled: true,
-        // constraints: const BoxConstraints(maxWidth: 320, maxHeight: 55),
-       //  labelStyle: StylesApp.font14Mediam,
+        // constraints: const BoxConstraints(maxwidth:320.h, maxheight:55.h),
+        //  labelStyle: StylesApp.font14Mediam,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
         ),
@@ -46,13 +47,13 @@ Widget CustomTextFormField({
         prefixIconColor: Colors.white,
         suffixIconColor: Colors.white,
         suffixIcon: suffixIcon,
-       // prefixStyle: StylesApp.font14Mediam,
+        // prefixStyle: StylesApp.font14Mediam,
         labelText: lableText,
-
       ),
     ),
   );
 }
-  bool isArabic() {
-    return Intl.getCurrentLocale() == "ar";
-  }
+
+bool isArabic() {
+  return Intl.getCurrentLocale() == "ar";
+}

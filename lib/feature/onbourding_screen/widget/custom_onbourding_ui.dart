@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOnboardingUI extends StatefulWidget {
-   CustomOnboardingUI({
+  CustomOnboardingUI({
     super.key,
     required this.pageIndex,
   });
@@ -63,8 +63,8 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           verticalSpacing(30.h),
           Container(
-            width: 300.h,
-            height: 240.w,
+            width: 300.h.h,
+            height: 240.h.w,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30.r),
@@ -86,8 +86,8 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
           ),
           verticalSpacing(10.h),
           SizedBox(
-              width: 300.w,
-              height: 50.h,
+              width: 300.h.w,
+              height: 50.h.h,
               child: widget.pageIndex == 2
                   ? ElevatedButton(
                       style: ElevatedButton.styleFrom(

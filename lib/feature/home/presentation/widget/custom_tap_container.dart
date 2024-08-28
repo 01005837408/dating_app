@@ -16,8 +16,8 @@ class CustomTapContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 85.h,
-        width: 85.h,
+        height: 85.h.h,
+        width: 85.h.h,
         decoration: const BoxDecoration(
           color: Colors.white,
           shape: BoxShape.circle,
@@ -30,8 +30,8 @@ class CustomTapContainer extends StatelessWidget {
             children: [
               Image.asset(
                 image,
-                width: 40,
-                height: 40,
+                width: 40.h,
+                height: 40.h,
               ),
               Text(text)
             ],

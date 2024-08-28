@@ -1,5 +1,6 @@
 import 'package:dating_app/core/model/match_filtter_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdvancedFiltterListItem extends StatelessWidget {
   const AdvancedFiltterListItem({
@@ -15,8 +16,8 @@ class AdvancedFiltterListItem extends StatelessWidget {
       onTap: () {},
       title: Text(
         advancedMatchList[index].title,
-        style: const TextStyle(
-          fontSize: 30,
+        style:  TextStyle(
+          fontSize: 30.sp,
           color: Colors.white,
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:dating_app/feature/chat/widget/message_card.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatScreen extends StatelessWidget {
   final UserModel user;
@@ -37,12 +38,11 @@ class ChatScreen extends StatelessWidget {
                   radius: 20,
                   backgroundImage: user.profilePicture.isNotEmpty
                       ? NetworkImage(user.profilePicture)
-                      : const AssetImage('assets/images/Home Screen-image.jpg') as ImageProvider,
+                      : const AssetImage('assets/images/Home Screen-image.jpg')
+                          as ImageProvider,
                 ),
-                const SizedBox(width: 20),
+                 SizedBox(width: 20.h),
                 Text(user.fname),
-                
-                
               ],
             ),
           ),
@@ -72,7 +72,8 @@ class ChatScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Card(
                   color: Colors.white,
                   elevation: 3,
@@ -80,27 +81,30 @@ class ChatScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                        height: 50,
+                          height: 50.h,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.0),
                             child: TextField(
-                              controller: textController,
-                              
-                              decoration: const InputDecoration(
-                                hintText: 'Type a message',
-                                border: InputBorder.none,
-                              )
-                              
-                            ),
+                                controller: textController,
+                                decoration: const InputDecoration(
+                                  hintText: 'Type a message',
+                                  border: InputBorder.none,
+                                )),
                           ),
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.send , color: Colors.blue,),
+                        icon: const Icon(
+                          Icons.send,
+                          color: Colors.blue,
+                        ),
                         onPressed: () {
                           final message = textController.text.trim();
                           if (message.isNotEmpty) {
-                            newContext.read<ChatCubit>().sendMessage(message, user.uid);
+                            newContext
+                                .read<ChatCubit>()
+                                .sendMessage(message, user.uid);
                             textController.clear();
                           }
                         },
@@ -116,5 +120,3 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -60,8 +60,8 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                   Row(
                     children: [
                       Text(S.of(context).fName,
-                          style: AppStyle.font21bold
-                              .copyWith(color: Colors.black, fontSize: 16.sp)),
+                          style: AppStyle.font21bold.copyWith(
+                              color: Colors.black, fontSize: 16.sp.sp)),
                       horizontalSpacing(128.w),
                       Text(S.of(context).lastName,
                           style: AppStyle.font17W400
@@ -72,7 +72,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        width: 135.w,
+                        width: 135.h.w,
                         child: CustomTextFormField(
                             controller: fNameController,
                             inputType: TextInputType.name,
@@ -84,7 +84,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                       ),
                       horizontalSpacing(50),
                       Container(
-                        width: 135.w,
+                        width: 135.h.w,
                         child: CustomTextFormField(
                             controller: lNameController,
                             inputType: TextInputType.name,
@@ -98,10 +98,11 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                   ),
                   verticalSpacing(30.h),
                   Align(
-                      alignment:  isArabic() ? Alignment.topRight : Alignment.topLeft,
+                      alignment:
+                          isArabic() ? Alignment.topRight : Alignment.topLeft,
                       child: Text(S.of(context).emailTitle,
                           style: AppStyle.font21bold
-                              .copyWith(color: Colors.black, fontSize: 16))),
+                              .copyWith(color: Colors.black, fontSize: 16.sp))),
                   verticalSpacing(10),
                   CustomTextFormField(
                       validator: (value) {
@@ -110,17 +111,18 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                         }
                       },
                       controller: emailController,
-                      prefixIcon:  Icon(
+                      prefixIcon: Icon(
                         Icons.email_outlined,
                         color: ui.Color.fromRGBO(254, 60, 114, 1),
                         size: 30.r,
                       )),
                   verticalSpacing(10.h),
                   Align(
-                      alignment:  isArabic() ? Alignment.topRight : Alignment.topLeft,
+                      alignment:
+                          isArabic() ? Alignment.topRight : Alignment.topLeft,
                       child: Text(S.of(context).passTitle,
-                          style: AppStyle.font21bold
-                              .copyWith(color: Colors.black, fontSize: 16.sp))),
+                          style: AppStyle.font21bold.copyWith(
+                              color: Colors.black, fontSize: 16.sp.sp))),
                   verticalSpacing(10.h),
                   CustomTextFormField(
                     validator: (value) {
@@ -151,7 +153,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                     },
                   ),
                   verticalSpacing(40.h),
-                 // verticalSpacing(30),
+                  // verticalSpacing(30),
                   state is UserLoading
                       ? const CircularProgressIndicator()
                       : CustomMaterialBottons(

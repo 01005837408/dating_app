@@ -4,6 +4,7 @@ import 'package:dating_app/feature/profile_screen/date/profile_cubit.dart';
 import 'package:dating_app/feature/profile_screen/date/profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePhotosHeaderContainer extends StatelessWidget {
@@ -19,7 +20,7 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
       create: (context) => ProfileCubit(),
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
-           String imageUr1l =
+          String imageUr1l =
               "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
 
           if (state is ProfileLoaded) {
@@ -49,7 +50,7 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
                 //   ),
                 // ),
                 SizedBox(
-                  height: 270,
+                  height: 270.h,
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

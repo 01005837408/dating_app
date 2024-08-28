@@ -1,6 +1,7 @@
 import 'package:dating_app/core/model/payment_header_model.dart';
 import 'package:dating_app/feature/payment_screen/widgets/payment_header_listview_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentHeaderListView extends StatefulWidget {
   PaymentHeaderListView({super.key});
@@ -16,41 +17,37 @@ class _PaymentHeaderListViewState extends State<PaymentHeaderListView> {
     PaymentHeaderModel(numbersOfMonths: '12', price: '2000'),
     PaymentHeaderModel(numbersOfMonths: '24', price: '3800'),
   ];
-  int ?selectIndex=0;
+  int? selectIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 160,
+      height: 160.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: paymentModel.length,
         itemBuilder: (context, index) {
-
           return InkWell(
             splashFactory: NoSplash.splashFactory,
             splashColor: Colors.transparent,
             enableFeedback: false,
             highlightColor: Colors.transparent,
-
-            onTap: (){
-              if(selectIndex==index){
+            onTap: () {
+              if (selectIndex == index) {
                 setState(() {
-                  selectIndex!=null;
-
-                });        }else{
+                  selectIndex != null;
+                });
+              } else {
                 setState(() {
-
-                  selectIndex =index;
-
+                  selectIndex = index;
                 });
               }
             },
             child: PaymentHeaderListViewItem(
-            paymentModel: paymentModel,
-            index: index,
+              paymentModel: paymentModel,
+              index: index,
               selectIndex: selectIndex!,
-                    ),
+            ),
           );
         },
       ),

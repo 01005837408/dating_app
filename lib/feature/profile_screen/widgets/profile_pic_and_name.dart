@@ -8,8 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 
 class ProfilePictureAndName extends StatelessWidget {
-   ProfilePictureAndName({Key? key}) : super(key: key);
-final myUid = FirebaseAuth.instance.currentUser!.uid;
+  ProfilePictureAndName({Key? key}) : super(key: key);
+  final myUid = FirebaseAuth.instance.currentUser!.uid;
   @override
   Widget build(BuildContext context) {
     return BlocProvider<UserCubit>(
@@ -22,14 +22,16 @@ final myUid = FirebaseAuth.instance.currentUser!.uid;
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Your UI code here to display user's profile picture and name
-                SizedBox(height: 100.h,),
+                SizedBox(
+                  height: 100.h.h,
+                ),
                 Center(
                   child: Text(
                     '${user.fname} ${user.lname}',
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 26,
+                      fontSize: 26.sp,
                     ),
                   ),
                 ),
@@ -38,7 +40,7 @@ final myUid = FirebaseAuth.instance.currentUser!.uid;
                 //   style: const TextStyle(
                 //     fontWeight: FontWeight.w500,
                 //     color: Colors.white,
-                //     fontSize: 18,
+                //     fontSize:18.sp,
                 //   ),
                 // ),
               ],

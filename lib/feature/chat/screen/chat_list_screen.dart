@@ -7,11 +7,13 @@ import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/chat/widget/chat_user_card.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
- bool isArabic() {
+  bool isArabic() {
     return Intl.getCurrentLocale() == "ar";
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,9 +27,9 @@ class ChatListScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.home),
           ),
-          title:  Text(
+          title: Text(
             S.of(context).chatTitle,
-            style:const TextStyle(
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),
@@ -40,22 +42,30 @@ class ChatListScreen extends StatelessWidget {
               final users = state.users;
 
               return Directionality(
-                textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+                textDirection:
+                    isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
                 child: ListView.builder(
                   itemCount: users.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only( bottom: 10,top: 10, ),
-                    child: Card(child: ChatUserCard(user: users[index], lastMessageTime: '',)),
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                      top: 10,
+                    ),
+                    child: Card(
+                        child: ChatUserCard(
+                      user: users[index],
+                      lastMessageTime: '',
+                    )),
                   ),
                 ),
               );
             } else if (state is ChatError) {
-              return const Center(
+              return  Center(
                 child: Text(
                   'Error: {state.error}',
-                  style:  TextStyle(
+                  style: TextStyle(
                     color: Colors.black,
-                    fontSize: 0,
+                    fontSize: 0.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

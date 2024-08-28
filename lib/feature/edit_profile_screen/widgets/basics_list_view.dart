@@ -1,5 +1,6 @@
 import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BascisListView extends StatelessWidget {
   const BascisListView({
@@ -21,7 +22,8 @@ class BascisListView extends StatelessWidget {
         itemBuilder: (context, index) => ListTile(
           title: Text(
             editProfileList[index].title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            style:
+                 TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             editProfileList[index].subtitle,

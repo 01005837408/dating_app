@@ -5,6 +5,7 @@ import 'package:dating_app/feature/likes_screen/widgets/my_likes.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../home/presentation/widget/home_title.dart';
 
 class LikesScreen extends StatelessWidget {
@@ -33,7 +34,6 @@ class LikesScreen extends StatelessWidget {
                         Navigator.pop(context);
                       },
                     ),
-                    
                   ),
                 ),
                 Container(
@@ -43,13 +43,14 @@ class LikesScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TabBar(
-                        indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+                        indicatorPadding:
+                             EdgeInsets.symmetric(horizontal: 10),
                         unselectedLabelColor: Colors.blue,
                         indicatorSize: TabBarIndicatorSize.tab,
                         labelColor: AppColor.kPrimaryColor,
-                        labelStyle: const TextStyle(fontSize: 20),
+                        labelStyle:  TextStyle(fontSize: 20.sp),
                         dividerColor: AppColor.kPrimaryColor,
-                        dividerHeight: 0,
+                        dividerHeight: 0.h,
                         indicatorWeight: 5,
                         indicatorColor: AppColor.kPrimaryColor,
                         tabs: [
@@ -88,9 +89,7 @@ class LikesScreen extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
         icon: const Icon(Icons.arrow_back),
       ),
-      actions: [
-        UserImage()
-      ],
+      actions: [UserImage()],
       title: Text(
         S.of(context).likes,
         style: const TextStyle(color: Colors.white),

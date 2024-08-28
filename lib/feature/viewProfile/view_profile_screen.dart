@@ -6,6 +6,7 @@ import 'package:dating_app/feature/profile_screen/profile_screen.dart';
 import 'package:dating_app/feature/viewProfile/widgets/view_profile_widgets.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ViewProfile extends StatelessWidget {
   ViewProfile({super.key});
@@ -28,68 +29,67 @@ class ViewProfile extends StatelessWidget {
       initialIndex: 0,
       // ignore: prefer_const_constructors
       child: Scaffold(
-         // appBar: appBar(context),
+          // appBar: appBar(context),
           body: SafeArea(
               child: SingleChildScrollView(
-            child: Column(
-              children: [
-                 Container(
-                  color: AppColor.kPrimaryColor,
-                  child: HomeTitle(
-                    text: S.of(context).viewMyprofile,
-                    iconButton: IconButton(
-                      icon: const Icon(Icons.arrow_back),
-                      onPressed: () {
-                        Navigator.pop(context); 
-                      },
-                    ),
-                    
-                  ),
+        child: Column(
+          children: [
+            Container(
+              color: AppColor.kPrimaryColor,
+              child: HomeTitle(
+                text: S.of(context).viewMyprofile,
+                iconButton: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  height: MediaQuery.of(context).size.height,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        automaticIndicatorColorAdjustment: true,
-                        indicatorPadding:
-                            const EdgeInsets.symmetric(horizontal: 10),
-                        unselectedLabelColor: Colors.blue,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        labelColor: AppColor.kPrimaryColor,
-                        labelStyle: const TextStyle(fontSize: 20),
-                        dividerColor: AppColor.kPrimaryColor,
-                        dividerHeight: 0,
-                        indicatorWeight: 5,
-                        indicatorColor: AppColor.kPrimaryColor,
-                        tabs: [
-                          Tab(
-                            text: S.of(context).viewMyprofile,
-                          ),
-                          Tab(text: S.of(context).viewOtherProfile),
-                        ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  TabBar(
+                    automaticIndicatorColorAdjustment: true,
+                    indicatorPadding:
+                        const EdgeInsets.symmetric(horizontal: 10),
+                    unselectedLabelColor: Colors.blue,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    labelColor: AppColor.kPrimaryColor,
+                    labelStyle:  TextStyle(fontSize: 20.sp),
+                    dividerColor: AppColor.kPrimaryColor,
+                    dividerHeight: 0.h,
+                    indicatorWeight: 5,
+                    indicatorColor: AppColor.kPrimaryColor,
+                    tabs: [
+                      Tab(
+                        text: S.of(context).viewMyprofile,
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 20, bottom: 45),
-                          child: TabBarView(
-                            children: [
-                              ViewMyProfile(viewMyProfileModel: viewProfileModel),
-                              ViewMyProfile(viewMyProfileModel: viewProfileModel),
-                            ],
-                          ),
-                        ),
-                      ),
+                      Tab(text: S.of(context).viewOtherProfile),
                     ],
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 45),
+                      child: TabBarView(
+                        children: [
+                          ViewMyProfile(viewMyProfileModel: viewProfileModel),
+                          ViewMyProfile(viewMyProfileModel: viewProfileModel),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ))),
+          ],
+        ),
+      ))),
     );
   }
 

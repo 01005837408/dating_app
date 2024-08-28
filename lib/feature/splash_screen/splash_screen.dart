@@ -30,30 +30,30 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColor.kPrimaryColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.all(20.0.r),
+          padding: EdgeInsets.all(20.0.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 200.h),
+              SizedBox(height: 200.h.h),
               Center(
                   child: Image.asset(
                 Assets.logo,
               )),
               SizedBox(
-                height: 10.h,
+                height: 10.h.h,
               ),
               Text(
                 S.of(context).titleSplash,
-               // ConstText.titleSplash,
+                // ConstText.titleSplash,
                 style: AppStyle.font31bold,
               ),
               SizedBox(
-                height: 250.h,
+                height: 250.h.h,
               ),
               Text(
                 S.of(context).subTitleSplashScreen,
-              //  ConstText.subTitleSplashScreen,
+                //  ConstText.subTitleSplashScreen,
                 style: AppStyle.font21bold,
               ),
             ],

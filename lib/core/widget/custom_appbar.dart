@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55.h,
+      height: 55.h.h,
       color: backgroundColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -36,10 +36,10 @@ class CustomAppBar extends StatelessWidget {
             Text(
               text ?? '',
               textAlign: TextAlign.right,
-              style: const TextStyle(
+              style:  TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
-                  fontSize: 24),
+                  fontSize: 24.sp),
             ),
             const Spacer(),
             GestureDetector(

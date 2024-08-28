@@ -1,10 +1,12 @@
 import 'package:dating_app/core/model/edit_profile_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CaltureListView extends StatelessWidget {
-  const CaltureListView({super.key, required this.editProfileCalutreList , required this.onEdit});
+  const CaltureListView(
+      {super.key, required this.editProfileCalutreList, required this.onEdit});
   final List<EditProfileCultureModel> editProfileCalutreList;
-final Function(int) onEdit;
+  final Function(int) onEdit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,7 +17,8 @@ final Function(int) onEdit;
         itemBuilder: (context, index) => ListTile(
           title: Text(
             editProfileCalutreList[index].title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            style:
+                 TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             editProfileCalutreList[index].subtitle,

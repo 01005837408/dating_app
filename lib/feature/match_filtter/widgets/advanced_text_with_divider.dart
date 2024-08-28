@@ -1,5 +1,6 @@
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdvancedTextWithDivider extends StatelessWidget {
   const AdvancedTextWithDivider({
@@ -15,8 +16,10 @@ class AdvancedTextWithDivider extends StatelessWidget {
           padding: const EdgeInsets.only(right: 20, top: 10, left: 20),
           child: Text(
             S.of(context).advancedFiltters,
-            style: const TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+            style:  TextStyle(
+                fontSize: 25.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
           ),
         ),
         const Divider(

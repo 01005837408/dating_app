@@ -1,5 +1,6 @@
 import 'package:dating_app/core/model/match_filtter_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchFiltterListItem extends StatelessWidget {
   const MatchFiltterListItem(
@@ -13,15 +14,15 @@ class MatchFiltterListItem extends StatelessWidget {
       onTap: () {},
       title: Text(
         matchList[index].title,
-        style: const TextStyle(
-          fontSize: 27,
+        style:  TextStyle(
+          fontSize: 27.sp,
           color: Colors.white,
         ),
       ),
       subtitle: Text(
         matchList[index].subtitle ?? '',
-        style: const TextStyle(
-            fontSize: 29, color: Colors.white, fontWeight: FontWeight.w900),
+        style:  TextStyle(
+            fontSize: 29.sp, color: Colors.white, fontWeight: FontWeight.w900),
       ),
       trailing: IconButton(
           onPressed: () {},

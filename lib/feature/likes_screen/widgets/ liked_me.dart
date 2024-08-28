@@ -6,12 +6,13 @@ import 'package:dating_app/core/utils/assets.dart';
 import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/feature/likes_screen/data/model_liked_post.dart';
 import 'package:dating_app/generated/l10n.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridViewLikesByAnotherUser extends StatelessWidget {
   final String userId;
 
-  const GridViewLikesByAnotherUser({Key? key, required this.userId}) : super(key: key);
+  const GridViewLikesByAnotherUser({Key? key, required this.userId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +49,12 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(width: 1.5, color: AppColor.kPrimaryColor),
+              border: Border.all(width:15.h, color: AppColor.kPrimaryColor),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: SizedBox(
-                height: 121,
+                height: 121.h,
                 width: double.infinity,
                 child: Image.network(
                   post.imageUrl,
@@ -70,21 +71,24 @@ class GridViewLikesByAnotherUser extends StatelessWidget {
                   children: [
                     Text(
                       post.userName,
-                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                      style:  TextStyle(
+                          fontSize:15.sp, fontWeight: FontWeight.w500),
                     ),
                     Row(
                       children: [
                         Text(S.of(context).online),
                         horizontalSpacing(5),
                         Container(
-                          width: 10,
-                          height: 10,
+                          width:10.h,
+                          height: 10.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.green,
                           ),
                         ),
-                        const SizedBox(width: 20,),
+                         SizedBox(
+                          width:20.h,
+                        ),
                         const Icon(
                           Icons.favorite,
                           color: AppColor.kPrimaryColor,

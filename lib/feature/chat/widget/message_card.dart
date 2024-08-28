@@ -3,6 +3,7 @@
 import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/core/modal/message_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageCard extends StatefulWidget {
   MessageCard({super.key, required this.message});
@@ -37,9 +38,9 @@ class _MessageCardState extends State<MessageCard> {
         ),
         child: Text(
           widget.message.content,
-          style: const TextStyle(
+          style:  TextStyle(
             color: Colors.black,
-            fontSize: 16,
+            fontSize: 16.sp,
           ),
         ),
       ),
@@ -64,9 +65,9 @@ class _MessageCardState extends State<MessageCard> {
         ),
         child: Text(
           widget.message.content,
-          style: const TextStyle(
+          style:  TextStyle(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 16.sp,
           ),
         ),
       ),

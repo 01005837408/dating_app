@@ -11,7 +11,7 @@ class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
   // TextEditingController fNameController = TextEditingController();
-   bool isArabic() {
+  bool isArabic() {
     return Intl.getCurrentLocale() == "ar";
   }
 
@@ -28,8 +28,8 @@ class SignInScreen extends StatelessWidget {
               //   child: Align(
               //     alignment: Alignment.topLeft,
               //     child: Container(
-              //       height: 50,
-              //       width: 50,
+              //       height:50.h,
+              //       width:50.h,
               //       decoration: const BoxDecoration(
               //         color: Colors.grey,
               //         shape: BoxShape.circle,
@@ -50,26 +50,27 @@ class SignInScreen extends StatelessWidget {
               verticalSpacing(60.h),
               Expanded(
                 child: Container(
-                  // height: 639,
-                  decoration:  BoxDecoration(
+                  // height:639.h,
+                  decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40.r),
                         topRight: Radius.circular(40.r),
                       )),
                   child: Padding(
-                    padding:  EdgeInsets.all(20.0.r),
+                    padding: EdgeInsets.all(20.0.r),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                           verticalSpacing(10),
-                            Text(S.of(context).loginTitle , style: TextStyle(
-                            fontSize: 24.sp,
-                             fontWeight: FontWeight.w600,
-                             color:const Color.fromARGB(255, 46, 40, 40)
-                           ),),
+                          verticalSpacing(10),
+                          Text(
+                            S.of(context).loginTitle,
+                            style: TextStyle(
+                                fontSize: 24.sp.sp,
+                                fontWeight: FontWeight.w600,
+                                color: const Color.fromARGB(255, 46, 40, 40)),
+                          ),
                           verticalSpacing(80.h),
-                         
                           RefactorCustomTextFormFieldSignIn(),
                         ],
                       ),
