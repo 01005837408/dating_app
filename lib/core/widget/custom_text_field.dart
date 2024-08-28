@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
+import 'dart:ui' as ui;
 Widget CustomTextFormField({
   String? hintText,
   String? lableText,
@@ -23,7 +24,7 @@ Widget CustomTextFormField({
       keyboardType: inputType,
       controller: controller,
       validator: validator,
-      textDirection:textDirection ,
+      textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       
       style:const TextStyle(
         color: Colors.black,
@@ -52,3 +53,6 @@ Widget CustomTextFormField({
     ),
   );
 }
+  bool isArabic() {
+    return Intl.getCurrentLocale() == "ar";
+  }

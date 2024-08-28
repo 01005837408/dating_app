@@ -2,11 +2,9 @@
 import 'dart:ui' as ui;
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_text_field.dart';
-import 'package:dating_app/feature/authentecation/data/cubit_login/auth_login_state.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_cubit.dart';
 import 'package:dating_app/feature/authentecation/data/cubit_sign_up/auth_sign_up_state.dart';
 import 'package:dating_app/feature/authentecation/presentation/forget_pass/forget_passowrd.dart';

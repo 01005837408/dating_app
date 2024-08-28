@@ -14,9 +14,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-Future<void> initialize() async {
-                    String imageUrl =
-                      "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
+Future<void> initialize() async { 
+                    String imageUrl = "https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
 
   try {
     String userId = _auth.currentUser!.uid;

@@ -69,7 +69,7 @@ class SectionCustomPost extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (_) => MyProfileDetailsScreen(
-                              userModel: userModel,
+                              
                             )));
                   },
                   child: Container(
@@ -83,7 +83,7 @@ class SectionCustomPost extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            " ${userModel.lname} ${userModel.fname}",
+                            " ${userModel.fname} ${userModel.lname}",
                             style:
                                 const TextStyle(color: AppColor.kPrimaryColor),
                           ),

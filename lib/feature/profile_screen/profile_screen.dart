@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
               children: [
                  Column(
                   children: [
-                    ProfileAppBar(height: 130),
+                   const ProfileAppBar(height: 130),
                     ProfileBody(),
                   ],
                 ),

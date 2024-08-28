@@ -10,9 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MyProfileImageAndHeader extends StatelessWidget {
   const MyProfileImageAndHeader({
     super.key,
-    required this.userModel 
+   // required this.userModel 
   });
-  final UserModel userModel ;
+ // final UserModel userModel ;
 
   @override
   Widget build(BuildContext context) {

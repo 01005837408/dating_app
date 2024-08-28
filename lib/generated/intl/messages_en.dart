@@ -31,44 +31,43 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "appName": MessageLookupByLibrary.simpleMessage("Tawafuq"),
         "areYouHaveKids":
-            MessageLookupByLibrary.simpleMessage("are You Have Kids"),
-        "areYousMoke": MessageLookupByLibrary.simpleMessage("are Yous Moke"),
+            MessageLookupByLibrary.simpleMessage("Do You Have Kids?"),
+        "areYousMoke": MessageLookupByLibrary.simpleMessage("Do You Smoke?"),
         "blockList": MessageLookupByLibrary.simpleMessage("Block List"),
         "cairoEgypt": MessageLookupByLibrary.simpleMessage("Cairo - Egypt"),
-        "calture": MessageLookupByLibrary.simpleMessage(" calture"),
+        "calture": MessageLookupByLibrary.simpleMessage("Culture"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
-        "chatTitle": MessageLookupByLibrary.simpleMessage("Chat App"),
+        "chatTitle": MessageLookupByLibrary.simpleMessage("Chat"),
         "connectInt":
             MessageLookupByLibrary.simpleMessage("Connected to the internet"),
         "createAcountByGoogle":
-            MessageLookupByLibrary.simpleMessage("Creat Account By Google"),
+            MessageLookupByLibrary.simpleMessage("Create Account with Google"),
         "createNewAcount":
             MessageLookupByLibrary.simpleMessage("Create Account"),
-        "delete": MessageLookupByLibrary.simpleMessage("Delete my account"),
-        "doHaveAcount": MessageLookupByLibrary.simpleMessage(
-            "Do you already have an account ?"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete My Account"),
+        "doHaveAcount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
-        "education": MessageLookupByLibrary.simpleMessage("education"),
+        "education": MessageLookupByLibrary.simpleMessage("Education"),
         "egypt": MessageLookupByLibrary.simpleMessage("Egypt"),
         "emailTitle": MessageLookupByLibrary.simpleMessage("Email"),
         "emailValid":
             MessageLookupByLibrary.simpleMessage("Please enter your email"),
-        "engineer": MessageLookupByLibrary.simpleMessage("software engineer"),
+        "engineer": MessageLookupByLibrary.simpleMessage("Software Engineer"),
         "engineerUniversity":
-            MessageLookupByLibrary.simpleMessage("engineer University"),
+            MessageLookupByLibrary.simpleMessage("Engineering University"),
         "enterLogin": MessageLookupByLibrary.simpleMessage("Log In"),
-        "eyeColor": MessageLookupByLibrary.simpleMessage("eyeColor"),
+        "eyeColor": MessageLookupByLibrary.simpleMessage("Eye Color"),
         "fName": MessageLookupByLibrary.simpleMessage("First Name"),
-        "fieldIsEmpty":
-            MessageLookupByLibrary.simpleMessage("The field is empty"),
+        "fieldIsEmpty": MessageLookupByLibrary.simpleMessage("Field is empty"),
         "findsBestMatchs":
-            MessageLookupByLibrary.simpleMessage("Find better matches"),
+            MessageLookupByLibrary.simpleMessage("Find Better Matches"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "We will send a code to your email to recover your password"),
         "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("Forget Password "),
-        "hairColor": MessageLookupByLibrary.simpleMessage("hair Color"),
-        "hight": MessageLookupByLibrary.simpleMessage("hight"),
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "hairColor": MessageLookupByLibrary.simpleMessage("Hair Color"),
+        "hight": MessageLookupByLibrary.simpleMessage("Height"),
         "hitTextforgetPass":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "hitTextforgetemail":
@@ -76,83 +75,83 @@ class MessageLookup extends MessageLookupByLibrary {
         "hoppies": MessageLookupByLibrary.simpleMessage("Hobbies & Interests"),
         "id": MessageLookupByLibrary.simpleMessage("Personal ID"),
         "inPlace": MessageLookupByLibrary.simpleMessage("In my area"),
-        "income": MessageLookupByLibrary.simpleMessage("income"),
+        "income": MessageLookupByLibrary.simpleMessage("Income"),
         "invoice": MessageLookupByLibrary.simpleMessage("Invoice"),
-        "job": MessageLookupByLibrary.simpleMessage("job"),
+        "job": MessageLookupByLibrary.simpleMessage("Job"),
         "knowlege": MessageLookupByLibrary.simpleMessage("Knowledge"),
-        "lang": MessageLookupByLibrary.simpleMessage("language"),
-        "last3Name": MessageLookupByLibrary.simpleMessage("thired name"),
+        "lang": MessageLookupByLibrary.simpleMessage("Language"),
+        "last3Name": MessageLookupByLibrary.simpleMessage("Third Name"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "lifeStyle": MessageLookupByLibrary.simpleMessage("Lifestyle"),
-        "likeMe": MessageLookupByLibrary.simpleMessage("like Me"),
-        "likeOthers": MessageLookupByLibrary.simpleMessage("like Others"),
-        "likes": MessageLookupByLibrary.simpleMessage("likes"),
+        "likeMe": MessageLookupByLibrary.simpleMessage("Liked Me"),
+        "likeOthers": MessageLookupByLibrary.simpleMessage("Liked Others"),
+        "likes": MessageLookupByLibrary.simpleMessage("Likes"),
         "liveIn": MessageLookupByLibrary.simpleMessage("Lives in"),
-        "loginTitle": MessageLookupByLibrary.simpleMessage("Login Page"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Log Out"),
         "look": MessageLookupByLibrary.simpleMessage("Appearance"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
-        "maritalStatus": MessageLookupByLibrary.simpleMessage("marital status"),
+        "maritalStatus": MessageLookupByLibrary.simpleMessage("Marital Status"),
         "matchFiltter":
             MessageLookupByLibrary.simpleMessage("Compatibility Filter"),
         "matwafik": MessageLookupByLibrary.simpleMessage("Compatible"),
-        "multyWife": MessageLookupByLibrary.simpleMessage("multyWife"),
+        "multyWife": MessageLookupByLibrary.simpleMessage("Multiple Wives"),
         "myPhotos": MessageLookupByLibrary.simpleMessage("Personal Photos"),
         "myProfile": MessageLookupByLibrary.simpleMessage("My Profile"),
-        "natunality": MessageLookupByLibrary.simpleMessage("natunality"),
+        "natunality": MessageLookupByLibrary.simpleMessage("Nationality"),
         "noLimitsTalks":
             MessageLookupByLibrary.simpleMessage("Unlimited Communication"),
         "notHaveAcount":
-            MessageLookupByLibrary.simpleMessage("I don\'t have an account ?"),
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-        "onboardTitle1":
-            MessageLookupByLibrary.simpleMessage("Welcome to our dating app"),
+        "onboardTitle1": MessageLookupByLibrary.simpleMessage(
+            "Welcome to our Islamic marriage app"),
         "onboardTitle2": MessageLookupByLibrary.simpleMessage(
             "Security and privacy in Islamic marriage"),
-        "onboardTitle3": MessageLookupByLibrary.simpleMessage(
-            "Start by creating your account now"),
+        "onboardTitle3":
+            MessageLookupByLibrary.simpleMessage("Create your account now"),
         "onbourdSubTitle1": MessageLookupByLibrary.simpleMessage(
-            "Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Let\'s start your journey with us in simple and easy steps."),
+            "Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Start your journey with us in simple and easy steps."),
         "onbourdSubTitle2": MessageLookupByLibrary.simpleMessage(
             "We adhere to the highest standards of security and privacy to protect your personal information. All your data is safe and encrypted."),
         "onbourdSubTitle3": MessageLookupByLibrary.simpleMessage(
-            "To access our full features, please create a new account or log in. Enjoy a unique experience in searching for a life partner."),
+            "To access all features, please create a new account or log in. Enjoy a unique experience in searching for a life partner."),
         "online": MessageLookupByLibrary.simpleMessage("Online"),
         "passTitle": MessageLookupByLibrary.simpleMessage("Password"),
         "passTitleSure":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "passValid":
-            MessageLookupByLibrary.simpleMessage("Please enter your Password"),
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "place": MessageLookupByLibrary.simpleMessage("place"),
+        "place": MessageLookupByLibrary.simpleMessage("Place"),
         "qucikview": MessageLookupByLibrary.simpleMessage("Quick View"),
-        "religion": MessageLookupByLibrary.simpleMessage("religion"),
+        "religion": MessageLookupByLibrary.simpleMessage("Religion"),
         "ruleText": MessageLookupByLibrary.simpleMessage(
             "This membership will be automatically renewed when it expires. You can stop this automatic renewal at any time."),
         "search": MessageLookupByLibrary.simpleMessage("Search for"),
         "settingsProfile":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share the App"),
-        "single": MessageLookupByLibrary.simpleMessage("single"),
-        "skip": MessageLookupByLibrary.simpleMessage("skip"),
+        "single": MessageLookupByLibrary.simpleMessage("Single"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "subTitleSplashScreen":
-            MessageLookupByLibrary.simpleMessage("وخَلَقْنَاكُمْ أَزْوَاجًا "),
-        "subscribeNow": MessageLookupByLibrary.simpleMessage("Upgrade account"),
-        "text": MessageLookupByLibrary.simpleMessage("Last Name"),
+            MessageLookupByLibrary.simpleMessage("وخَلَقْنَاكُمْ أَزْوَاجًا"),
+        "subscribeNow": MessageLookupByLibrary.simpleMessage("Upgrade Account"),
+        "text": MessageLookupByLibrary.simpleMessage("Text"),
         "textButtonForgetPass":
-            MessageLookupByLibrary.simpleMessage("Send code"),
+            MessageLookupByLibrary.simpleMessage("Send Code"),
         "titleSplash":
-            MessageLookupByLibrary.simpleMessage("توافق للزواج الاسلامي"),
+            MessageLookupByLibrary.simpleMessage("توافق للزواج الإسلامي"),
         "unlockYourMesasges":
             MessageLookupByLibrary.simpleMessage("Unlock your messages"),
         "viewMyprofile":
             MessageLookupByLibrary.simpleMessage("View My Profile"),
         "viewOtherProfile":
             MessageLookupByLibrary.simpleMessage("View Profile"),
-        "wight": MessageLookupByLibrary.simpleMessage("wight"),
+        "wight": MessageLookupByLibrary.simpleMessage("Weight"),
         "women": MessageLookupByLibrary.simpleMessage("Woman"),
-        "work": MessageLookupByLibrary.simpleMessage("work"),
-        "yourBasicInfo": MessageLookupByLibrary.simpleMessage("Your Basics ")
+        "work": MessageLookupByLibrary.simpleMessage("Job"),
+        "yourBasicInfo": MessageLookupByLibrary.simpleMessage("Your Basic Info")
       };
 }

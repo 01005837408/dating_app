@@ -22,7 +22,7 @@ final myUid = FirebaseAuth.instance.currentUser!.uid;
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Your UI code here to display user's profile picture and name
-                SizedBox(height: 75.h,),
+                SizedBox(height: 100.h,),
                 Center(
                   child: Text(
                     '${user.fname} ${user.lname}',
@@ -33,14 +33,14 @@ final myUid = FirebaseAuth.instance.currentUser!.uid;
                     ),
                   ),
                 ),
-                Text(
-                  'ID : ${user.uid}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
+                // Text(
+                //   'ID : ${user.uid}',
+                //   style: const TextStyle(
+                //     fontWeight: FontWeight.w500,
+                //     color: Colors.white,
+                //     fontSize: 18,
+                //   ),
+                // ),
               ],
             );
           } else {

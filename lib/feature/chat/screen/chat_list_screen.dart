@@ -1,13 +1,17 @@
+import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_cubit.dart';
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_state.dart';
 import 'package:dating_app/feature/authentecation/model/user_model.dart';
 import 'package:dating_app/feature/chat/widget/chat_user_card.dart';
-
+import 'package:intl/intl.dart';
+import 'dart:ui' as ui;
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
-
+ bool isArabic() {
+    return Intl.getCurrentLocale() == "ar";
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,9 +25,9 @@ class ChatListScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.home),
           ),
-          title: const Text(
-            "Chat app",
-            style: TextStyle(
+          title:  Text(
+            S.of(context).chatTitle,
+            style:const TextStyle(
               color: Colors.black,
             ),
           ),
@@ -35,11 +39,14 @@ class ChatListScreen extends StatelessWidget {
             } else if (state is AllUsersLoaded) {
               final users = state.users;
 
-              return ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 10,top: 10),
-                  child: Card(child: ChatUserCard(user: users[index], lastMessageTime: '',)),
+              return Directionality(
+                textDirection: isArabic() ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+                child: ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only( bottom: 10,top: 10, ),
+                    child: Card(child: ChatUserCard(user: users[index], lastMessageTime: '',)),
+                  ),
                 ),
               );
             } else if (state is ChatError) {

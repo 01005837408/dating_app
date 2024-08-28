@@ -50,30 +50,30 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `توافق للزواج الاسلامي`
+  /// `توافق للزواج الإسلامي`
   String get titleSplash {
     return Intl.message(
-      'توافق للزواج الاسلامي',
+      'توافق للزواج الإسلامي',
       name: 'titleSplash',
       desc: '',
       args: [],
     );
   }
 
-  /// `وخَلَقْنَاكُمْ أَزْوَاجًا `
+  /// `وخَلَقْنَاكُمْ أَزْوَاجًا`
   String get subTitleSplashScreen {
     return Intl.message(
-      'وخَلَقْنَاكُمْ أَزْوَاجًا ',
+      'وخَلَقْنَاكُمْ أَزْوَاجًا',
       name: 'subTitleSplashScreen',
       desc: '',
       args: [],
     );
   }
 
-  /// `skip`
+  /// `Skip`
   String get skip {
     return Intl.message(
-      'skip',
+      'Skip',
       name: 'skip',
       desc: '',
       args: [],
@@ -90,20 +90,20 @@ class S {
     );
   }
 
-  /// `Welcome to our dating app`
+  /// `Welcome to our Islamic marriage app`
   String get onboardTitle1 {
     return Intl.message(
-      'Welcome to our dating app',
+      'Welcome to our Islamic marriage app',
       name: 'onboardTitle1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Let's start your journey with us in simple and easy steps.`
+  /// `Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Start your journey with us in simple and easy steps.`
   String get onbourdSubTitle1 {
     return Intl.message(
-      'Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Let\'s start your journey with us in simple and easy steps.',
+      'Welcome to our app designed to help you find a suitable life partner according to Islamic teachings and values. Start your journey with us in simple and easy steps.',
       name: 'onbourdSubTitle1',
       desc: '',
       args: [],
@@ -130,20 +130,20 @@ class S {
     );
   }
 
-  /// `Start by creating your account now`
+  /// `Create your account now`
   String get onboardTitle3 {
     return Intl.message(
-      'Start by creating your account now',
+      'Create your account now',
       name: 'onboardTitle3',
       desc: '',
       args: [],
     );
   }
 
-  /// `To access our full features, please create a new account or log in. Enjoy a unique experience in searching for a life partner.`
+  /// `To access all features, please create a new account or log in. Enjoy a unique experience in searching for a life partner.`
   String get onbourdSubTitle3 {
     return Intl.message(
-      'To access our full features, please create a new account or log in. Enjoy a unique experience in searching for a life partner.',
+      'To access all features, please create a new account or log in. Enjoy a unique experience in searching for a life partner.',
       name: 'onbourdSubTitle3',
       desc: '',
       args: [],
@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Login Page`
+  /// `Login`
   String get loginTitle {
     return Intl.message(
-      'Login Page',
+      'Login',
       name: 'loginTitle',
       desc: '',
       args: [],
@@ -180,20 +180,20 @@ class S {
     );
   }
 
-  /// `thired name`
+  /// `Third Name`
   String get last3Name {
     return Intl.message(
-      'thired name',
+      'Third Name',
       name: 'last3Name',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last Name`
+  /// `Text`
   String get text {
     return Intl.message(
-      'Last Name',
+      'Text',
       name: 'text',
       desc: '',
       args: [],
@@ -230,10 +230,10 @@ class S {
     );
   }
 
-  /// `Please enter your Password`
+  /// `Please enter your password`
   String get passValid {
     return Intl.message(
-      'Please enter your Password',
+      'Please enter your password',
       name: 'passValid',
       desc: '',
       args: [],
@@ -250,20 +250,20 @@ class S {
     );
   }
 
-  /// `Forget Password `
+  /// `Forgot Password`
   String get forgetPassword {
     return Intl.message(
-      'Forget Password ',
+      'Forgot Password',
       name: 'forgetPassword',
       desc: '',
       args: [],
     );
   }
 
-  /// `Do you already have an account ?`
+  /// `Already have an account?`
   String get doHaveAcount {
     return Intl.message(
-      'Do you already have an account ?',
+      'Already have an account?',
       name: 'doHaveAcount',
       desc: '',
       args: [],
@@ -280,10 +280,10 @@ class S {
     );
   }
 
-  /// `I don't have an account ?`
+  /// `Don't have an account?`
   String get notHaveAcount {
     return Intl.message(
-      'I don\'t have an account ?',
+      'Don\'t have an account?',
       name: 'notHaveAcount',
       desc: '',
       args: [],
@@ -300,20 +300,20 @@ class S {
     );
   }
 
-  /// `Creat Account By Google`
+  /// `Create Account with Google`
   String get createAcountByGoogle {
     return Intl.message(
-      'Creat Account By Google',
+      'Create Account with Google',
       name: 'createAcountByGoogle',
       desc: '',
       args: [],
     );
   }
 
-  /// `The field is empty`
+  /// `Field is empty`
   String get fieldIsEmpty {
     return Intl.message(
-      'The field is empty',
+      'Field is empty',
       name: 'fieldIsEmpty',
       desc: '',
       args: [],
@@ -390,20 +390,20 @@ class S {
     );
   }
 
-  /// `Send code`
+  /// `Send Code`
   String get textButtonForgetPass {
     return Intl.message(
-      'Send code',
+      'Send Code',
       name: 'textButtonForgetPass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Upgrade account`
+  /// `Upgrade Account`
   String get subscribeNow {
     return Intl.message(
-      'Upgrade account',
+      'Upgrade Account',
       name: 'subscribeNow',
       desc: '',
       args: [],
@@ -530,10 +530,10 @@ class S {
     );
   }
 
-  /// `Delete my account`
+  /// `Delete My Account`
   String get delete {
     return Intl.message(
-      'Delete my account',
+      'Delete My Account',
       name: 'delete',
       desc: '',
       args: [],
@@ -580,10 +580,10 @@ class S {
     );
   }
 
-  /// `Find better matches`
+  /// `Find Better Matches`
   String get findsBestMatchs {
     return Intl.message(
-      'Find better matches',
+      'Find Better Matches',
       name: 'findsBestMatchs',
       desc: '',
       args: [],
@@ -770,70 +770,70 @@ class S {
     );
   }
 
-  /// `work`
+  /// `Job`
   String get work {
     return Intl.message(
-      'work',
+      'Job',
       name: 'work',
       desc: '',
       args: [],
     );
   }
 
-  /// `software engineer`
+  /// `Software Engineer`
   String get engineer {
     return Intl.message(
-      'software engineer',
+      'Software Engineer',
       name: 'engineer',
       desc: '',
       args: [],
     );
   }
 
-  /// `marital status`
+  /// `Marital Status`
   String get maritalStatus {
     return Intl.message(
-      'marital status',
+      'Marital Status',
       name: 'maritalStatus',
       desc: '',
       args: [],
     );
   }
 
-  /// `single`
+  /// `Single`
   String get single {
     return Intl.message(
-      'single',
+      'Single',
       name: 'single',
       desc: '',
       args: [],
     );
   }
 
-  /// `education`
+  /// `Education`
   String get education {
     return Intl.message(
-      'education',
+      'Education',
       name: 'education',
       desc: '',
       args: [],
     );
   }
 
-  /// `engineer University`
+  /// `Engineering University`
   String get engineerUniversity {
     return Intl.message(
-      'engineer University',
+      'Engineering University',
       name: 'engineerUniversity',
       desc: '',
       args: [],
     );
   }
 
-  /// `religion`
+  /// `Religion`
   String get religion {
     return Intl.message(
-      'religion',
+      'Religion',
       name: 'religion',
       desc: '',
       args: [],
@@ -860,180 +860,180 @@ class S {
     );
   }
 
-  /// `Your Basics `
+  /// `Your Basic Info`
   String get yourBasicInfo {
     return Intl.message(
-      'Your Basics ',
+      'Your Basic Info',
       name: 'yourBasicInfo',
       desc: '',
       args: [],
     );
   }
 
-  /// `hair Color`
+  /// `Hair Color`
   String get hairColor {
     return Intl.message(
-      'hair Color',
+      'Hair Color',
       name: 'hairColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `hight`
+  /// `Height`
   String get hight {
     return Intl.message(
-      'hight',
+      'Height',
       name: 'hight',
       desc: '',
       args: [],
     );
   }
 
-  /// `eyeColor`
+  /// `Eye Color`
   String get eyeColor {
     return Intl.message(
-      'eyeColor',
+      'Eye Color',
       name: 'eyeColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `wight`
+  /// `Weight`
   String get wight {
     return Intl.message(
-      'wight',
+      'Weight',
       name: 'wight',
       desc: '',
       args: [],
     );
   }
 
-  /// `are Yous Moke`
+  /// `Do You Smoke?`
   String get areYousMoke {
     return Intl.message(
-      'are Yous Moke',
+      'Do You Smoke?',
       name: 'areYousMoke',
       desc: '',
       args: [],
     );
   }
 
-  /// `are You Have Kids`
+  /// `Do You Have Kids?`
   String get areYouHaveKids {
     return Intl.message(
-      'are You Have Kids',
+      'Do You Have Kids?',
       name: 'areYouHaveKids',
       desc: '',
       args: [],
     );
   }
 
-  /// `job`
+  /// `Job`
   String get job {
     return Intl.message(
-      'job',
+      'Job',
       name: 'job',
       desc: '',
       args: [],
     );
   }
 
-  /// `income`
+  /// `Income`
   String get income {
     return Intl.message(
-      'income',
+      'Income',
       name: 'income',
       desc: '',
       args: [],
     );
   }
 
-  /// `place`
+  /// `Place`
   String get place {
     return Intl.message(
-      'place',
+      'Place',
       name: 'place',
       desc: '',
       args: [],
     );
   }
 
-  /// ` calture`
+  /// `Culture`
   String get calture {
     return Intl.message(
-      ' calture',
+      'Culture',
       name: 'calture',
       desc: '',
       args: [],
     );
   }
 
-  /// `natunality`
+  /// `Nationality`
   String get natunality {
     return Intl.message(
-      'natunality',
+      'Nationality',
       name: 'natunality',
       desc: '',
       args: [],
     );
   }
 
-  /// `language`
+  /// `Language`
   String get lang {
     return Intl.message(
-      'language',
+      'Language',
       name: 'lang',
       desc: '',
       args: [],
     );
   }
 
-  /// `multyWife`
+  /// `Multiple Wives`
   String get multyWife {
     return Intl.message(
-      'multyWife',
+      'Multiple Wives',
       name: 'multyWife',
       desc: '',
       args: [],
     );
   }
 
-  /// `likes`
+  /// `Likes`
   String get likes {
     return Intl.message(
-      'likes',
+      'Likes',
       name: 'likes',
       desc: '',
       args: [],
     );
   }
 
-  /// `like Me`
+  /// `Liked Me`
   String get likeMe {
     return Intl.message(
-      'like Me',
+      'Liked Me',
       name: 'likeMe',
       desc: '',
       args: [],
     );
   }
 
-  /// `like Others`
+  /// `Liked Others`
   String get likeOthers {
     return Intl.message(
-      'like Others',
+      'Liked Others',
       name: 'likeOthers',
       desc: '',
       args: [],
     );
   }
 
-  /// `Chat App`
+  /// `Chat`
   String get chatTitle {
     return Intl.message(
-      'Chat App',
+      'Chat',
       name: 'chatTitle',
       desc: '',
       args: [],

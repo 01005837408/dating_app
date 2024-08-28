@@ -8,8 +8,8 @@ import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class MyProfileDetailsScreen extends StatelessWidget {
-   MyProfileDetailsScreen( {super.key, required this.userModel});
-  final UserModel userModel ;
+   MyProfileDetailsScreen( {super.key, });
+ // final UserModel userModel ;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,8 +20,8 @@ class MyProfileDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 profileAppBar(context),
-                 MyProfileImageAndHeader(
-                  userModel: userModel,
+                const MyProfileImageAndHeader(
+                 // userModel: userModel,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -37,10 +37,10 @@ class MyProfileDetailsScreen extends StatelessWidget {
                   thickness: 2,
                   color: AppColor.kPrimaryColor,
                 ),
-                 Padding(
+                  const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: QuickViewInMyProfile(
-                    userModel:userModel ,
+                   // userModel:userModel ,
                   ),
                 ),
                 Center(

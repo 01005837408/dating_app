@@ -21,9 +21,9 @@ class EditProfileScreen extends StatelessWidget {
                 text: S.of(context).EditProfile,
                 backgroundColor: AppColor.kPrimaryColor,
                 iconColor: Colors.white,
-                icon: const Icon(
-                  Icons.settings,
-                ),
+                // icon: const Icon(
+                //   Icons.settings,
+                // ),
                 widget: const Icon(
                   Icons.arrow_back_ios_new,
                   color: Colors.white,

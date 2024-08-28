@@ -1,9 +1,7 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, must_be_immutable
 import 'dart:ui' as ui;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
-import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
 import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/core/widget/custom_materail_botton.dart';
 import 'package:dating_app/core/widget/custom_text_field.dart';

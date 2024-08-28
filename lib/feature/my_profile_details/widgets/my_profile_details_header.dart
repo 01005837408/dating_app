@@ -42,10 +42,10 @@ class MyProfileDetailsHeader extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.person, color: AppColor.kPrimaryColor),
+                       const Icon(Icons.person, color: AppColor.kPrimaryColor),
                         Text(
-                          '$userName . $age',
-                          style: TextStyle(
+                          '$userName ',
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],

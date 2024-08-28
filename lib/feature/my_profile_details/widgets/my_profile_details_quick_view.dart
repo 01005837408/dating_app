@@ -8,10 +8,10 @@ import 'package:dating_app/feature/edit_profile_screen/data/edit_profile_cubit.d
 
 class QuickViewInMyProfile extends StatelessWidget {
   const QuickViewInMyProfile({
-    required this.userModel,
+   // required this.userModel,
     Key? key,
   }) : super(key: key);
-  final UserModel userModel;
+ // final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

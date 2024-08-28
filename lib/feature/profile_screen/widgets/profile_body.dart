@@ -37,7 +37,7 @@ class ProfileBody extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>  MyProfileDetailsScreen(
-                userModel: userModel!,
+               // userModel: userModel!,
               ),
             ),
           );
