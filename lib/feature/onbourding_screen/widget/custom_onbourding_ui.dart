@@ -112,7 +112,7 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOutCubic);
                       },
-                      child: Text("The next",
+                      child: Text(S.of(context).theNext,
                           style: AppStyle.font21bold
                               .copyWith(color: AppColor.kPrimaryColor)),
                     )),

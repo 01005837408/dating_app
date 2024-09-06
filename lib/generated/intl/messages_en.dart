@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "advatges": MessageLookupByLibrary.simpleMessage("Advantages"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "appName": MessageLookupByLibrary.simpleMessage("Tawafuq"),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "areYouHaveKids":
             MessageLookupByLibrary.simpleMessage("Do You Have Kids?"),
         "areYousMoke": MessageLookupByLibrary.simpleMessage("Do You Smoke?"),
@@ -40,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "character": MessageLookupByLibrary.simpleMessage("Personality"),
         "chatTitle": MessageLookupByLibrary.simpleMessage("Chat"),
+        "choose_language":
+            MessageLookupByLibrary.simpleMessage("Choose Language"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm your new password "),
         "connectInt":
@@ -62,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "engineer": MessageLookupByLibrary.simpleMessage("Software Engineer"),
         "engineerUniversity":
             MessageLookupByLibrary.simpleMessage("Engineering University"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterLogin": MessageLookupByLibrary.simpleMessage("Log In"),
         "eyeColor": MessageLookupByLibrary.simpleMessage("Eye Color"),
         "fName": MessageLookupByLibrary.simpleMessage("First Name"),
@@ -142,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ruleText": MessageLookupByLibrary.simpleMessage(
             "This membership will be automatically renewed when it expires. You can stop this automatic renewal at any time."),
         "search": MessageLookupByLibrary.simpleMessage("Search for"),
+        "select_language_preference": MessageLookupByLibrary.simpleMessage(
+            "Select your language preference"),
         "settingsProfile":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share the App"),
@@ -154,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "text": MessageLookupByLibrary.simpleMessage("Text"),
         "textButtonForgetPass":
             MessageLookupByLibrary.simpleMessage("Send Code"),
+        "theNext": MessageLookupByLibrary.simpleMessage("The Next"),
         "titleSplash":
             MessageLookupByLibrary.simpleMessage("توافق للزواج الإسلامي"),
         "unlockYourMesasges":

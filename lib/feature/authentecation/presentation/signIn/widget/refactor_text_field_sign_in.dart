@@ -94,13 +94,14 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
                       return null;
                     },
                     controller: passController,
+                    
                     prefixIcon: const Icon(
                       Icons.lock,
-                      color: Colors.black,
+                       color: AppColor.kPrimaryColor,
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        color: Colors.black,
+                         color: AppColor.kPrimaryColor,
                         BlocProvider.of<UserCubit>(context)
                                     .obscurePasswordTextValue ==
                                 true

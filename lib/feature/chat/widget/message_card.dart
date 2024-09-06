@@ -22,28 +22,33 @@ class _MessageCardState extends State<MessageCard> {
 
   // Widget for messages sent by the current user (appears on the right)
   Widget greenCard() {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.green),
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
+    return Row(
+      children: [
+      
+        Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.green),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+              color: Colors.greenAccent,
+            ),
+            child: Text(
+              widget.message.content,
+              style:  TextStyle(
+                color: Colors.black,
+                fontSize: 16.sp,
+              ),
+            ),
           ),
-          color: Colors.greenAccent,
         ),
-        child: Text(
-          widget.message.content,
-          style:  TextStyle(
-            color: Colors.black,
-            fontSize: 16.sp,
-          ),
-        ),
-      ),
+      ],
     );
   }
 

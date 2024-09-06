@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "advatges": MessageLookupByLibrary.simpleMessage("الميزات"),
         "age": MessageLookupByLibrary.simpleMessage("العمر"),
         "appName": MessageLookupByLibrary.simpleMessage("توافق"),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "areYouHaveKids":
             MessageLookupByLibrary.simpleMessage("هل لديك أطفال؟"),
         "areYousMoke": MessageLookupByLibrary.simpleMessage("هل تدخن؟"),
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "calture": MessageLookupByLibrary.simpleMessage("الثقافة"),
         "character": MessageLookupByLibrary.simpleMessage("الشخصية"),
         "chatTitle": MessageLookupByLibrary.simpleMessage("الدردشة"),
+        "choose_language": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "connectInt": MessageLookupByLibrary.simpleMessage("متصل بالإنترنت"),
         "createAcountByGoogle":
             MessageLookupByLibrary.simpleMessage("إنشاء حساب باستخدام جوجل"),
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "engineer": MessageLookupByLibrary.simpleMessage("مهندس برمجيات"),
         "engineerUniversity":
             MessageLookupByLibrary.simpleMessage("جامعة الهندسة"),
+        "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "enterLogin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "eyeColor": MessageLookupByLibrary.simpleMessage("لون العينين"),
         "fName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -129,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ruleText": MessageLookupByLibrary.simpleMessage(
             "سيتم تجديد هذه العضوية تلقائيًا عند انتهائها. يمكنك إيقاف هذا التجديد التلقائي في أي وقت."),
         "search": MessageLookupByLibrary.simpleMessage("ابحث عن"),
+        "select_language_preference":
+            MessageLookupByLibrary.simpleMessage("اختر تفضيل اللغة الخاص بك"),
         "settingsProfile":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة التطبيق"),
@@ -141,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "text": MessageLookupByLibrary.simpleMessage("نص"),
         "textButtonForgetPass":
             MessageLookupByLibrary.simpleMessage("إرسال الكود"),
+        "theNext": MessageLookupByLibrary.simpleMessage("التالى"),
         "titleSplash":
             MessageLookupByLibrary.simpleMessage("توافق للزواج الإسلامي"),
         "unlockYourMesasges":

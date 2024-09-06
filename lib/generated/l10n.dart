@@ -80,6 +80,56 @@ class S {
     );
   }
 
+  /// `The Next`
+  String get theNext {
+    return Intl.message(
+      'The Next',
+      name: 'theNext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Language`
+  String get choose_language {
+    return Intl.message(
+      'Choose Language',
+      name: 'choose_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your language preference`
+  String get select_language_preference {
+    return Intl.message(
+      'Select your language preference',
+      name: 'select_language_preference',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message(
+      'Arabic',
+      name: 'arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Start`
   String get start {
     return Intl.message(

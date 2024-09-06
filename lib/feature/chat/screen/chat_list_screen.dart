@@ -1,3 +1,4 @@
+import 'package:dating_app/core/utils/colors.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:dating_app/feature/chat/widget/chat_user_card.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
   bool isArabic() {
@@ -37,7 +39,9 @@ class ChatListScreen extends StatelessWidget {
         body: BlocBuilder<ChatCubit, ChatState>(
           builder: (context, state) {
             if (state is ChatLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator(
+                color: AppColor.kPrimaryColor,
+              ));
             } else if (state is AllUsersLoaded) {
               final users = state.users;
 

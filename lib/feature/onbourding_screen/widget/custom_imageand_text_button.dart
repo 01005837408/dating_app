@@ -17,13 +17,6 @@ class CustomImagAndTextButton extends StatefulWidget {
 }
 
 class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
-  bool isToggled = false;
-  void _toggle() {
-    setState(() {
-      isToggled = !isToggled;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,40 +25,64 @@ class _CustomImagAndTextButtonState extends State<CustomImagAndTextButton> {
         children: [
           GestureDetector(
             onTap: () {
-              _toggle();
-              if (isToggled) {
-                BlocProvider.of<AppCubit>(context).setLangEn();
-              } else {
-                BlocProvider.of<AppCubit>(context).setLangAr();
-              }
+              _showLanguageDialog(context); // Show language selection dialog
             },
             child: CircleAvatar(
               radius: 25.r,
               backgroundColor: Colors.white,
               child: Image.asset(
                 Assets.onbourdingImage,
-                height: 32.h.h,
-                width: 32.h.w,
+                height: 32.h,
+                width: 32.w,
               ),
             ),
           ),
           const Spacer(),
           TextButton(
               onPressed: () {
-                // print('object');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => const SignInScreen()));
-                // Navigator.of(context).pushReplacementNamed(Routs.loginScreen);
               },
               child: Text(
                 S.of(context).skip,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18.sp.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w600),
               ))
         ],
       ),
+    );
+  }
+
+  // Method to show the language selection dialog
+  void _showLanguageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(S.of(context).choose_language),
+          content: Text(S.of(context).select_language_preference),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Set language to Arabic
+                BlocProvider.of<AppCubit>(context).setLangAr();
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text(S.of(context).arabic),
+            ),
+            TextButton(
+              onPressed: () {
+                // Set language to English
+                BlocProvider.of<AppCubit>(context).setLangEn();
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text(S.of(context).english),
+            ),
+          ],
+        );
+      },
     );
   }
 }
