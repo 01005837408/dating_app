@@ -72,7 +72,7 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        width: 135.h.w,
+                        width: 125.h.w,
                         child: CustomTextFormField(
                             controller: fNameController,
                             inputType: TextInputType.name,
@@ -82,9 +82,9 @@ class RefactorCustomTextFormFieldSignUp extends StatelessWidget {
                               }
                             }),
                       ),
-                      horizontalSpacing(50),
+                      horizontalSpacing(30),
                       Container(
-                        width: 135.h.w,
+                        width: 125.h.w,
                         child: CustomTextFormField(
                             controller: lNameController,
                             inputType: TextInputType.name,

@@ -63,15 +63,15 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           verticalSpacing(30.h),
           Container(
-            width: 300.h.h,
-            height: 240.h.w,
+            width: 300.w,
+            height: 230.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30.r),
             ),
             child: Image.asset(onBoardingList[widget.pageIndex].image),
           ),
-          verticalSpacing(65.h),
+          verticalSpacing(60.h),
           Center(
             child: Text(
               onBoardingList[widget.pageIndex].title,
@@ -86,8 +86,8 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
           ),
           verticalSpacing(10.h),
           SizedBox(
-              width: 300.h.w,
-              height: 50.h.h,
+              width: 250.w,
+              height: 40.h,
               child: widget.pageIndex == 2
                   ? ElevatedButton(
                       style: ElevatedButton.styleFrom(

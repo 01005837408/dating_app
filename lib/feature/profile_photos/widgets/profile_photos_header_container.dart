@@ -27,17 +27,18 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
             imageUr1l = state.imageUrl;
           }
           return Container(
-            width: MediaQuery.of(context).size.width / 1.2,
+            width: MediaQuery.of(context).size.width ,
             height: MediaQuery.of(context).size.height / 2.2,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
                   imageUr1l,
+
                 ),
                 fit: BoxFit.cover,
               ),
               color: AppColor.kPrimaryColor,
-              borderRadius: BorderRadius.circular(50),
+            //  borderRadius: BorderRadius.circular(50),
             ),
             child: Column(
               children: [
@@ -50,7 +51,7 @@ class ProfilePhotosHeaderContainer extends StatelessWidget {
                 //   ),
                 // ),
                 SizedBox(
-                  height: 270.h,
+                  height: 240.h,
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

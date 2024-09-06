@@ -35,15 +35,15 @@ class RefactorCustomTextFormFieldSignIn extends StatelessWidget {
       child: BlocConsumer<UserCubit, UserState>(
         listener: (context, state) {
           if (state is UserSuccessState) {
-            FirebaseAuth.instance.currentUser!.emailVerified
-                ? Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ButtomNavigation(
-                      user: state.user,
-                    ),
-                  ))
-                : ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Please Verify Your Account")),
-                  );
+            // FirebaseAuth.instance.currentUser!.emailVerified
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => ButtomNavigation(
+                user: state.user,
+              ),
+            ));
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   const SnackBar(content: Text("Please Verify Your Account")),
+            // );
           } else if (state is UserError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),

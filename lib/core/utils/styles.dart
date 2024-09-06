@@ -13,8 +13,8 @@ class AppStyle {
     color: Colors.white,
   );
   static TextStyle font17W400 = TextStyle(
-    fontSize: 17.sp.sp,
-    fontWeight: FontWeight.w400,
+    fontSize: 14.sp.sp,
+    fontWeight: FontWeight.w300,
     color: Colors.white,
   );
 }

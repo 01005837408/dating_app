@@ -1,6 +1,4 @@
 import 'package:dating_app/core/utils/colors.dart';
-import 'package:dating_app/core/utils/const_text.dart';
-import 'package:dating_app/core/utils/styles.dart';
 import 'package:dating_app/feature/authentecation/presentation/signIn/sign_in.dart';
 import 'package:dating_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +25,9 @@ class DontHaveAnAccount extends StatelessWidget {
             ),
         TextButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => SignInScreen(),
-              ));
+              Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => const SignInScreen()),
+                      (route) => false);
             },
             child: Text(
               S.of(context).enterLogin,

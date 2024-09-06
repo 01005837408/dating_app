@@ -19,7 +19,7 @@ class MyProfileImageAndHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: AppColor.kPrimaryColor, width:12.h)),
+          border: Border.all(color: AppColor.kPrimaryColor, )),
       child: Column(
         children: [
           BlocProvider(

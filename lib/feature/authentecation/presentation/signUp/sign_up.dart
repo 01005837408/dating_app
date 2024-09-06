@@ -114,10 +114,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   backgroundImage:
                                       AssetImage(Assets.googleImage),
                                 ),
-                                SizedBox(width: 30.h.w),
+                                SizedBox(width: 30.w),
                                 Text(
                                   S.of(context).createAcountByGoogle,
-                                  style: AppStyle.font17W400.copyWith(),
+                                  style:TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    //fontWeight: 
+                                  ),
                                 )
                               ],
                             ),
