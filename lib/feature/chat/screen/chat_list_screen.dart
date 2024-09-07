@@ -58,7 +58,7 @@ class ChatListScreen extends StatelessWidget {
                     child: Card(
                         child: ChatUserCard(
                       user: users[index],
-                      lastMessageTime: '',
+                      lastMessageTime: DateTime.now().toString(),
                     )),
                   ),
                 ),

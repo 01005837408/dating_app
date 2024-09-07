@@ -1,5 +1,6 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'package:dating_app/core/api/api.dart';
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_cubit.dart';
 import 'package:dating_app/feature/chat/data/chat_cubit/chat_state.dart';
 import 'package:flutter/material.dart';
@@ -34,14 +35,9 @@ class ChatScreen extends StatelessWidget {
             ),
             title: Row(
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: user.profilePicture.isNotEmpty
-                      ? NetworkImage(user.profilePicture)
-                      : const AssetImage('assets/images/Home Screen-image.jpg')
-                          as ImageProvider,
-                ),
-                 SizedBox(width: 20.h),
+                UserProfile(user: user),
+                
+                  SizedBox(width: 20.h),
                 Text(user.fname),
               ],
             ),
@@ -55,14 +51,20 @@ class ChatScreen extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     } else if (state is ChatLoaded) {
                       return ListView.builder(
-                        reverse: true,
-                        itemCount: state.messages.length,
-                        itemBuilder: (context, index) {
-                          return MessageCard(
-                            message: state.messages[index],
-                          );
-                        },
-                      );
+  reverse: true,
+  itemCount: state.messages.length,
+  itemBuilder: (context, index) {
+    final message = state.messages[index];
+    final isSender = Api.user.uid == message.senderId;
+
+    return MessageCard(
+      message: message,
+      user: user,
+   // Pass the correct user model
+    );
+  },
+);
+
                     } else if (state is ChatError) {
                       return Center(child: Text(state.error));
                     } else {
@@ -117,6 +119,26 @@ class ChatScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class UserProfile extends StatelessWidget {
+  const UserProfile({
+    super.key,
+    required this.user,
+  });
+
+  final UserModel user;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 20,
+      backgroundImage: user.profilePicture.isNotEmpty
+          ? NetworkImage(user.profilePicture)
+          : const AssetImage('assets/images/Home Screen-image.jpg')
+              as ImageProvider,
     );
   }
 }

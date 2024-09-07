@@ -16,7 +16,7 @@ class ChatCubit extends Cubit<ChatState> {
       final messagesStream = Api.getAllMessages(receiverId);
 
       messagesStream.listen((messages) {
-        emit(ChatLoaded(messages));
+        emit(ChatLoaded(messages ));
       }, onError: (error) {
         emit(ChatError(error.toString()));
       });
@@ -53,7 +53,7 @@ class ChatCubit extends Cubit<ChatState> {
 
         if (querySnapshot.docs.isNotEmpty) {
           var lastMsgDoc = querySnapshot.docs.first;
-          final lastMessage = lastMsgDoc['content'];
+          final lastMessage = lastMsgDoc['last_message'];
           final lastMessageTime = lastMsgDoc['timestamp'].toDate().toString();
 
           emit(UserProfileAndLastMessageLoaded(profilePicture, lastMessage, lastMessageTime));
