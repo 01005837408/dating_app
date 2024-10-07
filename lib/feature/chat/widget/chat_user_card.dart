@@ -9,7 +9,7 @@ class ChatUserCard extends StatelessWidget {
   final UserModel user;
 
   const ChatUserCard(
-      {required this.user, Key? key, required String lastMessageTime})
+      {required this.user, Key? key})
       : super(key: key);
 
   @override
@@ -42,10 +42,37 @@ class ChatUserCard extends StatelessWidget {
                       : const AssetImage('assets/images/Home Screen-image.jpg')
                           as ImageProvider,
                 ),
-                title: Text(user.fname),
-                subtitle:
-                    Text('${state.lastMessage}\n${state.lastMessageTime}'),
+                title: Text('${user.fname} ${user.lname}',
+                style:const TextStyle(
+                  fontWeight: FontWeight.bold,
+                   fontSize: 18,
+                ),
+                ),
+                subtitle: Row(
+                  children: [
+                    
+                     
+                    Text(
+                     // "last message",
+                       state.lastMessage, // Show the last message and timestamp
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style:const TextStyle(
+                        color: Color(0xff424242),
+                        fontSize: 12,
+                    
+                      ),
+                    ),
+                    Spacer(),
+                     Text(state.lastMessageTime,style:const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                    
+                      ),),
+                  ],
+                ),
                 isThreeLine: true,
+                
               ),
             );
           } else if (state is ChatError) {

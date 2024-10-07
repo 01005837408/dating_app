@@ -29,7 +29,7 @@ class LikesScreen extends StatelessWidget {
                   child: HomeTitle(
                     text: S.of(context).likes,
                     iconButton: IconButton(
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back , color: Colors.white,),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -45,10 +45,11 @@ class LikesScreen extends StatelessWidget {
                       TabBar(
                         indicatorPadding:
                              EdgeInsets.symmetric(horizontal: 10),
-                        unselectedLabelColor: Colors.blue,
+                        unselectedLabelColor: Color(0xfffe3c72).withOpacity(0.698),
+                        
                         indicatorSize: TabBarIndicatorSize.tab,
                         labelColor: AppColor.kPrimaryColor,
-                        labelStyle:  TextStyle(fontSize: 20.sp),
+                        labelStyle:  TextStyle(fontSize: 18.sp),
                         dividerColor: AppColor.kPrimaryColor,
                         dividerHeight: 0.h,
                         indicatorWeight: 5,

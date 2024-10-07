@@ -2,6 +2,7 @@ import 'package:dating_app/feature/my_profile_details/my_profile_details_screen.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:dating_app/core/spacing/spacing.dart';
 import 'package:dating_app/core/utils/colors.dart';
@@ -20,7 +21,10 @@ class SectionCustomPost extends StatelessWidget {
     required this.imageUrls,
     required this.postId,
   }) : super(key: key);
+  DateTime nowx = DateTime.now();
 
+  // Format the time with hours, minutes, and AM/PM
+  String formattedTime = DateFormat('h:mm a').format(DateTime.now());
   @override
   Widget build(BuildContext context) {
     if (imageUrls.isEmpty) {
@@ -106,10 +110,10 @@ class SectionCustomPost extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.comment),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: const Icon(Icons.comment),
+                      // ),
                       horizontalSpacing(20),
                       InkWell(
                         onTap: () {
@@ -139,8 +143,8 @@ class SectionCustomPost extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(DateTime.now().toString()),
-                          const Text("online"),
+                          Text(formattedTime),
+                       //   const Text("online"),
                         ],
                       ),
                     ],

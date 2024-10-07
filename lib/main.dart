@@ -7,22 +7,26 @@ import 'package:flutter/material.dart';
 import "package:flutter/services.dart";
 
 void main() async {
+ 
 
-  runApp(MyApp());
+  
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  SystemChrome.setPreferredOrientations(
+  // make land scape orientaion not active 
+    SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
+      // DeviceOrientation.landscapeLeft,
+      // DeviceOrientation.landscapeRight,
     ]
   );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+ 
   authStateChanges();
   CacheHelper().init();
+  runApp(MyApp());
 
   // UserModel userModel = UserModel.fromFirestore(userDoc.data() as Map<String, dynamic>);
 }

@@ -44,8 +44,8 @@ class HomeTitle extends StatelessWidget {
               //S.of(context).appName
               text ?? S.of(context).appName,
               style:  TextStyle(
-                color: Colors.black,
-                fontSize: 20.sp,
+                color: Colors.white,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

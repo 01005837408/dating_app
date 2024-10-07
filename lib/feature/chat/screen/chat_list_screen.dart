@@ -22,17 +22,16 @@ class ChatListScreen extends StatelessWidget {
       create: (context) => ChatCubit()..fetchAllUsers(),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColor.kPrimaryColor,
           elevation: 1,
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.home),
-          ),
+          automaticallyImplyLeading: false,
+         
           title: Text(
             S.of(context).chatTitle,
             style: const TextStyle(
-              color: Colors.black,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -58,7 +57,7 @@ class ChatListScreen extends StatelessWidget {
                     child: Card(
                         child: ChatUserCard(
                       user: users[index],
-                      lastMessageTime: DateTime.now().toString(),
+                      //: DateTime.now().toString(),
                     )),
                   ),
                 ),

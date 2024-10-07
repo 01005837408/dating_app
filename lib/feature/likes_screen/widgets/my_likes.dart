@@ -25,7 +25,7 @@ class GridViewMyLikes extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 8,
               crossAxisSpacing: 8,
-              childAspectRatio: 1 / 1.2,
+              childAspectRatio: 1 / 1.5,
             ),
             itemBuilder: (context, index) {
               final post = likedPosts[index];
@@ -57,7 +57,7 @@ class GridViewMyLikes extends StatelessWidget {
                 width: double.infinity,
                 child: Image.network(
                   post.imageUrl,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),

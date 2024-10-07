@@ -94,7 +94,7 @@ static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUser() {
 
   static Future<void> sendMessage(
       {required String msg, required String reciverId}) async {
-    final time = DateTime.now().millisecondsSinceEpoch.toString();
+    final time = DateTime.now().toString();
     final MessageModel message = MessageModel(
       senderId: user.uid,
       content: msg,
