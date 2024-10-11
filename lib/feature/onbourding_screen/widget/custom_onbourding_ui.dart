@@ -11,31 +11,34 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomOnboardingUI extends StatefulWidget {
   CustomOnboardingUI({
     super.key,
-    required this.pageIndex,
+    required this.pageIndex, required this.pageController,
   });
   int pageIndex;
+  final PageController pageController;
+
   @override
   State<CustomOnboardingUI> createState() => _CustomOnboardingUIState();
 }
 
 class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
-  PageController pageController = PageController();
+  // PageController pageController = PageController(initialPage: 0);
+  @override
   void initState() {
     super.initState();
-    pageController.addListener(() {
-      if (pageController.page!.round() != widget.pageIndex) {
-        setState(() {
-          widget.pageIndex = pageController.page!.round();
-        });
+  widget.pageController.addListener(() {
+      if (widget.pageController.page!.round() != widget.pageIndex) {
+        // setState(() {
+          widget.pageIndex = widget.pageController.page!.round();
+        // });
       }
     });
   }
 
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   widget.pageController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +111,11 @@ class _CustomOnboardingUIState extends State<CustomOnboardingUI> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30))),
                       onPressed: () {
-                        pageController.nextPage(
+                        if(widget.pageController.hasClients){
+                          widget.  pageController.nextPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOutCubic);
+                        }
                       },
                       child: Text(S.of(context).theNext,
                           style: AppStyle.font21bold

@@ -84,7 +84,7 @@ void fetchUserProfileAndLastMessage(String userId) async {
       final userStream = Api.getAllUser();
       userStream.listen((snapshot) {
         final users =
-            snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
+            snapshot!.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
         emit(AllUsersLoaded(users));
       }, onError: (error) {
         emit(ChatError(error.toString()));

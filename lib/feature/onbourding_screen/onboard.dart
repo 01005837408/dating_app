@@ -20,7 +20,7 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-  PageController pageController = PageController();
+  PageController pageController = PageController(initialPage: 0);
   int pageIndex = 0;
 
   List<OnboardModel> get onBoardingList => [
@@ -64,7 +64,7 @@ class _OnboardState extends State<Onboard> {
                      // print(pageIndex);
                     },
                     itemBuilder: (context, index) => CustomOnboardingUI(
-                      pageIndex: index,
+                      pageIndex: index, pageController: pageController,
                     ),
                   ),
                 ),
